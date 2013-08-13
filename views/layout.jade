@@ -1,0 +1,20 @@
+doctype 5
+html
+  head
+    title= title
+    block stylesheets
+      link(rel='stylesheet', href='/stylesheets/bootstrap/bootstrap.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap/responsive.css')
+      link(href='http://fonts.googleapis.com/css?family=Oswald',rel='stylesheet', 
+      type='text/css')      
+      link(rel='stylesheet', href='/stylesheets/own/index.css') 
+    block custom-stylesheets
+  body
+    block content
+
+    block scripts      
+      script(src='javascripts/jquery/jquery.min.js')
+      script(src='javascripts/bootstrap/bootstrap-collapse.js')
+      script(src='javascripts/bootstrap/bootstrap-transition.js')
+    
+    block custom-scripts
