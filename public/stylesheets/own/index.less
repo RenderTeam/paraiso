@@ -1,217 +1,99 @@
-a:link {
-  text-decoration:none;
+.navbar .container{
+  margin: 0;
 }
 
-a:hover{
-  text-decoration: none;
+#page-wrap {
+  margin: 50px;
 }
 
-body{
-  font-family: 'Oswald', sans-serif;
-  color:#2C77B8;
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
 }
-
-.breaker{
-  clear:both;
-  height: 47px;
-  opacity:0;
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
 }
-
-#carousel-text{
-  border-top:4px solid orange;
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
 }
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
 
-#carousel-text{
-  span{
-    font-size: 20px;
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
   }
-}
-
-footer{
-  background-color: #734220;
-  color:#fff;
-  padding: 20px;
-
-  .header{
-    color: orange;
-    font-size: 1em;
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
-}
-
-#full-main{
-  background-color: #EEEEEE;
-  padding-top:5%;
-  padding-bottom:5%;
-  width:100%;
-  border-bottom: 3px solid orange;
-}
-
-.navbar-fixed-top{
-  ul{
-    .active{
-      font-size: 19px;
-      border-bottom: 4px solid orange;
-
-      .activeA{
-        color: #3686B9;
-      }
-    }
-
-    li{
-      font-size: 17px;
-    }
+  
+  tr { border: 1px solid #ccc; }
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
   }
-}
-
-.slogan-container{
-  color:#6D2F02;
-}
-
-/*SERVICIOS*/
-
-.back-to-top{
-  margin-left: 0;
-  margin-top: 50px;
-
-  .span2{
-    margin: 0;
-    img{
-      margin:auto;
-      float:none;
-      transition: transform 2s;
-      -webkit-transition: transform 2s;
-    }
-
-    img:hover{
-      color:orange;
-      cursor:pointer;
-      transform: rotate(360deg);
-      -ms-transform: rotate(360deg); /* IE 9 */
-      -webkit-transform: rotate(360deg);
-    }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
   }
+  
+  /*
+  Label the data
+  */
+  td:nth-of-type(1):before { content: "First Name"; }
+  td:nth-of-type(2):before { content: "Last Name"; }
+  td:nth-of-type(3):before { content: "Job Title"; }
+  td:nth-of-type(4):before { content: "Favorite Color"; }
+  td:nth-of-type(5):before { content: "Wars of Trek?"; }
+  td:nth-of-type(6):before { content: "Porn Name"; }
+  td:nth-of-type(7):before { content: "Date of Birth"; }
+  td:nth-of-type(8):before { content: "Dream Vacation City"; }
+  td:nth-of-type(9):before { content: "GPA"; }
+  td:nth-of-type(10):before { content: "Arbitrary Data"; }
 }
 
-.fixedMenu{
-  top:-70px; 
-  position:fixed; 
-  z-index:999;
-
-  .hero-unit{
-    background-color:#FF8C35;
-    color:#ffffff;
-    cursor: pointer;
-  }
-}
-
-.section-header {
-  .span3{
-    margin-right:0;
-    margin-left: 0;
-    padding: 5px;
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  body { 
+    padding: 0; 
+    margin: 0; 
+    width: 320px; }
   }
 
-  .span4{
-    margin-right:0;
-    margin-left: 0;
-    padding: 5px;
-  }
-}
-
-.service-element-container{
-  background-color: #f3f3f3;
-  border-radius: 5px;
-  box-shadow: 0 0 6px 2px #8BC1E3;
-  margin: 20px 0;
-  padding-top: 0;
-  text-align: center;
-  -moz-box-shadow: 0 0 6px 2px #8BC1E3;
-  -webkit-box-shadow: 0 0 6px 2px #8BC1E3;
-
-  h2{
-    background-color: #FF8C35;
-    border-bottom: 2px solid #BBDBEF;
-    border-radius: 5px;
-    color: #FFFFFF;
-    margin-top: 0;
-    padding: 10px 0;
-  }
-
-  ul{ 
-    border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    -webkit-border-radius: 0 0 5px 5px;
-    list-style: none;
-    margin: 0;
-    text-align: justify;
-
-    li.service-feature{
-      padding: 15px 15px;
-    }
-  }
-}
-
-.service-element-container:hover{
-  -moz-box-shadow: 0 0 6px 2px #FFA500;
-  -webkit-box-shadow: 0 0 6px 2px #FFA500;
-  box-shadow: 0 0 6px 2px #FFA500;
-}
-
-.service-text-container{
-  h1{
-    b{
-      color: #FF8C35;
-    }
-  }
-  article{
-    font-size:1.3em;
-    margin-right: 30px;
-    text-align : justify;
-  }
-}
-
-.service-titles{
-  .span4{
-    margin-right:0;
-    margin-left: 0;
-    padding: 5px;
-
-    .hero-unit{
-      border-radius: 0 0 10px 10px;
-      height: 1px;
-    }
-
-    .hero-unit:hover{
-      background-color:#FF8C35;
-      color:#ffffff;
-      cursor: pointer;
-    }
-
-    .course:hover{
-      background-image:url('../../images/feather.png');
-      background-size: 65%;
-    }
-
-    .advice:hover{
-      background-image:url('../../images/question.png');
-      background-size: 60% 80%;
-    }
-
-    .audit:hover{
-      background-image:url('../../images/good.png');
-      background-size: 58% 85%;
-    }
-  }
-
-  h2{
-    span{
-      color: #FF8C35;
-    }
-  }
-}
-
-.service-menu{
-  .span4{
-    padding-top: 0;
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  body { 
+    width: 495px; 
   }
 }
