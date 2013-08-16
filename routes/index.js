@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Render Calendar' });
-}
+  res.render('index', { title: 'Express' });
+};
