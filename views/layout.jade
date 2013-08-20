@@ -6,17 +6,20 @@ html
       link(rel='stylesheet', href='/stylesheets/bootstrap/bootstrap.css')
       link(href='http://fonts.googleapis.com/css?family=Oswald',rel='stylesheet', 
       type='text/css')      
-      link(rel='stylesheet', href='/stylesheets/own/index.css') 
+      link(rel='stylesheet', href='/stylesheets/own/index.css')
+      link(rel='stylesheet', href='/javascripts/sidr/stylesheets/jquery.sidr.light.css')
     block custom-stylesheets
   body
     block content
 
     include main-navbar
 
+    include side-menu
+
     block scripts      
       script(src='javascripts/jquery/jquery.min.js')
-      script(src='javascripts/bootstrap/collapse.js')
-      script(src='javascripts/bootstrap/bootstrap-transition.js')
+      script(src='javascripts/sidr/jquery.sidr.min.js')
       script(src='javascripts/bootstrap/bootstrap.js')
+      script(src='javascripts/own/sidr-functions.js')
     
     block custom-scripts
