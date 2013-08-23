@@ -1,40 +1,40 @@
-function tableFilter(){
-  var iteratorRow = $('.nameColumn').filter('.iterator').parent(),
-      name = $('.nameColumn').filter('.iterator').data('prepartaker-name').toLowerCase(),
-      text = $(this).val().toLowerCase(),
-      tableLength = $('.nameColumn').length,
-      pattern=new RegExp(text),
-      i = 2;
+function tableFilter() {
 
-  if(text === ''){
-    $('.nameColumn').parent().slideDown();
+  var iteratorRow = $('.iterator'),
+    department = iteratorRow.children('.department').text().toLowerCase(),
+    inputText = $( this ).val().toLowerCase(),
+    i = 1,
+    name = iteratorRow.children('.name').text().toLowerCase(),
+    position = iteratorRow.children('.position').text().toLowerCase(),
+    pattern = new RegExp( inputText ),
+    tableLength = $('tr').length - 1;
+
+  if ( inputText === '' ) {
+    $('tr').slideDown();
   }else{
-    if(pattern.test(name)){
-      iteratorRow.slideDown();  
-    }else{
-      iteratorRow.slideUp();  
-    }
 
     for (i; i <= tableLength; i++) {
-      name = $('.nameColumn').filter('.iterator').parent().next().children(':first-child').data('prepartaker-name').toLowerCase();
-      iteratorRow = $('.nameColumn').filter('.iterator').parent().next().children(':first-child').parent();
-      //Comparacion
-      if(pattern.test(name)){
-        iteratorRow.slideDown();  
-      }else{
-        iteratorRow.slideUp();  
+      iteratorRow = $('.iterator');
+      name = iteratorRow.children('.name').text().toLowerCase();
+      department = iteratorRow.children('.department').text().toLowerCase();
+      position = iteratorRow.children('.position').text().toLowerCase();
+
+      if ( pattern.test(name) || pattern.test(department) || pattern.test(position) ) {
+        iteratorRow.slideDown()
+      } else {
+        iteratorRow.slideUp()
       }
-      $('.nameColumn').filter('.iterator').parent().next().children(':first-child').addClass('iterator');
-      $('.nameColumn').filter('.iterator:first').removeClass('iterator');
+
+      iteratorRow.next().addClass('iterator');
+      iteratorRow.removeClass('iterator');
     }
 
-    $('.nameColumn').filter('.iterator').removeClass('iterator');
-    $('.nameColumn:first').addClass('iterator');
+    $('tbody').find('tr:first').addClass('iterator');
   }
 }
 
-function start(){
-  $('#input-table-filter').keyup(tableFilter);
+function start() {
+  $('#input-table-filter').keyup( tableFilter );
 }
 
 $(document).ready(start);

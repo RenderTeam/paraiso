@@ -9,5 +9,23 @@ header.navbar-default.navbar-fixed-top.bs-docs-nav(role='banner')
         a.navbar-brand#side-menu-trigger(href='#side-menu') Menú
       nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
         ul.nav.navbar-nav
-          li.active
-            a(href='') Getting started
+          li.dropdown
+            a.dropdown-toggle(href='', data-toggle="dropdown") Talento Humano 
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='') Listado
+              li
+                a(href='') Nuevo
+              li
+                a(href='') Otra opción
+          li.dropdown
+            a.dropdown-toggle(href='', data-toggle="dropdown") Departamentos 
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='') Listado
+              li
+                a(href='') Nuevo
+              li
+                a(href='') Otra opción

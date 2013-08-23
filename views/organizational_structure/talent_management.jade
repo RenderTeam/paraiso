@@ -1,22 +1,15 @@
 extends ../layout
 
-<<<<<<< HEAD
-block content
-  #page-wrap
-    ul.bs-glyphicons
-      li: span.glyphicon.glyphicon-adjust
-=======
-block custom-stylesheets
+block content   
 
-block content
-  
   .span12.page-wrap
     br
     h3 Lista de Talento Humano
 
     .form-search.text-right.form-table-filter
       .input-group.col-lg-3.pull-right
-        span.input-group-addon ?
+        span.input-group-addon 
+          span.glyphicon.glyphicon-search
         input.form-control(placeholder="Daniel Ventas...")#input-table-filter(type='text')
       .breaker
 
@@ -26,38 +19,44 @@ block content
           th Nombre
           th Departamento
           th Puesto
-          th >
+          th 
+            span.glyphicon.glyphicon-user
       tbody
+        tr.iterator
+          td.name James
+          td.department Matman
+          td.position Chief Sandwich Eater
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal') 
+              span.glyphicon.glyphicon-user
         tr
-          td James
-          td Matman
-          td Chief Sandwich Eater
-          td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
+          td.name The
+          td.department Tick
+          td.position Crimefighter Sorta
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
         tr
-          td The
-          td Tick
-          td Crimefighter Sorta
-          td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
+          td.name Jokey
+          td.department Smurf
+          td.position Giving Exploding Presents
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
         tr
-          td Jokey
-          td Smurf
-          td Giving Exploding Presents
+          td.name Cindy
+          td.department Beyler
+          td.position Sales Representative
           td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
         tr
-          td Cindy
-          td Beyler
-          td Sales Representative
+          td.name Captain
+          td.department Cool
+          td.position Tree Crusher
           td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
-        tr
-          td Captain
-          td Cool
-          td Tree Crusher
-          td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
 
   #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
@@ -71,4 +70,3 @@ block content
 
 
 block custom-scripts
->>>>>>> ardroz
