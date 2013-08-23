@@ -3,102 +3,60 @@ extends layout
 block custom-stylesheets
 
 block content
-
-  #page-wrap
-    h1 Responsive Table
+  
+  .span12.page-wrap
+    br
+    h1 Lista de Talento Humano
 
     table
       thead
         tr
-          th First Name
-          th Last Name
-          th Job Title
-          th Favorite Color
-          th Wars or Trek?
-          th Porn Name
-          th Date of Birth
-          th Dream Vacation City
-          th GPA
-          th Arbitrary Data
+          th Nombre
+          th Departamento
+          th Puesto
           th >
       tbody
         tr
           td James
           td Matman
           td Chief Sandwich Eater
-          td Lettuce Green
-          td Trek
-          td Digby Green
-          td January 13, 1979
-          td Gotham City
-          td 3.1
-          td RBX-12
           td.launch-modal-preview 
-            a(data-toggle='modal', href='#myModal') >
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-chevron-right
         tr
           td The
           td Tick
           td Crimefighter Sorta
-          td Blue
-          td Wars 
-          td John Smith
-          td July 19, 1968
-          td Athens
-          td N/A
-          td Edlund, Ben (July 1996).
           td.launch-modal-preview 
             a(data-toggle='modal', href='#myModal') >
         tr
           td Jokey
           td Smurf
           td Giving Exploding Presents
-          td Smurflow
-          td Smurf
-          td Smurflane Smurfmutt
-          td Smurfuary Smurfteenth, 1945
-          td New Smurf City
-          td 4.Smurf
-          td One
           td.launch-modal-preview 
             a(data-toggle='modal', href='#myModal') >
         tr
           td Cindy
           td Beyler
           td Sales Representative
-          td Red
-          td Wars
-          td Lori Quivey
-          td July 5, 1956
-          td Paris
-          td 3.4
-          td 3451
           td.launch-modal-preview 
             a(data-toggle='modal', href='#myModal') >
         tr
           td Captain
           td Cool
           td Tree Crusher
-          td Blue
-          td Wars
-          td Steve 42nd
-          td December 13, 1982
-          td Las Vegas
-          td 1.9
-          td Under the couch
           td.launch-modal-preview 
             a(data-toggle='modal', href='#myModal') >
 
-    
-
-    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4.modal-title 
-            .modal-body
-            .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title 
+          .modal-body
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
 
 
 block custom-scripts
