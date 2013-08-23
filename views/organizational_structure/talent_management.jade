@@ -1,1 +1,67 @@
 extends ../layout
+
+block custom-stylesheets
+
+block content
+  
+  .span12.page-wrap
+    br
+    h3 Lista de Talento Humano
+
+    .form-search.text-right.form-table-filter
+      .input-group.col-lg-3.pull-right
+        span.input-group-addon ?
+        input.form-control(placeholder="Daniel Ventas...")#input-table-filter(type='text')
+      .breaker
+
+    table
+      thead
+        tr
+          th Nombre
+          th Departamento
+          th Puesto
+          th >
+      tbody
+        tr
+          td James
+          td Matman
+          td Chief Sandwich Eater
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal') >
+        tr
+          td The
+          td Tick
+          td Crimefighter Sorta
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal') >
+        tr
+          td Jokey
+          td Smurf
+          td Giving Exploding Presents
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal') >
+        tr
+          td Cindy
+          td Beyler
+          td Sales Representative
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal') >
+        tr
+          td Captain
+          td Cool
+          td Tree Crusher
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal') >
+
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title 
+          .modal-body
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+
+block custom-scripts
