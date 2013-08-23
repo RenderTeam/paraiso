@@ -1,9 +1,12 @@
 function start(){
-  $('#side-menu-trigger').sidr({
+  
+  var side_menu_trigger = $('#side-menu-trigger');
+
+  side_menu_trigger.sidr({
     source: '#side-menu'
   });
 
-  $('#side-menu-trigger').on('mouseenter',openSideMenu);
+  side_menu_trigger.on('mouseenter',openSideMenu);
   $('#sidr').on('mouseleave',closeSideMenu);
 }
 
