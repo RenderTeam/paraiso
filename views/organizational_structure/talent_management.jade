@@ -1,5 +1,6 @@
 extends ../layout
 
+<<<<<<< HEAD
 block content   
 
   .span12.page-wrap
@@ -70,3 +71,27 @@ block content
 
 
 block custom-scripts
+=======
+block content
+  #page-wrap
+    .row
+      .span8
+        form.form-horizontal#billingform(action="billing")
+          .control-group
+            label.control-label(for="email")  Billing E-Mail              
+            .controls
+              input(name="email",type="email",value="",id="email")
+              span.help-inline Where should we send invoices?   
+          .control-group
+            label.control-label(for="address")  Street Address
+            .controlsinput(name="address",placeholder="W 123 Street",type="text"
+                           value="", id="addressspan", class="help-inline") 
+          .control-group
+            label.control-label(for="zip") Zip Code
+            .controlsinput(name="zip",type="text",value="",id="zip")
+          .control-group
+            label(for="city").control-label City
+            .controlsinput(name="city",type="text",value="",id="city")
+          .form-actions
+            button.btn.btn-large.btn-primarySave(type="submit") Billing Address/button
+>>>>>>> amet
