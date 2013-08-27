@@ -1,6 +1,5 @@
 extends ../layout
 
-<<<<<<< HEAD
 block content   
 
   .page-wrap
@@ -11,7 +10,7 @@ block content
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
           span.glyphicon.glyphicon-search
-        input.form-control(placeholder="Daniel Ventas...")#input-table-filter(type='text')
+        input.form-control(placeholder="Daniel Ventas...",type = "text")#input-table-filter
       .breaker
 
     table.table-striped
@@ -59,6 +58,11 @@ block content
             a(data-toggle='modal', href='#myModal')
               span.glyphicon.glyphicon-user
 
+  .page-wrap
+    .row
+      .span8
+        form.form-horizontal(action="")
+
   #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
         .modal-content
@@ -69,33 +73,4 @@ block content
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
 
-<<<<<<< HEAD
-
 block custom-scripts
-=======
-block content
-  #page-wrap
-    .row
-      .span8
-        form.form-horizontal#billingform(action="billing")
-          .control-group
-            label.control-label(for="email")  Billing E-Mail              
-            .controls
-              input(name="email",type="email",value="",id="email")
-              span.help-inline Where should we send invoices?   
-          .control-group
-            label.control-label(for="address")  Street Address
-            .controlsinput(name="address",placeholder="W 123 Street",type="text"
-                           value="", id="addressspan", class="help-inline") 
-          .control-group
-            label.control-label(for="zip") Zip Code
-            .controlsinput(name="zip",type="text",value="",id="zip")
-          .control-group
-            label(for="city").control-label City
-            .controlsinput(name="city",type="text",value="",id="city")
-          .form-actions
-            button.btn.btn-large.btn-primarySave(type="submit") Billing Address/button
->>>>>>> amet
-=======
-block custom-scripts
->>>>>>> ardroz
