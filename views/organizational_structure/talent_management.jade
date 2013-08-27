@@ -2,7 +2,7 @@ extends ../layout
 
 block content   
 
-  .span12.page-wrap
+  .page-wrap
     br
     h3 Lista de Talento Humano
 
@@ -13,7 +13,7 @@ block content
         input.form-control(placeholder="Daniel Ventas...")#input-table-filter(type='text')
       .breaker
 
-    table
+    table.table-striped
       thead
         tr
           th Nombre
@@ -67,6 +67,5 @@ block content
           .modal-body
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-
 
 block custom-scripts
