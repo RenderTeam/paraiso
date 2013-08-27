@@ -15,3 +15,7 @@ exports.talent_management = function(req, res){
   res.render('organizational_structure/talent_management', { title: 'Paraíso' });
 };
 
+exports.new_talent = function(req, res){
+  res.render('organizational_structure/new_talent', { title: 'Paraíso' });
+};
+
