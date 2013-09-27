@@ -10,10 +10,10 @@ block content
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
           span.glyphicon.glyphicon-search
-        input.form-control(placeholder="Daniel Ventas...",type = "text")#input-table-filter
+        input.form-control(placeholder="Daniel Ventas...",data-target-table="talent-table")#input-table-filter
       .breaker
 
-    table.table-striped
+    table.table-striped#talent-table
       thead
         tr
           th Nombre
@@ -22,7 +22,7 @@ block content
           th 
             span.glyphicon.glyphicon-user
       tbody
-        tr.iterator
+        tr
           td.name James
           td.department Matman
           td.position Chief Sandwich Eater
@@ -74,3 +74,4 @@ block content
             button.btn.btn-default(type='button', data-dismiss='modal') Close
 
 block custom-scripts
+  script(src='/javascripts/render/table-filter.js')

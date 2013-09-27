@@ -7,12 +7,13 @@ html
       link(rel='stylesheet', href='/stylesheets/own/index.css')
       link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
       link(rel='stylesheet', href='/stylesheets/own/side-menu.css')
+      link(rel='stylesheet', href='/stylesheets/own/shame.css')
       link(rel='stylesheet', href='/javascripts/sidr/stylesheets/jquery.sidr.light.css')
     block custom-stylesheets
   body
-    block content
+    block main-navbar
 
-    include main_navbar
+    block content
 
     include side_menu
 
@@ -25,7 +26,6 @@ html
       script(src='/javascripts/bootstrap/modal.js')
       script(src='/javascripts/own/sidr-functions.js')
       script(src='/javascripts/own/resources-table-functions.js')
-      script(src='/javascripts/own/table-filter.js')
       script(src='/javascripts/own/control-panel.js')
     
     block custom-scripts

@@ -1,0 +1,24 @@
+header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand#side-menu-trigger(href='#side-menu') Menú
+    .pull-right
+      nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+        ul.nav.navbar-nav
+          li.dropdown
+            a.dropdown-toggle(href='', data-toggle="dropdown")
+              span.glyphicon.glyphicon-user
+              | &nbsp;&nbsp;Daniel Rodriguez Rosas&nbsp;&nbsp;
+              span.glyphicon.glyphicon-exclamation-sign &nbsp;
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='') Cerrar sesión
+    nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+      ul.nav.navbar-nav
+        block custom-navigation
