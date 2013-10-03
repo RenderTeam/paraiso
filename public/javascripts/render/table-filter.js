@@ -1,6 +1,6 @@
 function tableFilter() {
   
-  var targetTableName = $( this ).data('target-table'),
+  var targetTableName = $( this ).data('rd-table'),
       targetTable = $('#' + targetTableName);
 
   targetTable.find('tbody').find('tr:first').addClass('iterator');
@@ -14,7 +14,7 @@ function tableFilter() {
       tableLength = targetTable.find('tr').length - 1;;
 
   if ( inputText === '' ){
-    targetTable.find('tr').slideDown();
+    targetTable.find('tr').show();
   } else {
     for (i; i <= tableLength; i++) {
       iteratorRow = $('.iterator');
@@ -22,9 +22,9 @@ function tableFilter() {
       arrayTdValues = jsArrayFromIteratorRow( iteratorRowLength, iteratorRow );
 
       if ( compareArrayWithRegex( arrayTdValues, pattern ) ){
-        iteratorRow.slideDown();
+        iteratorRow.show();
       } else {
-        iteratorRow.slideUp();
+        iteratorRow.hide();
       }
       iteratorRow.next().addClass('iterator');
       iteratorRow.removeClass('iterator');

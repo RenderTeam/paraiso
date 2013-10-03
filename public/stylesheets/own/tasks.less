@@ -33,3 +33,71 @@ body{
 .agenda-container{
   margin-top: 10px;
 }
+
+/*********************************************************/
+/* NEW TASKS */
+/*********************************************************/
+
+.label-color{
+  background-color: yellow;
+  float: left;
+  width: 20%;
+  height: 60px;
+}
+
+.label-color:hover{
+  cursor: pointer;
+}
+
+.label0{ background-color: red ;}
+.label1{ background-color: blue ;}
+.label2{ background-color: orange ;}
+.label3{ background-color: green ;}
+.label4{ background-color: cyan ;}
+
+
+/*********************************************************/
+/* MODAL FOR AGENDA  */
+/*********************************************************/
+
+.modal-header{
+  border-bottom: 5px solid #e5e5e5;
+}
+
+.blue-ribbon{
+  border-bottom-color: blue;
+}
+
+.left-wrapper{
+
+  .deadline{
+    padding: 10px 0;
+    border-bottom: 1px solid green;
+  }
+
+  .task-status{
+
+    width: 100%;
+    display: table;
+    border-bottom: 1px solid green;
+
+    .assigned,
+    .priority,
+    .status{
+      float: left;
+      width: 33.333333%;
+    }
+
+    .assigned{
+
+    }
+
+    .priority{
+    }
+
+    .status{
+      border-left: 1px solid green;
+      border-right: 1px solid green;
+    }
+  }
+}

@@ -1,6 +1,9 @@
 extends ../layout
 
-block content   
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
+
+block content 
 
   .page-wrap
     br
@@ -10,7 +13,7 @@ block content
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
           span.glyphicon.glyphicon-search
-        input.form-control(placeholder="Daniel Ventas...",data-target-table="talent-table")#input-table-filter
+        input.form-control(placeholder="Daniel Ventas...",data-rd-table="talent-table")#input-table-filter
       .breaker
 
     table.table-striped#talent-table

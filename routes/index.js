@@ -1,4 +1,3 @@
-
 /*
  * GET home page.
  */
@@ -16,5 +15,13 @@ exports.talent_management = function(req, res){
 };
 
 exports.tasks = function(req, res){
-  res.render('tasks', { title: 'Paraíso' });
+  res.render('tasks/tasks', { title: 'Paraíso' });
+};
+
+exports.my_tasks = function(req, res){
+  res.render('tasks/my_tasks', { title: 'Paraíso' });
+};
+
+exports.new_task = function(req, res){
+  res.render('tasks/new_task', { title: 'Paraíso' });
 };

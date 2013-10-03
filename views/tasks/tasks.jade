@@ -1,0 +1,27 @@
+extends ../layout
+
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/tasks.css')
+  link(rel='stylesheet', href='/stylesheets/render/calendar.css')
+
+block main-navbar
+  include ../navbars/tasks_navbar
+
+block content
+  .col-md-12( ng-app='taskApp' )
+    .col-md-11.main-wrapper
+      .col-md-4
+        .input-group.input-group
+          span.input-group-addon.glyphicon.glyphicon-search
+          input.form-control.input( ng-model = 'query')
+      .col-md-4.pull-right.text-right.switch-view
+        span.glyphicon.glyphicon-calendar
+        | &nbsp;|&nbsp;
+        span.glyphicon.glyphicon-list-alt
+      span.clearfix
+
+      include agenda
+
+block custom-scripts
+  script(src='/javascripts/render/calendar.js')
+  script(src='/javascripts/own/controllers/tasksControllers.js')
