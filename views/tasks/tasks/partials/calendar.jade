@@ -1,0 +1,24 @@
+.col-md-12.pull-right.calendarContainer.text-center
+  .col-md-12.full-month
+    .full-month-header-container
+      .pull-left.arrow.arrow-left
+        h2  <
+      .pull-right.arrow.arrow-right
+        h2  >
+      .between-arrows 
+        h2
+      p.yearPreview
+      .calendar-row-days
+        .cell-header.activeHeader
+        .cell-header
+        .cell-header
+        .cell-header
+        .cell-header
+        .cell-header
+        .cell-header
+    - for(var i=0; i<6; i++)
+      - for(var j=0; j<7; j++)
+        -if(i == 0 && j == 0)
+          .activeCell.calendar-cell(class='c'+i+ ''+j )
+        else
+          .calendar-cell(class='c'+i+ ''+j )

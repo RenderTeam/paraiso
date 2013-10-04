@@ -1,0 +1,51 @@
+.col-md-8
+  form
+    .col-xs-6
+      .input-group.input-group-lg
+        span.input-group-addon Título
+        input.form-input.input-lg( placeholder = 'Título de la tarea' )
+      br
+      .input-group.input-group
+        span.input-group-addon Creado por
+        input.form-input( disabled, placeholder = 'Daniel' )
+      br
+      .input-group
+        span.input-group-addon Asignar
+        input.form-control( placeholder = 'Nombre del usuario' )
+        span.input-group-btn
+          button.btn.btn-default(type='button') +
+      br
+      .input-group
+        span.input-group-addon Fecha límite
+        input.form-input(disabled, type='date' )
+      br
+      .input-group
+        span.input-group-addon Recordatorios
+        input.form-control( placeholder = '1', type='number' )
+        span.input-group-btn
+          button.btn.btn-default(type='button') +
+    .col-xs-6
+      .input-group
+        span.input-group-addon Prioridad
+        input.form-control( placeholder = '1', 
+          type='number' )
+      br
+      .input-group.input-group
+        span.input-group-addon en
+        input.form-input( disabled, placeholder = '18/07/1994' )
+      br
+      textarea.form-control( rows="10", placeholder = 'Descripción de la tarea' )
+      br
+      - for(var i=0; i<5; i++)
+        .label-color(class = 'label' + i, ng-click='selectLabel()')
+      .text-center
+        span No conformidades 
+        span.glyphicon.glyphicon-question-sign
+    p.clearfix
+    br
+    .col-md-4.pull-right
+      button.btn.btn-block.btn-primary  Crear tarea
+
+
+.col-md-4
+  include calendar
