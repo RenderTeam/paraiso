@@ -1,53 +1,82 @@
-var taskAppModule = angular.module('taskApp', []);
+var taskAppModule  = angular.module('taskApp', []);
 
-function taskRouteConfig( $routeProvider, $locationProvider ) {
-  $routeProvider.
-  when('/tasks/my_tasks', {
-    controller: MyTasksController,
-    templateUrl: 'tasks/partials/tasks.html'
-  }).
-  when('/tasks/tasks', {
-    controller: TasksController,
-    templateUrl: 'tasks/partials/tasks.html'
-  }).
-  when('/tasks/new_task', {
-    controller: NewTaskController,
-    templateUrl: 'tasks/partials/new_task.html'
-  }).
-  otherwise({
-    redirectTo: '/tasks/tasks'
-  });
+taskAppModule.controller('TasksController', tasksController);
+taskAppModule.controller('MyTasksController', myTasksController);
+taskAppModule.factory('Tasks', tasksFactory);
 
-  $locationProvider.html5Mode(true);
+function tasksFactory( $http ){
+  var tasks = {};
+
+  tasks.getAllTasks = function() {
+    var promise = $http.post('/getTasks').then( function ( response ) {
+      return response.data;
+    });
+    return promise
+  };
+
+  tasks.getTasksFromUser = function( params ) {
+    var promise = $http.post('/getTasksFromUser', params).then( function ( response ) {
+      return response.data;
+    });
+    return promise;
+  };
+
+  tasks.getOneTask = function( params ) {
+    var promise = $http.post('/getOneTask', params).then( function ( response ) {
+      return response.data;
+    });
+    return promise;
+  };
+
+  return tasks;
 }
 
-taskAppModule.config( taskRouteConfig );
+function tasksController( $scope, Tasks ){
 
-function TasksController( $http, $scope ){
-  $http.post('/getTasks')
-    .success( function ( data, status, headers, config ){
-      $scope.tasks = data;
-    }).error( function ( data, status, headers, config ){
-      console.log( 'Error :O' );
+  Tasks.getAllTasks().then( function( data ) {
+    $scope.tasks =  data;
+  });
+
+  //Call to one task when an user clicks the expand button
+  $scope.callOfDuty = function(){
+    var params = {};
+
+    params = this.task;
+
+    Tasks.getOneTask( params ).then( function( data ) {
+      var today = new Date(),
+          deadline = new Date(data.deadline);
+
+      data.daysToDeadline = deadline.getDate() - today.getDate();
+
+      $scope.duty = data;
     });
+  };
+}
+
+function myTasksController( $scope, Tasks ){
+  var params = {};
+
+  params.assigned = ['dan'];
+
+  Tasks.getTasksFromUser( params ).then( function( data ) {
+    $scope.tasks =  data;
+  });
 
   //Call to one task when an user click the expand button
   $scope.callOfDuty = function(){
-    $http.post('/getOneTask', this.task )
-      .success( function ( data, status, headers, config ){
-        var duty = data,
-            today = new Date(),
-            deadline = new Date(data.deadline);
+    var params = {};
 
-        duty.daysToDeadline = today.getDate() - deadline.getDate();
+    params = this.task;
 
-        $scope.duty = duty;
+    Tasks.getOneTask( params ).then( function( data ) {
+      var today = new Date(),
+          deadline = new Date(data.deadline);
 
-      }).error( function ( data, status, headers, config ){
-        console.log( 'Error :O' );
-      });
-  }
+      data.daysToDeadline = deadline.getDate() - today.getDate();
+
+      $scope.duty = data;
+    });
+  };
 }
 
-function MyTasksController( $http, $scope ){}
-function NewTaskController( $http, $scope ){}

@@ -32,3 +32,16 @@ exports.getTasks = function( req, res ){
     res.send( tasks );
   });
 };
+
+exports.getTasksFromUser = function( req, res ){  
+  var condition = {};
+
+  condition.assigned = req.body.assigned;
+
+  var query = Task.find( condition );
+
+  query.select('assigned deadline description title').exec(function ( err, task ) {
+    if ( err ) throw err;
+    res.send( task );
+  })
+};

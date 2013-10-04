@@ -37,14 +37,14 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/organizational_structure/talent_management', routes.talent_management);
-
+app.get('/tasks', routes.tasks);
 app.get('/tasks/tasks', routes.tasks);
-
-app.get('/tasks/tasks/partials/tasks.html', routes.partialTasks);
-app.get('/tasks/tasks/partials/new_task.html', routes.partialNewTask);
+app.get('/tasks/my_tasks', routes.my_tasks);
+app.get('/tasks/new_task', routes.new_task);
 
 app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);
+app.post('/getTasksFromUser', queries.getTasksFromUser);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
