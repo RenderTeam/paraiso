@@ -18,10 +18,10 @@ exports.tasks = function(req, res){
   res.render('tasks/tasks', { title: 'Paraíso' });
 };
 
-exports.my_tasks = function(req, res){
-  res.render('tasks/my_tasks', { title: 'Paraíso' });
+exports.partialTasks = function(req, res){
+  res.render('tasks/tasks/partials/tasks', { title: 'Paraíso' });
 };
 
-exports.new_task = function(req, res){
-  res.render('tasks/new_task', { title: 'Paraíso' });
+exports.partialNewTask = function(req, res){
+  res.render('tasks/tasks/partials/new_task', { title: 'Paraíso' });
 };

@@ -37,10 +37,11 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/organizational_structure/talent_management', routes.talent_management);
-app.get('/tasks', routes.tasks);
+
 app.get('/tasks/tasks', routes.tasks);
-app.get('/tasks/my_tasks', routes.my_tasks);
-app.get('/tasks/new_task', routes.new_task);
+
+app.get('/tasks/tasks/partials/tasks.html', routes.partialTasks);
+app.get('/tasks/tasks/partials/new_task.html', routes.partialNewTask);
 
 app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);

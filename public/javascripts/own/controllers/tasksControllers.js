@@ -1,8 +1,29 @@
-var myAppModule = angular.module('taskApp', []);
+var taskAppModule = angular.module('taskApp', []);
 
-myAppModule.controller('AgendaController', agendaController);
+function taskRouteConfig( $routeProvider, $locationProvider ) {
+  $routeProvider.
+  when('/tasks/my_tasks', {
+    controller: MyTasksController,
+    templateUrl: 'tasks/partials/tasks.html'
+  }).
+  when('/tasks/tasks', {
+    controller: TasksController,
+    templateUrl: 'tasks/partials/tasks.html'
+  }).
+  when('/tasks/new_task', {
+    controller: NewTaskController,
+    templateUrl: 'tasks/partials/new_task.html'
+  }).
+  otherwise({
+    redirectTo: '/tasks/tasks'
+  });
 
-function agendaController( $http, $scope ){
+  $locationProvider.html5Mode(true);
+}
+
+taskAppModule.config( taskRouteConfig );
+
+function TasksController( $http, $scope ){
   $http.post('/getTasks')
     .success( function ( data, status, headers, config ){
       $scope.tasks = data;
@@ -27,3 +48,6 @@ function agendaController( $http, $scope ){
       });
   }
 }
+
+function MyTasksController( $http, $scope ){}
+function NewTaskController( $http, $scope ){}
