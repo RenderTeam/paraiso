@@ -25,5 +25,6 @@ exports.my_tasks = function(req, res){
 };
 
 exports.new_task = function(req, res){
-  res.render('tasks/new_task', { title: 'Paraíso' });
+  res.render('tasks/new_task', {  title: 'Paraíso',
+                                  controller: 'NewTaskController'});
 };
