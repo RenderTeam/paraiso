@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 /** Schemas from mongoose **/
-var Task = require('./mongoose_models/task');
+var Task = require('./mongoose_models/task'),
+    Resources = require('./mooose_models/resource');
 
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
