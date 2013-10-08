@@ -15,13 +15,16 @@ exports.talent_management = function(req, res){
 };
 
 exports.tasks = function(req, res){
-  res.render('tasks/tasks', { title: 'Paraíso' });
+  res.render('tasks/tasks', { title: 'Paraíso', 
+                              controller: 'TasksController' });
 };
 
 exports.my_tasks = function(req, res){
-  res.render('tasks/my_tasks', { title: 'Paraíso' });
+  res.render('tasks/tasks', { title: 'Paraíso', 
+                              controller: 'MyTasksController' });
 };
 
 exports.new_task = function(req, res){
-  res.render('tasks/new_task', { title: 'Paraíso' });
+  res.render('tasks/new_task', {  title: 'Paraíso',
+                                  controller: 'NewTaskController'});
 };

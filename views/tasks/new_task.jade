@@ -1,38 +1,81 @@
 extends ../layout
 
 block custom-stylesheets
-  link(rel='stylesheet', href='/stylesheets/own/tasks.css')
-  link(rel='stylesheet', href='/stylesheets/render/calendar.css')
+  link( rel='stylesheet', href='/stylesheets/own/tasks.css')
+  link( rel='stylesheet', href='/stylesheets/render/calendar.css')
 
 block main-navbar
   include ../navbars/tasks_navbar
 
 block content
   .col-md-12( ng-app='taskApp' )
-    .col-md-11.main-wrapper
-      .col-md-8
-        form
-          .input-group.input-group-lg
-            span.input-group-addon Título
-            input.form-input.input-lg( placeholder = 'Título de la tarea' )
-        p.shame.clearfix
-        .col-xs-6
-          .input-group.input-group
-            span.input-group-addon Creado por
-            input.form-input( disabled, placeholder = 'Daniel' )
-        .col-xs-6
-          .input-group.input-group
-            span.input-group-addon en
-            input.form-input( disabled, placeholder = '18/07/1994' )
-          br
-          textarea.form-control( rows="10", placeholder = 'Descripción de la tarea' )
-          br
-          - for(var i=0; i<5; i++)
-            .label-color(class = 'label' + i, ng-click='selectLabel')
-
+    //- NewTaskController
+    .col-md-11.main-wrapper( ng-controller = controller ) 
       .col-md-4
         include calendar
+      .col-md-8
+        form
+          .col-xs-6
+            .input-group.input-group-lg
+              span.input-group-addon Título
+              input.form-input.input-lg( ng-model = 'task.title', 
+                placeholder = 'Título de la tarea' )
+            br
+            .input-group.input-group
+              span.input-group-addon Creado por
+              input.form-input( disabled, placeholder = '{{task.creator}}' )
+            br
+            .input-group
+              span.input-group-addon Asignar
+              input.form-control( ng-model = 'temporal.worker',
+                placeholder = 'Nombre del usuario' )
+              span.input-group-btn
+                button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
+                  type='button' ) +
+            .assigned-container( ng-repeat = 'worker in task.assigned' )
+              span( ng-bind = 'worker.name' ) 
+              button.btn.btn-danger( 
+                ng-click = 'removeWorkerFromAssigned( $index )' ) -
+            br
+            .input-group
+              span.input-group-addon Fecha límite
+              input.form-input( ng-model = 'task.deadline',
+                disabled, type='date' )
+            br
+            .input-group
+              span.input-group-addon Recordatorios
+              input.form-control( ng-model = 'temporal.reminder',
+                placeholder = '1', type = 'number', min = '1', max = '30')
+              span.input-group-btn
+                button.btn.btn-success( ng-click = 'addReminderToReminders()',
+                  type='button') +
+            .reminders-container( ng-repeat = 'remind in task.reminder')
+              span( ng-bind = 'remind.numberOfDays' )
+              button.btn.btn-danger( 
+                ng-click = 'removeReminderFromReminders( $index )' ) -
+          .col-xs-6
+            .input-group
+              span.input-group-addon Prioridad
+              input.form-control( ng-model = 'task.priority', 
+                placeholder = '1', type = 'number', min = '1', max = '5')
+            br
+            .input-group.input-group
+              span.input-group-addon en
+              input.form-input( disabled, placeholder = '{{task.creation_date | date:"dd/MM/yyyy"}}' )
+            br
+            textarea.form-control( ng-model = 'task.description'
+              rows="10", placeholder = 'Descripción de la tarea' )
+            br
+            - for(var i=0; i<5; i++)
+              .label-color(class = 'label' + i, ng-click='selectLabel()')
+            .text-center
+              span( ng-bind = 'label.area')
+              span.glyphicon.glyphicon-question-sign
+          p.clearfix
+          br
+          .col-md-4.pull-right
+            button.btn.btn-block.btn-primary  Crear tarea
 
 block custom-scripts
-  script(src='/javascripts/render/calendar.js')
-  script(src='/javascripts/own/controllers/tasksControllers.js')
+  script( src='/javascripts/render/calendar.js')
+  script( src='/javascripts/own/controllers/tasksControllers.js')
