@@ -18,7 +18,6 @@ block content
         input.form-control(placeholder="Buscar Articulo",data-rd-table="resource-table")#input-table-filter
       .breaker
 
-    //-.col-md-12
     table.table-striped#resource-table
       thead
         tr
@@ -26,7 +25,17 @@ block content
           th Marca
           th Modelo
           th Descripción
-          //-.col-md-3
           th Locación
           th Serial 
             .glyphicon.glyphicon-barcode
+      
+      tbody
+        tr
+          
+  .page-wrap
+    .row
+      .span8
+        form.form-horizontal(action="")
+
+block custom-scripts
+  script(src='/javascripts/render/table-filter.js')
