@@ -1,14 +1,14 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema/*,
-  bcrypt = require('bcrypt'),
-  SALT_WORK_FACTOR = 10*/;
+    Schema = mongoose.Schema,
+    bcrypt = require('bcrypt'),
+    SALT_WORK_FACTOR = 10;
 
 var UserSchema = new Schema({
   username: { type: String, required: true, index: { unique: true } },
   password: { type: String, required: true }
 });
 
-/*UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
   var user = this;
 
   // only hash the password if it has been modified (or is new)
@@ -35,28 +35,5 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     cb(null, isMatch);
   });
 };
-
-/*******************************
-
-
-  // fetch user and test password verification
-  User.findOne({ username: 'jmar777' }, function(err, user) {
-    if (err) throw err;
-
-    // test a matching password
-    user.comparePassword('Password123', function(err, isMatch) {
-      if (err) throw err;
-      console.log('Password123:', isMatch); // -> Password123: true
-    });
-
-    // test a failing password
-    user.comparePassword('123Password', function(err, isMatch) {
-      if (err) throw err;
-      console.log('123Password:', isMatch); // -> 123Password: false
-    });
-  });
-});
-
-*/
 
 module.exports = mongoose.model('User', UserSchema);
