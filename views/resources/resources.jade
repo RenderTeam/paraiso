@@ -80,6 +80,15 @@ block content
     .row
       .span8
         form.form-horizontal(action="")
+  #myModal.modal.fade.(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title 
+          .modal-body
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
 
 block custom-scripts
   script(src='/javascripts/render/table-filter.js')
