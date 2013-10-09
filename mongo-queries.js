@@ -13,20 +13,38 @@ mongoose.connect( conectionString, function(err) {
 });
 
 exports.login = function( req, res ){
-  var user = 'jmar777',
-      candidatePassword = 'lo';
-
+  var user = req.body.user,
+      candidatePassword = req.body.password;
   // fetch user and test password verification
   User.findOne({ username: user }, function(err, user) {
     if (err) throw err;
 
     // test a matching password
-    user.comparePassword( candidatePassword , function(err, isMatch) {
-      if (err) throw err;
-      console.log(isMatch); // -> Password123: true
-    });
+    if(user == null){
+      res.send( { flag: false } );
+    } else{
+      user.comparePassword( candidatePassword , function(err, isMatch) {
+        if ( isMatch ){
+          res.send( { flag: true } );
+        }else{
+          res.send( { flag: false } );
+        }
+      });
+    }
   });
-}
+};
+
+exports.saveUser = function( req, res ){
+  var newUser = new User({
+    username: req.body.user,
+    password: req.body.password
+  });
+
+  newUser.save(function(err) {
+    if (err) throw err;
+    console.log('Guardado correctamente');
+  });
+};
 
 exports.getOneTask = function( req, res ){
   var condition = {};

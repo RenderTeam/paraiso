@@ -1,7 +1,28 @@
 extends layout
 
 block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/login.css')
 
 block content
+  .login-container( ng-app = 'loginApp' )
+    form( ng-controller = controller, name = 'formLogin', novalidate )
+      .input-group
+        span.input-group-addon.glyphicon.glyphicon-user
+        input.form-control( ng-model = 'user.user', name = 'userName',
+          type = 'text', required)
+        span( ng-show='form.userName.$error.required' ) Ingresa tu usuario
+      br
+      .input-group.input-group
+        span.input-group-addon.glyphicon.glyphicon-asterisk
+        input.form-control( ng-model = 'user.password', type = 'password',
+          required )
+      br
+      button.btn.btn-block.btn-primary( ng-click = 'login()',
+        ng-disabled = 'formLogin.$invalid' ) Iniciar Sesión 
 
 block custom-scripts
+  script( src='/javascripts/own/controllers/loginControllers.js')
+
+<span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+
+

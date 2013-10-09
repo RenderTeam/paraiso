@@ -3,7 +3,8 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Paraíso' });
+  res.render('index', { title: 'Paraíso',
+                        controller: 'LoginController' });
 };
 
 exports.short_name = function(req, res){
