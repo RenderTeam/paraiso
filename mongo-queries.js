@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 /** Schemas from mongoose **/
 var Task = require('./mongoose_models/task'),
-    Resources = require('./mooose_models/resource');
+    Resources = require('./mongoose_models/resource');
 
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
@@ -44,5 +44,5 @@ exports.getTasksFromUser = function( req, res ){
   query.select('assigned deadline description title').exec(function ( err, task ) {
     if ( err ) throw err;
     res.send( task );
-  })
+  });
 };

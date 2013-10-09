@@ -10,7 +10,8 @@ var resourcesSchema = new Schema({
   name:           String,
   model:          String,
   reference_bill: String, //Buscar como MongoDB manipula archivos para cambiar el tippo.
-  serial_number:  String,
+  serial_number:  String
+  // En alguna versión se pretende poder subir foto del articulo
 });
 
 module.exports = mongoose.model('Resources', resourcesSchema);

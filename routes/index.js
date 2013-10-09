@@ -28,3 +28,7 @@ exports.new_task = function(req, res){
   res.render('tasks/new_task', {  title: 'Paraíso',
                                   controller: 'NewTaskController'});
 };
+
+exports.viewresources = function(req, res){
+  res.render('resources/resources',{  title: 'ParaísoResourcesTest' });
+};

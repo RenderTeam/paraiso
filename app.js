@@ -42,6 +42,9 @@ app.get('/tasks/tasks', routes.tasks);
 app.get('/tasks/my_tasks', routes.my_tasks);
 app.get('/tasks/new_task', routes.new_task);
 
+//Para ver resources 
+app.get('/resources', routes.viewresources);
+
 app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);
 app.post('/getTasksFromUser', queries.getTasksFromUser);

@@ -1,0 +1,32 @@
+extends ../layout
+
+block  custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/responsive-table.css' )
+
+block content
+
+  .page-wrap
+    br
+    h3 Recursos
+
+    .form-search.text-right.form-table-filter
+      .glyphicon.glyphicon-plus-sign
+      .glyphicon.glyphicon-trash
+      .input-group.col-lg-3.pull-right
+        .input-group-addon 
+          .glyphicon.glyphicon-search
+        input.form-control(placeholder="Buscar Articulo",data-rd-table="resource-table")#input-table-filter
+      .breaker
+
+    //-.col-md-12
+    table.table-striped#resource-table
+      thead
+        tr
+          th Nombre
+          th Marca
+          th Modelo
+          th Descripción
+          //-.col-md-3
+          th Locación
+          th Serial 
+            .glyphicon.glyphicon-barcode
