@@ -46,6 +46,8 @@ app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);
 app.post('/getTasksFromUser', queries.getTasksFromUser);
 
+queries.login();
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
