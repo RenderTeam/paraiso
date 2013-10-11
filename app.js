@@ -35,15 +35,15 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/control_panel', routes.control_panel);
 app.get('/organizational_structure/talent_management', routes.talent_management);
-app.get('/tasks', routes.tasks);
 app.get('/tasks/tasks', routes.tasks);
 app.get('/tasks/my_tasks', routes.my_tasks);
 app.get('/tasks/new_task', routes.new_task);
+app.get('/users', user.list);
 
-app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);
+app.post('/getTasks', queries.getTasks);
 app.post('/getTasksFromUser', queries.getTasksFromUser);
 
 app.post('/login', queries.login);

@@ -3,7 +3,6 @@ var loginAppModule  = angular.module('loginApp', []);
 loginAppModule.controller('LoginController', loginController);
 
 loginController.$inject = ['$scope', '$http'];
-
 function loginController( scope, http ){
 
   scope.login = function() {

@@ -18,11 +18,7 @@ block content
           required )
       br
       button.btn.btn-block.btn-primary( ng-click = 'login()',
-        ng-disabled = 'formLogin.$invalid' ) Iniciar Sesión 
+        ng-disabled = 'formLogin.$invalid' ) Iniciar Sesión
 
 block custom-scripts
   script( src='/javascripts/own/controllers/loginControllers.js')
-
-<span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-
-
