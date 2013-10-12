@@ -11,9 +11,9 @@ function tableFilter() {
 
   if ( inputText === '' ) {
     $('tr').slideDown();
-  }else{
+  } else {
 
-    for (i; i <= tableLength; i++) {
+    for ( i; i <= tableLength; i++ ) {
       iteratorRow = $('.iterator');
       name = iteratorRow.children('.name').text().toLowerCase();
       department = iteratorRow.children('.department').text().toLowerCase();
@@ -37,4 +37,4 @@ function start() {
   $('#input-table-filter').keyup( tableFilter );
 }
 
-$(document).ready(start);
+$( document ).ready( start );

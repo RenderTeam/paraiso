@@ -1,4 +1,4 @@
-function start () {
+function start() {
   
   var sidr_inner = $('.sidr-inner');
 
@@ -11,4 +11,4 @@ function start () {
   sidr_inner.find('.sidr-class-glyphicon-edit').addClass('glyphicon-edit');
 }
 
-$(document).ready(start);
+$( document ).ready( start );
