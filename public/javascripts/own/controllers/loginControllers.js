@@ -16,6 +16,7 @@ function loginController( scope, http ){
           user: '',
           password: ''
         };
+        //Mensaje y/o manejo de mal inicio de sesion
         alert('Nop');
       }
     }).error( function ( data, status, headers, config ){
