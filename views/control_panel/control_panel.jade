@@ -1,0 +1,31 @@
+extends ../layout
+
+block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/control-panel.css')
+
+block main-navbar
+  include ../navbars/control_panel_navbar
+
+block content
+  hr
+  hr
+  div( ng-app = 'controlPanelApp' )
+    //- By the moment the controller is NewUserController from routes/index.js
+      It has to be changed because the main page in control panel it's not gonna
+      be a new user form.
+    form( ng-controller = controller, name = 'newUserForm', novalidate )
+      .input-group
+        span.input-group-addon.glyphicon.glyphicon-user
+        input.form-control( ng-model = 'user.user',
+          type = 'text', required)
+      br
+      .input-group.input-group
+        span.input-group-addon.glyphicon.glyphicon-asterisk
+        input.form-control( ng-model = 'user.password', type = 'password',
+          required )
+      br
+      button.btn.btn-block.btn-primary( ng-click = 'newUser()',
+        ng-disabled = 'newUserForm.$invalid' ) Crear usuario
+
+block custom-scripts
+  script( src='/javascripts/own/controllers/controlPanelController.js')

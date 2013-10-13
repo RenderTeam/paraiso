@@ -35,19 +35,26 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/control_panel', routes.control_panel);
 app.get('/organizational_structure/talent_management', routes.talent_management);
-app.get('/tasks', routes.tasks);
 app.get('/tasks/tasks', routes.tasks);
 app.get('/tasks/my_tasks', routes.my_tasks);
 app.get('/tasks/new_task', routes.new_task);
+app.get('/users', user.list);
 
+<<<<<<< HEAD
 //Para ver resources 
 app.get('/resources', routes.viewresources);
 
 app.post('/getTasks', queries.getTasks);
+=======
+>>>>>>> 6231c5d01c4b9a9c1c2f182e3da1ec7b8b6e2b19
 app.post('/getOneTask', queries.getOneTask);
+app.post('/getTasks', queries.getTasks);
 app.post('/getTasksFromUser', queries.getTasksFromUser);
+
+app.post('/login', queries.login);
+app.post('/saveUser', queries.saveUser);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
