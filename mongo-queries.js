@@ -17,7 +17,7 @@ exports.getTasks = function( req, res ){
   var query = Task.find();
 
   query.select('assigned deadline description title').exec(function ( err, tasks ) {
-    if ( err ) throw err;
+    if ( err ) throw err;ee
     res.send( tasks );
   });
 };

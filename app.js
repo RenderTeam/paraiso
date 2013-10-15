@@ -41,14 +41,9 @@ app.get('/tasks/tasks', routes.tasks);
 app.get('/tasks/my_tasks', routes.my_tasks);
 app.get('/tasks/new_task', routes.new_task);
 app.get('/users', user.list);
-
-//<<<<<<< HEAD
-//Para ver resources 
-app.get('/resources', routes.viewresources);
+app.get('/resources', routes.resources);
 
 app.post('/getTasks', queries.getTasks);
-//=======
-//>>>>>>> 6231c5d01c4b9a9c1c2f182e3da1ec7b8b6e2b19
 app.post('/getOneTask', queries.getOneTask);
 app.post('/getTasks', queries.getTasks);
 app.post('/getTasksFromUser', queries.getTasksFromUser);
