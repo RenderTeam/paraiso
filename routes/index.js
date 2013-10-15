@@ -26,7 +26,7 @@ exports.talent_management = function( req, res ){
 };
 
 exports.resources = function(req, res){
-  res.render('resources/resources',{  title: 'ParaísoResourcesTest' });
+  res.render('resources/resources',{  title: 'Paraíso' });
 };
 
 exports.tasks = function( req, res ){
