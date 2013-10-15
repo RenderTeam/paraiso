@@ -6,16 +6,16 @@ function start(){
     source: '#side-menu'
   });
 
-  side_menu_trigger.on('mouseenter',openSideMenu);
-  $('#sidr').on('mouseleave',closeSideMenu);
+  side_menu_trigger.on( 'mouseenter',openSideMenu );
+  $('#sidr').on( 'mouseleave',closeSideMenu );
 }
 
 function openSideMenu(){
-  $.sidr('open', 'sidr');
+  $.sidr( 'open', 'sidr' );
 }
 
 function closeSideMenu(){
-  $.sidr('close', 'sidr');
+  $.sidr( 'close', 'sidr' );
 }
 
-$(document).ready(start);
+$( document ).ready( start );
