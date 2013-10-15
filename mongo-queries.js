@@ -1,13 +1,9 @@
 var mongoose = require('mongoose');
 
 /** Schemas from mongoose **/
-//<<<<<<< HEAD
-var Task = require('./mongoose_models/task'),
+var User = require('./mongoose_models/user')
+    Task = require('./mongoose_models/task');
     Resources = require('./mongoose_models/resource');
-//=======
-var User = require('./mongoose_models/user');
-var Task = require('./mongoose_models/task');
-//>>>>>>> 6231c5d01c4b9a9c1c2f182e3da1ec7b8b6e2b19
 
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
@@ -28,16 +24,13 @@ exports.getTasks = function( req, res ){
 
 exports.getTasksFromUser = function( req, res ){  
   var condition = {};
-
   condition.assigned = req.body.assigned;
 
   var query = Task.find( condition );
-
+  
   query.select('assigned deadline description title').exec(function ( err, task ) {
     if ( err ) throw err;
     res.send( task );
-//<<<<<<< HEAD
-//=======
   })
 };
 
@@ -87,6 +80,5 @@ exports.saveUser = function( req, res ){
       res.send( err );
     }
     res.send( {status: true} );
-//>>>>>>> 6231c5d01c4b9a9c1c2f182e3da1ec7b8b6e2b19
   });
 };
