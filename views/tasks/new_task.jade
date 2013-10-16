@@ -14,11 +14,11 @@ block content
       .col-md-4
         include calendar
       .col-md-8
-        form
+        form( name = 'newTaskForm' )
           .col-xs-6
-            .input-group.input-group-lg
+            .input-group
               span.input-group-addon Título
-              input.form-input.input-lg( ng-model = 'task.title', 
+              input.form-input( ng-model = 'task.title', 
                 placeholder = 'Título de la tarea' )
             br
             .input-group.input-group
@@ -33,14 +33,13 @@ block content
                 button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
                   type='button' ) +
             .assigned-container( ng-repeat = 'worker in task.assigned' )
-              span( ng-bind = 'worker.name' ) 
+              span( ng-bind = 'worker.username' ) 
               button.btn.btn-danger( 
                 ng-click = 'removeWorkerFromAssigned( $index )' ) -
             br
             .input-group
               span.input-group-addon Fecha límite
-              input.form-input( ng-model = 'task.deadline',
-                disabled, type='date' )
+              input.form-input( ng-model = 'task.deadline', type='date' )
             br
             .input-group
               span.input-group-addon Recordatorios
@@ -74,9 +73,11 @@ block content
           p.clearfix
           br
           .col-md-4.pull-right
-            button.btn.btn-block.btn-primary  Crear tarea
+            button.btn.btn-block.btn-primary( ng-click = 'newTask()',
+              ng-disabled = 'newTaskForm.$invalid' )  Crear tarea
 
 block custom-scripts
   script( src='/javascripts/render/calendar.js')
   script( src='/javascripts/own/services/tasksServices.js')
+  script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/controllers/tasksControllers.js')

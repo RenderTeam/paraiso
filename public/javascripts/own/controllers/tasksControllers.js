@@ -1,104 +1,121 @@
-var taskAppModule  = angular.module('taskApp', 
-  ['taskApp.services']);
+var taskAppModule  = angular.module('taskApp',
+  ['services.tasks', 'services.users']);
 
 taskAppModule.controller('MyTasksController', myTasksController);
 taskAppModule.controller('NewTaskController', newTaskController);
 taskAppModule.controller('TasksController', tasksController);
 
-function myTasksController( $scope, Tasks ){
+myTasksController.$inject = [ '$scope', 'Tasks' ];
+function myTasksController( scope, tasks ){
   var params = {};
 
   params.assigned = ['dan'];
 
-  Tasks.getTasksFromUser( params ).then( function( data ) {
-    $scope.tasks =  data;
+  tasks.getTasksFromUser( params ).then( function( data ) {
+    scope.tasks =  data;
   });
 
   //Call to one task when an user click the expand button
-  $scope.callOfDuty = function(){
+  scope.callOfDuty = function(){
     var params = {};
 
     params = this.task;
 
-    Tasks.getOneTask( params ).then( function( data ) {
+    tasks.getOneTask( params ).then( function( data ) {
       var today = new Date(),
           deadline = new Date(data.deadline);
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 
-      $scope.duty = data;
+      scope.duty = data;
     });
   };
 }
 
-function newTaskController( $scope ){
+newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
+function newTaskController( scope, tasks, users ){
 
   var task = {
     creation_date:  new Date(),
-    creator:        'dan', /* Se tiene que recuperar de la sesión */
+    creator:        'Sesión', /* Se tiene que recuperar de la sesión */
     title:          '',
     description:    '',
     assigned:       [],
-    death_line:     new Date(),
+    deadline:       new Date(),
     reminder:       [],
-    label:          '',
+    label:          'green',
     priority:       0,
-    status:         ''
+    status:         'not done'
   };
 
-  $scope.task = task;
+  scope.task = task;
 
-  $scope.addReminderToReminders = function(){
+  scope.addReminderToReminders = function(){
 
     var temporal = {
-      numberOfDays: $scope.temporal.reminder
+      numberOfDays: scope.temporal.reminder
     }
 
-    $scope.task.reminder.push( temporal );
+    scope.task.reminder.push( temporal );
   };
 
-  $scope.addWorkertoAssigned = function(){
+  scope.addWorkertoAssigned = function(){
 
     var temporal = {
-      name: $scope.temporal.worker
+      username: scope.temporal.worker
     }
 
-    $scope.task.assigned.push( temporal );
+    scope.task.assigned.push( temporal );
   };
 
-  $scope.removeReminderFromReminders = function( $index ){
-    $scope.task.reminder.splice( $index, 1 );
+  scope.removeReminderFromReminders = function( $index ){
+    scope.task.reminder.splice( $index, 1 );
   };
 
-  $scope.removeWorkerFromAssigned = function( $index ){
-    $scope.task.assigned.splice( $index, 1 );
+  scope.removeWorkerFromAssigned = function( $index ){
+    scope.task.assigned.splice( $index, 1 );
   };
 
-  $scope.selectDate = function(){
+  scope.selectLabel = function(){};
+
+  scope.newTask= function () {
+    scope.task.creation_date = new Date();
+
+
+    var params = {};
+
+    params.task = scope.task;
+    
+    tasks.saveTask( params ).then( function ( data ) {
+      console.log( data );
+    });
   };
 
-  $scope.selectLabel = function(){};
+  users.getAllUsersNames().then( function (data) {
+    console.log(data);
+  });
 }
 
-function tasksController( $scope, Tasks ){
+tasksController.$inject = [ '$scope', 'Tasks' ];
+function tasksController( scope, tasks ){
 
-  Tasks.getAllTasks().then( function( data ) {
-    $scope.tasks =  data;
+  tasks.getAllTasks().then( function ( data ) {
+    scope.tasks =  data;
   });
 
   //Call to one task when an user clicks the expand button
-  $scope.callOfDuty = function(){
+  scope.callOfDuty = function(){
     var params = {};
 
     params = this.task;
 
-    Tasks.getOneTask( params ).then( function( data ) {
+    tasks.getOneTask( params ).then( function ( data ) {
       var today = new Date(),
           deadline = new Date(data.deadline);
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 
-      $scope.duty = data;
+      scope.duty = data;
     });
   };
 }

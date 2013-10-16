@@ -52,10 +52,12 @@ app.post('/getTasks', queries.getTasks);
 app.post('/getOneTask', queries.getOneTask);
 app.post('/getTasks', queries.getTasks);
 app.post('/getTasksFromUser', queries.getTasksFromUser);
+app.post('/getUsersNames', queries.getUsersNames);
 
 app.post('/login', queries.login);
 app.post('/saveUser', queries.saveUser);
+app.post('/saveTask', queries.saveTask);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });

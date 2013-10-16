@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var taskSchema = new Schema({
 
-  assigned:       [String],
+  assigned:       [{username:String}],
   creation_date:  { type: Date, default: Date.now },
   creator:        [String],
   deadline:       { type: Date, default: Date.now},
