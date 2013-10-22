@@ -25,8 +25,8 @@ exports.talent_management = function( req, res ){
   res.render('organizational_structure/talent_management', { title: 'Paraíso' });
 };
 
-exports.viewresources = function(req, res){
-  res.render('resources/resources',{  title: 'ParaísoResourcesTest' });
+exports.resources = function(req, res){
+  res.render('resources/resources',{  title: 'Paraíso' });
 };
 
 exports.tasks = function( req, res ){
