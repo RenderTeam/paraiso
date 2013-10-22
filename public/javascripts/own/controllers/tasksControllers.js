@@ -54,7 +54,7 @@ function newTaskController( scope, tasks, users ){
 
     var temporal = {
       numberOfDays: scope.temporal.reminder
-    }
+    };
 
     scope.task.reminder.push( temporal );
   };
@@ -63,7 +63,7 @@ function newTaskController( scope, tasks, users ){
 
     var temporal = {
       username: scope.temporal.worker
-    }
+    };
 
     scope.task.assigned.push( temporal );
   };
@@ -85,7 +85,7 @@ function newTaskController( scope, tasks, users ){
     var params = {};
 
     params.task = scope.task;
-    
+
     tasks.saveTask( params ).then( function ( data ) {
       console.log( data );
     });

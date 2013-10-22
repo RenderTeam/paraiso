@@ -4,16 +4,16 @@ services.factory( 'Users', users );
 
 users.$inject = ['$http'];
 function users ( http ) {
-  var users = {};
+  var user = {};
 
-  users.getAllUsersNames = function () {
+  user.getAllUsersNames = function () {
     var promise = http.post('/getUsersNames').then(
       function ( response ) {
         return response.data;
       }
     );
     return promise;
-  }
+  };
 
-  return users;
+  return user;
 }

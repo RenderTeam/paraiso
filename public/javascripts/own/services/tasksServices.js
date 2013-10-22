@@ -4,35 +4,35 @@ services.factory( 'Tasks', tasks );
 
 tasks.$inject = ['$http'];
 function tasks( http ){
-  var tasks = {};
+  var task = {};
 
-  tasks.getAllTasks = function () {
+  task.getAllTasks = function () {
     var promise = http.post('/getTasks').then( function ( response ) {
       return response.data;
     });
-    return promise
+    return promise;
   };
 
-  tasks.getTasksFromUser = function ( params ) {
+  task.getTasksFromUser = function ( params ) {
     var promise = http.post('/getTasksFromUser', params).then( function ( response ) {
       return response.data;
     });
     return promise;
   };
 
-  tasks.getOneTask = function ( params ) {
+  task.getOneTask = function ( params ) {
     var promise = http.post('/getOneTask', params).then( function ( response ) {
       return response.data;
     });
     return promise;
   };
 
-  tasks.saveTask = function ( params ) {
+  task.saveTask = function ( params ) {
     var promise = http.post('/saveTask', params).then( function ( response ) {
       return response.data;
     });
     return promise;
   };
 
-  return tasks;
+  return task;
 }
