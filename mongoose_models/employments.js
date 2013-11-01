@@ -3,6 +3,9 @@ var mongoose = require ('mongoose'),
 
 var employmentSchema = new Schema({
 
+	employment: String,
+	ancestors:	[String],
+	parent:     String
 
 });
 
