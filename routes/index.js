@@ -4,7 +4,7 @@
 exports.control_panel = function( req, res ){
   res.render('control_panel/control_panel', { title: 'Paraíso',
                                               controller: 'NewUserController' });
-}
+};
 
 exports.index = function( req, res ){
   res.render('index', { title: 'Paraíso',
@@ -12,7 +12,7 @@ exports.index = function( req, res ){
 };
 
 exports.my_tasks = function( req, res ){
-  res.render('tasks/tasks', { title: 'Paraíso', 
+  res.render('tasks/tasks', { title: 'Paraíso',
                               controller: 'MyTasksController' });
 };
 
