@@ -1,10 +1,12 @@
-var mongoose = require('mongoose')
-  , fs = require('fs-extra')
-  , html2jade = require('html2jade');
+var mongoose = require('mongoose'),
+    fs = require('fs-extra'),
+    html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var User = require('./mongoose_models/user')
-    Task = require('./mongoose_models/task');
+var User = require('./mongoose_models/user'),
+    Task = require('./mongoose_models/task'),
+    Forms = require('./mongoose_models/form'),
+    FormsDescription = require('./mongoose_models/formDescription')
     Resources = require('./mongoose_models/resource');
 
 /** Conection to MongoDB and Mongo queries **/
@@ -118,7 +120,21 @@ exports.saveTask = function ( req, res ) {
 
 // Form buider mock
 
-exports.createForm = function ( req, res) {
+exports.createForm = function ( req, res ) {
+  var newForm = new FormsDescription({
+    name: "fom1",
+    description: "lol"
+  });
+
+  newForm.save(function ( err ) {
+    if ( err ) {
+      console.log( err );
+    }
+    console.log('saved');
+  });
+}
+
+/*Create the jade file
   var html = "<html><body><form id='lol'><input name='lol'></form></body></html>";
   html2jade.convertHtml(html, {}, function (err, jade) {
     var formsPath = './views/forms';
@@ -127,6 +143,8 @@ exports.createForm = function ( req, res) {
       if (err) throw err;
       console.log( 'Creado ' + formsPath + '/form.jade');
     });
-  }
-);
-}
+  });
+
+  User.collection.name = 'test';
+  console.log(User.collection.name);
+*/
