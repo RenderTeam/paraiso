@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+  , fs = require('fs-extra')
+  , html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
 var User = require('./mongoose_models/user')
@@ -113,3 +115,18 @@ exports.saveTask = function ( req, res ) {
     res.send( {status: true} );
   });
 };
+
+// Form buider mock
+
+exports.createForm = function ( req, res) {
+  var html = "<html><body><form id='lol'><input name='lol'></form></body></html>";
+  html2jade.convertHtml(html, {}, function (err, jade) {
+    var formsPath = './views/forms';
+
+    fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
+      if (err) throw err;
+      console.log( 'Creado ' + formsPath + '/form.jade');
+    });
+  }
+);
+}
