@@ -121,7 +121,7 @@ exports.saveTask = function ( req, res ) {
 // Form buider mock
 
 exports.createForm = function ( req, res ) {
-  var newForm = new FormsDescription({
+  /*var newForm = new FormsDescription({
     name: "fom1",
     description: "lol"
   });
@@ -131,20 +131,19 @@ exports.createForm = function ( req, res ) {
       console.log( err );
     }
     console.log('saved');
-  });
+  });*/
 }
 
 /*Create the jade file
   var html = "<html><body><form id='lol'><input name='lol'></form></body></html>";
   html2jade.convertHtml(html, {}, function (err, jade) {
-    var formsPath = './views/forms';
+    var formsPath = './views/forms/rendered';
 
     fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
       if (err) throw err;
       console.log( 'Creado ' + formsPath + '/form.jade');
     });
   });
-
+s
   User.collection.name = 'test';
-  console.log(User.collection.name);
 */

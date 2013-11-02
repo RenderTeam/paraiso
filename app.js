@@ -4,7 +4,6 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    user = require('./routes/user'),
     http = require('http'),
     path = require('path');
 
@@ -33,27 +32,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+// GET
+//Control Panel
+app.get( '/control_panel', routes.control_panel );
+//Index
+app.get( '/', routes.index );
+//Forms
+app.get( '/forms/new_form', routes.new_form );
+//Organizational Structure
+app.get( '/organizational_structure/talent_management', 
+          routes.talent_management );
+//Resources
+app.get( '/resources', routes.viewresources );
+//Tasks
+app.get( '/tasks/new_task', routes.new_task );
+app.get( '/tasks/my_tasks', routes.my_tasks );
+app.get( '/tasks/tasks', routes.tasks );
 
-app.get('/', routes.index);
-app.get('/control_panel', routes.control_panel);
-app.get('/organizational_structure/talent_management', routes.talent_management);
-app.get('/tasks/tasks', routes.tasks);
-app.get('/tasks/my_tasks', routes.my_tasks);
-app.get('/tasks/new_task', routes.new_task);
-app.get('/users', user.list);
+// POST
+app.post( '/getOneTask', queries.getOneTask );
+app.post( '/getTasks', queries.getTasks );
+app.post( '/getTasksFromUser', queries.getTasksFromUser );
+app.post( '/getUsersNames', queries.getUsersNames );
 
-app.get('/resources', routes.viewresources);
+app.post( '/login', queries.login );
+app.post( '/saveUser', queries.saveUser );
+app.post( '/saveTask', queries.saveTask );
 
-app.post('/getOneTask', queries.getOneTask);
-app.post('/getTasks', queries.getTasks);
-app.post('/getTasksFromUser', queries.getTasksFromUser);
-app.post('/getUsersNames', queries.getUsersNames);
-
-app.post('/login', queries.login);
-app.post('/saveUser', queries.saveUser);
-app.post('/saveTask', queries.saveTask);
-
-app.post('/createForm', queries.createForm);
+app.post( '/createForm', queries.createForm );
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));

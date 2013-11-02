@@ -1,35 +1,32 @@
-/*
- * GET home page.
- */
-exports.control_panel = function( req, res ){
-  res.render('control_panel/control_panel', { title: 'Paraíso',
-                                              controller: 'NewUserController' });
-}
+//Control Panel
+  exports.control_panel = function( req, res ){
+    res.render('control_panel/control_panel', { controller: 'NewUserController' });
+  }
+//Index
+  exports.index = function( req, res ){
+    res.render('index', { controller: 'LoginController' });
+  };
+//Forms
+  exports.new_form = function( req, res) {
+    res.render('forms/new_form', {});
+  };
+//Organizational Structure
+  exports.talent_management = function( req, res ){
+    res.render('organizational_structure/talent_management', {});
+  };
+//Resources
+  exports.viewresources = function(req, res){
+    res.render('resources/resources',{});
+  };
+//Tasks
+  exports.my_tasks = function( req, res ){
+    res.render('tasks/tasks', { controller: 'MyTasksController' });
+  };
 
-exports.index = function( req, res ){
-  res.render('index', { title: 'Paraíso',
-                        controller: 'LoginController' });
-};
+  exports.new_task = function( req, res ){
+    res.render('tasks/new_task', { controller: 'NewTaskController'});
+  };
 
-exports.my_tasks = function( req, res ){
-  res.render('tasks/tasks', { title: 'Paraíso', 
-                              controller: 'MyTasksController' });
-};
-
-exports.new_task = function( req, res ){
-  res.render('tasks/new_task', {  title: 'Paraíso',
-                                  controller: 'NewTaskController'});
-};
-
-exports.talent_management = function( req, res ){
-  res.render('organizational_structure/talent_management', { title: 'Paraíso' });
-};
-
-exports.viewresources = function(req, res){
-  res.render('resources/resources',{  title: 'ParaísoResourcesTest' });
-};
-
-exports.tasks = function( req, res ){
-  res.render('tasks/tasks', { title: 'Paraíso', 
-                              controller: 'TasksController' });
-};
+  exports.tasks = function( req, res ){
+    res.render('tasks/tasks', { controller: 'TasksController' });
+  };
