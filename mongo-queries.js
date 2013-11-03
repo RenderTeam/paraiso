@@ -8,7 +8,7 @@ var User = require('./mongoose_models/user')
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
 
-mongoose.connect( conectionString, function (err) {
+mongoose.connect( conectionString, function ( err ) {
   if ( err ) throw err;
   console.log('Successfully connected to MongoDB');
 });
@@ -44,7 +44,7 @@ exports.getOneTask = function ( req, res ) {
 
   var query = Task.findOne( condition );
 
-  query.select('-reminder').exec(function ( err, task ) {
+  query.select('-reminder').exec( function ( err, task ) {
     if ( err ) throw err;
     res.send( task );
   })
@@ -54,7 +54,7 @@ exports.getUsersNames = function ( req, res ) {
   var query = User.find();
 
   query.select('username -_id').exec(
-    function ( err, users) {
+    function ( err, users ) {
       if ( err ) {
         console.log( err );
         res.send( err );
@@ -69,15 +69,15 @@ exports.login = function( req, res ) {
   var user = req.body.user,
       candidatePassword = req.body.password;
   // fetch user and test password verification
-  User.findOne({ username: user }, function (err, user) {
-    if (err) throw err;
+  User.findOne( { username: user }, function ( err, user ) {
+    if ( err ) throw err;
 
     // test a matching password
-    if(user == null){
+    if ( user == null ) {
       res.send( { flag: false } );
-    } else{
-      user.comparePassword( candidatePassword , function (err, isMatch) {
-        if ( isMatch ){
+    } else {
+      user.comparePassword( candidatePassword , function ( err, isMatch ) {
+        if ( isMatch ) {
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -93,23 +93,23 @@ exports.saveUser = function ( req, res ) {
     password: req.body.password
   });
 
-  newUser.save(function (err) {
-    if (err){
+  newUser.save( function ( err ) {
+    if ( err ){
       console.log( err );
       res.send( err );
     }
-    res.send( {status: true} );
+    res.send( { status: true } );
   });
 };
 
 exports.saveTask = function ( req, res ) {
-  var newTask = new Task(req.body.task);
+  var newTask = new Task( req.body.task );
 
-  newTask.save(function (err) {
-    if (err){
+  newTask.save( function ( err ) {
+    if ( err ) {
       console.log( err );
       res.send( err );
     }
-    res.send( {status: true} );
+    res.send( { status: true } );
   });
 };

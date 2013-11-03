@@ -1,9 +1,9 @@
-var taskAppModule  = angular.module('taskApp',
-  ['services.tasks', 'services.users']);
+var taskAppModule  = angular.module( 'taskApp',
+  [ 'services.tasks', 'services.users' ] );
 
-taskAppModule.controller('MyTasksController', myTasksController);
-taskAppModule.controller('NewTaskController', newTaskController);
-taskAppModule.controller('TasksController', tasksController);
+taskAppModule.controller( 'MyTasksController', myTasksController );
+taskAppModule.controller( 'NewTaskController', newTaskController );
+taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
 function myTasksController( scope, tasks ){
@@ -11,7 +11,7 @@ function myTasksController( scope, tasks ){
 
   params.assigned = ['dan'];
 
-  tasks.getTasksFromUser( params ).then( function( data ) {
+  tasks.getTasksFromUser( params ).then( function ( data ) {
     scope.tasks =  data;
   });
 
@@ -23,7 +23,7 @@ function myTasksController( scope, tasks ){
 
     tasks.getOneTask( params ).then( function( data ) {
       var today = new Date(),
-          deadline = new Date(data.deadline);
+          deadline = new Date( data.deadline );
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 
@@ -33,7 +33,7 @@ function myTasksController( scope, tasks ){
 }
 
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
-function newTaskController( scope, tasks, users ){
+function newTaskController ( scope, tasks, users ) {
 
   var task = {
     creation_date:  new Date(),
@@ -50,7 +50,7 @@ function newTaskController( scope, tasks, users ){
 
   scope.task = task;
 
-  scope.addReminderToReminders = function(){
+  scope.addReminderToReminders = function () {
 
     var temporal = {
       numberOfDays: scope.temporal.reminder
@@ -59,7 +59,7 @@ function newTaskController( scope, tasks, users ){
     scope.task.reminder.push( temporal );
   };
 
-  scope.addWorkertoAssigned = function(){
+  scope.addWorkertoAssigned = function () {
 
     var temporal = {
       username: scope.temporal.worker
@@ -76,7 +76,7 @@ function newTaskController( scope, tasks, users ){
     scope.task.assigned.splice( $index, 1 );
   };
 
-  scope.selectLabel = function(){};
+  scope.selectLabel = function () {};
 
   scope.newTask= function () {
     scope.task.creation_date = new Date();
@@ -92,7 +92,7 @@ function newTaskController( scope, tasks, users ){
   };
 
   users.getAllUsersNames().then( function (data) {
-    console.log(data);
+    console.log( data );
   });
 }
 
@@ -111,7 +111,7 @@ function tasksController( scope, tasks ){
 
     tasks.getOneTask( params ).then( function ( data ) {
       var today = new Date(),
-          deadline = new Date(data.deadline);
+          deadline = new Date( data.deadline );
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 
