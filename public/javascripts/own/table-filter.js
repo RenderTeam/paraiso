@@ -19,7 +19,7 @@ function tableFilter () {
       position = iteratorRow.children('.position').text().toLowerCase();
 
       if ( pattern.test( name ) || pattern.test( department ) ||
-           pattern.test(position) ) {
+           pattern.test( position ) ) {
         iteratorRow.slideDown()
       } else {
         iteratorRow.slideUp()

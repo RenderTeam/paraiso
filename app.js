@@ -3,6 +3,7 @@
  */
 
 var express = require('express')
+    config = require('./config')(),
     http = require('http'),
     path = require('path'),
     routes = require('./routes');
@@ -27,7 +28,7 @@ app.use( express.json() );
 app.use( express.urlencoded() );
 app.use( express.methodOverride() );
 app.use( app.router );
-  app.use(require('less-middleware')
+  app.use( require('less-middleware')
     ( { src: __dirname + '/public' } ) );
 app.use( express.static( path.join( __dirname, 'public') ) );
 
@@ -55,6 +56,6 @@ app.post( '/login', queries.login );
 app.post( '/saveUser', queries.saveUser );
 app.post( '/saveTask', queries.saveTask );
 
-http.createServer( app ).listen( app.get('port'), function () {
-  console.log( 'Express server listening on port ' + app.get('port') );
+http.createServer( app ).listen( config.port, function () {
+    console.log( 'Express server listening on port ' + config.port );
 });
