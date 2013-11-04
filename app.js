@@ -2,11 +2,12 @@
  * Module dependencies.
  */
 
-var express = require('express')
-    config  = require('./config')(),
-    http    = require('http'),
-    path    = require('path'),
-    routes  = require('./routes');
+var express     = require('express')
+    config      = require('./config')(),
+    http        = require('http'),
+    mongoStore  = require('connect-mongo')( express ),
+    path        = require('path'),
+    routes      = require('./routes');
 
 var app = express();
 
@@ -27,7 +28,13 @@ app.use( express.logger('dev') );
 app.use( express.json() );
 app.use( express.urlencoded() );
 app.use( express.cookieParser() );
-app.use( express.session( {secret: 'Y0L0SW4G-SUP3RS4G'} ) );
+app.use( express.session( {
+  store: new mongoStore( {
+    url: 'mongodb://localhost:27017/test'
+  }),
+  secret: '1234567890QWERTY'
+}));
+
 app.use( express.methodOverride() );
 app.use( app.router );
   app.use( require('less-middleware')
@@ -38,8 +45,6 @@ app.use( express.static( path.join( __dirname, 'public') ) );
 if ( 'development' == app.get('env') ) {
   app.use( express.errorHandler() );
 }
-
-
 
 app.get( '/', routes.index );
 app.get( '/control_panel', routes.control_panel );
