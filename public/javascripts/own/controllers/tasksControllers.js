@@ -6,7 +6,7 @@ taskAppModule.controller( 'NewTaskController', newTaskController );
 taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
-function myTasksController( scope, tasks ){
+function myTasksController ( scope, tasks ) {
   var params = {};
 
   params.assigned = ['dan'];
@@ -16,12 +16,12 @@ function myTasksController( scope, tasks ){
   });
 
   //Call to one task when an user click the expand button
-  scope.callOfDuty = function(){
+  scope.callOfDuty = function () {
     var params = {};
 
     params = this.task;
 
-    tasks.getOneTask( params ).then( function( data ) {
+    tasks.getOneTask( params ).then( function ( data ) {
       var today = new Date(),
           deadline = new Date( data.deadline );
 
@@ -97,7 +97,7 @@ function newTaskController ( scope, tasks, users ) {
 }
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
-function tasksController( scope, tasks ){
+function tasksController ( scope, tasks ) {
 
   tasks.getAllTasks().then( function ( data ) {
     scope.tasks =  data;

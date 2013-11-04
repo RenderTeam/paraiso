@@ -13,6 +13,18 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+exports.getOneTask = function ( req, res ) {
+  var condition = {};
+  condition._id = req.body._id;
+
+  var query = Task.findOne( condition );
+
+  query.select('-reminder').exec( function ( err, task ) {
+    if ( err ) throw err;
+    res.send( task );
+  })
+};
+
 exports.getTasks = function ( req, res ) {
   var query = Task.find();
 
@@ -36,18 +48,6 @@ exports.getTasksFromUser = function ( req, res ) {
       res.send( task );
     }
   );
-};
-
-exports.getOneTask = function ( req, res ) {
-  var condition = {};
-  condition._id = req.body._id;
-
-  var query = Task.findOne( condition );
-
-  query.select('-reminder').exec( function ( err, task ) {
-    if ( err ) throw err;
-    res.send( task );
-  })
 };
 
 exports.getUsersNames = function ( req, res ) {
@@ -87,6 +87,18 @@ exports.login = function( req, res ) {
   });
 };
 
+exports.saveTask = function ( req, res ) {
+  var newTask = new Task( req.body.task );
+
+  newTask.save( function ( err ) {
+    if ( err ) {
+      console.log( err );
+      res.send( err );
+    }
+    res.send( { status: true } );
+  });
+};
+
 exports.saveUser = function ( req, res ) {
   var newUser = new User({
     username: req.body.user,
@@ -95,18 +107,6 @@ exports.saveUser = function ( req, res ) {
 
   newUser.save( function ( err ) {
     if ( err ){
-      console.log( err );
-      res.send( err );
-    }
-    res.send( { status: true } );
-  });
-};
-
-exports.saveTask = function ( req, res ) {
-  var newTask = new Task( req.body.task );
-
-  newTask.save( function ( err ) {
-    if ( err ) {
       console.log( err );
       res.send( err );
     }

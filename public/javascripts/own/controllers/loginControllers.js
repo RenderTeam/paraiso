@@ -17,7 +17,7 @@ function loginController( scope, http ){
           password: ''
         };
         //Mensaje y/o manejo de mal inicio de sesion
-        alert('Nop');
+        alert('Usuario y/o contraseña inválidos. Intenta nuevamente');
       }
     }).error( function ( data, status, headers, config ) {
       console.log( 'Error :O' );
