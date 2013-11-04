@@ -30,9 +30,10 @@ app.use( express.urlencoded() );
 app.use( express.cookieParser() );
 app.use( express.session( {
   store: new mongoStore( {
-    url: 'mongodb://localhost:27017/test'
+    url: 'mongodb://localhost:27017/test',
+    maxAge: new Date( Date.now() + 3600000 )
   }),
-  secret: '1234567890QWERTY'
+  secret: 'Y0l0SW4G-F4RR0SW4G-T0UGHL1FECH00S3M3-H4RDC0R3'
 }));
 
 app.use( express.methodOverride() );
@@ -46,17 +47,20 @@ if ( 'development' == app.get('env') ) {
   app.use( express.errorHandler() );
 }
 
+
+
+
 app.get( '/', routes.index );
 app.get( '/control_panel', routes.control_panel );
 app.get( '/organizational_structure/talent_management',
   routes.talent_management );
-app.get( '/tasks/tasks', routes.tasks );
+app.get( '/tasks/tasks', queries.privateContent , routes.tasks );
 app.get( '/tasks/my_tasks', routes.my_tasks );
 app.get( '/tasks/new_task', routes.new_task );
 
 app.get( '/resources', routes.viewresources );
 
-app.post( '/getOneTask', queries.getOneTask );
+app.post( '/getOneTask', queries.privateContent,  queries.getOneTask );
 app.post( '/getTasks', queries.getTasks );
 app.post( '/getTasksFromUser', queries.getTasksFromUser );
 app.post( '/getUsersNames', queries.getUsersNames );

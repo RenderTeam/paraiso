@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    app      = require('./app.js');
 
 /** Schemas from mongoose **/
 var User = require('./mongoose_models/user')
@@ -63,7 +64,7 @@ exports.getUsersNames = function ( req, res ) {
       res.send( users );
     }
   );
-}
+};
 
 exports.login = function( req, res ) {
   var user = req.body.user,
@@ -78,6 +79,8 @@ exports.login = function( req, res ) {
     } else {
       user.comparePassword( candidatePassword , function ( err, isMatch ) {
         if ( isMatch ) {
+          req.session.user = user;
+          console.log('tu sesión es: ' + user)
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -113,3 +116,19 @@ exports.saveUser = function ( req, res ) {
     res.send( { status: true } );
   });
 };
+
+exports.privateContent = function ( req, res, next ) {
+  var username = req.session.user.username;
+  if ( req.session.user ) {
+    User.findOne( { 'username': username }, function ( err, obj ) {
+      if ( true ) {
+        var currentUser = username;
+        next();
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+}

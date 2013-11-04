@@ -24,7 +24,7 @@ exports.talent_management = function ( req, res ) {
               { title: 'Paraíso' });
 };
 
-exports.viewresources = function (req, res) {
+exports.viewresources = function ( req, res ) {
   res.render('resources/resources',
               { title: 'ParaísoResourcesTest' });
 };

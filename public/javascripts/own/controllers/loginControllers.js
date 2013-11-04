@@ -8,10 +8,11 @@ function loginController( scope, http ){
   scope.login = function () {
     http.post( '/login', scope.user )
     .success( function ( data, status, headers, config ) {
-      if( data.flag ){
-        // Redirect to /tasks/tasks
+      if ( data.flag ) {
+        console.log("DVJOFDZCJXVZ OZDJFVOKREODSKVOKRD");
         window.location.href = ('/tasks/tasks');
       }else{
+        console.log("no redirigiremos");
         scope.user = {
           user: '',
           password: ''
