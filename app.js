@@ -30,8 +30,8 @@ app.use( express.urlencoded() );
 app.use( express.cookieParser() );
 app.use( express.session( {
   store: new mongoStore( {
-    url: 'mongodb://localhost:27017/test',
-    maxAge: new Date( Date.now() + 3600000 )
+    url: 'mongodb://localhost:27017/prueba',
+    maxAge: new Date( Date.now() + 60000 )
   }),
   secret: 'Y0l0SW4G-F4RR0SW4G-T0UGHL1FECH00S3M3-H4RDC0R3'
 }));

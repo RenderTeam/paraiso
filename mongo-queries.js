@@ -118,10 +118,11 @@ exports.saveUser = function ( req, res ) {
 };
 
 exports.privateContent = function ( req, res, next ) {
-  var username = req.session.user.username;
   if ( req.session.user ) {
+    var username = req.session.user.username;
     User.findOne( { 'username': username }, function ( err, obj ) {
       if ( true ) {
+        console.log( username );
         var currentUser = username;
         next();
       } else {
