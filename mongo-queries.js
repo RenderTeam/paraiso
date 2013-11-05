@@ -80,7 +80,6 @@ exports.login = function( req, res ) {
       user.comparePassword( candidatePassword , function ( err, isMatch ) {
         if ( isMatch ) {
           req.session.user = user;
-          console.log('tu sesión es: ' + user)
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -96,6 +95,32 @@ exports.logout = function( req, res ) {
    res.redirect('/');
   });
 };
+
+exports.privateContent = function ( req, res, next ) {
+  if ( req.session.user ) {
+    var username = req.session.user.username;
+    User.findOne( { 'username': username }, function ( err, obj ) {
+      if ( true ) {
+        next();
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+};
+
+exports.getUserInfo =  function ( req ) {
+  if ( req.session.user ) {
+    console.log( req.session.user.username );
+    return req.session.user.username;
+  } else {
+    return null;
+  }
+  
+}
+
 
 exports.saveTask = function ( req, res ) {
   var newTask = new Task( req.body.task );
@@ -124,19 +149,3 @@ exports.saveUser = function ( req, res ) {
   });
 };
 
-exports.privateContent = function ( req, res, next ) {
-  if ( req.session.user ) {
-    var username = req.session.user.username;
-    User.findOne( { 'username': username }, function ( err, obj ) {
-      if ( true ) {
-        console.log( 'el usuario actual es:' + username );
-        var currentUser = username;
-        next();
-      } else {
-        res.redirect('/');
-      }
-    });
-  } else {
-    res.redirect('/');
-  }
-}

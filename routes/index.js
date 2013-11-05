@@ -1,3 +1,4 @@
+mongoHelper = require('.././mongo-queries.js');
 
 exports.control_panel = function ( req, res ) {
   res.render('control_panel/control_panel',
@@ -11,7 +12,8 @@ exports.index = function ( req, res ) {
 
 exports.my_tasks = function ( req, res ) {
   res.render('tasks/tasks',
-              { title: 'Paraíso', controller: 'MyTasksController' });
+              { title: 'Paraíso', controller: 'MyTasksController',
+                currentUser : 'Amet' });
 };
 
 exports.new_task = function ( req, res ) {
@@ -29,7 +31,9 @@ exports.viewresources = function ( req, res ) {
               { title: 'ParaísoResourcesTest' });
 };
 
-exports.tasks = function ( req, res ) { 
+exports.tasks = function ( req, res ) {
+  var currentUser = mongoHelper.getUserInfo( req );
   res.render('tasks/tasks', 
-            { title: 'Paraíso', controller: 'TasksController'});
+            { title: 'Paraíso', controller: 'TasksController',
+            currentUser : currentUser });
 };

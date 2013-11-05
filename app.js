@@ -47,11 +47,8 @@ if ( 'development' == app.get('env') ) {
   app.use( express.errorHandler() );
 }
 
-
-
-
 app.get( '/', routes.index );
-app.get( '/control_panel', routes.control_panel );
+app.get( '/control_panel', queries.privateContent, routes.control_panel );
 app.get( '/organizational_structure/talent_management',
   routes.talent_management );
 app.get( '/tasks/tasks', queries.privateContent , routes.tasks );
@@ -60,16 +57,15 @@ app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
 
 app.get( '/resources', queries.privateContent, routes.viewresources );
 
-//I don't know if the privateContent function should be here, in posts stuff
-app.post( '/getOneTask', queries.privateContent,  queries.getOneTask );
-app.post( '/getTasks', queries.getTasks );
-app.post( '/getTasksFromUser', queries.getTasksFromUser );
-app.post( '/getUsersNames', queries.getUsersNames );
+app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
+app.post( '/getTasks', queries.privateContent, queries.getTasks );
+app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
+app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
 app.post( '/login', queries.login );
 app.post( '/logout', queries.logout);
-app.post( '/saveUser', queries.saveUser );
-app.post( '/saveTask', queries.saveTask );
+app.post( '/saveUser', queries.privateContent, queries.saveUser );
+app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
 http.createServer( app ).listen( config.port, function () {
     console.log( 'Express server listening on port ' + config.port );
