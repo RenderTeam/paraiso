@@ -29,7 +29,7 @@ exports.viewresources = function ( req, res ) {
               { title: 'ParaísoResourcesTest' });
 };
 
-exports.tasks = function ( req, res ) {
+exports.tasks = function ( req, res ) { 
   res.render('tasks/tasks', 
-            { title: 'Paraíso', controller: 'TasksController' });
+            { title: 'Paraíso', controller: 'TasksController'});
 };

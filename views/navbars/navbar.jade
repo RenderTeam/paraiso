@@ -1,7 +1,8 @@
 header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
   .container
     .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+      button.navbar-toggle(type='button', data-toggle='collapse',
+                           data-target='.bs-navbar-collapse')
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
@@ -13,12 +14,13 @@ header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
           li.dropdown
             a.dropdown-toggle(href='', data-toggle="dropdown")
               span.glyphicon.glyphicon-user
-              | &nbsp;&nbsp;Daniel Rodriguez Rosas&nbsp;&nbsp;
+              | &nbsp;&nbsp; #{ currentUser } &nbsp;&nbsp;
               span.glyphicon.glyphicon-exclamation-sign &nbsp;
               b.caret
             ul.dropdown-menu
               li
-                a(href='') Cerrar sesión
+                form( action='/logout', method='POST' )
+                  button( type='submit' ) Cerrar sesión 
     nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
       ul.nav.navbar-nav
         block custom-navigation

@@ -90,6 +90,13 @@ exports.login = function( req, res ) {
   });
 };
 
+exports.logout = function( req, res ) {
+   req.session.destroy( function ( err ){
+   console.log('destoyed');
+   res.re
+  });
+};
+
 exports.saveTask = function ( req, res ) {
   var newTask = new Task( req.body.task );
 
@@ -122,7 +129,7 @@ exports.privateContent = function ( req, res, next ) {
     var username = req.session.user.username;
     User.findOne( { 'username': username }, function ( err, obj ) {
       if ( true ) {
-        console.log( username );
+        console.log( 'el usuario actual es:' + username );
         var currentUser = username;
         next();
       } else {
