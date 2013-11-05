@@ -92,8 +92,8 @@ exports.login = function( req, res ) {
 
 exports.logout = function( req, res ) {
    req.session.destroy( function ( err ){
-   console.log('destoyed');
-   res.re
+   console.log('destroyed');
+   res.redirect('/');
   });
 };
 
