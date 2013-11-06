@@ -1,4 +1,4 @@
-function tableFilter() {
+function tableFilter () {
 
   var iteratorRow = $('.iterator'),
     department = iteratorRow.children('.department').text().toLowerCase(),
@@ -12,14 +12,14 @@ function tableFilter() {
   if ( inputText === '' ) {
     $('tr').slideDown();
   } else {
-
     for ( i; i <= tableLength; i++ ) {
       iteratorRow = $('.iterator');
       name = iteratorRow.children('.name').text().toLowerCase();
       department = iteratorRow.children('.department').text().toLowerCase();
       position = iteratorRow.children('.position').text().toLowerCase();
 
-      if ( pattern.test(name) || pattern.test(department) || pattern.test(position) ) {
+      if ( pattern.test( name ) || pattern.test( department ) ||
+           pattern.test( position ) ) {
         iteratorRow.slideDown()
       } else {
         iteratorRow.slideUp()
@@ -33,7 +33,7 @@ function tableFilter() {
   }
 }
 
-function start() {
+function start () {
   $('#input-table-filter').keyup( tableFilter );
 }
 

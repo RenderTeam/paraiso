@@ -12,10 +12,22 @@ var User = require('./mongoose_models/user'),
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
 
-mongoose.connect( conectionString, function (err) {
+mongoose.connect( conectionString, function ( err ) {
   if ( err ) throw err;
   console.log('Successfully connected to MongoDB');
 });
+
+exports.getOneTask = function ( req, res ) {
+  var condition = {};
+  condition._id = req.body._id;
+
+  var query = Task.findOne( condition );
+
+  query.select('-reminder').exec( function ( err, task ) {
+    if ( err ) throw err;
+    res.send( task );
+  })
+};
 
 exports.getTasks = function ( req, res ) {
   var query = Task.find();
@@ -42,23 +54,11 @@ exports.getTasksFromUser = function ( req, res ) {
   );
 };
 
-exports.getOneTask = function ( req, res ) {
-  var condition = {};
-  condition._id = req.body._id;
-
-  var query = Task.findOne( condition );
-
-  query.select('-reminder').exec(function ( err, task ) {
-    if ( err ) throw err;
-    res.send( task );
-  })
-};
-
 exports.getUsersNames = function ( req, res ) {
   var query = User.find();
 
   query.select('username -_id').exec(
-    function ( err, users) {
+    function ( err, users ) {
       if ( err ) {
         console.log( err );
         res.send( err );
@@ -67,21 +67,22 @@ exports.getUsersNames = function ( req, res ) {
       res.send( users );
     }
   );
-}
+};
 
 exports.login = function( req, res ) {
   var user = req.body.user,
       candidatePassword = req.body.password;
   // fetch user and test password verification
-  User.findOne({ username: user }, function (err, user) {
-    if (err) throw err;
+  User.findOne( { username: user }, function ( err, user ) {
+    if ( err ) throw err;
 
     // test a matching password
-    if(user == null){
+    if ( user == null ) {
       res.send( { flag: false } );
-    } else{
-      user.comparePassword( candidatePassword , function (err, isMatch) {
-        if ( isMatch ){
+    } else {
+      user.comparePassword( candidatePassword , function ( err, isMatch ) {
+        if ( isMatch ) {
+          req.session.user = user;          
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -91,30 +92,66 @@ exports.login = function( req, res ) {
   });
 };
 
+exports.logout = function( req, res ) {
+   req.session.destroy( function ( err ){
+   res.redirect('/');
+  });
+};
+
+exports.privateContent = function ( req, res, next ) {
+  if ( req.session.user ) {
+    var username = req.session.user.username;
+    User.findOne( { 'username': username }, function ( err, obj ) {
+      if ( true ) {
+        // this variable will be available directly by the view
+        res.locals.user = obj;
+        // this will be added to the request object
+        req.user = obj;
+        next();
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+};
+
+exports.getUserInfo =  function ( req ) {
+  if ( req.session.user ) {
+    console.log( req.session.user.username );
+    return req.session.user.username;
+  } else {
+    return null;
+  }
+  
+}
+
+
+exports.saveTask = function ( req, res ) {
+  var newTask = new Task( req.body.task );
+
+  newTask.save( function ( err ) {
+    if ( err ) {
+      console.log( err );
+      res.send( err );
+    }
+    res.send( { status: true } );
+  });
+};
+
 exports.saveUser = function ( req, res ) {
   var newUser = new User({
     username: req.body.user,
     password: req.body.password
   });
 
-  newUser.save(function (err) {
-    if (err){
+  newUser.save( function ( err ) {
+    if ( err ){
       console.log( err );
       res.send( err );
     }
-    res.send( {status: true} );
-  });
-};
-
-exports.saveTask = function ( req, res ) {
-  var newTask = new Task(req.body.task);
-
-  newTask.save(function (err) {
-    if (err){
-      console.log( err );
-      res.send( err );
-    }
-    res.send( {status: true} );
+    res.send( { status: true } );
   });
 };
 
