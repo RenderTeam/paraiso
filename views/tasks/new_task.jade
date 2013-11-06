@@ -23,7 +23,7 @@ block content
             br
             .input-group.input-group
               span.input-group-addon Creado por
-              input.form-input( disabled, placeholder = '{{task.creator}}' )
+              input.form-input( disabled, value = '#{ currentUser }')
             br
             .input-group
               span.input-group-addon Asignar
