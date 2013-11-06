@@ -133,7 +133,7 @@ exports.createForm = function ( req, res ) {
     });
   });
 
-  res.send('cppl');
+  res.send({status: true});
   /*var newForm = new FormsDescription({
     name: "fom1",
     description: "lol"

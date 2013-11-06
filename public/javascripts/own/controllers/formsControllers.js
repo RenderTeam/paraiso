@@ -4,9 +4,6 @@ formsAppModule.controller('NewFormController', formController);
 
 formController.$inject = ['$scope', '$http'];
 function formController( scope, http ){
-  var tag = new Tag( 'div','Esto es un div' );
-
-    console.log(tag.toHTML());
   var html = tag.toHTML();
   http.post('/createForm', {HTML: html} )
       .success( function ( data, status, headers, config ){
