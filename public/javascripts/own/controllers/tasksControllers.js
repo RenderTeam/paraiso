@@ -7,11 +7,7 @@ taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
 function myTasksController ( scope, tasks ) {
-  var params = {};
-
-  params.assigned = ['dan'];
-
-  tasks.getTasksFromUser( params ).then( function ( data ) {
+  tasks.getTasksFromUser().then( function ( data ) {
     scope.tasks =  data;
   });
 

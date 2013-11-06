@@ -42,8 +42,8 @@ exports.getTasks = function ( req, res ) {
 
 exports.getTasksFromUser = function ( req, res ) {
   var condition = {};
-  condition.assigned = req.body.assigned;
-
+  condition.assigned = [req.user.username];
+  console.log(condition)
   var query = Task.find( condition );
   
   query.select('assigned deadline description title').exec(
@@ -82,7 +82,7 @@ exports.login = function( req, res ) {
     } else {
       user.comparePassword( candidatePassword , function ( err, isMatch ) {
         if ( isMatch ) {
-          req.session.user = user;          
+          req.session.user = user;
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -116,17 +116,6 @@ exports.privateContent = function ( req, res, next ) {
     res.redirect('/');
   }
 };
-
-exports.getUserInfo =  function ( req ) {
-  if ( req.session.user ) {
-    console.log( req.session.user.username );
-    return req.session.user.username;
-  } else {
-    return null;
-  }
-  
-}
-
 
 exports.saveTask = function ( req, res ) {
   var newTask = new Task( req.body.task );
