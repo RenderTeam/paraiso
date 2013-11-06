@@ -38,13 +38,14 @@ exports.getTasks = function ( req, res ) {
 };
 
 exports.getTasksFromUser = function ( req, res ) {
+  console.log(req.body);
   var condition = {};
-  condition.assigned = req.body.assigned;
-
+  condition.assigned = {username: req.body.assigned};
   var query = Task.find( condition );
   
   query.select('assigned deadline description title').exec(
     function ( err, task ) {
+      console.log('condition');
       if ( err ) throw err;
       res.send( task );
     }
@@ -126,6 +127,18 @@ exports.getUserInfo =  function ( req ) {
 
 
 exports.saveTask = function ( req, res ) {
+  /*var task = {
+    creation_date:  new Date(),
+    creator:        "amet",  //Se tiene que recuperar de la sesión 
+    title:          'Lokcjaskdjksl te amo',
+    description:    'Lolazosdfsd',
+    assigned:       [{username: 'amet'}],
+    deadline:       new Date(),
+    reminder:       [3,2],
+    label:          'gresdfsden',
+    priority:       0,
+    status:         'not done'
+  };*/
   var newTask = new Task( req.body.task );
 
   newTask.save( function ( err ) {
@@ -133,6 +146,7 @@ exports.saveTask = function ( req, res ) {
       console.log( err );
       res.send( err );
     }
+    console.log('done');
     res.send( { status: true } );
   });
 };
@@ -152,3 +166,18 @@ exports.saveUser = function ( req, res ) {
   });
 };
 
+exports.ghostInsert = function () {
+
+  var task = {
+    creation_date:  new Date(),
+    creator:        'amet', /* Se tiene que recuperar de la sesión */
+    title:          'Lol te amo',
+    description:    'Lolzo',
+    assigned:       ['amet'],
+    deadline:       new Date(),
+    reminder:       [3,2,34],
+    label:          'green',
+    priority:       0,
+    status:         'not done'
+  };
+}

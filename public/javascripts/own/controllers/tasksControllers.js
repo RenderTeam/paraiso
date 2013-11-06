@@ -5,13 +5,13 @@ taskAppModule.controller( 'MyTasksController', myTasksController );
 taskAppModule.controller( 'NewTaskController', newTaskController );
 taskAppModule.controller( 'TasksController', tasksController );
 
+
 myTasksController.$inject = [ '$scope', 'Tasks' ];
-function myTasksController ( scope, tasks ) {
-  var params = {};
-
-  params.assigned = ['dan'];
-
+function myTasksController ( scope, tasks, $scope ) {
+  var params = { };
+  console.log($scope)
   tasks.getTasksFromUser( params ).then( function ( data ) {
+    console.log(scope.lol);
     scope.tasks =  data;
   });
 
@@ -34,6 +34,7 @@ function myTasksController ( scope, tasks ) {
 
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
 function newTaskController ( scope, tasks, users ) {
+  console.log( scope.currentUser );
 
   var task = {
     creation_date:  new Date(),
@@ -98,6 +99,7 @@ function newTaskController ( scope, tasks, users ) {
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
 function tasksController ( scope, tasks ) {
+  console.log( scope.currentUser );
 
   tasks.getAllTasks().then( function ( data ) {
     scope.tasks =  data;
