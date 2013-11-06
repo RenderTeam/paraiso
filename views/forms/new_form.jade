@@ -1,0 +1,18 @@
+extends ../layout
+
+block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/form.css')
+
+block main-navbar
+  include ../navbars/forms_navbar
+
+block content
+  //- This part is only gonna be visible in Desktop
+  .big-wrapper( ng-app = 'formsApp', ng-controller = controller )
+    h1 lol
+    .menu
+    .preview
+
+block custom-scripts
+  script( src='/javascripts/own/forms/tag.js')
+  script( src='/javascripts/own/controllers/formsControllers.js')

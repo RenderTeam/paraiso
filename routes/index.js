@@ -8,7 +8,7 @@
   };
 //Forms
   exports.new_form = function( req, res) {
-    res.render('forms/new_form', {});
+    res.render('forms/new_form', { controller: 'NewFormController' });
   };
 //Organizational Structure
   exports.talent_management = function( req, res ){

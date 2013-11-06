@@ -34,20 +34,20 @@ if ('development' == app.get('env')) {
 }
 // GET
 //Control Panel
-app.get( '/control_panel', routes.control_panel );
+  app.get( '/control_panel', routes.control_panel );
 //Index
-app.get( '/', routes.index );
+  app.get( '/', routes.index );
 //Forms
-app.get( '/forms/new_form', routes.new_form );
+  app.get( '/forms/new_form', routes.new_form );
 //Organizational Structure
-app.get( '/organizational_structure/talent_management', 
+  app.get( '/organizational_structure/talent_management', 
           routes.talent_management );
 //Resources
-app.get( '/resources', routes.viewresources );
+  app.get( '/resources', routes.viewresources );
 //Tasks
-app.get( '/tasks/new_task', routes.new_task );
-app.get( '/tasks/my_tasks', routes.my_tasks );
-app.get( '/tasks/tasks', routes.tasks );
+  app.get( '/tasks/new_task', routes.new_task );
+  app.get( '/tasks/my_tasks', routes.my_tasks );
+  app.get( '/tasks/tasks', routes.tasks );
 
 // POST
 app.post( '/getOneTask', queries.getOneTask );

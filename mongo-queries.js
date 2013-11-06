@@ -121,6 +121,19 @@ exports.saveTask = function ( req, res ) {
 // Form buider mock
 
 exports.createForm = function ( req, res ) {
+  html2jade.convertHtml(req.body.HTML, {}, function (err, jade) {
+    var formsPath = './views/forms/rendered';
+      jade = jade.substring(16);
+      jade = jade.replace(/(\r\n|\n|\r)/gm,"%");
+      jade = jade.replace(/\x25\s\s\s\s/gm,"\n");
+      jade = jade.replace(/\x25/gm,"");
+    fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
+      if (err) throw err;
+      console.log( 'Creado ' + formsPath + '/form.jade');
+    });
+  });
+
+  res.send('cppl');
   /*var newForm = new FormsDescription({
     name: "fom1",
     description: "lol"
@@ -134,16 +147,6 @@ exports.createForm = function ( req, res ) {
   });*/
 }
 
-/*Create the jade file
-  var html = "<html><body><form id='lol'><input name='lol'></form></body></html>";
-  html2jade.convertHtml(html, {}, function (err, jade) {
-    var formsPath = './views/forms/rendered';
-
-    fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
-      if (err) throw err;
-      console.log( 'Creado ' + formsPath + '/form.jade');
-    });
-  });
-s
+/*Change a collection target
   User.collection.name = 'test';
 */
