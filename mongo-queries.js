@@ -79,7 +79,7 @@ exports.login = function( req, res ) {
     } else {
       user.comparePassword( candidatePassword , function ( err, isMatch ) {
         if ( isMatch ) {
-          req.session.user = user;
+          req.session.user = user;          
           res.send( { flag: true } );
         }else{
           res.send( { flag: false } );
@@ -91,7 +91,6 @@ exports.login = function( req, res ) {
 
 exports.logout = function( req, res ) {
    req.session.destroy( function ( err ){
-   console.log('destroyed');
    res.redirect('/');
   });
 };
@@ -101,6 +100,10 @@ exports.privateContent = function ( req, res, next ) {
     var username = req.session.user.username;
     User.findOne( { 'username': username }, function ( err, obj ) {
       if ( true ) {
+        // this variable will be available directly by the view
+        res.locals.user = obj;
+        // this will be added to the request object
+        req.user = obj;
         next();
       } else {
         res.redirect('/');

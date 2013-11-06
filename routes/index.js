@@ -1,11 +1,8 @@
-mongoHelper = require('.././mongo-queries.js');
 
 exports.control_panel = function ( req, res ) {
-    var currentUser = mongoHelper.getUserInfo( req );
-
   res.render('control_panel/control_panel',
               { title: 'Paraíso', controller: 'NewUserController',
-                currentUser : currentUser });
+                currentUser : req.user.username });
 }
 
 exports.index = function ( req, res ) {
@@ -14,34 +11,30 @@ exports.index = function ( req, res ) {
 };
 
 exports.my_tasks = function ( req, res ) {
-  var currentUser = mongoHelper.getUserInfo( req );
   res.render('tasks/tasks',
               { title: 'Paraíso', controller: 'MyTasksController',
-                currentUser : currentUser });
+                currentUser : req.user.username });
 };
 
 exports.new_task = function ( req, res ) {
-  var currentUser = mongoHelper.getUserInfo( req );
   res.render('tasks/new_task', 
               { title: 'Paraíso', controller: 'NewTaskController',
-                currentUser : currentUser });
+                currentUser : req.user.username });
 };
 
 exports.talent_management = function ( req, res ) {
-  var currentUser = mongoHelper.getUserInfo( req );
   res.render('organizational_structure/talent_management',
-              { title: 'Paraíso', currentUser : currentUser });
+              { title: 'Paraíso', currentUser : req.user.username });
 };
 
 exports.viewresources = function ( req, res ) {
-  var currentUser = mongoHelper.getUserInfo( req );
   res.render('resources/resources',
-              { title: 'ParaísoResourcesTest', currentUser : currentUser });
+              { title: 'ParaísoResourcesTest',
+                currentUser : req.user.username });
 };
 
 exports.tasks = function ( req, res ) {
-  var currentUser = mongoHelper.getUserInfo( req );
   res.render('tasks/tasks', 
             { title: 'Paraíso', controller: 'TasksController',
-            currentUser : currentUser });
+            currentUser : req.user.username });
 };
