@@ -19,5 +19,5 @@ function newUserController( scope, http ){
       }).error( function ( data, status, headers, config ){
         console.log( 'Error :O' );
       });
-  }
+  };
 }

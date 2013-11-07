@@ -96,7 +96,7 @@ function newTaskController ( scope, tasks, users ) {
     var params = {};
 
     params.task = scope.task;
-    
+
     tasks.saveTask( params ).then( function ( data ) {
       console.log( data );
     });

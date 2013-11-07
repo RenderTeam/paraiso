@@ -22,7 +22,7 @@
     });
   };
 //Resources
-  exports.viewresources = function(req, res){
+  exports.resources = function(req, res){
     res.render('resources/resources',{
       currentUser : req.user.username
     });
