@@ -1,29 +1,25 @@
-var taskAppModule  = angular.module('taskApp',
-  ['services.tasks', 'services.users']);
+var taskAppModule  = angular.module( 'taskApp',
+  [ 'services.tasks', 'services.users' ] );
 
-taskAppModule.controller('MyTasksController', myTasksController);
-taskAppModule.controller('NewTaskController', newTaskController);
-taskAppModule.controller('TasksController', tasksController);
+taskAppModule.controller( 'MyTasksController', myTasksController );
+taskAppModule.controller( 'NewTaskController', newTaskController );
+taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
-function myTasksController( scope, tasks ){
-  var params = {};
-
-  params.assigned = ['dan'];
-
-  tasks.getTasksFromUser( params ).then( function( data ) {
+function myTasksController ( scope, tasks ) {
+  tasks.getTasksFromUser().then( function ( data ) {
     scope.tasks =  data;
   });
 
   //Call to one task when an user click the expand button
-  scope.callOfDuty = function(){
+  scope.callOfDuty = function () {
     var params = {};
 
     params = this.task;
 
-    tasks.getOneTask( params ).then( function( data ) {
+    tasks.getOneTask( params ).then( function ( data ) {
       var today = new Date(),
-          deadline = new Date(data.deadline);
+          deadline = new Date( data.deadline );
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 
@@ -33,9 +29,9 @@ function myTasksController( scope, tasks ){
 }
 
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
-function newTaskController( scope, tasks, users ){
+function newTaskController ( scope, tasks, users ) {
 
-  var task = {
+  scope.task = {
     creation_date:  new Date(),
     creator:        'Sesión', /* Se tiene que recuperar de la sesión */
     title:          '',
@@ -48,39 +44,54 @@ function newTaskController( scope, tasks, users ){
     status:         'not done'
   };
 
-  scope.task = task;
-
-  scope.addReminderToReminders = function(){
-
-    var temporal = {
-      numberOfDays: scope.temporal.reminder
-    };
-
-    scope.task.reminder.push( temporal );
+  scope.temporal = {
+    worker: ""
   };
 
-  scope.addWorkertoAssigned = function(){
+  scope.temporalForm = {
+    reminder: [],
+    assigned: []
+  };
 
-    var temporal = {
-      username: scope.temporal.worker
-    };
 
-    scope.task.assigned.push( temporal );
+  scope.addReminderToReminders = function () {
+    if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
+      var temporal = {
+        numberOfDays: scope.temporal.reminder
+      }
+
+      scope.temporalForm.reminder.push( temporal );
+      scope.task.reminder.push( scope.temporal.reminder );
+    }
+    scope.temporal.reminder = "";
+  };
+
+  scope.addWorkertoAssigned = function () {
+    if( scope.temporal.worker != "" ){
+      var temporal = {
+        username: scope.temporal.worker
+      }
+
+      scope.temporalForm.assigned.push( temporal );
+      scope.task.assigned.push( scope.temporal.worker );
+    }
+    scope.temporal.worker = "";
   };
 
   scope.removeReminderFromReminders = function( $index ){
     scope.task.reminder.splice( $index, 1 );
+    scope.temporalForm.reminder.splice( $index, 1 );
   };
 
   scope.removeWorkerFromAssigned = function( $index ){
     scope.task.assigned.splice( $index, 1 );
+    scope.temporalForm.assigned.splice( $index, 1 );
   };
 
-  scope.selectLabel = function(){};
+  scope.selectLabel = function () {};
 
   scope.newTask= function () {
     scope.task.creation_date = new Date();
-
 
     var params = {};
 
@@ -91,13 +102,13 @@ function newTaskController( scope, tasks, users ){
     });
   };
 
-  users.getAllUsersNames().then( function (data) {
-    console.log(data);
-  });
+  /*users.getAllUsersNames().then( function (data) {
+    console.log( data );
+  });*/
 }
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
-function tasksController( scope, tasks ){
+function tasksController ( scope, tasks ) {
 
   tasks.getAllTasks().then( function ( data ) {
     scope.tasks =  data;
@@ -111,7 +122,7 @@ function tasksController( scope, tasks ){
 
     tasks.getOneTask( params ).then( function ( data ) {
       var today = new Date(),
-          deadline = new Date(data.deadline);
+          deadline = new Date( data.deadline );
 
       data.daysToDeadline = deadline.getDate() - today.getDate();
 

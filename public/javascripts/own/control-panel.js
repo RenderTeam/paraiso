@@ -10,6 +10,7 @@ function start() {
   sidr_inner.find('.sidr-class-glyphicon-wrench').addClass('glyphicon-wrench');
   sidr_inner.find('.sidr-class-glyphicon-edit').addClass('glyphicon-edit');
   sidr_inner.find('.sidr-class-glyphicon-globe').addClass('glyphicon-globe');
+  sidr_inner.find('.sidr-class-glyphicon-list-alt').addClass('glyphicon-list-alt');
 }
 
 $( document ).ready( start );
