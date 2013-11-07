@@ -30,7 +30,7 @@ app.use( express.urlencoded() );
 app.use( express.cookieParser() );
 app.use( express.session( {
   store: new mongoStore( {
-    url: 'mongodb://localhost:27017/prueba',
+    url: 'mongodb://localhost:27017/test',
     maxAge: new Date( Date.now() + 60000 )
   }),
   secret: 'Y0l0SW4G-F4RR0SW4G-T0UGHL1FECH00S3M3-H4RDC0R3'
@@ -64,17 +64,17 @@ if ( 'development' == app.get('env') ) {
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
 // POST
-app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
-app.post( '/getTasks', queries.privateContent, queries.getTasks );
-app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
-app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
+  app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
+  app.post( '/getTasks', queries.privateContent, queries.getTasks );
+  app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
+  app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
-app.post( '/login', queries.login );
-app.post( '/logout', queries.logout);
-app.post( '/saveUser', queries.privateContent, queries.saveUser );
-app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  app.post( '/login', queries.login );
+  app.post( '/logout', queries.logout);
+  app.post( '/saveUser', queries.privateContent, queries.saveUser );
+  app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
-app.post( '/createForm', queries.createForm );
+  app.post( '/createForm', queries.createForm );
 
 http.createServer( app ).listen( config.port, function () {
     console.log( 'Express server listening on port ' + config.port );

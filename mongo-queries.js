@@ -43,8 +43,7 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.getTasksFromUser = function ( req, res ) {
     var condition = {};
-    condition.assigned = [req.user.username];
-    console.log(condition)
+    condition.assigned = [ req.user.username ];
     var query = Task.find( condition );
     
     query.select('assigned deadline description title').exec(
@@ -66,6 +65,7 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
+
 //User
   exports.getUsersNames = function ( req, res ) {
     var query = User.find();
@@ -96,6 +96,7 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
+
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,

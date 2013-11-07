@@ -32,7 +32,7 @@ block content
               span.input-group-btn
                 button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
                   type='button' ) +
-            .assigned-container( ng-repeat = 'worker in task.assigned' )
+            .assigned-container( ng-repeat = 'worker in temporalForm.assigned' )
               span( ng-bind = 'worker.username' ) 
               button.btn.btn-danger( 
                 ng-click = 'removeWorkerFromAssigned( $index )' ) -
@@ -44,11 +44,11 @@ block content
             .input-group
               span.input-group-addon Recordatorios
               input.form-control( ng-model = 'temporal.reminder',
-                placeholder = '1', type = 'number', min = '1', max = '30')
+                placeholder = '1', type = 'number', min = '1', max = '60')
               span.input-group-btn
                 button.btn.btn-success( ng-click = 'addReminderToReminders()',
                   type='button') +
-            .reminders-container( ng-repeat = 'remind in task.reminder')
+            .reminders-container( ng-repeat = 'remind in temporalForm.reminder')
               span( ng-bind = 'remind.numberOfDays' )
               button.btn.btn-danger( 
                 ng-click = 'removeReminderFromReminders( $index )' ) -
@@ -60,7 +60,8 @@ block content
             br
             .input-group.input-group
               span.input-group-addon en
-              input.form-input( disabled, placeholder = '{{task.creation_date | date:"dd/MM/yyyy"}}' )
+              input.form-input( disabled, 
+                placeholder = '{{task.creation_date | date:"dd/MM/yyyy"}}' )
             br
             textarea.form-control( ng-model = 'task.description'
               rows="10", placeholder = 'Descripción de la tarea' )
