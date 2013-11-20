@@ -66,11 +66,10 @@ block content
             textarea.form-control( ng-model = 'task.description'
               rows="10", placeholder = 'Descripción de la tarea' )
             br
-            - for(var i=0; i<5; i++)
-              .label-color(class = 'label' + i, ng-click='selectLabel()')
-            .text-center
-              span( ng-bind = 'label.area')
-              span.glyphicon.glyphicon-question-sign
+            .col-md-12.task-labels-container
+              div( ng-repeat = 'label in labels', 
+                ng-click = 'selectLabel( $index )'
+                class = 'task-label task-label-{{$index}}' )
           p.clearfix
           br
           .col-md-4.pull-right

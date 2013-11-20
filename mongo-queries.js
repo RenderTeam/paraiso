@@ -55,6 +55,8 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.saveTask = function ( req, res ) {
+    req.body.task.creator = req.user.username;
+    console.log(req.body.task);
     var newTask = new Task( req.body.task );
 
     newTask.save( function ( err ) {
@@ -65,7 +67,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-
 //User
   exports.getUsersNames = function ( req, res ) {
     var query = User.find();
@@ -96,7 +97,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,

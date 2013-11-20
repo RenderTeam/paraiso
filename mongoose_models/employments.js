@@ -1,11 +1,11 @@
 var mongoose = require ('mongoose'),
-	Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 var employmentSchema = new Schema({
 
-	employment: String,
-	ancestors:	[String],
-	parent:     String
+  employment: String,
+  ancestors:  [String],
+  parent:     String
 
 });
 

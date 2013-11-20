@@ -2,12 +2,12 @@
  * Module dependencies.
  */
 
-var express = require('express'),
+var express     = require('express'),
     config      = require('./config')(),
-    routes = require('./routes'),
+    routes      = require('./routes'),
     mongoStore  = require('connect-mongo')( express ),
-    http = require('http'),
-    path = require('path');
+    http        = require('http'),
+    path        = require('path');
 
 var app = express();
 
@@ -46,6 +46,7 @@ app.use( express.static( path.join( __dirname, 'public') ) );
 if ( 'development' == app.get('env') ) {
   app.use( express.errorHandler() );
 }
+
 // GET
 //Control Panel
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
@@ -66,7 +67,8 @@ if ( 'development' == app.get('env') ) {
 // POST
   app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
   app.post( '/getTasks', queries.privateContent, queries.getTasks );
-  app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
+  app.post( '/getTasksFromUser', queries.privateContent, 
+    queries.getTasksFromUser );
   app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
   app.post( '/login', queries.login );
