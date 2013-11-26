@@ -28,6 +28,12 @@
     });
   };
 
+  exports.employments = function( req, res){
+    res.render('organizational_structure/employments', {
+      currentUser : req.user.username
+    });
+  };
+
 //Resources
   exports.resources = function(req, res){
     res.render('resources/resources',{
