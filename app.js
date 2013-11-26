@@ -49,7 +49,7 @@ if ( 'development' == app.get('env') ) {
 
 // GET
 //Control Panel
-  app.get( '/control_panel', queries.privateContent, routes.control_panel );
+  app.get( '/control_panel', queries.privateContent, queries.log, routes.control_panel );
 //Index
   app.get( '/', routes.index );
 //Forms

@@ -18,6 +18,12 @@ mongoose.connect( conectionString, function ( err ) {
 });
 
 //Tasks
+  /**
+   * Obtains one specified task
+   * @param {req} Request from express
+   * @param {res} Response from express
+   * @return {task} Returns the task
+   */
   exports.getOneTask = function ( req, res ) {
     var condition = {};
     condition._id = req.body._id;
@@ -97,6 +103,12 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
+//Log
+  exports.log = function ( req, res, next ) {
+    console.log(req.user.username);
+    console.log(req.route.path);
+    next();
+  };
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,
@@ -132,9 +144,6 @@ mongoose.connect( conectionString, function ( err ) {
       var username = req.session.user.username;
       User.findOne( { 'username': username }, function ( err, obj ) {
         if ( true ) {
-          // this variable will be available directly by the view
-          res.locals.user = obj;
-          // this will be added to the request object
           req.user = obj;
           next();
         } else {
