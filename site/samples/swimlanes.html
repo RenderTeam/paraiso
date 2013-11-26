@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+<title>Swim Lanes</title>
+<!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
+<link href="goSamples.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="go.js"></script>
+<script type="text/javascript" src="goSamples.js"></script>
+<script type="text/javascript" id="code">
+
+  // define a custom ResizingTool to limit how far one can shrink a Group
+  function GroupResizingTool() {
+    go.ResizingTool.call(this);
+  }
+  go.Diagram.inherit(GroupResizingTool, go.ResizingTool);
+
+  GroupResizingTool.prototype.computeMinSize = function () {
+    var msz = this.adornedObject.minSize.copy();
+    // the adornedObject.part will be a Group
+    var holder = this.adornedObject.part.placeholder;
+    if (holder !== null) {
+      var sz = holder.actualBounds;
+      // if there is a Placeholder, its size is included in the computed minimum size
+      msz.width = Math.max(msz.width, sz.width);
+      msz.height = Math.max(msz.height, sz.height);
+    }
+    return msz;
+  };
+
+  // end GroupResizingTool class
+
+
+  function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;
+
+    myDiagram =
+      $(go.Diagram, "myDiagram",
+        {
+          // use a custom ResizingTool (along with a custom ResizeAdornment on each Group)
+          resizingTool: new GroupResizingTool()
+        });
+
+    // These properties need to be set before defining the templates, below:
+
+    // this controls whether the swimlanes are horizontal stacked vertically, or the other way:
+    var horizontal = false;
+    // this controls the minimum length of any swimlane
+    var minLength = 1000;
+    // this controls the minimum breadth of any swimlane
+    var minBreadth = 100;
+
+    // use a simple layout that ignores links to stack the top-level Groups on top of each other
+    myDiagram.layout =
+      $(go.GridLayout,
+        { cellSize: new go.Size(1, 1),
+          spacing: new go.Size(0, 0),
+          wrappingColumn: 1
+        });
+
+    // When a Node has been moved, make sure all of the top-level Groups get laid out again in a stack
+    function relayoutDiagramStack(e) {
+      myDiagram.layout.invalidateLayout();  // but don't invalidate Layouts that are in Groups
+      myDiagram.layoutDiagram();
+    }
+    myDiagram.addDiagramListener("SelectionMoved", relayoutDiagramStack);
+    myDiagram.addDiagramListener("SelectionCopied", relayoutDiagramStack);
+
+    // this is a Part.dragComputation function for limiting where a Node may be dragged
+    function stayInGroup(part, pt, gridpt) {
+      // don't constrain top-level nodes
+      var grp = part.containingGroup;
+      if (grp === null) return pt;
+      // try to stay within the background Shape of the Group
+      var back = grp.findObject("SHAPE");
+      if (back === null) return pt;
+      // allow dragging a Node out of a Group if the Shift key is down
+      if (part.diagram.lastInput.shift) return pt;
+      var b = part.actualBounds;
+      var p1 = back.getDocumentPoint(go.Spot.TopLeft);
+      var p2 = back.getDocumentPoint(go.Spot.BottomRight);
+      // find the padding inside the group's placeholder that is around the member parts
+      var m = grp.placeholder.padding;
+      // now limit the location appropriately
+      var x = Math.max(p1.x + m.left, Math.min(pt.x, p2.x - m.right - b.width - 1));
+      var y = Math.max(p1.y + m.top, Math.min(pt.y, p2.y - m.bottom - b.height - 1));
+      return new go.Point(x, y);
+    }
+
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",
+        $(go.Shape, "Rectangle", { fill: "white" }),
+        $(go.TextBlock, { margin: 5 },
+          new go.Binding("text", "key")),
+        // limit dragging of Nodes to stay within the containing Group, defined above
+        { dragComputation: stayInGroup }
+      );
+
+    // each Group is a "swimlane" with a header on the left and a resizable lane on the right
+    myDiagram.groupTemplate =
+      $(go.Group, horizontal ? "Vertical" : "Horizontal",
+        { movable: false, copyable: false, deletable: false,  // can't move or copy or delete lanes
+          selectionObjectName: "SHAPE",  // selecting a lane causes the body of the lane to be highlit, not the label
+          resizable: true, resizeObjectName: "SHAPE",  // allow lanes to be resized, but the custom resizeAdornmentTemplate only permits one kind of resizing
+          layout: $(go.LayeredDigraphLayout,  // automatically lay out the lane's subgraph
+                    { direction: horizontal ? 90 : 0,
+                      columnSpacing: 10 }),
+          computesBoundsAfterDrag: true,  // needed to prevent recomputing Group.placeholder bounds too soon
+          mouseDrop: function (e, grp) {  // dropping a copy of some Nodes and Links onto this Group adds them to this Group
+            if (!e.shift && !e.control) return;  // cannot change groups with an unmodified drag-and-drop
+            var ok = grp.addMembers(grp.diagram.selection, true);
+            if (!ok) grp.diagram.currentTool.doCancel();
+          }
+        },
+        // the lane header consisting of a Shape and a TextBlock
+        $(go.Panel, "Horizontal",
+          { angle: horizontal ? 0: 270,  // maybe rotate the header to read sideways going up
+            alignment: go.Spot.Center },
+          $(go.Shape, "Diamond",
+            { width: 8, height: 8 },
+            new go.Binding("fill", "color")),
+          $(go.TextBlock,  // the lane label
+            { font: "bold 16pt sans-serif" },
+            new go.Binding("text", "key"))
+        ),  // end Horizontal Panel
+        $(go.Panel, "Auto",  // the lane consisting of a background Shape and a Placeholder representing the subgraph
+          $(go.Shape, "Rectangle",
+            { name: "SHAPE",
+              fill: "white",
+              minSize: horizontal ? new go.Size(minBreadth, minLength) : new go.Size(minLength, minBreadth) },
+            new go.Binding("fill", "color")),
+          $(go.Placeholder,
+            { padding: 5,
+              alignment: go.Spot.TopLeft })
+        )  // end Auto Panel
+      );  // end Group
+
+    // define a custom resize adornment that only has a single resize handle
+    myDiagram.groupTemplate.resizeAdornmentTemplate =
+      $(go.Adornment, "Spot",
+        $(go.Placeholder),
+        $(go.Shape,  // just a single resize adornment!
+          { alignment: horizontal ? go.Spot.Right : go.Spot.Bottom,
+            desiredSize: horizontal ? new go.Size(8, 50) : new go.Size(50, 8),
+            fill: "cyan",
+            cursor: horizontal ? "col-resize" : "row-resize"
+          })
+      );
+
+
+    // define some sample graphs in some of the lanes
+    myDiagram.model = new go.GraphLinksModel(
+    [ // node data
+      { key: "Lane1", isGroup: true, color: "lightblue" },
+      { key: "Lane2", isGroup: true, color: "lightgreen" },
+      { key: "Lane3", isGroup: true, color: "lightyellow" },
+      { key: "Lane4", isGroup: true, color: "orange" },
+      { key: "oneA", group: "Lane1" },
+      { key: "oneB", group: "Lane1" },
+      { key: "oneC", group: "Lane1" },
+      { key: "oneD", group: "Lane1" },
+      { key: "twoA", group: "Lane2" },
+      { key: "twoB", group: "Lane2" },
+      { key: "twoC", group: "Lane2" },
+      { key: "twoD", group: "Lane2" },
+      { key: "twoE", group: "Lane2" },
+      { key: "twoF", group: "Lane2" },
+      { key: "twoG", group: "Lane2" },
+      { key: "fourA", group: "Lane4" },
+      { key: "fourB", group: "Lane4" },
+      { key: "fourC", group: "Lane4" },
+      { key: "fourD", group: "Lane4" },
+    ],
+    [ // link data
+      { from: "oneA", to: "oneB" },
+      { from: "oneA", to: "oneC" },
+      { from: "oneB", to: "oneD" },
+      { from: "oneC", to: "oneD" },
+      { from: "twoA", to: "twoB" },
+      { from: "twoA", to: "twoC" },
+      { from: "twoA", to: "twoF" },
+      { from: "twoB", to: "twoD" },
+      { from: "twoC", to: "twoD" },
+      { from: "twoD", to: "twoG" },
+      { from: "twoE", to: "twoG" },
+      { from: "twoF", to: "twoG" },
+      { from: "fourA", to: "fourB" },
+      { from: "fourB", to: "fourC" },
+      { from: "fourC", to: "fourD" }
+    ]);
+
+    myDiagram.model.undoManager.isEnabled = true;
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+  <div id="myDiagram" style="border: solid 1px blue; width:100%; height:600px;"></div>
+  <p>
+    In this design each swimlane is implemented by a <a>Group</a>.
+    Each Group has its own <a>Group.layout</a>, which in this case is a <a>LayeredDigraphLayout</a>.
+    The <a>Diagram.layout</a> is a <a>GridLayout</a> that arranges all of the swimlanes (i.e. the top-level Groups) in a vertical stack.
+  </p>
+  <p>
+    When dragging nodes note that the nodes are limited to stay within the swimlanes.
+    This is implemented by a custom <a>Part.dragComputation</a> function, here named <b>stayInGroup</b>.
+  </p>
+  <p>
+    The Groups/lanes are selectable but not movable or copyable.
+    When a Group is selected, its custom <a>Part.resizeAdornmentTemplate</a> gives it a single broad resize handle at the bottom of the Group.
+    This allows the user to resize the "breadth" of the lane.
+    However, the custom <a>ResizingTool</a> prevents the lane from being too narrow to hold the <a>Group.placeholder</a> that represents the subgraph.
+    Each Group/lane is also has a <a>GraphObject.minSize</a> to keep it from being too narrow even if there are no member <a>Part</a>s at all.
+  </p>
+  <p>
+    You can change this sample to have its swim lanes be vertically oriented by setting:<br />
+    <code>&nbsp;&nbsp;horizontal = true;</code><br />
+    Note that this change can only be done at <a>Diagram</a> initialization time, because the definitions of the templates depend on that variable.
+  </p>
+</div>
+</body>
+</html>

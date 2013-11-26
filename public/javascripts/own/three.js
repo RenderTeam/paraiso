@@ -1,12 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<title>Family Tree</title>
-<!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
-<link href="goSamples.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="go.js"></script>
-<script type="text/javascript" src="goSamples.js"></script>
-<script type="text/javascript" id="code">
   function init() {
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
@@ -200,11 +191,3 @@
         { angle: 90,
           nodeSpacing: 5 });
   }
-</script>
-</head>
-<body onload="init()">
-<div id="sample">
-  <div id="myDiagram" style="background-color: white; border: solid 1px black; width: 100%; height: 500px"></div>
-</div>
-</body>
-</html>

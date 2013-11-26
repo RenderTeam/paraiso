@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - PathSegment</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class PathSegment
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				
+
+				A PathSegment represents a straight line or curved segment of a path betweentwo or more points that are part of a <a href="../symbols/PathFigure.html">PathFigure</a>.<p/>A PathSegment must not be modified once its containing <a href="../symbols/PathFigure.html">PathFigure</a>'s<a href="../symbols/Geometry.html">Geometry</a> has been assigned to a <a href="../symbols/Shape.html">Shape</a>.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class PathSegment.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#constructor">PathSegment</a></b>(type, ex, ey, x1, y1, x2, y2, clockwise)
+							</div>
+							<div class="description">Constructs a segment that goes nowhere unless you specify some Points.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class PathSegment.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#centerX">centerX</a></b>
+								</div>
+								<div class="description">Gets or sets the center X value of the Arc for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#centerY">centerY</a></b>
+								</div>
+								<div class="description">Gets or sets the center Y value of the Arc for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#endX">endX</a></b>
+								</div>
+								<div class="description">Gets or sets the X coordinate of the end point for all kinds of PathSegment.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#endY">endY</a></b>
+								</div>
+								<div class="description">Gets or sets the Y coordinate of the end point for all kinds of PathSegment.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#isClockwiseArc">isClockwiseArc</a></b>
+								</div>
+								<div class="description">Gets or sets the sweep-flag for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#isClosed">isClosed</a></b>
+								</div>
+								<div class="description">Gets or sets whether the path is closed after this PathSegment.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#isLargeArc">isLargeArc</a></b>
+								</div>
+								<div class="description">Gets or sets the large-arc-flag for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#point1X">point1X</a></b>
+								</div>
+								<div class="description">Gets or sets the X value of the first control point for a PathSegmentof type <a href="../symbols/PathSegment.html#Bezier">#Bezier</a> or <a href="../symbols/PathSegment.html#QuadraticBezier">#QuadraticBezier</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#point1Y">point1Y</a></b>
+								</div>
+								<div class="description">Gets or sets the Y value of the first control point for a PathSegmentof type <a href="../symbols/PathSegment.html#Bezier">#Bezier</a> or <a href="../symbols/PathSegment.html#QuadraticBezier">#QuadraticBezier</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#point2X">point2X</a></b>
+								</div>
+								<div class="description">Gets or sets the X value of the second control point for a PathSegmentof type cubic <a href="../symbols/PathSegment.html#Bezier">#Bezier</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#point2Y">point2Y</a></b>
+								</div>
+								<div class="description">Gets or sets the Y value of the second control point for a PathSegmentof type cubic <a href="../symbols/PathSegment.html#Bezier">#Bezier</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#radiusX">radiusX</a></b>
+								</div>
+								<div class="description">Gets or sets the X value of the radius for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#radiusY">radiusY</a></b>
+								</div>
+								<div class="description">Gets or sets the Y value of the radius for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#startAngle">startAngle</a></b>
+								</div>
+								<div class="description">Gets or sets the starting angle for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#sweepAngle">sweepAngle</a></b>
+								</div>
+								<div class="description">Gets or sets the length of angle in degrees, or amount of arc to "sweep" for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#type">type</a></b>
+								</div>
+								<div class="description">Gets or sets the type of the PathSegment.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/PathSegment.html#xAxisRotation">xAxisRotation</a></b>
+								</div>
+								<div class="description">Gets or sets the X-axis rotation for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class PathSegment.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/PathSegment.html#close">close</a></b>()
+								</div>
+								<div class="description">Closes the path after this PathSegment</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/PathSegment.html#copy">copy</a></b>()
+								</div>
+								<div class="description">Create a copy of this PathSegment, of the same type and with the same point values.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class PathSegment.">
+					<caption>Constants</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+              <a name="Arc"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Arc</b>
+								</div>
+								<div class="description">For drawing an arc segment, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Bezier"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Bezier</b>
+								</div>
+								<div class="description">For drawing a cubic bezier segment, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Line"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Line</b>
+								</div>
+								<div class="description">For drawing a straight line segment, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Move"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Move</b>
+								</div>
+								<div class="description">For beginning a new subpath, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="QuadraticBezier"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>QuadraticBezier</b>
+								</div>
+								<div class="description">For drawing a quadratic bezier segment, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="SvgArc"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>SvgArc</b>
+								</div>
+								<div class="description">For drawing an SVG arc segment, a value for <a href="../symbols/PathSegment.html#type">PathSegment#type</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>PathSegment</b>(type, ex, ey, x1, y1, x2, y2, clockwise)
+				</div>
+
+				<div class="description">
+					Constructs a segment that goes nowhere unless you specify some Points.The segment type must be one of the following values:<a href="../symbols/PathSegment.html#Line">PathSegment#Line</a>, <a href="../symbols/PathSegment.html#Bezier">PathSegment#Bezier</a>,<a href="../symbols/PathSegment.html#QuadraticBezier">PathSegment#QuadraticBezier</a>.Following the optional type argument, a pair of numbers specifies the end point for this segment.If the type is cubic or quadratic bezier, another pair of numbers specifies the first control point.If the type is cubic bezier, a final pair of numbers specifies the second control point.You will want to add a new instance of a PathSegment to the<a href="../symbols/PathFigure.html#segments">PathFigure#segments</a> list of a <a href="../symbols/PathFigure.html">PathFigure</a>.
+					
+				</div>
+
+				
+
+
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{EnumValue=}</span>  <b>type</b>
+								
+							</dt>
+								<dd>if not supplied, the default PathSegment type is <a href="../symbols/PathSegment.html#Line">PathSegment#Line</a>.  But if the type is supplied, one must also provide the endpoint X and Y values,  either as arguments in this constructor or by setting the <a href="../symbols/PathSegment.html#endX">#endX</a> and <a href="../symbols/PathSegment.html#endY">#endY</a> properties.  If the type is QuadraticBezier, the X1 and Y1 control point values must both be supplied.  If the type is Bezier, X1, Y1, X2, and Y2 control point values must all be supplied.<p>If the type is <a href="../symbols/PathSegment.html#Arc">#Arc</a> it needs the following arguments:<p><code>(startAngle, sweepAngle, centerX, centerY, radiusX, radiusY)</code><ul><li><strong>ex</strong> describes the start angle, in degrees<li><strong>ey</strong> describes the sweep angle, in degrees<li><strong>x1, y1</strong> describe the center point<li><strong>x2, y2</strong> describe the radiusX and radiusY</ul><p>If the type is <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a> it needs the following arguments:<p><code>(x y rx ry x-axis-rotation large-arc-flag sweep-flag)</code><p>They are in the same order as arcs in SVG path strings, except the endpoint x and y values come first, not last.<ul><li><strong>ex, ey</strong> describe the endpoint<li><strong>x1, y1</strong> describe the radius<li><strong>x2</strong> describes the <a href="../symbols/PathSegment.html#xAxisRotation">#xAxisRotation</a> (number in degrees)<li><strong>y2</strong> describes the <a href="../symbols/PathSegment.html#isLargeArc">#isLargeArc</a> (true or false)<li><strong>sweepFlag</strong> describes the <a href="../symbols/PathSegment.html#isClockwiseArc">#isClockwiseArc</a> (true or false).</ul></dd>
+						
+							<dt>
+								<span class="light fixedFont">{number=}</span>  <b>ex</b>
+								
+							</dt>
+								<dd>optional: the X coordinate of the end point.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number=}</span>  <b>ey</b>
+								
+							</dt>
+								<dd>optional: the Y coordinate of the end point.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number=}</span>  <b>x1</b>
+								
+							</dt>
+								<dd>optional: the X coordinate of the first bezier control point.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number=}</span>  <b>y1</b>
+								
+							</dt>
+								<dd>optional: the Y coordinate of the first bezier control point.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number=}</span>  <b>x2</b>
+								
+							</dt>
+								<dd>optional: the X coordinate of the second cubic bezier control point.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number|boolean=}</span>  <b>y2</b>
+								
+							</dt>
+								<dd>optional: the Y coordinate of the second cubic bezier control point,or the large-arc-flag of an SvgArc.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{boolean=}</span>  <b>clockwise</b>
+								
+							</dt>
+								<dd>optional: whether an SvgArc goes clockwise or counterclockwise.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="centerX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>centerX</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the center X value of the Arc for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="centerY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>centerY</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the center Y value of the Arc for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>endX</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the X coordinate of the end point for all kinds of PathSegment.The default value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>endY</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the Y coordinate of the end point for all kinds of PathSegment.The default value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isClockwiseArc"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isClockwiseArc</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the sweep-flag for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.SVG Arcs specify a radius and an endpoint, and are always a portion of an ellipse.The parameters allow for two potential ellipses and four potential arcs.A sweep-flag set to true true will use one of the two possible positive-angle arcs,and false will use one of the two negative-angle arcs. Which arc is chosen (small or large)depends on the value of <a href="../symbols/PathSegment.html#isLargeArc">#isLargeArc</a>.For more information see the visual examples in the<a href="http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands">W3 SVG Arc specification</a>
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isClosed"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isClosed</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the path is closed after this PathSegment.Default value is false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isLargeArc"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isLargeArc</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the large-arc-flag for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.SVG Arcs specify a radius and an endpoint, and are always a portion of an ellipse.The parameters allow for two potential ellipses and four potential arcs.A large-arc-flag set to true true will choose the larger of the two arc sweeps.Which way the arc sweeps (positive angle or negative angle) depends on the value of <a href="../symbols/PathSegment.html#isClockwiseArc">#isClockwiseArc</a>For more information see the visual examples in the<a href="http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands">W3 SVG Arc specification</a>
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="point1X"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>point1X</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the X value of the first control point for a PathSegmentof type <a href="../symbols/PathSegment.html#Bezier">#Bezier</a> or <a href="../symbols/PathSegment.html#QuadraticBezier">#QuadraticBezier</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="point1Y"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>point1Y</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the Y value of the first control point for a PathSegmentof type <a href="../symbols/PathSegment.html#Bezier">#Bezier</a> or <a href="../symbols/PathSegment.html#QuadraticBezier">#QuadraticBezier</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="point2X"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>point2X</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the X value of the second control point for a PathSegmentof type cubic <a href="../symbols/PathSegment.html#Bezier">#Bezier</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="point2Y"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>point2Y</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the Y value of the second control point for a PathSegmentof type cubic <a href="../symbols/PathSegment.html#Bezier">#Bezier</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="radiusX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>radiusX</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the X value of the radius for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.Value must be a positive number.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="radiusY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>radiusY</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the Y value of the radius for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.Value must be a positive number.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="startAngle"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>startAngle</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the starting angle for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.Value must within the range: (0 <= val < 360).
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="sweepAngle"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>sweepAngle</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the length of angle in degrees, or amount of arc to "sweep" for a PathSegment of type <a href="../symbols/PathSegment.html#Arc">#Arc</a>.Must be between -360 and 360, inclusive.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="type"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>type</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the type of the PathSegment.The value must be one of the following:<a href="../symbols/PathSegment.html#Line">PathSegment#Line</a>, <a href="../symbols/PathSegment.html#Bezier">PathSegment#Bezier</a>,<a href="../symbols/PathSegment.html#QuadraticBezier">PathSegment#QuadraticBezier</a>, <a href="../symbols/PathSegment.html#Arc">PathSegment#Arc</a>,<a href="../symbols/PathSegment.html#Move">PathSegment#Move</a>, <a href="../symbols/PathSegment.html#Arc">PathSegment#Arc</a>, and <a href="../symbols/PathSegment.html#SvgArc">PathSegment#SvgArc</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="xAxisRotation"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>xAxisRotation</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the X-axis rotation for a PathSegment of type <a href="../symbols/PathSegment.html#SvgArc">#SvgArc</a>.X-axis rotation is used to rotate the ellipse that the arc is created from,and must be between 0 and 360 degrees.Default is 0.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="close"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span>
+					<b>close</b>()
+
+					</div>
+					<div class="description">
+						Closes the path after this PathSegment
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span> returns this PathSegment.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="copy"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span>
+					<b>copy</b>()
+
+					</div>
+					<div class="description">
+						Create a copy of this PathSegment, of the same type and with the same point values.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/PathSegment.html">PathSegment</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>
