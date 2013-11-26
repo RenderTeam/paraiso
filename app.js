@@ -49,7 +49,7 @@ if ( 'development' == app.get('env') ) {
 
 // GET
 //Control Panel
-  app.get( '/control_panel', queries.privateContent, queries.log, routes.control_panel );
+  app.get( '/control_panel', queries.privateContent, routes.control_panel );
 //Index
   app.get( '/', routes.index );
 //Forms
@@ -65,7 +65,10 @@ if ( 'development' == app.get('env') ) {
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
 // POST
-  app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
+  app.post( '/getOneTask',  queries.privateContent,
+                            queries.log,
+                            queries.getOneTask );
+
   app.post( '/getTasks', queries.privateContent, queries.getTasks );
   app.post( '/getTasksFromUser', queries.privateContent, 
     queries.getTasksFromUser );

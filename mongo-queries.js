@@ -1,13 +1,14 @@
-var mongoose = require('mongoose'),
-    fs = require('fs-extra'),
+var fs        = require('fs-extra'),
+    mongoose  = require('mongoose'),
     html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var User = require('./mongoose_models/user'),
-    Task = require('./mongoose_models/task'),
-    Forms = require('./mongoose_models/form'),
-    FormsDescription = require('./mongoose_models/formDescription')
-    Resources = require('./mongoose_models/resource');
+var Forms             = require('./mongoose_models/form'),
+    FormsDescription  = require('./mongoose_models/formDescription'),
+    Log               = require('./mongoose_models/log'),
+    Resources         = require('./mongoose_models/resource'),
+    Task              = require('./mongoose_models/task'),
+    User              = require('./mongoose_models/user');
 
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
@@ -107,6 +108,17 @@ mongoose.connect( conectionString, function ( err ) {
   exports.log = function ( req, res, next ) {
     console.log(req.user.username);
     console.log(req.route.path);
+    var log = new Log({
+      user:   req.user.username,
+      where:  req.route.path
+    });
+
+    log.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+      }
+    });
+    
     next();
   };
 //Session handlers
