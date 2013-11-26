@@ -21,6 +21,13 @@
       currentUser : req.user.username
     });
   };
+
+  exports.departments = function( req, res){
+    res.render('organizational_structure/departments', {
+      currentUser : req.user.username
+    });
+  };
+
 //Resources
   exports.resources = function(req, res){
     res.render('resources/resources',{
