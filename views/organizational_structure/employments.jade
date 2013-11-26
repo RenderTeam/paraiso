@@ -1,0 +1,76 @@
+extends ../layout
+
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
+
+block main-navbar
+  include ../navbars/organizational_structure_navbar
+
+block content
+
+  .page-wrap
+    br
+    h3 Lista de Talento Humano
+
+    table.table-striped#talent-table
+      thead
+        tr
+          th Nombre
+          th Departamento
+          th Puesto
+          th 
+            span.glyphicon.glyphicon-user
+      tbody
+        tr
+          td.name James
+          td.department Matman
+          td.position Chief Sandwich Eater
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal') 
+              span.glyphicon.glyphicon-user
+        tr
+          td.name The
+          td.department Tick
+          td.position Crimefighter Sorta
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
+        tr
+          td.name Jokey
+          td.department Smurf
+          td.position Giving Exploding Presents
+          td.launch-modal-preview
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
+        tr
+          td.name Cindy
+          td.department Beyler
+          td.position Sales Representative
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
+        tr
+          td.name Captain
+          td.department Cool
+          td.position Tree Crusher
+          td.launch-modal-preview 
+            a(data-toggle='modal', href='#myModal')
+              span.glyphicon.glyphicon-user
+
+  .page-wrap
+    .row
+      .span8
+        form.form-horizontal(action="")
+
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title 
+          .modal-body
+          .modal-footer
+            button.btn(type='button', data-dismiss='modal' , aria-hidden="true") Close
+
+block custom-scripts
+  script(src='/javascripts/render/table-filter.js')
