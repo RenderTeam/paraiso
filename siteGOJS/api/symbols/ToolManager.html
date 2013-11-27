@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - ToolManager</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class ToolManager
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/Tool.html">Tool</a>.<br />
+				
+
+				This special <a href="../symbols/Tool.html">Tool</a> is responsible for managing all of the Diagram'smode-less tools.<p/>Mode-less tools are tools that are present in one of the following lists:<a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>, <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>, or <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.This ToolManager tool is normally the <a href="../symbols/Diagram.html#defaultTool">Diagram#defaultTool</a>,so it is also usually the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> when the user is doing "nothing".<p/>When this tool is running as the current tool, it handles mouse-down,mouse-move, and mouse-up events.For each event it iterates over each of the tools in the corresponding list,calling the tool's <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate.If that predicate returns true, it starts that tool by making it thediagram's current tool.It then activates the tool and passes on the event to the tool by callingthe corresponding method (either <a href="../symbols/Tool.html#doMouseDown">Tool#doMouseDown</a>,<a href="../symbols/Tool.html#doMouseMove">Tool#doMouseMove</a>, or <a href="../symbols/Tool.html#doMouseUp">Tool#doMouseUp</a>).<p/>Because this tool is typically the one running as the diagram's current toolwhen the user isn't "doing" anything, this tool can also handle other events,such as mouse wheel events and keyboard commands.<p/>Keyboard events are just passed on to the <a href="../symbols/Diagram.html#commandHandler">Diagram#commandHandler</a>'s<a href="../symbols/CommandHandler.html#doKeyDown">CommandHandler#doKeyDown</a> or <a href="../symbols/CommandHandler.html#doKeyUp">CommandHandler#doKeyUp</a> method.<p/>This tool also is responsible for showing tooltips.Tooltip <a href="../symbols/Adornment.html">Adornment</a>s may be declared as any <a href="../symbols/GraphObject.html#toolTip">GraphObject#toolTip</a>,or as the <a href="../symbols/Diagram.html#toolTip">Diagram#toolTip</a> if the mouse remains motionless in the background of the diagram.<p/>This tool does not utilize any tool handles.This tool does not conduct any transactions.But of course some of the tools that the ToolManager starts can show tool handles and/orconduct their own transactions.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class ToolManager.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#constructor">ToolManager</a></b>()
+							</div>
+							<div class="description">You do not normally need to create an instance of this toolbecause one already exists as the <a href="../symbols/Diagram.html#toolManager">Diagram#toolManager</a>, which you can modify.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class ToolManager.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/ActionTool.html">ActionTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#actionTool">actionTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/ActionTool.html">ActionTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#clickCreatingTool">clickCreatingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#clickSelectingTool">clickSelectingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/ContextMenuTool.html">ContextMenuTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#contextMenuTool">contextMenuTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/ContextMenuTool.html">ContextMenuTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#currentToolTip">currentToolTip</a></b>
+								</div>
+								<div class="description">Gets the currently showing tooltip, or null if there is none.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/DraggingTool.html">DraggingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#draggingTool">draggingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/DraggingTool.html">DraggingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/DragSelectingTool.html">DragSelectingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#dragSelectingTool">dragSelectingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/DragSelectingTool.html">DragSelectingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#dragSize">dragSize</a></b>
+								</div>
+								<div class="description">Gets or sets the distance in view coordinates within which a mouse down-and-up is considered a click and beyond which a mouse movement is considered a drag.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#holdDelay">holdDelay</a></b>
+								</div>
+								<div class="description">Gets or sets the time between when the mouse stops moving and a hold event,in milliseconds.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#hoverDelay">hoverDelay</a></b>
+								</div>
+								<div class="description">Gets or sets the time between when the mouse stops moving and a hover event,in milliseconds.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/LinkingTool.html">LinkingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#linkingTool">linkingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/LinkingTool.html">LinkingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#linkReshapingTool">linkReshapingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/List.html">List</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#mouseDownTools">mouseDownTools</a></b>
+								</div>
+								<div class="description">Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-down event.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/List.html">List</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#mouseMoveTools">mouseMoveTools</a></b>
+								</div>
+								<div class="description">Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-move event.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/List.html">List</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#mouseUpTools">mouseUpTools</a></b>
+								</div>
+								<div class="description">Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-up event.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#mouseWheelBehavior">mouseWheelBehavior</a></b>
+								</div>
+								<div class="description">Gets or sets the ToolManager's mouse wheel behavior.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/PanningTool.html">PanningTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#panningTool">panningTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/PanningTool.html">PanningTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/RelinkingTool.html">RelinkingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#relinkingTool">relinkingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/RelinkingTool.html">RelinkingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/ResizingTool.html">ResizingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#resizingTool">resizingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/ResizingTool.html">ResizingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/RotatingTool.html">RotatingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#rotatingTool">rotatingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/RotatingTool.html">RotatingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/TextEditingTool.html">TextEditingTool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ToolManager.html#textEditingTool">textEditingTool</a></b>
+								</div>
+								<div class="description">Gets or sets the mode-less <a href="../symbols/TextEditingTool.html">TextEditingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Properties borrowed from class <a href="../symbols/Tool.html">Tool</a>: </dt><dd><a href="../symbols/Tool.html#diagram">diagram</a>, <a href="../symbols/Tool.html#isActive">isActive</a>, <a href="../symbols/Tool.html#isEnabled">isEnabled</a>, <a href="../symbols/Tool.html#name">name</a>, <a href="../symbols/Tool.html#transactionResult">transactionResult</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class ToolManager.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doKeyDown">doKeyDown</a></b>()
+								</div>
+								<div class="description">This just calls <a href="../symbols/CommandHandler.html#doKeyDown">CommandHandler#doKeyDown</a> on the diagram's <a href="../symbols/Diagram.html#commandHandler">Diagram#commandHandler</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doKeyUp">doKeyUp</a></b>()
+								</div>
+								<div class="description">This just calls <a href="../symbols/CommandHandler.html#doKeyUp">CommandHandler#doKeyUp</a> on the diagram's <a href="../symbols/Diagram.html#commandHandler">Diagram#commandHandler</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doMouseDown">doMouseDown</a></b>()
+								</div>
+								<div class="description">Iterate over the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doMouseHover">doMouseHover</a></b>()
+								</div>
+								<div class="description">Implement the standard behavior for mouse hover and mouse hold events,called by <a href="../symbols/ToolManager.html#doWaitAfter">#doWaitAfter</a> when the mouse has not moved for a period of time.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doMouseMove">doMouseMove</a></b>()
+								</div>
+								<div class="description">Iterate over the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doMouseUp">doMouseUp</a></b>()
+								</div>
+								<div class="description">Iterate over the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doMouseWheel">doMouseWheel</a></b>()
+								</div>
+								<div class="description">The diagram will call this method as the mouse wheel is rotated.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doToolTip">doToolTip</a></b>()
+								</div>
+								<div class="description">Implement the standard behavior for tooltips,called by <a href="../symbols/ToolManager.html#doWaitAfter">#doWaitAfter</a> when the mouse has not moved for a period of time.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#doWaitAfter">doWaitAfter</a></b>()
+								</div>
+								<div class="description">Implement the standard behavior for when the mouse has not moved for a period of time.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Tool.html">Tool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#findTool">findTool</a></b>(name)
+								</div>
+								<div class="description">Find a mouse tool of a given name.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#hideToolTip">hideToolTip</a></b>()
+								</div>
+								<div class="description">Hide any tooltip.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#initializeStandardTools">initializeStandardTools</a></b>()
+								</div>
+								<div class="description">Initialize the three mouse tool lists with instances of the standard tools.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#positionToolTip">positionToolTip</a></b>(tooltip, obj)
+								</div>
+								<div class="description">This is called by <a href="../symbols/ToolManager.html#showToolTip">#showToolTip</a> to position the part within the viewport.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Tool.html">Tool</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#replaceTool">replaceTool</a></b>(name, newtool)
+								</div>
+								<div class="description">Replace a mouse tool of a given name with a new tool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ToolManager.html#showToolTip">showToolTip</a></b>(tooltip, obj)
+								</div>
+								<div class="description">Show a tooltip Adornment.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/Tool.html">Tool</a>: </dt><dd><a href="../symbols/Tool.html#cancelWaitAfter">cancelWaitAfter</a>, <a href="../symbols/Tool.html#canStart">canStart</a>, <a href="../symbols/Tool.html#doActivate">doActivate</a>, <a href="../symbols/Tool.html#doCancel">doCancel</a>, <a href="../symbols/Tool.html#doDeactivate">doDeactivate</a>, <a href="../symbols/Tool.html#doStart">doStart</a>, <a href="../symbols/Tool.html#doStop">doStop</a>, <a href="../symbols/Tool.html#findToolHandleAt">findToolHandleAt</a>, <a href="../symbols/Tool.html#isBeyondDragSize">isBeyondDragSize</a>, <a href="../symbols/Tool.html#standardMouseClick">standardMouseClick</a>, <a href="../symbols/Tool.html#standardMouseOver">standardMouseOver</a>, <a href="../symbols/Tool.html#standardMouseSelect">standardMouseSelect</a>, <a href="../symbols/Tool.html#standardMouseWheel">standardMouseWheel</a>, <a href="../symbols/Tool.html#standardWaitAfter">standardWaitAfter</a>, <a href="../symbols/Tool.html#startTransaction">startTransaction</a>, <a href="../symbols/Tool.html#stopTool">stopTool</a>, <a href="../symbols/Tool.html#stopTransaction">stopTransaction</a>, <a href="../symbols/Tool.html#updateAdornments">updateAdornments</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class ToolManager.">
+					<caption>Constants</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+              <a name="WheelNone"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>WheelNone</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/ToolManager.html#mouseWheelBehavior">#mouseWheelBehavior</a> indicates that the mouse wheel events are ignored,although scrolling or zooming by other means may still be allowed.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="WheelScroll"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>WheelScroll</b>
+								</div>
+								<div class="description">This default value for <a href="../symbols/ToolManager.html#mouseWheelBehavior">#mouseWheelBehavior</a> indicates that mouse wheel events scroll the diagram.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="WheelZoom"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>WheelZoom</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/ToolManager.html#mouseWheelBehavior">#mouseWheelBehavior</a> indicates that the mouse wheel events change the scale of the diagram.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>ToolManager</b>()
+				</div>
+
+				<div class="description">
+					You do not normally need to create an instance of this toolbecause one already exists as the <a href="../symbols/Diagram.html#toolManager">Diagram#toolManager</a>, which you can modify.<p/>The constructor produces a ToolManager that manages no tools.Call <a href="../symbols/ToolManager.html#initializeStandardTools">#initializeStandardTools</a> to create various tools,initialize the tool properties such as <a href="../symbols/ToolManager.html#draggingTool">#draggingTool</a>,and initialize the three mouse tool lists with those newly created tools.
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="actionTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/ActionTool.html">ActionTool</a>}</span>
+					<b>actionTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/ActionTool.html">ActionTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="clickCreatingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a>}</span>
+					<b>clickCreatingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="clickSelectingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>}</span>
+					<b>clickSelectingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="contextMenuTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/ContextMenuTool.html">ContextMenuTool</a>}</span>
+					<b>contextMenuTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/ContextMenuTool.html">ContextMenuTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="currentToolTip"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
+					<b>currentToolTip</b>
+
+					</div>
+					<div class="description">
+						Gets the currently showing tooltip, or null if there is none.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="draggingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/DraggingTool.html">DraggingTool</a>}</span>
+					<b>draggingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/DraggingTool.html">DraggingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="dragSelectingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/DragSelectingTool.html">DragSelectingTool</a>}</span>
+					<b>dragSelectingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/DragSelectingTool.html">DragSelectingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="dragSize"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+					<b>dragSize</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance in view coordinates within which a mouse down-and-up is considered a click and beyond which a mouse movement is considered a drag.The default value is 2 pixels horizontally and vertically for mouse events and 6 pixels for touch events.This value is used by <a href="../symbols/Tool.html#isBeyondDragSize">Tool#isBeyondDragSize</a>.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="holdDelay"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>holdDelay</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the time between when the mouse stops moving and a hold event,in milliseconds.The default value is 1000 milliseconds.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="hoverDelay"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>hoverDelay</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the time between when the mouse stops moving and a hover event,in milliseconds. This value affects the delay before <a href="../symbols/GraphObject.html#toolTip">GraphObject#toolTip</a>s are shown.The default value is 1000 milliseconds.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="linkingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/LinkingTool.html">LinkingTool</a>}</span>
+					<b>linkingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/LinkingTool.html">LinkingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="linkReshapingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a>}</span>
+					<b>linkReshapingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mouseDownTools"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/List.html">List</a>}</span>
+					<b>mouseDownTools</b>
+
+					</div>
+					<div class="description">
+						Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-down event.When the ToolManager handles a mouse-down event in <a href="../symbols/ToolManager.html#doMouseDown">#doMouseDown</a>,it searches this list in order, starting the first tool for which<a href="../symbols/Tool.html#canStart">Tool#canStart</a> returns true.<p/>This list may be modified, but it must not be modified while any toolis handling events.<p/><a href="../symbols/ToolManager.html#initializeStandardTools">#initializeStandardTools</a> installs the following tools, in order:<ul>  <li><a href="../symbols/ToolManager.html#actionTool">#actionTool</a>, an <a href="../symbols/ActionTool.html">ActionTool</a></li>  <li><a href="../symbols/ToolManager.html#relinkingTool">#relinkingTool</a>, a <a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>  <li><a href="../symbols/ToolManager.html#linkReshapingTool">#linkReshapingTool</a>, a <a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>  <li><a href="../symbols/ToolManager.html#resizingTool">#resizingTool</a>, a <a href="../symbols/ResizingTool.html">ResizingTool</a></li>  <li><a href="../symbols/ToolManager.html#rotatingTool">#rotatingTool</a>, a <a href="../symbols/RotatingTool.html">RotatingTool</a></li></ul>
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mouseMoveTools"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/List.html">List</a>}</span>
+					<b>mouseMoveTools</b>
+
+					</div>
+					<div class="description">
+						Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-move event.When the ToolManager handles a mouse-move event in <a href="../symbols/ToolManager.html#doMouseMove">#doMouseMove</a>,it searches this list in order, starting the first tool for which<a href="../symbols/Tool.html#canStart">Tool#canStart</a> returns true.<p/>This list may be modified, but it must not be modified while any toolis handling events.<p/><a href="../symbols/ToolManager.html#initializeStandardTools">#initializeStandardTools</a> installs the following tools, in order:<ul>  <li><a href="../symbols/ToolManager.html#linkingTool">#linkingTool</a>, a <a href="../symbols/LinkingTool.html">LinkingTool</a></li>  <li><a href="../symbols/ToolManager.html#draggingTool">#draggingTool</a>, a <a href="../symbols/DraggingTool.html">DraggingTool</a></li>  <li><a href="../symbols/ToolManager.html#dragSelectingTool">#dragSelectingTool</a>, a <a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>  <li><a href="../symbols/ToolManager.html#panningTool">#panningTool</a>, a <a href="../symbols/PanningTool.html">PanningTool</a></li></ul>
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mouseUpTools"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/List.html">List</a>}</span>
+					<b>mouseUpTools</b>
+
+					</div>
+					<div class="description">
+						Gets the list of <a href="../symbols/Tool.html">Tool</a>s that might be started upon a mouse-up event.When the ToolManager handles a mouse-up event in <a href="../symbols/ToolManager.html#doMouseUp">#doMouseUp</a>,it searches this list in order, starting the first tool for which<a href="../symbols/Tool.html#canStart">Tool#canStart</a> returns true.<p/>This list may be modified, but it must not be modified while any toolis handling events.<p/><a href="../symbols/ToolManager.html#initializeStandardTools">#initializeStandardTools</a> installs the following tools, in order:<ul>  <li><a href="../symbols/ToolManager.html#contextMenuTool">#contextMenuTool</a>, a <a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>  <li><a href="../symbols/ToolManager.html#textEditingTool">#textEditingTool</a>, a <a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>  <li><a href="../symbols/ToolManager.html#clickCreatingTool">#clickCreatingTool</a>, a <a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>  <li><a href="../symbols/ToolManager.html#clickSelectingTool">#clickSelectingTool</a>, a <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li></ul>
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mouseWheelBehavior"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>mouseWheelBehavior</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the ToolManager's mouse wheel behavior. Allowed values are <a href="../symbols/ToolManager.html#WheelScroll">ToolManager#WheelScroll</a> and<a href="../symbols/ToolManager.html#WheelZoom">ToolManager#WheelZoom</a>.<p/>The default value is <a href="../symbols/ToolManager.html#WheelScroll">ToolManager#WheelScroll</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="panningTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/PanningTool.html">PanningTool</a>}</span>
+					<b>panningTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/PanningTool.html">PanningTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="relinkingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/RelinkingTool.html">RelinkingTool</a>}</span>
+					<b>relinkingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/RelinkingTool.html">RelinkingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="resizingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/ResizingTool.html">ResizingTool</a>}</span>
+					<b>resizingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/ResizingTool.html">ResizingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rotatingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/RotatingTool.html">RotatingTool</a>}</span>
+					<b>rotatingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/RotatingTool.html">RotatingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="textEditingTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/TextEditingTool.html">TextEditingTool</a>}</span>
+					<b>textEditingTool</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the mode-less <a href="../symbols/TextEditingTool.html">TextEditingTool</a>, normally one of the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.<p/>You can disable this tool by setting its <a href="../symbols/Tool.html#isEnabled">Tool#isEnabled</a> property to false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="doKeyDown"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doKeyDown</b>()
+
+					</div>
+					<div class="description">
+						This just calls <a href="../symbols/CommandHandler.html#doKeyDown">CommandHandler#doKeyDown</a> on the diagram's <a href="../symbols/Diagram.html#commandHandler">Diagram#commandHandler</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doKeyUp"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doKeyUp</b>()
+
+					</div>
+					<div class="description">
+						This just calls <a href="../symbols/CommandHandler.html#doKeyUp">CommandHandler#doKeyUp</a> on the diagram's <a href="../symbols/Diagram.html#commandHandler">Diagram#commandHandler</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doMouseDown"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doMouseDown</b>()
+
+					</div>
+					<div class="description">
+						Iterate over the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.<p/>Starting a tool replaces the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> with the new tool.Successfully doing so also activates the new tool by calling <a href="../symbols/Tool.html#doActivate">Tool#doActivate</a>and passes on the mouse-down event to it by calling <a href="../symbols/Tool.html#doMouseDown">Tool#doMouseDown</a>.<p/>Not finding any startable tools causes this tool manager to activate,thereby enabling the mouse-move and mouse-up behaviors and startsdetection of a mouse-hold event after <a href="../symbols/ToolManager.html#holdDelay">#holdDelay</a> milliseconds.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doMouseHover"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doMouseHover</b>()
+
+					</div>
+					<div class="description">
+						Implement the standard behavior for mouse hover and mouse hold events,called by <a href="../symbols/ToolManager.html#doWaitAfter">#doWaitAfter</a> when the mouse has not moved for a period of time.<p/>If there has been no mouse down, the timer is set for <a href="../symbols/ToolManager.html#hoverDelay">#hoverDelay</a> milliseconds.If it executes, it calls any <a href="../symbols/GraphObject.html#mouseHover">GraphObject#mouseHover</a> function on the objectat the mouse or on any of its containing panels,or it calls any <a href="../symbols/Diagram.html#mouseHover">Diagram#mouseHover</a> function for a background mouse-hover event.<p/>If there had been a mouse down, the timer is set for <a href="../symbols/ToolManager.html#holdDelay">#holdDelay</a> milliseconds.If it executes, it calls any <a href="../symbols/GraphObject.html#mouseHold">GraphObject#mouseHold</a> function on the objectat the mouse or on any of its containing panels,or it calls any <a href="../symbols/Diagram.html#mouseHold">Diagram#mouseHold</a> function for a background mouse-held-down event.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doMouseMove"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doMouseMove</b>()
+
+					</div>
+					<div class="description">
+						Iterate over the <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.<p/>Starting a tool replaces the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> with the new tool.Successfully doing so also activates the new tool by calling <a href="../symbols/Tool.html#doActivate">Tool#doActivate</a>and passes on the mouse-move event to it by calling <a href="../symbols/Tool.html#doMouseMove">Tool#doMouseMove</a>.<p/>If no tool is found and activated, this calls <a href="../symbols/Tool.html#standardMouseOver">Tool#standardMouseOver</a>to invoke any mouse-enter, mouse-over, or mouse-leave functions.If the mouse has moved sufficiently, such that <a href="../symbols/Tool.html#isBeyondDragSize">Tool#isBeyondDragSize</a> is true,this also calls <a href="../symbols/Tool.html#standardWaitAfter">Tool#standardWaitAfter</a> for a possible call to<a href="../symbols/ToolManager.html#doWaitAfter">#doWaitAfter</a> after <a href="../symbols/ToolManager.html#hoverDelay">#hoverDelay</a> milliseconds.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doMouseUp"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doMouseUp</b>()
+
+					</div>
+					<div class="description">
+						Iterate over the <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a> list and start the first toolfor which its <a href="../symbols/Tool.html#canStart">Tool#canStart</a> predicate returns true.<p/>Starting a tool replaces the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> with the new tool.Successfully doing so also activates the new tool by calling <a href="../symbols/Tool.html#doActivate">Tool#doActivate</a>and passes on the mouse-up event to it by calling <a href="../symbols/Tool.html#doMouseUp">Tool#doMouseUp</a>.<p/>If no startable tool is found it deactivates this tool manager,to get ready for a mouse-down and ignore mouse-move and mouse-up events.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doMouseWheel"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doMouseWheel</b>()
+
+					</div>
+					<div class="description">
+						The diagram will call this method as the mouse wheel is rotated.<p/>By default this just calls <a href="../symbols/Tool.html#standardMouseWheel">Tool#standardMouseWheel</a>.This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doToolTip"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doToolTip</b>()
+
+					</div>
+					<div class="description">
+						Implement the standard behavior for tooltips,called by <a href="../symbols/ToolManager.html#doWaitAfter">#doWaitAfter</a> when the mouse has not moved for a period of time.<p/>This looks for a <a href="../symbols/GraphObject.html">GraphObject</a> at the latest mouse point.If it finds an object, it checks for a <a href="../symbols/GraphObject.html#toolTip">GraphObject#toolTip</a>.If it has none, this method searches up the visual tree for a containing<a href="../symbols/Panel.html">Panel</a> that does have a tooltip.<p/>If it didn't find any object, this looks for a <a href="../symbols/Diagram.html#toolTip">Diagram#toolTip</a>.<p/>If it eventually finds a tooltip, this calls <a href="../symbols/ToolManager.html#showToolTip">#showToolTip</a>.Otherwise this calls <a href="../symbols/ToolManager.html#hideToolTip">#hideToolTip</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doWaitAfter"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doWaitAfter</b>()
+
+					</div>
+					<div class="description">
+						Implement the standard behavior for when the mouse has not moved for a period of time.This is due to an expired timer started by calling <a href="../symbols/Tool.html#standardWaitAfter">Tool#standardWaitAfter</a>.<p/>This just calls <a href="../symbols/ToolManager.html#doMouseHover">#doMouseHover</a> and, if not mouse-down, <a href="../symbols/ToolManager.html#doToolTip">#doToolTip</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="findTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Tool.html">Tool</a>}</span>
+					<b>findTool</b>(name)
+
+					</div>
+					<div class="description">
+						Find a mouse tool of a given name.This searches the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>, <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>, and <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a> lists.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>name</b>
+									
+								</dt>
+								<dd>the type of tool, such as "Dragging" or "ClickSelecting".</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Tool.html">Tool</a>}</span> a <a href="../symbols/Tool.html">Tool</a> whose <a href="../symbols/Tool.html#name">Tool#name</a> exactly matches the given name,or null if no such tool is found in any of the three lists.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="hideToolTip"> </a>
+					<div class="fixedFont">
+
+					
+					<b>hideToolTip</b>()
+
+					</div>
+					<div class="description">
+						Hide any tooltip.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="initializeStandardTools"> </a>
+					<div class="fixedFont">
+
+					
+					<b>initializeStandardTools</b>()
+
+					</div>
+					<div class="description">
+						Initialize the three mouse tool lists with instances of the standard tools.This adds tools to the following three mouse tool lists:<a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>, <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>, or <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a>.This also sets the various tool properties of this ToolManagerto those newly created tools.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="positionToolTip"> </a>
+					<div class="fixedFont">
+
+					
+					<b>positionToolTip</b>(tooltip, obj)
+
+					</div>
+					<div class="description">
+						This is called by <a href="../symbols/ToolManager.html#showToolTip">#showToolTip</a> to position the part within the viewport.It normally goes just below the cursor.But if the mouse is too close to the right edge or the bottom edge of the viewport,it is positioned left and/or above the cursor.<p/>The tooltip part has been measured but not arranged,so you can use its <a href="../symbols/GraphObject.html#measuredBounds">GraphObject#measuredBounds</a> width and heightbut not its <a href="../symbols/GraphObject.html#actualBounds">GraphObject#actualBounds</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Adornment.html">Adornment</a>}</span> <b>tooltip</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>obj</b>
+									
+								</dt>
+								<dd>The <a href="../symbols/GraphObject.html">GraphObject</a> getting the tooltip,or null if the tooltip is for the diagram background.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="replaceTool"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Tool.html">Tool</a>}</span>
+					<b>replaceTool</b>(name, newtool)
+
+					</div>
+					<div class="description">
+						Replace a mouse tool of a given name with a new tool.This searches the <a href="../symbols/ToolManager.html#mouseDownTools">#mouseDownTools</a>, <a href="../symbols/ToolManager.html#mouseMoveTools">#mouseMoveTools</a>,and <a href="../symbols/ToolManager.html#mouseUpTools">#mouseUpTools</a> lists.The new tool is inserted into the same list in which the same-named tool is found,at the same position as the old tool.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>name</b>
+									
+								</dt>
+								<dd>the type of tool, such as "Dragging" or "ClickSelecting".</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Tool.html">Tool</a>}</span> <b>newtool</b>
+									
+								</dt>
+								<dd>If null, any tool that the search finds will just be removedfrom the list in which it was found.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Tool.html">Tool</a>}</span> the old tool that was replaced by the new one.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="showToolTip"> </a>
+					<div class="fixedFont">
+
+					
+					<b>showToolTip</b>(tooltip, obj)
+
+					</div>
+					<div class="description">
+						Show a tooltip Adornment.This is called by <a href="../symbols/ToolManager.html#doToolTip">#doToolTip</a> once that method has found a tooltip to display.<p/>This calls <a href="../symbols/ToolManager.html#positionToolTip">#positionToolTip</a> to make it easier to customize how the tooltipis positioned relative to the object with the tooltip.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Adornment.html">Adornment</a>}</span> <b>tooltip</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>obj</b>
+									
+								</dt>
+								<dd>The GraphObject getting the tooltip; this is null if the tooltip is being shown for the diagram background.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

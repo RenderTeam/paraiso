@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<title>GoJS Shapes</title>
+<!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
+<link href="goSamples.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="go.js"></script>
+<script type="text/javascript" src="goSamples.js"></script>
+<script type="text/javascript" id="code">
+  function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+
+    myDiagram = new go.Diagram("myDiagram");  // create the Diagram for the HTML DIV element
+
+    // this Brush is shared by all of the Shapes
+    var graybrush = $(go.Brush, go.Brush.Linear, { 0.0: "white", 1.0: "gray" });
+
+    // for each kind of figure, create a Shape using that figure
+    for (var k in go.Shape.FigureGenerators) {
+      // ignore all-lower-case figure names
+      if (k.toLowerCase() === k) continue;
+      // add a Node consisting of a Shape with this kind of figure
+      // and a TextBlock showing the figure name
+      myDiagram.add(
+        $(go.Node, "Vertical",
+          {
+            locationSpot: go.Spot.Center, locationObjectName: "SHAPE",
+            selectionAdorned: false,  // no selection handle when selected
+            resizable: true, resizeObjectName: "SHAPE",  // user can resize the Shape
+            rotatable: true, rotateObjectName: "SHAPE",  // user can rotate the Shape without rotating the label
+            layoutConditions: go.Part.LayoutStandard & ~go.Part.LayoutNodeSized  // don't re-layout when node changes size
+          },
+          $(go.Shape,
+            {
+              name: "SHAPE",  // named so that the above properties can refer to this particular GraphObject
+              figure: k,  // the name of the Shape figure, which automatically gives the Shape a Geometry
+              width: 50, height: 50,
+              fill: graybrush, strokeWidth: 2
+            }),
+          $(go.TextBlock,  // the label
+            { text: k })
+        ));
+    }
+
+    myDiagram.layout = $(go.GridLayout, { cellSize: new go.Size(50, 10) });
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+  <p>All predefined <b>GoJS</b> figures:</p>
+  <div id="myDiagram" style="border: solid 1px blue; height:600px"></div>
+  <p>You can specify a predefined geometry for a <a>Shape</a> by setting its <a>Shape.figure</a>.</p>
+  <p>For predefined arrowheads, see the <a href="arrowheads.html">Arrowheads</a> sample.</p>
+</div>
+</body>
+</html>

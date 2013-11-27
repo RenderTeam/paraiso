@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - Layer</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Layer
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				
+
+				Layers are how named collections of <a href="../symbols/Part.html">Part</a>s are drawn in front or behind other collections of Parts in a <a href="../symbols/Diagram.html">Diagram</a>.Layers can only contain <a href="../symbols/Part.html">Part</a>s -- they cannot hold <a href="../symbols/GraphObject.html">GraphObject</a>s directly.<p/>Each Diagram starts off with the following list of Layers:"Grid", "Background", "" (the default layer), "Foreground", "Adornment", "Tool".Parts are normally put in the default layer.The last two layers are considered <a href="../symbols/Layer.html#isTemporary">#isTemporary</a>.Changes to objects in temporary layers are not recorded by the <a href="../symbols/UndoManager.html">UndoManager</a>.Parts in temporary layers are not selected and are not considered to be part of the document.The "Grid" layer is the furthest back; it also contains "temporary" parts that cannot be selected.Furthermore the "Grid" layer has <a href="../symbols/Layer.html#pickable">#pickable</a> set to false so that mouse or touch eventsand calls to the "find..." methods do not even consider any parts in that layer.<p/>Use <a href="../symbols/Diagram.html#findLayer">Diagram#findLayer</a> to get the Layer with a particular name.You can add your own layers by calling <a href="../symbols/Diagram.html#addLayerBefore">Diagram#addLayerBefore</a> or <a href="../symbols/Diagram.html#addLayerAfter">Diagram#addLayerAfter</a>to insert a new layer at a particular place in the Z-order, or to re-order existing layers.<p/>Layers have many properties that control what actions users are permitted to perform involving the parts in the layer.These properties are very much like the similarly named properties on <a href="../symbols/Diagram.html">Diagram</a>.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Layer.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#constructor">Layer</a></b>()
+							</div>
+							<div class="description">This constructs an empty Layer; you should set the <a href="../symbols/Layer.html#name">#name</a> before adding the Layer to a Diagram.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Layer.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowCopy">allowCopy</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may copy objects in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowDelete">allowDelete</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may delete objects in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowGroup">allowGroup</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may group parts together in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowLink">allowLink</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may draw new links in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowMove">allowMove</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may move objects in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowRelink">allowRelink</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may reconnect existing links in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowReshape">allowReshape</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may reshape parts in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowResize">allowResize</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may resize parts in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowRotate">allowRotate</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may rotate parts in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowSelect">allowSelect</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may select objects in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowTextEdit">allowTextEdit</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may do in-place text editing in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#allowUngroup">allowUngroup</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may ungroup existing groups in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#diagram">diagram</a></b>
+								</div>
+								<div class="description">Gets the <a href="../symbols/Diagram.html">Diagram</a> that is using this Layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#isTemporary">isTemporary</a></b>
+								</div>
+								<div class="description">Gets or sets whether the objects in this layer are considered temporary.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#name">name</a></b>
+								</div>
+								<div class="description">Gets or sets the name for this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#opacity">opacity</a></b>
+								</div>
+								<div class="description">Gets or sets the opacity for all parts in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#parts">parts</a></b>
+								</div>
+								<div class="description">Gets an iterator for this Layer's <a href="../symbols/Part.html">Part</a>s.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#partsBackwards">partsBackwards</a></b>
+								</div>
+								<div class="description">Gets a backwards iterator for this Layer's <a href="../symbols/Part.html">Part</a>s,for iterating over the parts in reverse order.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#pickable">pickable</a></b>
+								</div>
+								<div class="description">Gets or sets whether methods such as <a href="../symbols/Layer.html#findObjectAt">#findObjectAt</a> find any of the objects in this layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Layer.html#visible">visible</a></b>
+								</div>
+								<div class="description">Gets or sets whether the user may view any of the objects in this layer.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Layer.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Layer.html#findObjectAt">findObjectAt</a></b>(p, navig, pred)
+								</div>
+								<div class="description">Find the front-most <a href="../symbols/GraphObject.html">GraphObject</a> in this layerat the given point in document coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Layer.html#findObjectsAt">findObjectsAt</a></b>(p, navig, pred, coll)
+								</div>
+								<div class="description">Return a collection of the <a href="../symbols/GraphObject.html">GraphObject</a>s of this layerat the given point in document coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Layer.html#findObjectsIn">findObjectsIn</a></b>(r, navig, pred, partialInclusion, coll)
+								</div>
+								<div class="description">Returns a collection of all <a href="../symbols/GraphObject.html">GraphObject</a>s that are inside or that intersecta given <a href="../symbols/Rect.html">Rect</a> in document coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Layer.html#findObjectsNear">findObjectsNear</a></b>(p, dist, navig, pred, partialInclusion, coll)
+								</div>
+								<div class="description">Returns a collection of all <a href="../symbols/GraphObject.html">GraphObject</a>s that are within a certain distanceof a given point in document coordinates.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>Layer</b>()
+				</div>
+
+				<div class="description">
+					This constructs an empty Layer; you should set the <a href="../symbols/Layer.html#name">#name</a> before adding the Layer to a Diagram.
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="allowCopy"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowCopy</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may copy objects in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowDelete"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowDelete</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may delete objects in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowGroup"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowGroup</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may group parts together in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowLink"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowLink</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may draw new links in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowMove"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowMove</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may move objects in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowRelink"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowRelink</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may reconnect existing links in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowReshape"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowReshape</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may reshape parts in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowResize"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowResize</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may resize parts in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowRotate"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowRotate</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may rotate parts in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowSelect"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowSelect</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may select objects in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowTextEdit"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowTextEdit</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may do in-place text editing in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="allowUngroup"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>allowUngroup</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may ungroup existing groups in this layer.The initial value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="diagram"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
+					<b>diagram</b>
+
+					</div>
+					<div class="description">
+						Gets the <a href="../symbols/Diagram.html">Diagram</a> that is using this Layer.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isTemporary"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isTemporary</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the objects in this layer are considered temporary.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="name"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>name</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name for this layer.The initial value is an empty string, which is also the name of the default layer.The name should be unique among the diagram's <a href="../symbols/Diagram.html#layers">Diagram#layers</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="opacity"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>opacity</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the opacity for all parts in this layer.The value must be between 0.0 (fully transparent) and 1.0 (no additional transparency).This value is multiplicative with any existing transparency,for instance from a <a href="../symbols/Brush.html">Brush</a> or image transparency.The default value is 1.<p/>This property, unlike <a href="../symbols/Layer.html#visible">#visible</a>, does not change whether any objects are found by the "find..." methods.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="parts"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+					<b>parts</b>
+
+					</div>
+					<div class="description">
+						Gets an iterator for this Layer's <a href="../symbols/Part.html">Part</a>s.The Parts can be <a href="../symbols/Node.html">Node</a>s, <a href="../symbols/Link.html">Link</a>s, <a href="../symbols/Group.html">Group</a>s, <a href="../symbols/Adornment.html">Adornment</a>s, or simple <a href="../symbols/Part.html">Part</a>s.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partsBackwards"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+					<b>partsBackwards</b>
+
+					</div>
+					<div class="description">
+						Gets a backwards iterator for this Layer's <a href="../symbols/Part.html">Part</a>s,for iterating over the parts in reverse order.The Parts can be <a href="../symbols/Node.html">Node</a>s, <a href="../symbols/Link.html">Link</a>s, <a href="../symbols/Group.html">Group</a>s, <a href="../symbols/Adornment.html">Adornment</a>s, or simple <a href="../symbols/Part.html">Part</a>s.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="pickable"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>pickable</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether methods such as <a href="../symbols/Layer.html#findObjectAt">#findObjectAt</a> find any of the objects in this layer.<p/>The default value is true.When this property is false, all of the "find..." methods will fail to find parts that are in this layer.<p/>Note that setting pickable to false does not prevent users from selecting nodes.It does prevent them from selecting nodes by clicking on them,but does not prevent selection through other mechanisms such as the <a href="../symbols/DragSelectingTool.html">DragSelectingTool</a> or<a href="../symbols/CommandHandler.html#selectAll">CommandHandler#selectAll</a> or calls to <a href="../symbols/Diagram.html#select">Diagram#select</a>.<p/>You can control whether individual GraphObjects are "hittable" by setting <a href="../symbols/GraphObject.html#pickable">GraphObject#pickable</a>.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="visible"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>visible</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the user may view any of the objects in this layer.<p/>The default value is true -- all visible Parts are drawn.When this property is false, all of the "find..." methods will fail to find parts that are in this layer.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="findObjectAt"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+					<b>findObjectAt</b>(p, navig, pred)
+
+					</div>
+					<div class="description">
+						Find the front-most <a href="../symbols/GraphObject.html">GraphObject</a> in this layerat the given point in document coordinates.<p/>If <a href="../symbols/Layer.html#visible">#visible</a> is false, this method will not find any objects in this layer.However, <a href="../symbols/Layer.html#opacity">#opacity</a> does not affect this method.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> <b>p</b>
+									
+								</dt>
+								<dd>A Point in document coordinates.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):GraphObject | null=}</span> <b>navig</b>
+									
+								</dt>
+								<dd>A function taking a GraphObject andreturning a GraphObject, defaulting to the identity.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):boolean | null=}</span> <b>pred</b>
+									
+								</dt>
+								<dd>A function taking the GraphObjectreturned by navig and returning true if that object should be returned,defaulting to a predicate that always returns true.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> The first GraphObject in the z-order, or else null.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="findObjectsAt"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+					<b>findObjectsAt</b>(p, navig, pred, coll)
+
+					</div>
+					<div class="description">
+						Return a collection of the <a href="../symbols/GraphObject.html">GraphObject</a>s of this layerat the given point in document coordinates.<p/>If <a href="../symbols/Layer.html#visible">#visible</a> is false, this method will not find any objects in this layer.However, <a href="../symbols/Layer.html#opacity">#opacity</a> does not affect this method.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> <b>p</b>
+									
+								</dt>
+								<dd>A Point in document coordinates.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):GraphObject | null=}</span> <b>navig</b>
+									
+								</dt>
+								<dd>A function taking a GraphObject andreturning a GraphObject, defaulting to the identity.If this function returns null, the given GraphObject will not be included in the results.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):boolean | null=}</span> <b>pred</b>
+									
+								</dt>
+								<dd>A function taking the GraphObjectreturned by navig and returning true if that object should be returned,defaulting to a predicate that always returns true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/List.html">List</a>|<a href="../symbols/Set.html">Set</a>=}</span> <b>coll</b>
+									
+								</dt>
+								<dd>An optional collection (List or Set) to add the results to.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Iterable.html">Iterable</a>}</span> a collection of GraphObjects that will contain all GraphObjectslocated at Point p, or else an empty collection.If a List or Set was passed in, it is returned.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="findObjectsIn"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+					<b>findObjectsIn</b>(r, navig, pred, partialInclusion, coll)
+
+					</div>
+					<div class="description">
+						Returns a collection of all <a href="../symbols/GraphObject.html">GraphObject</a>s that are inside or that intersecta given <a href="../symbols/Rect.html">Rect</a> in document coordinates.<p/>If <a href="../symbols/Layer.html#visible">#visible</a> is false, this method will not find any objects in this layer.However, <a href="../symbols/Layer.html#opacity">#opacity</a> does not affect this method.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Rect.html">Rect</a>}</span> <b>r</b>
+									
+								</dt>
+								<dd>A Rect in document coordinates.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):GraphObject | null=}</span> <b>navig</b>
+									
+								</dt>
+								<dd>A function taking a GraphObject andreturning a GraphObject, defaulting to the identity.If this function returns null, the given GraphObject will not be included in the results.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):boolean | null=}</span> <b>pred</b>
+									
+								</dt>
+								<dd>A function taking the GraphObjectreturned by navig and returning true if that object should be returned,defaulting to a predicate that always returns true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>partialInclusion</b>
+									
+								</dt>
+								<dd>Whether an object can match if it merely intersects the rectangular area (true) orif it must be entirely inside the rectangular area (false).  The default value is false.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/List.html">List</a>|<a href="../symbols/Set.html">Set</a>=}</span> <b>coll</b>
+									
+								</dt>
+								<dd>An optional collection (List or Set) to add the results to.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Iterable.html">Iterable</a>}</span> a collection of GraphObjects that will contain all GraphObjectslocated at Point p, or else an empty collection.If a List or Set was passed in, it is returned.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="findObjectsNear"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterable.html">Iterable</a>}</span>
+					<b>findObjectsNear</b>(p, dist, navig, pred, partialInclusion, coll)
+
+					</div>
+					<div class="description">
+						Returns a collection of all <a href="../symbols/GraphObject.html">GraphObject</a>s that are within a certain distanceof a given point in document coordinates.<p/>If <a href="../symbols/Layer.html#visible">#visible</a> is false, this method will not find any objects in this layer.However, <a href="../symbols/Layer.html#opacity">#opacity</a> does not affect this method.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> <b>p</b>
+									
+								</dt>
+								<dd>A Point in document coordinates.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>dist</b>
+									
+								</dt>
+								<dd>The distance from the point.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):GraphObject | null=}</span> <b>navig</b>
+									
+								</dt>
+								<dd>A function taking a GraphObject andreturning a GraphObject, defaulting to the identity.If this function returns null, the given GraphObject will not be included in the results.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(GraphObject):boolean | null=}</span> <b>pred</b>
+									
+								</dt>
+								<dd>A function taking the GraphObjectreturned by navig and returning true if that object should be returned,defaulting to a predicate that always returns true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>partialInclusion</b>
+									
+								</dt>
+								<dd>Whether an object can match if it merely intersects the circular area (true) orif it must be entirely inside the circular area (false).  The default value is true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/List.html">List</a>|<a href="../symbols/Set.html">Set</a>=}</span> <b>coll</b>
+									
+								</dt>
+								<dd>An optional collection (List or Set) to add the results to.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Iterable.html">Iterable</a>}</span> a collection of GraphObjects that will contain all GraphObjectslocated at Point p, or else an empty collection.If a List or Set was passed in, it is returned.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

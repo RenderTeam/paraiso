@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>GoJS Selection -- Northwoods Software</title>
+  <!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
+    <link href="goIntro.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="go.js"></script>
+  <script type="text/javascript" src="goIntro.js"></script>
+</head>
+<body onload="goIntro()">
+<div id="content">
+
+<h2>Overview Diagrams</h2>
+<p>
+An <a>Overview</a> is a subclass of <a>Diagram</a> that is used to display all of the <a>Part</a>s
+of another diagram and to show and control where that diagram's viewport is relative to all of those parts.
+</p>
+<p>
+The initialization of an <a>Overview</a> is just a matter of setting <a>Overview.observed</a>
+to refer to the <a>Diagram</a> that you want it to show.
+In this example we set the global variable myOverview so that the Diagram
+initialization code below can do the assignment of the overview.
+</p>
+<pre data-language="javascript" id="overviewPre">
+  // here, diagram instanceof go.Overview
+
+  // You do not need to specify any templates or initialize its model.
+  // Just set Overview.observed, once that Diagram exists.
+
+  myOverview = diagram;  // make the Overview accessible to the main Diagram
+</pre>
+<p>
+The following code initializes a Diagram with 1000 nodes of random colors.
+It then sets <a>Overview.observed</a> on the myOverview from above.
+</p>
+<pre data-language="javascript" id="diagramPre">
+  diagram.nodeTemplate =
+    $(go.Node, "Auto",
+      $(go.Shape, "RoundedRectangle",
+        { fill: "white" },
+        new go.Binding("fill", "color")),
+      $(go.TextBlock, { margin: 5 },
+        new go.Binding("text", "key"))
+    );
+
+  // start off with a lot of nodes
+  var nodeDataArray = [];
+  for (var i = 0; i &lt; 1000; i++) {
+    nodeDataArray.push({ color: go.Brush.randomColor() });
+  }
+  diagram.model.nodeDataArray = nodeDataArray;
+
+  diagram.undoManager.isEnabled = true;
+
+  // show this Diagram in an Overview
+  myOverview.observed = diagram;
+</pre>
+<div style="width:100%">
+  <span id="overviewSpan" style="display: inline-block; vertical-align: top; width:160px">
+    <b>Overview:</b><br />
+  </span>
+  <span id="diagramSpan" style="display: inline-block; vertical-align: top; width:510px">
+    <b>Diagram:</b><br />
+  </span>
+</div>
+<script type="text/javascript">goCode("overviewPre", 150, 150, go.Overview, "overviewSpan")</script>
+<script type="text/javascript">goCode("diagramPre", 500, 300, go.Diagram, "diagramSpan")</script>
+<p>
+</p>
+
+</div>
+</body>
+</html>

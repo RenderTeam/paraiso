@@ -1,0 +1,3498 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - Panel</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Panel
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/GraphObject.html">GraphObject</a>.<br />
+				
+
+				A Panel is a <a href="../symbols/GraphObject.html">GraphObject</a> that holds other GraphObjects as its elements.A Panel is responsible for sizing and positioning its elements.The elements of a panel are drawn in the order in which they appear in the <a href="../symbols/Panel.html#elements">#elements</a> collection.<p>The <a href="../symbols/Part.html">Part</a> class inherits from Panel; Part in turn is the base class of <a href="../symbols/Node.html">Node</a> and <a href="../symbols/Link.html">Link</a>.<p>Every Panel has a <a href="../symbols/Panel.html#type">#type</a> and establishes its own coordinate system. The type of a Paneldetermines how it will size and arrange its elements:<ul><li><a href="../symbols/Panel.html#Position">Panel#Position</a> is used to arrange elements based on their absolute positions within the Panel's local coordinate system.</li><li><a href="../symbols/Panel.html#Vertical">Panel#Vertical</a> and <a href="../symbols/Panel.html#Horizontal">Panel#Horizontal</a> are used to create linear "stacks" of elements.</li><li><a href="../symbols/Panel.html#Auto">Panel#Auto</a> is used to size the main element to fit around other elements in the Panel.</li><li><a href="../symbols/Panel.html#Spot">Panel#Spot</a> is used to arrange elements based on the <a href="../symbols/Spot.html">Spot</a> properties <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a>and <a href="../symbols/GraphObject.html#alignmentFocus">GraphObject#alignmentFocus</a>, relative to a main element of the panel.</li><li><a href="../symbols/Panel.html#Table">Panel#Table</a> is used to arrange elements into rows and columns, typically employing the differentelements' <a href="../symbols/GraphObject.html#row">GraphObject#row</a>, <a href="../symbols/GraphObject.html#rowSpan">GraphObject#rowSpan</a>, <a href="../symbols/GraphObject.html#column">GraphObject#column</a>,and <a href="../symbols/GraphObject.html#columnSpan">GraphObject#columnSpan</a> properties. This Panel type also makes use of <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>.</li><li><a href="../symbols/Panel.html#TableRow">Panel#TableRow</a> and <a href="../symbols/Panel.html#TableColumn">Panel#TableColumn</a> can only be used immediately within a <a href="../symbols/Panel.html#Table">Panel#Table</a> Panel    to organize a collection of elements as a row or as a column in a table.</li><li><a href="../symbols/Panel.html#Viewbox">Panel#Viewbox</a> is used to automatically resize a single element to fit inside the panel's available area.</li><li><a href="../symbols/Panel.html#Grid">Panel#Grid</a> is not used to house typical elements, but is used only to draw regular patterns of lines.    The elements must be <a href="../symbols/Shape.html">Shape</a>s used to describe the repeating lines.</li><li><a href="../symbols/Panel.html#Link">Panel#Link</a> is only used by <a href="../symbols/Link.html">Link</a> parts.</li></ul><p class="box">For an overview of all Panel types, please read the <a href="../../intro/panels.html">Introduction page on Panels</a>and <a href="../../intro/tablePanels.html">Table Panels</a>.<p><a href="../symbols/Panel.html#Vertical">Panel#Vertical</a> and <a href="../symbols/Panel.html#Horizontal">Panel#Horizontal</a> panels are frequently used to position two or more GraphObjectsvertically above each other or horizontally next to each other.  Use the <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> or<a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> properties on the individual elements to control their position and size.<p><a href="../symbols/Panel.html#Spot">Panel#Spot</a> and <a href="../symbols/Panel.html#Auto">Panel#Auto</a> panels have a "main" element, signified by the Panel's first elementwith <a href="../symbols/GraphObject.html#isPanelMain">GraphObject#isPanelMain</a> set to true.  If there is no such element, it uses the first element as the "main" one.Use the <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> property to position elements with respect to the main element.Use the <a href="../symbols/GraphObject.html#alignmentFocus">GraphObject#alignmentFocus</a> property to further specify the position within Spot Panels.<p>In <a href="../symbols/Panel.html#Table">Panel#Table</a> panels you will want to set the <a href="../symbols/GraphObject.html#row">GraphObject#row</a> and <a href="../symbols/GraphObject.html#column">GraphObject#column</a>properties on each element.  The <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> and <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> properties are alsouseful when an element's table cell is larger than that element.Please read <a href="../../intro/tablePanels.html">Table Panels</a> for more examples and explanation.<p><a href="../symbols/Panel.html#TableRow">Panel#TableRow</a> and <a href="../symbols/Panel.html#TableColumn">Panel#TableColumn</a> panels can only be used as elements within a <a href="../symbols/Panel.html#Table">Panel#Table</a> Panel.They are typically only used in item templates, e.g. for automatically creating rows in a Table Panel based on model dataprovided in an <a href="../symbols/Panel.html#itemArray">#itemArray</a>. You will still need to specify properties on the individual elements within a TableRowor TableColumn as if they were immediate elements of the containing Table panel.For an example that uses TableRow Panels, see <a href="../../samples/records.html">Records sample</a>.<p><a href="../symbols/Panel.html#Grid">Panel#Grid</a> panels are used for the Diagram's <a href="../symbols/Diagram.html#grid">Diagram#grid</a>, but can also stand alone:<pre>$(go.Node, go.Panel.Grid,  { gridCellSize: new go.Size(6, 6), width: 60, height: 60 },  $(go.Shape, "LineH", { stroke: "gray" }),  $(go.Shape, "LineV", { stroke: "gray" }))</pre><p>A Grid Panel's elements do not participate in object picking.<hr/><p>You can change the collection of <a href="../symbols/Panel.html#elements">#elements</a> by calling <a href="../symbols/Panel.html#add">#add</a>, <a href="../symbols/Panel.html#insertAt">#insertAt</a>, <a href="../symbols/Panel.html#remove">#remove</a>, or <a href="../symbols/Panel.html#removeAt">#removeAt</a>.You can get direct access to a particular element by calling <a href="../symbols/Panel.html#elt">#elt</a>.<hr/><p>Panels typically compute their own size based on their elements and Panel <a href="../symbols/Panel.html#type">#type</a>,but can also be sized by setting <a href="../symbols/GraphObject.html#desiredSize">GraphObject#desiredSize</a>, <a href="../symbols/GraphObject.html#minSize">GraphObject#minSize</a>, and <a href="../symbols/GraphObject.html#maxSize">GraphObject#maxSize</a>.Setting an explicit size on a Panel may cause nested elements of that panel to size themselves differently,especially in the cases of nested elements having a <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> value or <a href="../symbols/TextBlock.html">TextBlock</a>'s having word wrap.<p>Panels have no visual components of their own unless a <a href="../symbols/GraphObject.html#background">GraphObject#background</a> or <a href="../symbols/GraphObject.html#areaBackground">GraphObject#areaBackground</a> is specifiedor separators are specified either as defaults for the whole Table Panel or on individual <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>s.<p>In addition to the <a href="../symbols/GraphObject.html">GraphObject</a> properties on elements that are only used by certain types of panels,several Panel properties only apply to specific Panel types.<ul>  <li>Panels of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a> use the <a href="../symbols/Panel.html#rowCount">#rowCount</a>, <a href="../symbols/Panel.html#rowSizing">#rowSizing</a>, <a href="../symbols/Panel.html#columnCount">#columnCount</a>,<a href="../symbols/Panel.html#columnSizing">#columnSizing</a>, <a href="../symbols/Panel.html#leftIndex">#leftIndex</a>, <a href="../symbols/Panel.html#topIndex">#topIndex</a>, and all of the "default" separator properties.</li>  <li>Panels of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Grid">Panel#Grid</a> use the <a href="../symbols/Panel.html#gridCellSize">#gridCellSize</a> and <a href="../symbols/Panel.html#gridOrigin">#gridOrigin</a> properties.</li>  <li>Panels of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Viewbox">Panel#Viewbox</a> use the <a href="../symbols/Panel.html#viewboxStretch">#viewboxStretch</a> property.</li></ul><p class="box">For live examples of all Panel types, see the <a href="../../intro/panels.html">Introduction page on Panels.</a><hr/><p>Panels also provide fundamental support for data binding.When a diagram gets a new model or when a diagram's model is augmented with additional data,the diagram automatically creates a new Node or Link whose <a href="../symbols/Panel.html#data">#data</a> property refers to the correspondingnode data or link data object.<p class="box">For more discussion of data binding, please read the <a href="../../intro/usingModels.html">Introduction page on Models</a>and <a href="../../intro/dataBinding.html">Data Binding</a>.<p>In addition, Panels provide support for automatically creating elements within the Panel based on theitems in a JavaScript Array.This is achieved by setting or binding the <a href="../symbols/Panel.html#itemArray">#itemArray</a> property, which acts in a manner similarto the <a href="../symbols/Model.html#nodeDataArray">Model#nodeDataArray</a> property.You can supply an <a href="../symbols/Panel.html#itemTemplate">#itemTemplate</a>, which must itself be a simple Panel, which is copied to create the elementin this container Panel corresponding to an item in the itemArray.This property is analogous to the <a href="../symbols/Diagram.html#nodeTemplate">Diagram#nodeTemplate</a> property, although for the diagram thetemplate must be a <a href="../symbols/Node.html">Node</a>, <a href="../symbols/Group.html">Group</a>, or simple <a href="../symbols/Part.html">Part</a>.<p>And much like the <a href="../symbols/Diagram.html#nodeTemplateMap">Diagram#nodeTemplateMap</a>, <a href="../symbols/Panel.html#itemTemplateMap">#itemTemplateMap</a> supports having multiple templates,so that the actual structure of the element created for a data item can be chosen dynamically.Just as how the <a href="../symbols/Model.html#nodeCategoryProperty">Model#nodeCategoryProperty</a> determines which template in the <a href="../symbols/Diagram.html#nodeTemplateMap">Diagram#nodeTemplateMap</a>is copied to create a <a href="../symbols/Node.html">Node</a>, the <a href="../symbols/Panel.html#itemCategoryProperty">#itemCategoryProperty</a> names the data property whose valuechooses the Panel in the itemTemplateMap to copy for the item.<p class="box">For more discussion and examples of item arrays, please read the <a href="../../intro/itemArrays.html">Introduction page on Item Arrays</a>.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Panel.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#constructor">Panel</a></b>(type)
+							</div>
+							<div class="description">Constructs an empty Panel of the given <a href="../symbols/Panel.html#type">#type</a>.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Panel.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#columnCount">columnCount</a></b>
+								</div>
+								<div class="description">Gets the number of columns in this Panel if it is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#columnSizing">columnSizing</a></b>
+								</div>
+								<div class="description">Gets or sets how this Panel's columns deal with extra spaceif the Panel is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Object}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#data">data</a></b>
+								</div>
+								<div class="description">Gets or sets the optional model data to which this panel is data-bound.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultAlignment">defaultAlignment</a></b>
+								</div>
+								<div class="description">Gets or sets the default alignment spot of this Panel, used asthe alignment for an element when its <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array.<number>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultColumnSeparatorDashArray">defaultColumnSeparatorDashArray</a></b>
+								</div>
+								<div class="description">Gets or sets the default dash array for a column's separator in a Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultColumnSeparatorStroke">defaultColumnSeparatorStroke</a></b>
+								</div>
+								<div class="description">Gets or sets the default stroke (color) for columns in a Table Panelprovided a given column has a nonzero <a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultColumnSeparatorStrokeWidth">defaultColumnSeparatorStrokeWidth</a></b>
+								</div>
+								<div class="description">Gets or sets the default stroke width for a column's separator in a Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array.<number>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultRowSeparatorDashArray">defaultRowSeparatorDashArray</a></b>
+								</div>
+								<div class="description">Gets or sets the default dash array for a row's separator in a Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultRowSeparatorStroke">defaultRowSeparatorStroke</a></b>
+								</div>
+								<div class="description">Gets or sets the default stroke (color) for rows in a Table Panelprovided a given row has a nonzero <a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultRowSeparatorStrokeWidth">defaultRowSeparatorStrokeWidth</a></b>
+								</div>
+								<div class="description">Gets or sets the default stroke width for a row's separator in a Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Margin.html">Margin</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultSeparatorPadding">defaultSeparatorPadding</a></b>
+								</div>
+								<div class="description">Gets or sets the additional padding for rows and columns in a Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#defaultStretch">defaultStretch</a></b>
+								</div>
+								<div class="description">Gets or sets the default stretch of this Panel, used asthe stretch for an element when its <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> value is <a href="../symbols/GraphObject.html#Default">GraphObject#Default</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#elements">elements</a></b>
+								</div>
+								<div class="description">Gets an iterator over the collection of the <a href="../symbols/GraphObject.html">GraphObject</a>s that this panel manages.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#gridCellSize">gridCellSize</a></b>
+								</div>
+								<div class="description">Gets or sets the distance between lines in a <a href="../symbols/Panel.html#Grid">#Grid</a> panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#gridOrigin">gridOrigin</a></b>
+								</div>
+								<div class="description">Gets or sets an origin point for the grid cells in a <a href="../symbols/Panel.html#Grid">#Grid</a> panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#itemArray">itemArray</a></b>
+								</div>
+								<div class="description">Gets or sets a JavaScript Array of values or objects, each of which will be representedby a <a href="../symbols/Panel.html">Panel</a> as elements in this Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|function(*):string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#itemCategoryProperty">itemCategoryProperty</a></b>
+								</div>
+								<div class="description">Gets or sets the name of the item data property that returns a string describing that data's category,or a function that takes an item data object and returns that string;the default value is the name 'category'.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#itemTemplate">itemTemplate</a></b>
+								</div>
+								<div class="description">Gets or sets the default <a href="../symbols/Panel.html">Panel</a> template used as the archetypefor item data that are in <a href="../symbols/Panel.html#itemArray">#itemArray</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Map.html">Map</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#itemTemplateMap">itemTemplateMap</a></b>
+								</div>
+								<div class="description">Gets or sets a <a href="../symbols/Map.html">Map</a> mapping template names to <a href="../symbols/Panel.html">Panel</a>s.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#leftIndex">leftIndex</a></b>
+								</div>
+								<div class="description">Gets or sets the first column that this Panel of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a> displays.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#opacity">opacity</a></b>
+								</div>
+								<div class="description">Gets or sets the multiplicative opacity for this Panel and all children.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Margin.html">Margin</a>|number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#padding">padding</a></b>
+								</div>
+								<div class="description">Gets or sets the space between this Panel's border and its content, depending on the type of panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#rowCount">rowCount</a></b>
+								</div>
+								<div class="description">Gets the number of rows in this Panel if it is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#rowSizing">rowSizing</a></b>
+								</div>
+								<div class="description">Gets or sets how this Panel's rows deal with extra spaceif the Panel is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#topIndex">topIndex</a></b>
+								</div>
+								<div class="description">Gets or sets the first row that this Panel of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a> displays.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#type">type</a></b>
+								</div>
+								<div class="description">Gets or sets the type of the Panel, which controls how the Panel's elements are measured and arranged.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Panel.html#viewboxStretch">viewboxStretch</a></b>
+								</div>
+								<div class="description">Gets or sets how a <a href="../symbols/Panel.html#Viewbox">#Viewbox</a> panel will resize its content.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Properties borrowed from class <a href="../symbols/GraphObject.html">GraphObject</a>: </dt><dd><a href="../symbols/GraphObject.html#actionCancel">actionCancel</a>, <a href="../symbols/GraphObject.html#actionDown">actionDown</a>, <a href="../symbols/GraphObject.html#actionMove">actionMove</a>, <a href="../symbols/GraphObject.html#actionUp">actionUp</a>, <a href="../symbols/GraphObject.html#actualBounds">actualBounds</a>, <a href="../symbols/GraphObject.html#alignment">alignment</a>, <a href="../symbols/GraphObject.html#alignmentFocus">alignmentFocus</a>, <a href="../symbols/GraphObject.html#angle">angle</a>, <a href="../symbols/GraphObject.html#areaBackground">areaBackground</a>, <a href="../symbols/GraphObject.html#background">background</a>, <a href="../symbols/GraphObject.html#click">click</a>, <a href="../symbols/GraphObject.html#column">column</a>, <a href="../symbols/GraphObject.html#columnSpan">columnSpan</a>, <a href="../symbols/GraphObject.html#contextClick">contextClick</a>, <a href="../symbols/GraphObject.html#contextMenu">contextMenu</a>, <a href="../symbols/GraphObject.html#cursor">cursor</a>, <a href="../symbols/GraphObject.html#Default">Default</a>, <a href="../symbols/GraphObject.html#desiredSize">desiredSize</a>, <a href="../symbols/GraphObject.html#diagram">diagram</a>, <a href="../symbols/GraphObject.html#doubleClick">doubleClick</a>, <a href="../symbols/GraphObject.html#Fill">Fill</a>, <a href="../symbols/GraphObject.html#fromEndSegmentDirection">fromEndSegmentDirection</a>, <a href="../symbols/GraphObject.html#fromEndSegmentLength">fromEndSegmentLength</a>, <a href="../symbols/GraphObject.html#fromLinkable">fromLinkable</a>, <a href="../symbols/GraphObject.html#fromLinkableDuplicates">fromLinkableDuplicates</a>, <a href="../symbols/GraphObject.html#fromLinkableSelfNode">fromLinkableSelfNode</a>, <a href="../symbols/GraphObject.html#fromMaxLinks">fromMaxLinks</a>, <a href="../symbols/GraphObject.html#fromShortLength">fromShortLength</a>, <a href="../symbols/GraphObject.html#fromSpot">fromSpot</a>, <a href="../symbols/GraphObject.html#height">height</a>, <a href="../symbols/GraphObject.html#isActionable">isActionable</a>, <a href="../symbols/GraphObject.html#isPanelMain">isPanelMain</a>, <a href="../symbols/GraphObject.html#layer">layer</a>, <a href="../symbols/GraphObject.html#margin">margin</a>, <a href="../symbols/GraphObject.html#maxSize">maxSize</a>, <a href="../symbols/GraphObject.html#measuredBounds">measuredBounds</a>, <a href="../symbols/GraphObject.html#minSize">minSize</a>, <a href="../symbols/GraphObject.html#mouseDragEnter">mouseDragEnter</a>, <a href="../symbols/GraphObject.html#mouseDragLeave">mouseDragLeave</a>, <a href="../symbols/GraphObject.html#mouseDrop">mouseDrop</a>, <a href="../symbols/GraphObject.html#mouseEnter">mouseEnter</a>, <a href="../symbols/GraphObject.html#mouseHold">mouseHold</a>, <a href="../symbols/GraphObject.html#mouseHover">mouseHover</a>, <a href="../symbols/GraphObject.html#mouseLeave">mouseLeave</a>, <a href="../symbols/GraphObject.html#mouseOver">mouseOver</a>, <a href="../symbols/GraphObject.html#name">name</a>, <a href="../symbols/GraphObject.html#naturalBounds">naturalBounds</a>, <a href="../symbols/GraphObject.html#None">None</a>, <a href="../symbols/GraphObject.html#panel">panel</a>, <a href="../symbols/GraphObject.html#part">part</a>, <a href="../symbols/GraphObject.html#pickable">pickable</a>, <a href="../symbols/GraphObject.html#portId">portId</a>, <a href="../symbols/GraphObject.html#position">position</a>, <a href="../symbols/GraphObject.html#row">row</a>, <a href="../symbols/GraphObject.html#rowSpan">rowSpan</a>, <a href="../symbols/GraphObject.html#scale">scale</a>, <a href="../symbols/GraphObject.html#segmentFraction">segmentFraction</a>, <a href="../symbols/GraphObject.html#segmentIndex">segmentIndex</a>, <a href="../symbols/GraphObject.html#segmentOffset">segmentOffset</a>, <a href="../symbols/GraphObject.html#segmentOrientation">segmentOrientation</a>, <a href="../symbols/GraphObject.html#stretch">stretch</a>, <a href="../symbols/GraphObject.html#toEndSegmentDirection">toEndSegmentDirection</a>, <a href="../symbols/GraphObject.html#toEndSegmentLength">toEndSegmentLength</a>, <a href="../symbols/GraphObject.html#toLinkable">toLinkable</a>, <a href="../symbols/GraphObject.html#toLinkableDuplicates">toLinkableDuplicates</a>, <a href="../symbols/GraphObject.html#toLinkableSelfNode">toLinkableSelfNode</a>, <a href="../symbols/GraphObject.html#toMaxLinks">toMaxLinks</a>, <a href="../symbols/GraphObject.html#toolTip">toolTip</a>, <a href="../symbols/GraphObject.html#toShortLength">toShortLength</a>, <a href="../symbols/GraphObject.html#toSpot">toSpot</a>, <a href="../symbols/GraphObject.html#Uniform">Uniform</a>, <a href="../symbols/GraphObject.html#UniformToFill">UniformToFill</a>, <a href="../symbols/GraphObject.html#visible">visible</a>, <a href="../symbols/GraphObject.html#width">width</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Panel.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#add">add</a></b>(element)
+								</div>
+								<div class="description">Adds a GraphObject to the end of this Panel's list of elements, visually in front of all of the other elements.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#copy">copy</a></b>()
+								</div>
+								<div class="description">Creates a deep copy of this Panel and returns it.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#elt">elt</a></b>(idx)
+								</div>
+								<div class="description">Returns the GraphObject in this Panel's list of elements at the specified index.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#findColumnForLocalX">findColumnForLocalX</a></b>(x)
+								</div>
+								<div class="description">Returns the cell at a given x-coordinate in local coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#findObject">findObject</a></b>(name)
+								</div>
+								<div class="description">Search the visual tree starting at this Panel for a GraphObjectwhose <a href="../symbols/GraphObject.html#name">GraphObject#name</a> is the given name.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#findRowForLocalY">findRowForLocalY</a></b>(y)
+								</div>
+								<div class="description">Returns the row at a given y-coordinate in local coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#getColumnDefinition">getColumnDefinition</a></b>(idx)
+								</div>
+								<div class="description">Gets the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular column in this Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#getRowDefinition">getRowDefinition</a></b>(idx)
+								</div>
+								<div class="description">Gets the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#insertAt">insertAt</a></b>(index, element)
+								</div>
+								<div class="description">Adds a GraphObject to the Panel's list of elements at the specified index.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#rebuildItemElements">rebuildItemElements</a></b>()
+								</div>
+								<div class="description">Create and add new GraphObjects corresponding to and bound to the data in the <a href="../symbols/Panel.html#itemArray">#itemArray</a>,after removing all existing elements from this Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#remove">remove</a></b>(element)
+								</div>
+								<div class="description">Removes a GraphObject from this Panel's list of elements.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#removeAt">removeAt</a></b>(idx)
+								</div>
+								<div class="description">Removes an GraphObject from this Panel's list of elements at the specified index.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#removeColumnDefinition">removeColumnDefinition</a></b>(idx)
+								</div>
+								<div class="description">Removes the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#removeRowDefinition">removeRowDefinition</a></b>(idx)
+								</div>
+								<div class="description">Removes the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Panel.html#updateTargetBindings">updateTargetBindings</a></b>(srcprop)
+								</div>
+								<div class="description">Re-evaluate all data bindings on this panel,in order to assign new property values to the <a href="../symbols/GraphObject.html">GraphObject</a>s in this visual treebased on this object's <a href="../symbols/Panel.html#data">#data</a> property values.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/GraphObject.html">GraphObject</a>: </dt><dd><a href="../symbols/GraphObject.html#bind">bind</a>, <a href="../symbols/GraphObject.html#getDocumentAngle">getDocumentAngle</a>, <a href="../symbols/GraphObject.html#getDocumentPoint">getDocumentPoint</a>, <a href="../symbols/GraphObject.html#getDocumentScale">getDocumentScale</a>, <a href="../symbols/GraphObject.html#getLocalPoint">getLocalPoint</a>, <a href="../symbols/GraphObject.html#isContainedBy">isContainedBy</a>, <a href="../symbols/GraphObject.html#isVisibleObject">isVisibleObject</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Panel.">
+					<caption>Constants</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+              <a name="Auto"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Auto</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> resizes the main element to fit around the other elements;the main element is the first GraphObject with <a href="../symbols/GraphObject.html#isPanelMain">GraphObject#isPanelMain</a> set to true,or else the first GraphObject if none have that property set to true.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Grid"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Grid</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> is used to draw regular patterns of lines.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Horizontal"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Horizontal</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> lays out the elements horizontally withtheir <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> property dictating their alignment on the Y-axis.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Link"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Link</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> is used for <a href="../symbols/Link.html">Link</a>s and adornments that act as <a href="../symbols/Link.html">Link</a>s.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Position"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Position</b>
+								</div>
+								<div class="description">The default <a href="../symbols/Panel.html#type">#type</a> arranges each element according to their <a href="../symbols/GraphObject.html#position">GraphObject#position</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Spot"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Spot</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> arranges GraphObjects about a main element using the <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> and <a href="../symbols/GraphObject.html#alignmentFocus">GraphObject#alignmentFocus</a> properties;the main element is the first GraphObject with <a href="../symbols/GraphObject.html#isPanelMain">GraphObject#isPanelMain</a> set to true,or else the first GraphObject if none have that property set to true.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Table"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Table</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> arranges GraphObjects into rows and columns;set the <a href="../symbols/GraphObject.html#row">GraphObject#row</a> and <a href="../symbols/GraphObject.html#column">GraphObject#column</a> properties on each element.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="TableColumn"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>TableColumn</b>
+								</div>
+								<div class="description">Organizational Panel type that is only valid inside of a Table panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="TableRow"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>TableRow</b>
+								</div>
+								<div class="description">Organizational Panel type that is only valid inside of a Table panel.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Vertical"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Vertical</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> lays out the elements vertically withtheir <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> property dictating their alignment on the X-axis.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Viewbox"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Viewbox</b>
+								</div>
+								<div class="description">This value for <a href="../symbols/Panel.html#type">#type</a> rescales a single GraphObject to fit inside the paneldepending on the element's <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> property.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>Panel</b>(type)
+				</div>
+
+				<div class="description">
+					Constructs an empty Panel of the given <a href="../symbols/Panel.html#type">#type</a>. Default type is Panel.Position.The panel type must be one of the enumerated values defined on the <a href="../symbols/Panel.html">Panel</a> class, including:<a href="../symbols/Panel.html#Position">Panel#Position</a>, <a href="../symbols/Panel.html#Vertical">Panel#Vertical</a>, <a href="../symbols/Panel.html#Horizontal">Panel#Horizontal</a>, <a href="../symbols/Panel.html#Table">Panel#Table</a>,<a href="../symbols/Panel.html#Auto">Panel#Auto</a>, <a href="../symbols/Panel.html#Spot">Panel#Spot</a>, or <a href="../symbols/Panel.html#Viewbox">Panel#Viewbox</a>.
+					
+				</div>
+
+				
+
+
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{EnumValue=}</span>  <b>type</b>
+								
+							</dt>
+								<dd>If not supplied, the default Panel type is <a href="../symbols/Panel.html#Position">Panel#Position</a>.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="columnCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>columnCount</b>
+
+					</div>
+					<div class="description">
+						Gets the number of columns in this Panel if it is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.This value is only valid after the Panel has been measured.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="columnSizing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>columnSizing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how this Panel's columns deal with extra spaceif the Panel is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.Valid values are <a href="../symbols/RowColumnDefinition.html#ProportionalExtra">RowColumnDefinition#ProportionalExtra</a> and <a href="../symbols/RowColumnDefinition.html#None">RowColumnDefinition#None</a>.The default is <a href="../symbols/RowColumnDefinition.html#ProportionalExtra">RowColumnDefinition#ProportionalExtra</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#sizing">RowColumnDefinition#sizing</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#rowSizing">#rowSizing</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="data"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Object}</span>
+					<b>data</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the optional model data to which this panel is data-bound.The data must be a JavaScript Object if this is a <a href="../symbols/Part.html">Part</a>.The data can be any JavaScript value if this is a <a href="../symbols/Panel.html">Panel</a> created foran item in an Array that was data-bound by the <a href="../symbols/Panel.html#itemArray">#itemArray</a> property.The default value is null.<p/>Setting it to a new value automatically calls <a href="../symbols/Panel.html#updateTargetBindings">#updateTargetBindings</a>in order to assign new values to all of the data-bound GraphObject properties.<p/>Once you set this property you cannot add, remove, or modify any data bindingson any of the GraphObjects in the visual tree of this Panel, including onthis panel itself.<p/>You should not modify this property on a <a href="../symbols/Part.html">Part</a> that is created automaticallyto represent model data, nor on a <a href="../symbols/Panel.html">Panel</a> that is created automatically for a data itemin the containing Panel's <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>.Call <a href="../symbols/Model.html#removeNodeData">Model#removeNodeData</a> and <a href="../symbols/Model.html#addNodeData">Model#addNodeData</a> if you want to replacethis Part with another one, or call <a href="../symbols/Model.html#removeArrayItem">Model#removeArrayItem</a> and <a href="../symbols/Model.html#insertArrayItem">Model#insertArrayItem</a>if you want to replace this Panel with another one.<p/>Although you might not be able to replace this data value if this Part was createdautomatically by the Diagram, you can still modify that data object's properties.Call the appropriate Model method for changing properties that affect the structure of the diagram.Call <a href="../symbols/Model.html#setDataProperty">Model#setDataProperty</a> for changing other properties that may be the sourcesof <a href="../symbols/Binding.html">Binding</a>s on <a href="../symbols/GraphObject.html">GraphObject</a> properties that are in the visual tree of this panel/part.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultAlignment"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+					<b>defaultAlignment</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default alignment spot of this Panel, used asthe alignment for an element when its <a href="../symbols/GraphObject.html#alignment">GraphObject#alignment</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.The default value is <a href="../symbols/Spot.html#Default">Spot#Default</a>, which is interpreted by the Panel in whatever manner seems reasonable,depending on the Panel type.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultColumnSeparatorDashArray"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array.<number>}</span>
+					<b>defaultColumnSeparatorDashArray</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default dash array for a column's separator in a Table Panel.<a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a> can override this default value.The default is null: the line is solid -- there is no dash pattern.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorDashArray">RowColumnDefinition#separatorDashArray</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorDashArray">#defaultRowSeparatorDashArray</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultColumnSeparatorStroke"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+					<b>defaultColumnSeparatorStroke</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default stroke (color) for columns in a Table Panelprovided a given column has a nonzero <a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a>.<a href="../symbols/RowColumnDefinition.html#separatorStroke">RowColumnDefinition#separatorStroke</a> can override this default value.The default value is null -- no line is drawn.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorStrokeWidth">#defaultColumnSeparatorStrokeWidth</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorDashArray">#defaultColumnSeparatorDashArray</a></dd>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorStroke">RowColumnDefinition#separatorStroke</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorStroke">#defaultRowSeparatorStroke</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultColumnSeparatorStrokeWidth"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultColumnSeparatorStrokeWidth</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default stroke width for a column's separator in a Table Panel.<a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a> can override this default value.The default value is 1.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorStrokeWidth">#defaultRowSeparatorStrokeWidth</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultRowSeparatorDashArray"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array.<number>}</span>
+					<b>defaultRowSeparatorDashArray</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default dash array for a row's separator in a Table Panel.<a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a> can override this default value.The default is null: the line is solid -- there is no dash pattern.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorDashArray">RowColumnDefinition#separatorDashArray</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorDashArray">#defaultColumnSeparatorDashArray</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultRowSeparatorStroke"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+					<b>defaultRowSeparatorStroke</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default stroke (color) for rows in a Table Panelprovided a given row has a nonzero <a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a>.<a href="../symbols/RowColumnDefinition.html#separatorStroke">RowColumnDefinition#separatorStroke</a> can override this default value.The default value is null -- no line is drawn.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorStrokeWidth">#defaultRowSeparatorStrokeWidth</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorDashArray">#defaultRowSeparatorDashArray</a></dd>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorStroke">RowColumnDefinition#separatorStroke</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorStroke">#defaultColumnSeparatorStroke</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultRowSeparatorStrokeWidth"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultRowSeparatorStrokeWidth</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default stroke width for a row's separator in a Table Panel.<a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a> can override this default value.The default value is 1.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorStrokeWidth">RowColumnDefinition#separatorStrokeWidth</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorStrokeWidth">#defaultColumnSeparatorStrokeWidth</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultSeparatorPadding"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Margin.html">Margin</a>}</span>
+					<b>defaultSeparatorPadding</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the additional padding for rows and columns in a Table Panel.Padding is applied both before and after a row or column's contents.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#separatorPadding">RowColumnDefinition#separatorPadding</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultColumnSeparatorStrokeWidth">#defaultColumnSeparatorStrokeWidth</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#defaultRowSeparatorStrokeWidth">#defaultRowSeparatorStrokeWidth</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="defaultStretch"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>defaultStretch</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default stretch of this Panel, used asthe stretch for an element when its <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a> value is <a href="../symbols/GraphObject.html#Default">GraphObject#Default</a>.The default value is <a href="../symbols/GraphObject.html#Default">GraphObject#Default</a>, which typically resolves to <a href="../symbols/GraphObject.html#None">GraphObject#None</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="elements"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Iterator.html">Iterator</a>}</span>
+					<b>elements</b>
+
+					</div>
+					<div class="description">
+						Gets an iterator over the collection of the <a href="../symbols/GraphObject.html">GraphObject</a>s that this panel manages.<p>You can change the collection by calling <a href="../symbols/Panel.html#add">#add</a>, <a href="../symbols/Panel.html#insertAt">#insertAt</a>, <a href="../symbols/Panel.html#remove">#remove</a>, or <a href="../symbols/Panel.html#removeAt">#removeAt</a>.<p>You can also get direct access to individual elements by calling <a href="../symbols/Panel.html#elt">#elt</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="gridCellSize"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+					<b>gridCellSize</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance between lines in a <a href="../symbols/Panel.html#Grid">#Grid</a> panel.The units are in local coordinates.The default is 10x10.  Any new width or height must be a positive real number.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="gridOrigin"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+					<b>gridOrigin</b>
+
+					</div>
+					<div class="description">
+						Gets or sets an origin point for the grid cells in a <a href="../symbols/Panel.html#Grid">#Grid</a> panel.The units are in local coordinates.The default is (0,0).  Any new value must use real numbers.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="itemArray"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array}</span>
+					<b>itemArray</b>
+
+					</div>
+					<div class="description">
+						Gets or sets a JavaScript Array of values or objects, each of which will be representedby a <a href="../symbols/Panel.html">Panel</a> as elements in this Panel.Replacing this array results all of this panel's child objects being replaced witha copy of the <a href="../symbols/Panel.html">Panel</a> found in <a href="../symbols/Panel.html#itemTemplateMap">#itemTemplateMap</a> for each particularitem in the Array.<p/>Because the software does not receive any notifications when an Array is modified,any insertions or removals or replacements of data in the Array will not be noticedunless you call <a href="../symbols/Model.html#insertArrayItem">Model#insertArrayItem</a> or <a href="../symbols/Model.html#removeArrayItem">Model#removeArrayItem</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="itemCategoryProperty"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|function(*):string}</span>
+					<b>itemCategoryProperty</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of the item data property that returns a string describing that data's category,or a function that takes an item data object and returns that string;the default value is the name 'category'.This is used to distinguish between differentkinds of items in the <a href="../symbols/Panel.html#itemArray">#itemArray</a>.<p/>The name must not be null.If the value is an empty string, the category is assumed to be an empty string,the default category name, for all item data objects.You must not change this property when the <a href="../symbols/Panel.html#itemArray">#itemArray</a> already has a value.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="itemTemplate"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
+					<b>itemTemplate</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default <a href="../symbols/Panel.html">Panel</a> template used as the archetypefor item data that are in <a href="../symbols/Panel.html#itemArray">#itemArray</a>.Setting this property just modifies the <a href="../symbols/Panel.html#itemTemplateMap">#itemTemplateMap</a>by replacing the entry named with the empty string.Any new value must be a <a href="../symbols/Panel.html">Panel</a> but not a <a href="../symbols/Part.html">Part</a>.By default this property is null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="itemTemplateMap"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Map.html">Map</a>}</span>
+					<b>itemTemplateMap</b>
+
+					</div>
+					<div class="description">
+						Gets or sets a <a href="../symbols/Map.html">Map</a> mapping template names to <a href="../symbols/Panel.html">Panel</a>s.One of these Panels is copied for each item data that is in the <a href="../symbols/Panel.html#itemArray">#itemArray</a>.Replacing this map will automatically rebuild all of the elements in this Panel.<p/>By default this property is null.All values in the <a href="../symbols/Map.html">Map</a> must be <a href="../symbols/Panel.html">Panel</a>s but not <a href="../symbols/Part.html">Part</a>s.<p/>If you modify this <a href="../symbols/Map.html">Map</a>, by replacing a <a href="../symbols/Panel.html">Panel</a> or by adding orremoving a map entry, you need to explicitly call <a href="../symbols/Panel.html#rebuildItemElements">#rebuildItemElements</a> afterwards.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="leftIndex"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>leftIndex</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the first column that this Panel of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a> displays.The default value is 0.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Panel.html#topIndex">#topIndex</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="opacity"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>opacity</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the multiplicative opacity for this Panel and all children.The value must be between 0.0 (fully transparent) and 1.0 (no additional transparency).This value is multiplicative with any existing transparency,for instance from <a href="../symbols/Layer.html#opacity">Layer#opacity</a> or a Panel's opacity higher in the visual tree,or from a <a href="../symbols/Brush.html">Brush</a> or image transparency.The default value is 1.<p/>This property, unlike <a href="../symbols/GraphObject.html#visible">#visible</a>, does not change whether any objects are found by the "find..." methods.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="padding"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Margin.html">Margin</a>|number}</span>
+					<b>padding</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the space between this Panel's border and its content, depending on the type of panel.Unlike <a href="../symbols/GraphObject.html#margin">GraphObject#margin</a>, padding expands the area inside of the Panel's border.<p>Padding cannot contain negative numbers.The default value is a <a href="../symbols/Margin.html">Margin</a> of zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rowCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>rowCount</b>
+
+					</div>
+					<div class="description">
+						Gets the number of rows in this Panel if it is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.This value is only valid after the Panel has been measured.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rowSizing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>rowSizing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how this Panel's rows deal with extra spaceif the Panel is of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a>.Valid values are <a href="../symbols/RowColumnDefinition.html#ProportionalExtra">RowColumnDefinition#ProportionalExtra</a> and <a href="../symbols/RowColumnDefinition.html#None">RowColumnDefinition#None</a>.The default is <a href="../symbols/RowColumnDefinition.html#ProportionalExtra">RowColumnDefinition#ProportionalExtra</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/RowColumnDefinition.html#sizing">RowColumnDefinition#sizing</a></dd>
+							
+							<dd><a href="../symbols/Panel.html#columnSizing">#columnSizing</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="topIndex"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>topIndex</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the first row that this Panel of <a href="../symbols/Panel.html#type">#type</a> <a href="../symbols/Panel.html#Table">Panel#Table</a> displays.The default value is 0.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Panel.html#leftIndex">#leftIndex</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="type"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>type</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the type of the Panel, which controls how the Panel's elements are measured and arranged.The only accepted values are listed as constant properties of Panel, including:<ul><li><a href="../symbols/Panel.html#Position">Panel#Position</a></li><li><a href="../symbols/Panel.html#Vertical">Panel#Vertical</a></li><li><a href="../symbols/Panel.html#Horizontal">Panel#Horizontal</a></li><li><a href="../symbols/Panel.html#Auto">Panel#Auto</a></li><li><a href="../symbols/Panel.html#Spot">Panel#Spot</a></li><li><a href="../symbols/Panel.html#Table">Panel#Table</a></li><li><a href="../symbols/Panel.html#Viewbox">Panel#Viewbox</a></li><li><a href="../symbols/Panel.html#Link">Panel#Link</a> (see also <a href="../symbols/Link.html">Link</a>s, which are all Panels of type Link)</li><li><a href="../symbols/Panel.html#TableRow">Panel#TableRow</a></li><li><a href="../symbols/Panel.html#TableColumn">Panel#TableColumn</a></li><li><a href="../symbols/Panel.html#Grid">Panel#Grid</a></li></ul>The default value is <a href="../symbols/Panel.html#Position">Panel#Position</a>.<p>You must not modify this property once the Panel has been measured or the Panel has been added to another Panel.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="viewboxStretch"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>viewboxStretch</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how a <a href="../symbols/Panel.html#Viewbox">#Viewbox</a> panel will resize its content.<p>Possible values are <a href="../symbols/GraphObject.html#Uniform">GraphObject#Uniform</a> and <a href="../symbols/GraphObject.html#UniformToFill">GraphObject#UniformToFill</a>.The default is <a href="../symbols/GraphObject.html#Uniform">GraphObject#Uniform</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="add"> </a>
+					<div class="fixedFont">
+
+					
+					<b>add</b>(element)
+
+					</div>
+					<div class="description">
+						Adds a GraphObject to the end of this Panel's list of elements, visually in front of all of the other elements.<p/>If the element to be added is already in this Panel's list of elements,the object is moved to the end of the list.You cannot add a GraphObject to a Panel if that GraphObject is already in a different Panel.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>element</b>
+									
+								</dt>
+								<dd>A GraphObject.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="copy"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
+					<b>copy</b>()
+
+					</div>
+					<div class="description">
+						Creates a deep copy of this Panel and returns it.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Panel.html">Panel</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="elt"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+					<b>elt</b>(idx)
+
+					</div>
+					<div class="description">
+						Returns the GraphObject in this Panel's list of elements at the specified index.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="findColumnForLocalX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>findColumnForLocalX</b>(x)
+
+					</div>
+					<div class="description">
+						Returns the cell at a given x-coordinate in local coordinates.Call <a href="../symbols/GraphObject.html#getLocalPoint">GraphObject#getLocalPoint</a> to convert a Point in document coordinates intoa Point in local coordinates.<p>If this Panel is not a Table Panel, this method returns -1.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> a zero-based integer</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Panel.html#findRowForLocalY">#findRowForLocalY</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="findObject"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
+					<b>findObject</b>(name)
+
+					</div>
+					<div class="description">
+						Search the visual tree starting at this Panel for a GraphObjectwhose <a href="../symbols/GraphObject.html#name">GraphObject#name</a> is the given name.<p/>This does not recurse into the elements inside a Panel that holds elements for an <a href="../symbols/Panel.html#itemArray">#itemArray</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>name</b>
+									
+								</dt>
+								<dd>The name to search for, using a case-sensitive string comparison.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> If no such named object can be found, this returns null.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="findRowForLocalY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>findRowForLocalY</b>(y)
+
+					</div>
+					<div class="description">
+						Returns the row at a given y-coordinate in local coordinates.Call <a href="../symbols/GraphObject.html#getLocalPoint">GraphObject#getLocalPoint</a> to convert a Point in document coordinates intoa Point in local coordinates.<p>If this Panel is not a Table Panel, this method returns -1.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> a zero-based integer</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Panel.html#findColumnForLocalX">#findColumnForLocalX</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="getColumnDefinition"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span>
+					<b>getColumnDefinition</b>(idx)
+
+					</div>
+					<div class="description">
+						Gets the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular column in this Table Panel.If you ask for the definition of a column at or beyond the <a href="../symbols/Panel.html#columnCount">#columnCount</a>,it will automatically create one and return it.<p>If this Panel is not a Table Panel, this method returns null.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the non-negative zero-based integer column index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getRowDefinition"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span>
+					<b>getRowDefinition</b>(idx)
+
+					</div>
+					<div class="description">
+						Gets the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.If you ask for the definition of a row at or beyond the <a href="../symbols/Panel.html#rowCount">#rowCount</a>,it will automatically create one and return it.<p>If this Panel is not a Table Panel, this method returns null.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the non-negative zero-based integer row index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="insertAt"> </a>
+					<div class="fixedFont">
+
+					
+					<b>insertAt</b>(index, element)
+
+					</div>
+					<div class="description">
+						Adds a GraphObject to the Panel's list of elements at the specified index.<p/>If the element to be added is already in this Panel's list of elements,the object is moved to the specified index.You cannot add a GraphObject to a Panel that if that GraphObject is already in a different Panel.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>index</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>element</b>
+									
+								</dt>
+								<dd>A GraphObject.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rebuildItemElements"> </a>
+					<div class="fixedFont">
+
+					
+					<b>rebuildItemElements</b>()
+
+					</div>
+					<div class="description">
+						Create and add new GraphObjects corresponding to and bound to the data in the <a href="../symbols/Panel.html#itemArray">#itemArray</a>,after removing all existing elements from this Panel.<p/>This uses <a href="../symbols/Panel.html#itemCategoryProperty">#itemCategoryProperty</a> to determine the category for an item data.That string is used to look up a template in <a href="../symbols/Panel.html#itemTemplateMap">#itemTemplateMap</a>.The resulting template is copied, added to this panel, and data-bound to the item data.<p/>If <a href="../symbols/Panel.html#itemArray">#itemArray</a> is null, this method just removes all elements from this panel.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="remove"> </a>
+					<div class="fixedFont">
+
+					
+					<b>remove</b>(element)
+
+					</div>
+					<div class="description">
+						Removes a GraphObject from this Panel's list of elements.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>element</b>
+									
+								</dt>
+								<dd>A GraphObject.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeAt"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeAt</b>(idx)
+
+					</div>
+					<div class="description">
+						Removes an GraphObject from this Panel's list of elements at the specified index.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeColumnDefinition"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeColumnDefinition</b>(idx)
+
+					</div>
+					<div class="description">
+						Removes the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.<p>If this Panel is not a Table Panel, this method does nothing.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the non-negative zero-based integer row index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeRowDefinition"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeRowDefinition</b>(idx)
+
+					</div>
+					<div class="description">
+						Removes the <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a> for a particular row in this Table Panel.<p>If this Panel is not a Table Panel, this method does nothing.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the non-negative zero-based integer row index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="updateTargetBindings"> </a>
+					<div class="fixedFont">
+
+					
+					<b>updateTargetBindings</b>(srcprop)
+
+					</div>
+					<div class="description">
+						Re-evaluate all data bindings on this panel,in order to assign new property values to the <a href="../symbols/GraphObject.html">GraphObject</a>s in this visual treebased on this object's <a href="../symbols/Panel.html#data">#data</a> property values.<p/>This method does nothing if <a href="../symbols/Panel.html#data">#data</a> is null.This method also will not detect changes in JavaScript Arrays -- you may need to replacethe <a href="../symbols/Panel.html#itemArray">#itemArray</a> with a new Array, or else call <a href="../symbols/Model.html#insertArrayItem">Model#insertArrayItem</a>or <a href="../symbols/Model.html#removeArrayItem">Model#removeArrayItem</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string=}</span> <b>srcprop</b>
+									
+								</dt>
+								<dd>An optional source data property name:  when provided, only evaluates those <a href="../symbols/Binding.html">Binding</a>s that use that particular property;  when not provided or when it is the empty string, all bindings are evaluated.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>
