@@ -63,7 +63,6 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.saveTask = function ( req, res ) {
     req.body.task.creator = req.user.username;
-    console.log(req.body.task);
     var newTask = new Task( req.body.task );
 
     newTask.save( function ( err ) {
@@ -106,8 +105,6 @@ mongoose.connect( conectionString, function ( err ) {
   };
 //Log
   exports.log = function ( req, res, next ) {
-    console.log(req.user.username);
-    console.log(req.route.path);
     var log = new Log({
       user:   req.user.username,
       where:  req.route.path
@@ -118,7 +115,7 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( err );
       }
     });
-    
+
     next();
   };
 //Session handlers
