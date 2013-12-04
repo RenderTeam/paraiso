@@ -7,7 +7,7 @@ var taskSchema = new Schema({
   creation_date:  { type: Date, default: Date.now },
   creator:        [String],
   deadline:       { type: Date, default: Date.now},
-  description:    String,
+  description:    String, 
   label:          String,
   priority:       Number,
   reminder:       [Number],
