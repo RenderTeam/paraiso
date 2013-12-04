@@ -41,10 +41,16 @@ body{
 
 .task-labels-container{
   padding: 0;
+  .well{
+    padding: 0;
+
+    h1{
+      margin: 0;
+    }
+  }
 }
 
 .task-label{
-  background-color: yellow;
   float: left;
   width: 20%;
   height: 60px;
@@ -54,11 +60,14 @@ body{
   cursor: pointer;
 }
 
-.task-label-1{ background-color: red ;}
-.task-label-2{ background-color: blue ;}
-.task-label-3{ background-color: orange ;}
-.task-label-4{ background-color: green ;}
-.task-label-5{ background-color: cyan ;}
+.P, .task-label-0{
+  background-color: #dc5950 ;
+  border: 1px solid #dc5950 ;
+}
+.NC, .task-label-1{ background-color: #d8d03f ;}
+.AC, .task-label-2{ background-color: #61b3df ;}
+.AP, .task-label-3{ background-color: #72e277 ;}
+.LOL, .task-label-4{ background-color: #bc83e6 ;}
 
 /*********************************************************/
 /* MODAL FOR AGENDA  */

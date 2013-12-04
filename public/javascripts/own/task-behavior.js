@@ -2,21 +2,22 @@ function start () {
   
   tooltipConstructor( '#remainderSpan', 
     'Número de días antes de la fecha límite en los cuales el sistema ' +
-    'recordará al usuario la tarea.' );
+    'recordará al usuario la tarea.','bottom' );
   
   tooltipConstructor( '#creationDayspan', 
-    'Día de creación de la tarea.' );
+    'Día de creación de la tarea.','bottom' );
 
-  $('#seeUsers').popover({
-    html: true,
-    content: function () {
+  tooltipConstructor( '#descriptionlabel', 
+    'Tipo de tarea.', 'top' );
 
-      return $("#workers-content").show();
-      //return $("#seeUsers").text();
+  $('.collapseToogle').on( 'click', function() {
+    if( $(this).hasClass('glyphicon-chevron-up') ){
+      $(this).removeClass('glyphicon-chevron-up');
+      $(this).addClass('glyphicon-chevron-down');
+    } else {
+      $(this).removeClass('glyphicon-chevron-down');
+      $(this).addClass('glyphicon-chevron-up');
     }
-  });
-  $('#seeUsers').on('hidden.bs.popover',function(){
-    $("#workers-content").clone();
   });
 }
 $(document).ready( start );

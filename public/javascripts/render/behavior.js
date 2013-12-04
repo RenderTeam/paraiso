@@ -5,8 +5,8 @@
  * @return {null} This function doesn't return anything
  */
 
-function tooltipConstructor ( element, text ) {
+function tooltipConstructor ( element, text, position) {
   $( element ).tooltip({ 'trigger':'hover', 'title': text , 
-    'placement': 'bottom'});
+    'placement': position});
 }
 
