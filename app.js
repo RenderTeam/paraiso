@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-var express     = require('express')
+var express     = require('express'),
     config      = require('./config')(),
     http        = require('http'),
     mongoStore  = require('connect-mongo')( express ),
