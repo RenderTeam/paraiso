@@ -6,15 +6,15 @@ tasks.$inject = ['$http'];
 function tasks ( http ) {
   var tasks = {};
 
-  tasks.getAllTasks = function () {
+  task.getAllTasks = function () {
     var promise = http.post('/getTasks').then( function ( response ) {
       return response.data;
     });
-    return promise
+    return promise;
   };
-
+  
   tasks.getTasksFromUser = function ( params ) {
-    var promise = http.post('/getTasksFromUser', params).then( 
+    var promise = http.post('/getTasksFromUser', params).then(
       function ( response ) {
         return response.data;
     });
@@ -37,5 +37,5 @@ function tasks ( http ) {
     return promise;
   };
 
-  return tasks;
+  return task;
 }

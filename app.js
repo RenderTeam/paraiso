@@ -4,10 +4,10 @@
 
 var express     = require('express'),
     config      = require('./config')(),
-    http        = require('http'),
+    routes = require('./routes'),
     mongoStore  = require('connect-mongo')( express ),
-    path        = require('path'),
-    routes      = require('./routes');
+    http = require('http'),
+    path = require('path');
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use( express.urlencoded() );
 app.use( express.cookieParser() );
 app.use( express.session( {
   store: new mongoStore( {
-    url: 'mongodb://localhost:27017/prueba',
+    url: 'mongodb://localhost:27017/test',
     maxAge: new Date( Date.now() + 60000 )
   }),
   secret: 'Y0l0SW4G-F4RR0SW4G-T0UGHL1FECH00S3M3-H4RDC0R3'
@@ -46,26 +46,35 @@ app.use( express.static( path.join( __dirname, 'public') ) );
 if ( 'development' == app.get('env') ) {
   app.use( express.errorHandler() );
 }
+// GET
+//Control Panel
+  app.get( '/control_panel', routes.control_panel );
+//Index
+  app.get( '/', routes.index );
+//Forms
+  app.get( '/forms/new_form', routes.new_form );
+//Organizational Structure
+  app.get( '/organizational_structure/talent_management', 
+    queries.privateContent, routes.talent_management );
+//Resources
+  app.get( '/resources', queries.privateContent, routes.resources );
+//Tasks
+  app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
+  app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
+  app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
-app.get( '/', routes.index );
-app.get( '/control_panel', queries.privateContent, routes.control_panel );
-app.get( '/organizational_structure/talent_management',
-  routes.talent_management );
-app.get( '/tasks/tasks', queries.privateContent , routes.tasks );
-app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
-app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
+// POST
+  app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
+  app.post( '/getTasks', queries.privateContent, queries.getTasks );
+  app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
+  app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
-app.get( '/resources', queries.privateContent, routes.viewresources );
+  app.post( '/login', queries.login );
+  app.post( '/logout', queries.logout);
+  app.post( '/saveUser',  queries.saveUser );
+  app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
-app.post( '/getOneTask', queries.privateContent, queries.getOneTask );
-app.post( '/getTasks', queries.privateContent, queries.getTasks );
-app.post( '/getTasksFromUser', queries.privateContent, queries.getTasksFromUser );
-app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
-
-app.post( '/login', queries.login );
-app.post( '/logout', queries.logout);
-app.post( '/saveUser', queries.privateContent, queries.saveUser );
-app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  app.post( '/createForm', queries.createForm );
 
 http.createServer( app ).listen( config.port, function () {
     console.log( 'Express server listening on port ' + config.port );

@@ -13,8 +13,6 @@ block content
     h3 Recursos
 
     .form-search.text-right.form-table-filter
-      .glyphicon.glyphicon-plus-sign
-      .glyphicon.glyphicon-trash
       .input-group.col-lg-3.pull-right
         .input-group-addon 
           .glyphicon.glyphicon-search
@@ -42,7 +40,7 @@ block content
           td.location Departamento de Ventas
           td.serialNumber 123456
           td.launch-modal-preview
-            a(data-toggle='modal', href='#myModal')
+            a(data-toggle='modal', href='#resourcesModal')
               span.glyphicon.glyphicon-save
 
         tr
@@ -53,7 +51,7 @@ block content
           td.location Departamento de Marketing
           td.serialNumber 257493748
           td.launch-modal-preview
-            a(data-toggle='modal', href='#myModal')
+            a(data-toggle='modal', href='#resourcesModal')
               span.glyphicon.glyphicon-save        
 
         tr
@@ -64,7 +62,7 @@ block content
           td.location Departamento de Baños
           td.serialNumber 235983409
           td.launch-modal-preview
-            a(data-toggle='modal', href='#myModal')
+            a(data-toggle='modal', href='#resourcesModal')
               span.glyphicon.glyphicon-save
 
         tr
@@ -75,22 +73,24 @@ block content
           td.location Departamento de Milicia
           td.serialNumber 758
           td.launch-modal-preview
-            a(data-toggle='modal', href='#myModal')
+            a(data-toggle='modal', href='#resourcesModal')
               span.glyphicon.glyphicon-save            
 
   .page-wrap
     .row
       .span8
         form.form-horizontal(action="")
-  #myModal.modal.fade.(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+          
+  #resourcesModal.modal.fade.(tabindex='-1', role='dialog', aria-labelledby='resourcesModalLabel', aria-hidden='true')
     .modal-dialog
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4.modal-title 
+            h3.modal-title 
           .modal-body
+            h4  Pruebas
           .modal-footer
-            button.btn.btn-default.close(type='button', data-dismiss='modal') Close
+            button.btn.btn-default( type='button' , data-dismiss='modal') Close
 
 block custom-scripts
   script(src='/javascripts/render/table-filter.js')

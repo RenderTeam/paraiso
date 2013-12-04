@@ -6,12 +6,10 @@ block custom-stylesheets
 block content
   .login-container( ng-app = 'loginApp' )
     form( ng-controller = controller, name = 'formLogin', novalidate )
-      .glyphicon.glyphicon-user
       .input-group
         span.input-group-addon.glyphicon.glyphicon-user
         input.form-control( ng-model = 'user.user', name = 'userName',
           type = 'text', required)
-        span( ng-show='form.userName.$error.required' ) Ingresa tu usuario
       br
       .input-group.input-group
         span.input-group-addon.glyphicon.glyphicon-asterisk

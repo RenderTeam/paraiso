@@ -7,11 +7,7 @@ taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
 function myTasksController ( scope, tasks ) {
-  var params = {};
-
-  params.assigned = ['dan'];
-
-  tasks.getTasksFromUser( params ).then( function ( data ) {
+  tasks.getTasksFromUser().then( function ( data ) {
     scope.tasks =  data;
   });
 
@@ -35,7 +31,7 @@ function myTasksController ( scope, tasks ) {
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
 function newTaskController ( scope, tasks, users ) {
 
-  var task = {
+  scope.task = {
     creation_date:  new Date(),
     creator:        'Sesión', /* Se tiene que recuperar de la sesión */
     title:          '',
@@ -48,32 +44,48 @@ function newTaskController ( scope, tasks, users ) {
     status:         'not done'
   };
 
-  scope.task = task;
+  scope.temporal = {
+    worker: ""
+  };
+
+  scope.temporalForm = {
+    reminder: [],
+    assigned: []
+  };
+
 
   scope.addReminderToReminders = function () {
+    if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
+      var temporal = {
+        numberOfDays: scope.temporal.reminder
+      }
 
-    var temporal = {
-      numberOfDays: scope.temporal.reminder
+      scope.temporalForm.reminder.push( temporal );
+      scope.task.reminder.push( scope.temporal.reminder );
     }
-
-    scope.task.reminder.push( temporal );
+    scope.temporal.reminder = "";
   };
 
   scope.addWorkertoAssigned = function () {
+    if( scope.temporal.worker != "" ){
+      var temporal = {
+        username: scope.temporal.worker
+      }
 
-    var temporal = {
-      username: scope.temporal.worker
+      scope.temporalForm.assigned.push( temporal );
+      scope.task.assigned.push( scope.temporal.worker );
     }
-
-    scope.task.assigned.push( temporal );
+    scope.temporal.worker = "";
   };
 
   scope.removeReminderFromReminders = function( $index ){
     scope.task.reminder.splice( $index, 1 );
+    scope.temporalForm.reminder.splice( $index, 1 );
   };
 
   scope.removeWorkerFromAssigned = function( $index ){
     scope.task.assigned.splice( $index, 1 );
+    scope.temporalForm.assigned.splice( $index, 1 );
   };
 
   scope.selectLabel = function () {};
@@ -81,19 +93,18 @@ function newTaskController ( scope, tasks, users ) {
   scope.newTask= function () {
     scope.task.creation_date = new Date();
 
-
     var params = {};
 
     params.task = scope.task;
-    
+
     tasks.saveTask( params ).then( function ( data ) {
       console.log( data );
     });
   };
 
-  users.getAllUsersNames().then( function (data) {
+  /*users.getAllUsersNames().then( function (data) {
     console.log( data );
-  });
+  });*/
 }
 
 tasksController.$inject = [ '$scope', 'Tasks' ];

@@ -3,6 +3,9 @@ extends ../layout
 block custom-stylesheets
   link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
 
+block main-navbar
+  include ../navbars/organizational_structure_navbar
+
 block content 
 
   .page-wrap
@@ -74,7 +77,7 @@ block content
             h4.modal-title 
           .modal-body
           .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn(type='button', data-dismiss='modal' , aria-hidden="true") Close
 
 block custom-scripts
   script(src='/javascripts/render/table-filter.js')

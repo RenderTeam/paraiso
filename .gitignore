@@ -10,8 +10,12 @@ lib-cov
 javascripts/vendor/*.js
 stylesheets/vendor/*.less
 
+
 pids
 logs
 results
 /node_modules
 npm-debug.log
+
+
+/views/forms/rendered
