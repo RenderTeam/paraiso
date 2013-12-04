@@ -7,9 +7,6 @@ lib-cov
 *.pid
 *.gz
 *.css
-/public/javascripts/vendor/*.js
-/public/stylesheets/vendor/*.less
-
 
 pids
 logs
