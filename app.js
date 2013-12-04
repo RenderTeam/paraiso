@@ -48,7 +48,7 @@ if ( 'development' == app.get('env') ) {
 }
 // GET
 //Control Panel
-  app.get( '/control_panel', queries.privateContent, routes.control_panel );
+  app.get( '/control_panel', routes.control_panel );
 //Index
   app.get( '/', routes.index );
 //Forms
@@ -71,7 +71,7 @@ if ( 'development' == app.get('env') ) {
 
   app.post( '/login', queries.login );
   app.post( '/logout', queries.logout);
-  app.post( '/saveUser', queries.privateContent, queries.saveUser );
+  app.post( '/saveUser',  queries.saveUser );
   app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
   app.post( '/createForm', queries.createForm );
