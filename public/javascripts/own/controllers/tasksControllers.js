@@ -1,5 +1,5 @@
 var taskAppModule  = angular.module( 'taskApp',
-  [ 'services.tasks', 'services.users' ] );
+  [ 'services.tasks', 'services.users', 'directives.usersPopover' ] );
 
 taskAppModule.controller( 'MyTasksController', myTasksController );
 taskAppModule.controller( 'NewTaskController', newTaskController );
@@ -101,7 +101,7 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
-  scope.newTask= function () {
+  scope.newTask = function () {
     scope.task.creation_date = new Date();
 
     var params = {};
@@ -132,6 +132,10 @@ function newTaskController ( scope, tasks, users ) {
       };
       alert('Excelente :)');
     });
+  };
+
+  scope.lol = function() {
+    alert('te amo');
   };
 
   /*users.getAllUsersNames().then( function (data) {

@@ -37,9 +37,11 @@ block content
               span( ng-bind = 'worker.username' ) 
               button.btn.btn-danger( 
                 ng-click = 'removeWorkerFromAssigned( $index )' ) -
-            #seeUsers.btn.input-group-btn.btn-success( rel = 'popover',
+            .btn.input-group-btn.btn-success( users-popover , items = 'temporalForm.assigned', 
+              title = 'lol') Lol
+            //-#seeUsers.btn.input-group-btn.btn-success( rel = 'popover',
               data-original-title = 'Usuarios' ) Ver
-            #workers-content
+            //-#workers-content
               #workers.input-group.assigned-container( ng-repeat = 'worker in temporalForm.assigned' )
                 span.input-group-addon( ng-bind = 'worker.username' ) 
                 button.btn.input-group-btn.btn-danger( 
@@ -91,3 +93,4 @@ block custom-scripts
   script( src='/javascripts/own/services/tasksServices.js')
   script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/controllers/tasksControllers.js')
+  script( src='/javascripts/own/directives/usersPopover.js')
