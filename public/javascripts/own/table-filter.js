@@ -20,9 +20,9 @@ function tableFilter () {
 
       if ( pattern.test( name ) || pattern.test( department ) ||
            pattern.test( position ) ) {
-        iteratorRow.slideDown()
+        iteratorRow.slideDown();
       } else {
-        iteratorRow.slideUp()
+        iteratorRow.slideUp();
       }
 
       iteratorRow.next().addClass('iterator');
