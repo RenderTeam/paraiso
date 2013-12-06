@@ -2,10 +2,14 @@ module.exports = function ( grunt ) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    exec: {
+      start_server: {
+        command: 'mongod&'
+      }
+    },
+    
     jshint: {
-      options: {
-            /* Don't set indent here */
-      },
       uses_defaults: [],
       /*special files that don't will be linted with override options */
       with_overrides: {
@@ -18,10 +22,32 @@ module.exports = function ( grunt ) {
                     'mongo-queries.js']
           }
       }
+    },
 
-
+    nodemon: {
+      dev: {
+        options: {
+          file: 'app.js',
+          args: ['dev'],
+          ignoredFiles: ['node_modules/**'],
+          watchedExtensions: ['js'],
+          delayTime: 1
+        }
+      }
     }
+
   });
+
+  grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.registerTask('default', ['jshint']);
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.registerTask('jshint', ['jshint']);
+  grunt.registerTask('init', ['exec', 'nodemon']);
+
+
+
+
+
+
 };
