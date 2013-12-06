@@ -1,0 +1,13 @@
+{
+  "browser":   true,
+  "curly":     true,
+  "devel":     true,
+  "maxlen":    90,
+  "node":      true,
+  "globals": {
+    "jQuery": true,
+    "camelCase": true,
+    "console":   true
+  }
+}
+

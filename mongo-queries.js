@@ -14,7 +14,7 @@ var Forms             = require('./mongoose_models/form'),
 var conectionString = 'mongodb://localhost:27017/test';
 
 mongoose.connect( conectionString, function ( err ) {
-  if ( err ) throw err;
+  if ( err ) { throw err; }
   console.log('Successfully connected to MongoDB');
 });
 
@@ -32,9 +32,9 @@ mongoose.connect( conectionString, function ( err ) {
     var query = Task.findOne( condition );
 
     query.select('-reminder').exec( function ( err, task ) {
-      if ( err ) throw err;
+      if ( err ) { throw err; }
       res.send( task );
-    })
+    });
   };
   
   exports.getTasks = function ( req, res ) {
@@ -42,7 +42,7 @@ mongoose.connect( conectionString, function ( err ) {
 
     query.select('assigned deadline description title').exec(
       function ( err, tasks ) {
-        if ( err ) throw err;
+        if ( err ) { throw err; }
         res.send( tasks );
       }
     );
@@ -55,7 +55,7 @@ mongoose.connect( conectionString, function ( err ) {
     
     query.select('assigned deadline description title').exec(
       function ( err, task ) {
-        if ( err ) throw err;
+        if ( err ) { throw err; }
         res.send( task );
       }
     );
@@ -96,7 +96,7 @@ mongoose.connect( conectionString, function ( err ) {
     });
 
     newUser.save( function ( err ) {
-      if ( err ){
+      if ( err ) {
         console.log( err );
         res.send( err );
       }
@@ -124,10 +124,10 @@ mongoose.connect( conectionString, function ( err ) {
         candidatePassword = req.body.password;
     // fetch user and test password verification
     User.findOne( { username: user }, function ( err, user ) {
-      if ( err ) throw err;
+      if ( err ) { throw err; }
 
       // test a matching password
-      if ( user == null ) {
+      if ( user === null ) {
         res.send( { flag: false } );
       } else {
         user.comparePassword( candidatePassword , function ( err, isMatch ) {
@@ -143,9 +143,10 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.logout = function( req, res ) {
-     req.session.destroy( function ( err ){
-     res.redirect('/');
-    });
+    //req.session.destroy( function ( err ){
+    req.session.destroy();
+    res.redirect('/');
+    //}); linted function on err is unused. Looking for other solutions
   };
 
   exports.privateContent = function ( req, res, next ) {
@@ -168,12 +169,12 @@ mongoose.connect( conectionString, function ( err ) {
   exports.createForm = function ( req, res ) {
     html2jade.convertHtml(req.body.HTML, {}, function (err, jade) {
       var formsPath = './views/forms/rendered';
-        jade = jade.substring(16);
-        jade = jade.replace(/(\r\n|\n|\r)/gm,"%");
-        jade = jade.replace(/\x25\s\s\s\s/gm,"\n");
-        jade = jade.replace(/\x25/gm,"");
-      fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
-        if (err) throw err;
+          jade = jade.substring(16);
+          jade = jade.replace(/(\r\n|\n|\r)/gm,"%");
+          jade = jade.replace(/\x25\s\s\s\s/gm,"\n");
+          jade = jade.replace(/\x25/gm,"");
+        fs.writeFile( formsPath + '/form200.jade', jade , function (err) {
+        if (err) { throw err; }
         console.log( 'Creado ' + formsPath + '/form.jade');
       });
     });
@@ -190,7 +191,7 @@ mongoose.connect( conectionString, function ( err ) {
       }
       console.log('saved');
     });*/
-  }
+  };
 
   /*Change a collection target
     User.collection.name = 'test';
