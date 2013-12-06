@@ -67,7 +67,7 @@ function newTaskController ( scope, tasks, users ) {
   };
 
   scope.addWorkertoAssigned = function () {
-    if( scope.temporal.worker != "" ){
+    if( scope.temporal.worker !== "" ){
       var temporal = {
         username: scope.temporal.worker
       }

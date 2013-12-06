@@ -14,7 +14,7 @@ module.exports = function ( grunt ) {
           },
           files: {
               src: ['Gruntfile.js','config/*.js','mongoose_models/*.js', 
-                    'public/javascripts/own/*.js','routes/*.js', 'app.js',
+                    'public/javascripts/own/**/*.js','routes/*.js', 'app.js',
                     'mongo-queries.js']
           }
       }

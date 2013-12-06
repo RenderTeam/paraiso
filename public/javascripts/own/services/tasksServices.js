@@ -4,7 +4,8 @@ services.factory( 'Tasks', tasks );
 
 tasks.$inject = ['$http'];
 function tasks ( http ) {
-  var tasks = {};
+  var tasks = {}; /*Does it crash if tasks is not defined here, because 
+  according to linting, it's already defined */ 
 
   task.getAllTasks = function () {
     var promise = http.post('/getTasks').then( function ( response ) {
