@@ -15,22 +15,4 @@ var TaskSchema = new Schema({
   title:          String
 });
 
-/*TaskSchema.methods.getOneTask = function ( req, res ) {
-  var condition = {
-    _id: req.body._id
-  };
-
-  var query = Task.findOne( condition );
-
-  query.select('-reminder').exec( function ( err, task ) {
-    if ( err ) throw err;
-    res.send( task );
-  })
-  return this.model('Task').findOne( condition , cb );
-};
-
-animalSchema.methods.findSimilarTypes = function (cb) {
-  return this.model('Animal').find({ type: this.type }, cb);
-}*/
-
 module.exports = mongoose.model('Task', TaskSchema);
