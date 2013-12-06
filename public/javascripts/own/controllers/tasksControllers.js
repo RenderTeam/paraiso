@@ -54,7 +54,7 @@ function newTaskController ( scope, tasks, users ) {
   };
 
   scope.labels = [{ label: 'P'},
-                  { label: 'NC' },
+                  { label: 'NC'},
                   { label: 'AC'},
                   { label: 'AP'},
                   { label: 'LOL'}];
@@ -101,7 +101,7 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
-  scope.newTask= function () {
+  scope.newTask = function () {
     scope.task.creation_date = new Date();
 
     var params = {};
