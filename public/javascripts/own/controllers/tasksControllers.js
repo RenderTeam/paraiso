@@ -57,14 +57,14 @@ function newTaskController ( scope, tasks, users ) {
                   { label: 'NC' },
                   { label: 'AC'},
                   { label: 'AP'},
-                  { label: 'LOL'}]
+                  { label: 'LOL'}];
 
   scope.addReminderToReminders = function () {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
       if( !scope.task.reminder.contains( scope.temporal.reminder ) ){
         var temporal = {
           numberOfDays: scope.temporal.reminder
-        }
+        };
         
         scope.task.reminder.push( scope.temporal.reminder );
         scope.temporalForm.reminder.push( temporal );
@@ -74,11 +74,11 @@ function newTaskController ( scope, tasks, users ) {
   };
 
   scope.addWorkertoAssigned = function () {
-    if( scope.temporal.worker != "" ){
+    if( scope.temporal.worker !== '' ){
       if ( !scope.task.assigned.contains( scope.temporal.worker ) ) {
         var temporal = {
           username: scope.temporal.worker
-        }
+        };
 
         scope.temporalForm.assigned.push( temporal );
         scope.task.assigned.push( scope.temporal.worker );
@@ -171,4 +171,4 @@ Array.prototype.contains = function( obj ) {
     }
   }
   return false;
-}
+};
