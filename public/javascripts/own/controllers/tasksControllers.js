@@ -58,7 +58,7 @@ function newTaskController ( scope, tasks, users ) {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
       var temporal = {
         numberOfDays: scope.temporal.reminder
-      }
+      };
 
       scope.temporalForm.reminder.push( temporal );
       scope.task.reminder.push( scope.temporal.reminder );
@@ -70,7 +70,7 @@ function newTaskController ( scope, tasks, users ) {
     if( scope.temporal.worker !== "" ){
       var temporal = {
         username: scope.temporal.worker
-      }
+      };
 
       scope.temporalForm.assigned.push( temporal );
       scope.task.assigned.push( scope.temporal.worker );

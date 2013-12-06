@@ -4,11 +4,10 @@
   "devel":     true,
   "maxlen":    90,
   "node":      true,
-  "unused":    true,
   "globals": {
     "jQuery": true,
     "camelCase": true,
-  "console":   true
+    "console":   true
   }
 }
 

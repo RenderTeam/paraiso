@@ -42,12 +42,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.registerTask('jshint', ['jshint']);
+  grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('init', ['exec', 'nodemon']);
-
-
-
-
-
 
 };
