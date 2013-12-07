@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - TreeVertex</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class TreeVertex
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/LayoutVertex.html">LayoutVertex</a>.<br />
+				
+
+				This holds <a href="../symbols/TreeLayout.html">TreeLayout</a>-specific information about <a href="../symbols/Node.html">Node</a>s.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class TreeVertex.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#constructor">TreeVertex</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class TreeVertex.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#alignment">alignment</a></b>
+								</div>
+								<div class="description">Gets or sets how this parent node should be aligned relative to its children.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#angle">angle</a></b>
+								</div>
+								<div class="description">Gets or sets the actual absolute angle at which this node should grow.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#breadthLimit">breadthLimit</a></b>
+								</div>
+								<div class="description">Gets or sets how broad a node and its descendants should be.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#childPortSpot">childPortSpot</a></b>
+								</div>
+								<div class="description">Gets or sets the spot that children nodes' ports get as their ToSpot,if <a href="../symbols/TreeVertex.html#setsChildPortSpot">#setsChildPortSpot</a> is true and the node has only a single port.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array.<TreeVertex>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#children">children</a></b>
+								</div>
+								<div class="description">Gets or sets the logical children for this node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#childrenCount">childrenCount</a></b>
+								</div>
+								<div class="description">Gets the number of immediate children this node has.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#commentMargin">commentMargin</a></b>
+								</div>
+								<div class="description">Gets or sets the space to leave between the node and the comments.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array.<Node>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#comments">comments</a></b>
+								</div>
+								<div class="description">Gets or sets an array of <a href="../symbols/Node.html">Node</a>s that will be positioned near this node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#commentSpacing">commentSpacing</a></b>
+								</div>
+								<div class="description">Gets or sets the space to leave between consecutive comments.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#compaction">compaction</a></b>
+								</div>
+								<div class="description">Gets or sets how the children of this node should be packed together.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{function(TreeVertex, TreeVertex):number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#comparer">comparer</a></b>
+								</div>
+								<div class="description">Gets or sets how the children should be sorted.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#descendantCount">descendantCount</a></b>
+								</div>
+								<div class="description">Gets or sets the number of descendants this node has.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#initialized">initialized</a></b>
+								</div>
+								<div class="description">Gets or sets whether this node has been initialized as part of <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a> when building the tree structures.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#layerSpacing">layerSpacing</a></b>
+								</div>
+								<div class="description">Gets or sets the distance between this node and its children.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#layerSpacingParentOverlap">layerSpacingParentOverlap</a></b>
+								</div>
+								<div class="description">Gets or sets the fraction of this node's depth that may overlap with the children's layer.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#level">level</a></b>
+								</div>
+								<div class="description">Gets or sets the number of single-parent ancestors this node has.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#maxChildrenCount">maxChildrenCount</a></b>
+								</div>
+								<div class="description">Gets or sets the maximum number of children of any descendant of this node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#maxGenerationCount">maxGenerationCount</a></b>
+								</div>
+								<div class="description">Gets or sets the maximum depth of the subtrees below this node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#nodeIndent">nodeIndent</a></b>
+								</div>
+								<div class="description">Gets or sets the distance the first child should be indented.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#nodeIndentPastParent">nodeIndentPastParent</a></b>
+								</div>
+								<div class="description">Gets or sets whether the first child should be indented past the parent node's breadth.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#nodeSpacing">nodeSpacing</a></b>
+								</div>
+								<div class="description">Gets or sets the distance between child nodes.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/TreeVertex.html">TreeVertex</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#parent">parent</a></b>
+								</div>
+								<div class="description">Gets or sets the logical parent for this node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#portSpot">portSpot</a></b>
+								</div>
+								<div class="description">Gets or sets the spot that this node's port gets as its FromSpot,if <a href="../symbols/TreeVertex.html#setsPortSpot">#setsPortSpot</a> is true and the node has only a single port.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#relativePosition">relativePosition</a></b>
+								</div>
+								<div class="description">Gets or sets the position of this node relative to its parent node.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#rowIndent">rowIndent</a></b>
+								</div>
+								<div class="description">Gets or sets the distance the first child of each row should be indented.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#rowSpacing">rowSpacing</a></b>
+								</div>
+								<div class="description">Gets or sets the distance between rows within one layer, all sharing the same parent.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#setsChildPortSpot">setsChildPortSpot</a></b>
+								</div>
+								<div class="description">Gets or sets whether the TreeLayout should set the ToSpot for each child node port.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#setsPortSpot">setsPortSpot</a></b>
+								</div>
+								<div class="description">Gets or sets whether the TreeLayout should set the FromSpot for this parent node port.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#sorting">sorting</a></b>
+								</div>
+								<div class="description">Gets or sets whether and in what order the children should be sorted.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#subtreeOffset">subtreeOffset</a></b>
+								</div>
+								<div class="description">Gets or sets the offset of this parent node relative to its whole subtree.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TreeVertex.html#subtreeSize">subtreeSize</a></b>
+								</div>
+								<div class="description">Gets or sets the size of the subtree (including all descendants) parented by this node.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Properties borrowed from class <a href="../symbols/LayoutVertex.html">LayoutVertex</a>: </dt><dd><a href="../symbols/LayoutVertex.html#bounds">bounds</a>, <a href="../symbols/LayoutVertex.html#centerX">centerX</a>, <a href="../symbols/LayoutVertex.html#centerY">centerY</a>, <a href="../symbols/LayoutVertex.html#destinationEdges">destinationEdges</a>, <a href="../symbols/LayoutVertex.html#destinationVertexes">destinationVertexes</a>, <a href="../symbols/LayoutVertex.html#edges">edges</a>, <a href="../symbols/LayoutVertex.html#edgesCount">edgesCount</a>, <a href="../symbols/LayoutVertex.html#focus">focus</a>, <a href="../symbols/LayoutVertex.html#focusX">focusX</a>, <a href="../symbols/LayoutVertex.html#focusY">focusY</a>, <a href="../symbols/LayoutVertex.html#height">height</a>, <a href="../symbols/LayoutVertex.html#network">network</a>, <a href="../symbols/LayoutVertex.html#node">node</a>, <a href="../symbols/LayoutVertex.html#sourceEdges">sourceEdges</a>, <a href="../symbols/LayoutVertex.html#sourceVertexes">sourceVertexes</a>, <a href="../symbols/LayoutVertex.html#vertexes">vertexes</a>, <a href="../symbols/LayoutVertex.html#width">width</a>, <a href="../symbols/LayoutVertex.html#x">x</a>, <a href="../symbols/LayoutVertex.html#y">y</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class TreeVertex.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/TreeVertex.html#copyInheritedPropertiesFrom">copyInheritedPropertiesFrom</a></b>(copy)
+								</div>
+								<div class="description">Copy inherited properties from another TreeVertex to this one.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/LayoutVertex.html">LayoutVertex</a>: </dt><dd><a href="../symbols/LayoutVertex.html#addDestinationEdge">addDestinationEdge</a>, <a href="../symbols/LayoutVertex.html#addSourceEdge">addSourceEdge</a>, <a href="../symbols/LayoutVertex.html#commit">commit</a>, <a href="../symbols/LayoutVertex.html#deleteDestinationEdge">deleteDestinationEdge</a>, <a href="../symbols/LayoutVertex.html#deleteSourceEdge">deleteSourceEdge</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>TreeVertex</b>()
+				</div>
+
+				<div class="description">
+					
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="alignment"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>alignment</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how this parent node should be aligned relative to its children.<p/>The default value is <a href="../symbols/TreeLayout.html#AlignmentCenterChildren">TreeLayout#AlignmentCenterChildren</a>.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="angle"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>angle</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the actual absolute angle at which this node should grow.<p/>The default value is zero, meaning that general tree growth should proceed rightwards along the X axis.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.By default this is the same as the Angle of the parent <a href="../symbols/TreeVertex.html">TreeVertex</a>.However, after the initial propagation of property values, perhaps inan override of <a href="../symbols/TreeLayout.html#assignTreeVertexValues">TreeLayout#assignTreeVertexValues</a>,you could just set this property to specify the angle at which this node grows its subtrees.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="breadthLimit"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>breadthLimit</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how broad a node and its descendants should be.<p/>By default this is zero.  A value of zero imposes no limit;a positive value will specify a limit for the total width of this subtree.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="childPortSpot"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+					<b>childPortSpot</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the spot that children nodes' ports get as their ToSpot,if <a href="../symbols/TreeVertex.html#setsChildPortSpot">#setsChildPortSpot</a> is true and the node has only a single port.<p/>The default value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.A value of <a href="../symbols/Spot.html#Default">Spot#Default</a> will cause the TreeLayoutto assign a ToSpot based on the parent node's <a href="../symbols/TreeVertex.html#angle">TreeVertex#angle</a>.If the value is other than NoSpot, it is just assigned.When <a href="../symbols/TreeLayout.html#path">TreeLayout#path</a> is <a href="../symbols/TreeLayout.html#PathSource">TreeLayout#PathSource</a>, the port's FromSpot is set instead of the ToSpot.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="children"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array.<TreeVertex>}</span>
+					<b>children</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the logical children for this node.<p/>The default value is an empty array.<p/>This structural property is computed in <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a> when building the tree structures.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="childrenCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>childrenCount</b>
+
+					</div>
+					<div class="description">
+						Gets the number of immediate children this node has.<p/>The default value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commentMargin"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>commentMargin</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the space to leave between the node and the comments.<p/>The default value is 20.<p/>Negative values may cause comments to overlap with the node.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="comments"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array.<Node>}</span>
+					<b>comments</b>
+
+					</div>
+					<div class="description">
+						Gets or sets an array of <a href="../symbols/Node.html">Node</a>s that will be positioned near this node.<p/>The default value is null.<p/>These objects should not have their own <a href="../symbols/TreeVertex.html">TreeVertex</a>es to be laid out.Typically these will be <a href="../symbols/Node.html">Node</a>s whose Category is "Comment".This array should be allocated and initialized in <a href="../symbols/TreeLayout.html#addComments">TreeLayout#addComments</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commentSpacing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>commentSpacing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the space to leave between consecutive comments.<p/>The default value is 10.<p/>Negative values may cause comments to overlap.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="compaction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>compaction</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how the children of this node should be packed together.<p/>The default value is <a href="../symbols/TreeLayout.html#CompactionBlock">TreeLayout#CompactionBlock</a>.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="comparer"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{function(TreeVertex, TreeVertex):number}</span>
+					<b>comparer</b>
+
+					</div>
+					<div class="description">
+						Gets or sets how the children should be sorted.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="descendantCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>descendantCount</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the number of descendants this node has.<p/>For a leaf node, this will be zero.<p/>This informational property is computed as part of the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="initialized"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>initialized</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether this node has been initialized as part of <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a> when building the tree structures.<p/>The default value is false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="layerSpacing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>layerSpacing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance between this node and its children.<p/>The default value is 50.<p/>Negative values may cause children to overlap with the parent.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="layerSpacingParentOverlap"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>layerSpacingParentOverlap</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the fraction of this node's depth that may overlap with the children's layer.<p/>The default value is 0.0 -- there is overlap only if <a href="../symbols/TreeVertex.html#layerSpacing">#layerSpacing</a> is negative.Values must range from 0.0 to 1.0, where 1.0 means the full depth of this node.<p/>When this value is greater than 0.0, there might not be overlap if <a href="../symbols/TreeVertex.html#layerSpacing">#layerSpacing</a>is larger than the depth of this node times this fraction.Even when this value is 0.0, there may be overlap when <a href="../symbols/TreeVertex.html#layerSpacing">#layerSpacing</a> is negative.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="level"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>level</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the number of single-parent ancestors this node has.<p/>This could also be interpreted as which layer this node is in.A root node will have a value of zero.<p/>This informational property is computed in <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a> when building the tree structures.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="maxChildrenCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>maxChildrenCount</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the maximum number of children of any descendant of this node.<p/>For a leaf node, this will be zero.<p/>This informational property is computed as part of the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="maxGenerationCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>maxGenerationCount</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the maximum depth of the subtrees below this node.<p/>For a leaf node, this will be zero.<p/>This informational property is computed as part of the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.You should probably not be setting this value.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="nodeIndent"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>nodeIndent</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance the first child should be indented.<p/>The default value is zero. The value should be non-negative.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.This property is only sensible when the <a href="../symbols/TreeVertex.html#alignment">#alignment</a> is<a href="../symbols/TreeLayout.html#AlignmentStart">TreeLayout#AlignmentStart</a> or <a href="../symbols/TreeLayout.html#AlignmentEnd">TreeLayout#AlignmentEnd</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="nodeIndentPastParent"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>nodeIndentPastParent</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the first child should be indented past the parent node's breadth.<p/>The default value is 0.0 -- the only start or end spacing is provided by <a href="../symbols/TreeVertex.html#nodeIndent">#nodeIndent</a>.Values must range from 0.0 to 1.0, where 1.0 means the full breadth of this node.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.This property is only sensible when the <a href="../symbols/TreeVertex.html#alignment">#alignment</a> is<a href="../symbols/TreeLayout.html#AlignmentStart">TreeLayout#AlignmentStart</a> or <a href="../symbols/TreeLayout.html#AlignmentEnd">TreeLayout#AlignmentEnd</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="nodeSpacing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>nodeSpacing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance between child nodes.<p/>The default value is 20.<p/>A negative value will cause sibling nodes to overlap.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="parent"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/TreeVertex.html">TreeVertex</a>}</span>
+					<b>parent</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the logical parent for this node.<p/>The default value is null.<p/>This structural property is computed in <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a> when building the tree structures.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="portSpot"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+					<b>portSpot</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the spot that this node's port gets as its FromSpot,if <a href="../symbols/TreeVertex.html#setsPortSpot">#setsPortSpot</a> is true and the node has only a single port.<p/>The default value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.A value of <a href="../symbols/Spot.html#Default">Spot#Default</a> will cause the TreeLayoutto assign a FromSpot based on the parent node's <a href="../symbols/TreeVertex.html#angle">TreeVertex#angle</a>.If the value is other than NoSpot, it is just assigned.When <a href="../symbols/TreeLayout.html#path">TreeLayout#path</a> is <a href="../symbols/TreeLayout.html#PathSource">TreeLayout#PathSource</a>, the port's ToSpot is set instead of the FromSpot.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="relativePosition"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+					<b>relativePosition</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the position of this node relative to its parent node.<p/>This informational property is computed during <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a>.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rowIndent"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>rowIndent</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance the first child of each row should be indented.<p/>The default value is 10.  The value should be non-negative.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.This property is only used when the <a href="../symbols/TreeVertex.html#breadthLimit">#breadthLimit</a> is positive,and some initial space needs to be reserved in each row of nodes for the linksthat are routed around those rows.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rowSpacing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>rowSpacing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the distance between rows within one layer, all sharing the same parent.<p/>The default value is 25.<p/>Negative values may cause nodes to overlap.This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setsChildPortSpot"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>setsChildPortSpot</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the TreeLayout should set the ToSpot for each child node port.<p/>The default value is true -- this may modify the spots of the ports of the children nodes,if the node has only a single port.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.The spot used depends on the value of <a href="../symbols/TreeVertex.html#childPortSpot">#childPortSpot</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setsPortSpot"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>setsPortSpot</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the TreeLayout should set the FromSpot for this parent node port.<p/>The default value is true -- this may modify the spot of the port of this node, the parent,if the node has only a single port.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.The spot used depends on the value of <a href="../symbols/TreeVertex.html#portSpot">#portSpot</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="sorting"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>sorting</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether and in what order the children should be sorted.<p/>The default value is <a href="../symbols/TreeLayout.html#SortingForwards">TreeLayout#SortingForwards</a>.<p/>This inherited property is initialized in the <a href="../symbols/TreeLayout.html#initializeTreeVertexValues">TreeLayout#initializeTreeVertexValues</a> pass.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="subtreeOffset"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+					<b>subtreeOffset</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the offset of this parent node relative to its whole subtree.<p/>This informational property is computed during <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a>.Of course if there are no children, this is just (0, 0).You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="subtreeSize"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+					<b>subtreeSize</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the size of the subtree (including all descendants) parented by this node.<p/>This informational property is computed during <a href="../symbols/TreeLayout.html#doLayout">TreeLayout#doLayout</a>.Of course if there are no children, this is just the same as Size.You should probably not be setting this property.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="copyInheritedPropertiesFrom"> </a>
+					<div class="fixedFont">
+
+					
+					<b>copyInheritedPropertiesFrom</b>(copy)
+
+					</div>
+					<div class="description">
+						Copy inherited properties from another TreeVertex to this one.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/TreeVertex.html">TreeVertex</a>}</span> <b>copy</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

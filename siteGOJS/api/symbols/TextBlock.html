@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - TextBlock</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class TextBlock
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/GraphObject.html">GraphObject</a>.<br />
+				
+
+				A TextBlock is a <a href="../symbols/GraphObject.html">GraphObject</a> that displays a <a href="../symbols/TextBlock.html#text">#text</a> string in a given <a href="../symbols/TextBlock.html#font">#font</a>.<p>The size and appearance of the text is specified by <a href="../symbols/TextBlock.html#font">#font</a>,which takes a well-formed CSS string as its value.The order of the CSS properties given is important for cross-browser compatibility,and should be given in this order:<p><em>"font-style font-variant font-weight font-size font-family"</em><p>For example, "Italic small-caps bold 32px Georgia, Serif" is a valid font stringusing every CSS font property.<p>Text is drawn using the <a href="../symbols/TextBlock.html#stroke">#stroke</a> brush, which may be any CSS color string or a <a href="../symbols/Brush.html">Brush</a>.<p>TextBlocks typically receive a natural size based on their text and font strings,but often a width is given in order to cause the text to wrap at a certain place.In order for wrapping to occur, the <a href="../symbols/TextBlock.html#wrap">#wrap</a> property must not be <a href="../symbols/TextBlock.html#None">TextBlock#None</a>.<p>TextBlocks can be edited by users using the <a href="../symbols/TextEditingTool.html">TextEditingTool</a>.The HTMLElement that a given TextBlock uses as its text editor can be customizedby setting the <a href="../symbols/TextBlock.html#textEditor">#textEditor</a> property. For an example of custom text editing tool use,see the <a href="../../samples/customTextEditingTool.html">Custom TextEditingTool Sample</a>.<p class="box">For examples of TextBlock possibilities and functionality,see the <a href="../../intro/textBlocks.html">Introduction page on TextBlocks</a>.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class TextBlock.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#constructor">TextBlock</a></b>()
+							</div>
+							<div class="description">A newly constructed <a href="../symbols/TextBlock.html">TextBlock</a> has no string to show; if it did,it would draw the text, wrapping if needed, in the default font using a black stroke.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class TextBlock.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#editable">editable</a></b>
+								</div>
+								<div class="description">Gets or sets whether or not this TextBlock allows in-place editing of the <a href="../symbols/TextBlock.html#text">#text</a>string by the user with the help of the <a href="../symbols/TextEditingTool.html">TextEditingTool</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{function(TextEditingTool, string, string) | null}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#errorFunction">errorFunction</a></b>
+								</div>
+								<div class="description">Gets or sets the function to call if a text edit made with the <a href="../symbols/TextEditingTool.html">TextEditingTool</a> is invalid.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#font">font</a></b>
+								</div>
+								<div class="description">Gets or sets the current font settings.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#isMultiline">isMultiline</a></b>
+								</div>
+								<div class="description">Gets or sets whether or not the text allows or displays multiple lines or embedded newlines.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#isStrikethrough">isStrikethrough</a></b>
+								</div>
+								<div class="description">Gets or sets whether or not the text has a strikethrough line (line-through).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#isUnderline">isUnderline</a></b>
+								</div>
+								<div class="description">Gets or sets whether or not the text is underlined.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#lineCount">lineCount</a></b>
+								</div>
+								<div class="description">Gets the total number of lines in this TextBlock, including lines created from returns and wrapping.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#naturalBounds">naturalBounds</a></b>
+								</div>
+								<div class="description">Gets the natural bounds of this TextBlock in local coordinates,as determined by its <a href="../symbols/TextBlock.html#font">#font</a> and <a href="../symbols/TextBlock.html#text">#text</a> string.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#stroke">stroke</a></b>
+								</div>
+								<div class="description">Gets or sets the <a href="../symbols/Brush.html">Brush</a> or string that describes the stroke (color) of the <a href="../symbols/TextBlock.html#font">#font</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#text">text</a></b>
+								</div>
+								<div class="description">Gets or sets the current text string.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#textAlign">textAlign</a></b>
+								</div>
+								<div class="description">Gets or sets the current text alignment property.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{HTMLElement}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#textEditor">textEditor</a></b>
+								</div>
+								<div class="description">Gets or sets the HTMLElement that this TextBlock uses as its text editor in the TextEditingTool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{function(TextBlock, string, string):boolean | null}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#textValidation">textValidation</a></b>
+								</div>
+								<div class="description">Gets or sets the predicate that determines whether or not a string of text is valid.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/TextBlock.html#wrap">wrap</a></b>
+								</div>
+								<div class="description">Gets or sets whether the text should be wrapped if it is too long to fit on one line.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Properties borrowed from class <a href="../symbols/GraphObject.html">GraphObject</a>: </dt><dd><a href="../symbols/GraphObject.html#actionCancel">actionCancel</a>, <a href="../symbols/GraphObject.html#actionDown">actionDown</a>, <a href="../symbols/GraphObject.html#actionMove">actionMove</a>, <a href="../symbols/GraphObject.html#actionUp">actionUp</a>, <a href="../symbols/GraphObject.html#actualBounds">actualBounds</a>, <a href="../symbols/GraphObject.html#alignment">alignment</a>, <a href="../symbols/GraphObject.html#alignmentFocus">alignmentFocus</a>, <a href="../symbols/GraphObject.html#angle">angle</a>, <a href="../symbols/GraphObject.html#areaBackground">areaBackground</a>, <a href="../symbols/GraphObject.html#background">background</a>, <a href="../symbols/GraphObject.html#click">click</a>, <a href="../symbols/GraphObject.html#column">column</a>, <a href="../symbols/GraphObject.html#columnSpan">columnSpan</a>, <a href="../symbols/GraphObject.html#contextClick">contextClick</a>, <a href="../symbols/GraphObject.html#contextMenu">contextMenu</a>, <a href="../symbols/GraphObject.html#cursor">cursor</a>, <a href="../symbols/GraphObject.html#Default">Default</a>, <a href="../symbols/GraphObject.html#desiredSize">desiredSize</a>, <a href="../symbols/GraphObject.html#diagram">diagram</a>, <a href="../symbols/GraphObject.html#doubleClick">doubleClick</a>, <a href="../symbols/GraphObject.html#Fill">Fill</a>, <a href="../symbols/GraphObject.html#fromEndSegmentDirection">fromEndSegmentDirection</a>, <a href="../symbols/GraphObject.html#fromEndSegmentLength">fromEndSegmentLength</a>, <a href="../symbols/GraphObject.html#fromLinkable">fromLinkable</a>, <a href="../symbols/GraphObject.html#fromLinkableDuplicates">fromLinkableDuplicates</a>, <a href="../symbols/GraphObject.html#fromLinkableSelfNode">fromLinkableSelfNode</a>, <a href="../symbols/GraphObject.html#fromMaxLinks">fromMaxLinks</a>, <a href="../symbols/GraphObject.html#fromShortLength">fromShortLength</a>, <a href="../symbols/GraphObject.html#fromSpot">fromSpot</a>, <a href="../symbols/GraphObject.html#height">height</a>, <a href="../symbols/GraphObject.html#Horizontal">Horizontal</a>, <a href="../symbols/GraphObject.html#isActionable">isActionable</a>, <a href="../symbols/GraphObject.html#isPanelMain">isPanelMain</a>, <a href="../symbols/GraphObject.html#layer">layer</a>, <a href="../symbols/GraphObject.html#margin">margin</a>, <a href="../symbols/GraphObject.html#maxSize">maxSize</a>, <a href="../symbols/GraphObject.html#measuredBounds">measuredBounds</a>, <a href="../symbols/GraphObject.html#minSize">minSize</a>, <a href="../symbols/GraphObject.html#mouseDragEnter">mouseDragEnter</a>, <a href="../symbols/GraphObject.html#mouseDragLeave">mouseDragLeave</a>, <a href="../symbols/GraphObject.html#mouseDrop">mouseDrop</a>, <a href="../symbols/GraphObject.html#mouseEnter">mouseEnter</a>, <a href="../symbols/GraphObject.html#mouseHold">mouseHold</a>, <a href="../symbols/GraphObject.html#mouseHover">mouseHover</a>, <a href="../symbols/GraphObject.html#mouseLeave">mouseLeave</a>, <a href="../symbols/GraphObject.html#mouseOver">mouseOver</a>, <a href="../symbols/GraphObject.html#name">name</a>, <a href="../symbols/GraphObject.html#panel">panel</a>, <a href="../symbols/GraphObject.html#part">part</a>, <a href="../symbols/GraphObject.html#pickable">pickable</a>, <a href="../symbols/GraphObject.html#portId">portId</a>, <a href="../symbols/GraphObject.html#position">position</a>, <a href="../symbols/GraphObject.html#row">row</a>, <a href="../symbols/GraphObject.html#rowSpan">rowSpan</a>, <a href="../symbols/GraphObject.html#scale">scale</a>, <a href="../symbols/GraphObject.html#segmentFraction">segmentFraction</a>, <a href="../symbols/GraphObject.html#segmentIndex">segmentIndex</a>, <a href="../symbols/GraphObject.html#segmentOffset">segmentOffset</a>, <a href="../symbols/GraphObject.html#segmentOrientation">segmentOrientation</a>, <a href="../symbols/GraphObject.html#stretch">stretch</a>, <a href="../symbols/GraphObject.html#toEndSegmentDirection">toEndSegmentDirection</a>, <a href="../symbols/GraphObject.html#toEndSegmentLength">toEndSegmentLength</a>, <a href="../symbols/GraphObject.html#toLinkable">toLinkable</a>, <a href="../symbols/GraphObject.html#toLinkableDuplicates">toLinkableDuplicates</a>, <a href="../symbols/GraphObject.html#toLinkableSelfNode">toLinkableSelfNode</a>, <a href="../symbols/GraphObject.html#toMaxLinks">toMaxLinks</a>, <a href="../symbols/GraphObject.html#toolTip">toolTip</a>, <a href="../symbols/GraphObject.html#toShortLength">toShortLength</a>, <a href="../symbols/GraphObject.html#toSpot">toSpot</a>, <a href="../symbols/GraphObject.html#Uniform">Uniform</a>, <a href="../symbols/GraphObject.html#UniformToFill">UniformToFill</a>, <a href="../symbols/GraphObject.html#Vertical">Vertical</a>, <a href="../symbols/GraphObject.html#visible">visible</a>, <a href="../symbols/GraphObject.html#width">width</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/GraphObject.html">GraphObject</a>: </dt><dd><a href="../symbols/GraphObject.html#bind">bind</a>, <a href="../symbols/GraphObject.html#copy">copy</a>, <a href="../symbols/GraphObject.html#getDocumentAngle">getDocumentAngle</a>, <a href="../symbols/GraphObject.html#getDocumentPoint">getDocumentPoint</a>, <a href="../symbols/GraphObject.html#getDocumentScale">getDocumentScale</a>, <a href="../symbols/GraphObject.html#getLocalPoint">getLocalPoint</a>, <a href="../symbols/GraphObject.html#isContainedBy">isContainedBy</a>, <a href="../symbols/GraphObject.html#isVisibleObject">isVisibleObject</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class TextBlock.">
+					<caption>Constants</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+              <a name="None"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>None</b>
+								</div>
+								<div class="description">The TextBlock will not wrap its text.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="WrapDesiredSize"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>WrapDesiredSize</b>
+								</div>
+								<div class="description">The TextBlock will wrap text and the width of the TextBlock will be the desiredSize's width, if any.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="WrapFit"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>WrapFit</b>
+								</div>
+								<div class="description">The TextBlock will wrap text, making the width of the TextBlock equal to the width of the longest line.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>TextBlock</b>()
+				</div>
+
+				<div class="description">
+					A newly constructed <a href="../symbols/TextBlock.html">TextBlock</a> has no string to show; if it did,it would draw the text, wrapping if needed, in the default font using a black stroke.
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="editable"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>editable</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether or not this TextBlock allows in-place editing of the <a href="../symbols/TextBlock.html#text">#text</a>string by the user with the help of the <a href="../symbols/TextEditingTool.html">TextEditingTool</a>.The default is false.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="errorFunction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{function(TextEditingTool, string, string) | null}</span>
+					<b>errorFunction</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the function to call if a text edit made with the <a href="../symbols/TextEditingTool.html">TextEditingTool</a> is invalid.The default is null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="font"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>font</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the current font settings.The font property must be a valid CSS string describing a font.The font string can accept several CSS properties but they must bein a specific order in order to render correctly across all browsers:<p><em>"font-style font-variant font-weight font-size font-family"</em><p>For example, "Italic small-caps bold 32px Georgia, Serif" is a valid font stringusing every CSS font property.For more information about CSS font syntax, see <a href="http://developer.mozilla.org/en-US/docs/Web/CSS/font">CSS fonts</a>.<p>The default is "10px sans-serif".
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isMultiline"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isMultiline</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether or not the text allows or displays multiple lines or embedded newlines.If this is false, all characters after the first newline will be omitted. Default is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isStrikethrough"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isStrikethrough</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether or not the text has a strikethrough line (line-through). Default false.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isUnderline"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isUnderline</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether or not the text is underlined. Default false.
+						
+					</div>
+
+					
+
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.2</dd>
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="lineCount"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>lineCount</b>
+
+					</div>
+					<div class="description">
+						Gets the total number of lines in this TextBlock, including lines created from returns and wrapping.This value may be meaningless before the TextBlock is measured.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="naturalBounds"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+					<b>naturalBounds</b>
+
+					</div>
+					<div class="description">
+						Gets the natural bounds of this TextBlock in local coordinates,as determined by its <a href="../symbols/TextBlock.html#font">#font</a> and <a href="../symbols/TextBlock.html#text">#text</a> string.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="stroke"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
+					<b>stroke</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the <a href="../symbols/Brush.html">Brush</a> or string that describes the stroke (color) of the <a href="../symbols/TextBlock.html#font">#font</a>.<p>The default value is "black".Any valid CSS string can specify a solid color, and the <a href="../symbols/Brush.html">Brush</a>class can be used to specify a gradient or pattern.More information about the syntax of CSS color strings is available at:<a href="http://developer.mozilla.org/en-US/docs/Web/CSS/color">CSS colors</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="text"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>text</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the current text string. The default is an empty string.The text of a TextBlock, along with the values of <a href="../symbols/TextBlock.html#font">#font</a>, <a href="../symbols/TextBlock.html#wrap">#wrap</a>,<a href="../symbols/TextBlock.html#isMultiline">#isMultiline</a> and sizing restrictions are what naturally determinethe size of the TextBlock.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="textAlign"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>textAlign</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the current text alignment property.The possible values are "start", "end", "left", "right", and "center".Any other value is invalid.The default is "start".
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="textEditor"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{HTMLElement}</span>
+					<b>textEditor</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the HTMLElement that this TextBlock uses as its text editor in the TextEditingTool.If null, the TextBlock will use the default text editor of the <a href="../symbols/TextEditingTool.html">TextEditingTool</a>. The default is null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="textValidation"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{function(TextBlock, string, string):boolean | null}</span>
+					<b>textValidation</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the predicate that determines whether or not a string of text is valid.The default predicate is null, which is equivalent to simply returning true.<p>The function, if supplied, must not have any side-effects.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="wrap"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>wrap</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the text should be wrapped if it is too long to fit on one line.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

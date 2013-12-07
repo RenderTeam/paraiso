@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - DiagramEvent</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class DiagramEvent
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				
+
+				A DiagramEvent represents a more abstract event than an <a href="../symbols/InputEvent.html">InputEvent</a>.They are raised on the <a href="../symbols/Diagram.html">Diagram</a> class.One can receive such events by registering a DiagramEvent listener on a Diagramby calling <a href="../symbols/Diagram.html#addDiagramListener">Diagram#addDiagramListener</a>.The listener function, when called, will be passed an instance of a <a href="../symbols/DiagramEvent.html">DiagramEvent</a>.Use the <a href="../symbols/DiagramEvent.html#name">#name</a> property to decide what kind of diagram event it is.The <a href="../symbols/DiagramEvent.html#diagram">#diagram</a> property refers to the Diagram, and you can get additional informationfrom that, such as the <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a>, which in turn provides informationsuch as <a href="../symbols/InputEvent.html#documentPoint">InputEvent#documentPoint</a> that may be relevant for that kind of DiagramEvent.<p/>The <a href="../symbols/DiagramEvent.html#subject">#subject</a> and <a href="../symbols/DiagramEvent.html#parameter">#parameter</a> properties optionally provide additional informationabout the diagram event.  The subject could be a collection of <a href="../symbols/Part.html">Part</a>s or it could bean individual object such as a <a href="../symbols/Link.html">Link</a> or a <a href="../symbols/GraphObject.html">GraphObject</a> within a <a href="../symbols/Node.html">Node</a>.Everything depends on the kind of diagram event that it is.<p/>Some DiagramEvents such as "ObjectSingleClicked" or "BackgroundDoubleClicked" are normallyassociated with <a href="../symbols/InputEvent.html">InputEvent</a>s.Some DiagramEvents such as "SelectionMoved" or "PartRotated" are associated with theresults of <a href="../symbols/Tool.html">Tool</a>-handled gestures or <a href="../symbols/CommandHandler.html">CommandHandler</a> actions.Some DiagramEvents are not necessarily associated with any input events at all,such as "ViewportBoundsChanged", which can happen due to programmaticchanges to the <a href="../symbols/Diagram.html#position">Diagram#position</a> and <a href="../symbols/Diagram.html#scale">Diagram#scale</a> properties.<p/>Currently defined diagram event names include:<ul>  <li><b>"BackgroundSingleClicked"</b>, a click that was not on any Part; </li>  <li><b>"BackgroundDoubleClicked"</b>, a double-click that was not on any Part</li>  <li><b>"BackgroundContextClicked"</b>, a context-click that was not on any Part</li>  <li><b>"ChangingSelection"</b>, an operation is about to change the <a href="../symbols/Diagram.html#selection">Diagram#selection</a> collection</li>  <li><b>"ChangedSelection"</b>, an operation has just changed the <a href="../symbols/Diagram.html#selection">Diagram#selection</a> collection</li>  <li><b>"ClipboardChanged"</b>, Parts have been copied to the clipboard by <a href="../symbols/CommandHandler.html#copySelection">CommandHandler#copySelection</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Part.html">Part</a>s</li>  <li><b>"ClipboardPasted"</b>, Parts have been copied from the clipboard into the Diagram by <a href="../symbols/CommandHandler.html#pasteSelection">CommandHandler#pasteSelection</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/Diagram.html#selection">Diagram#selection</a></li>  <li><b>"DocumentBoundsChanged"</b>, the area of the diagram's Parts, <a href="../symbols/Diagram.html#documentBounds">Diagram#documentBounds</a>, has changed; the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the old <a href="../symbols/Rect.html">Rect</a></li>  <li><b>"ExternalObjectsDropped"</b>, Parts have been copied into the Diagram by drag-and-drop from outside of the Diagram; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/Diagram.html#selection">Diagram#selection</a></li>  <li><b>"InitialLayoutCompleted"</b>, the whole diagram layout has updated for the first time since a major change to the Diagram, such as replacing the Model</li>  <li><b>"LayoutCompleted"</b>, the whole diagram layout has just been updated</li>  <li><b>"LinkDrawn"</b>, the user has just created a new Link using <a href="../symbols/LinkingTool.html">LinkingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the new <a href="../symbols/Link.html">Link</a></li>  <li><b>"LinkRelinked"</b>, the user has just reconnected an existing Link using <a href="../symbols/RelinkingTool.html">RelinkingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the modified <a href="../symbols/Link.html">Link</a>, the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the <a href="../symbols/GraphObject.html">GraphObject</a> port that the link was disconnected from</li>  <li><b>"LinkReshaped"</b>, the user has just rerouted an existing Link using <a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the modified <a href="../symbols/Link.html">Link</a></li>  <li><b>"ObjectSingleClicked"</b>, a click that occurred on a GraphObject; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/GraphObject.html">GraphObject</a></li>  <li><b>"ObjectDoubleClicked"</b>, a double-click that occurred on a GraphObject; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/GraphObject.html">GraphObject</a></li>  <li><b>"ObjectContextClicked"</b>, a context-click that occurred on a GraphObject; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/GraphObject.html">GraphObject</a></li>  <li><b>"PartCreated"</b>, the user inserted a new Part by <a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the new <a href="../symbols/Part.html">Part</a></li>  <!--<li><b>"PartReshaped"</b>, the user has changed the geometry of a Shape by PartReshapingTool</li>-->  <li><b>"PartResized"</b>, the user has changed the size of a GraphObject by <a href="../symbols/ResizingTool.html">ResizingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/GraphObject.html">GraphObject</a>, the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the original Size</li>  <li><b>"PartRotated"</b>, the user has changed the angle of a GraphObject by <a href="../symbols/RotatingTool.html">RotatingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the <a href="../symbols/GraphObject.html">GraphObject</a>, the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the original angle</li>  <li><b>"SelectionMoved"</b>, the user has moved selected Parts by <a href="../symbols/DraggingTool.html">DraggingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the moved <a href="../symbols/Diagram.html#selection">Diagram#selection</a></li>  <li><b>"SelectionCopied"</b>, the user has copied selected Parts by <a href="../symbols/DraggingTool.html">DraggingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the newly copied <a href="../symbols/Diagram.html#selection">Diagram#selection</a></li>  <li><b>"SelectionDeleting"</b>, the user is about to delete selected Parts by <a href="../symbols/CommandHandler.html#deleteSelection">CommandHandler#deleteSelection</a>; you can cancel the deletion by setting <a href="../symbols/DiagramEvent.html#cancel">DiagramEvent#cancel</a> to true</li>  <li><b>"SelectionDeleted"</b>, the user has deleted selected Parts by <a href="../symbols/CommandHandler.html#deleteSelection">CommandHandler#deleteSelection</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Part.html">Part</a>s that were deleted</li>  <li><b>"SelectionGrouped"</b>, the user has made a new Group out of the selected Parts by <a href="../symbols/CommandHandler.html#groupSelection">CommandHandler#groupSelection</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the new <a href="../symbols/Group.html">Group</a></li>  <li><b>"SelectionUngrouped"</b>, the user has removed a selected Group but kept its members by <a href="../symbols/CommandHandler.html#ungroupSelection">CommandHandler#ungroupSelection</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Group.html">Group</a>s that were ungrouped, the Diagram#Event#parameter is the collection of former member <a href="../symbols/Part.html">Part</a>s that were ungrouped</li>  <li><b>"SubGraphCollapsed"</b>, the user has collapsed selected Groups by <a href="../symbols/CommandHandler.html#collapseSubGraph">CommandHandler#collapseSubGraph</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Group.html">Group</a>s that were collapsed</li>  <li><b>"SubGraphExpanded"</b>, the user has expanded selected Groups by <a href="../symbols/CommandHandler.html#expandSubGraph">CommandHandler#expandSubGraph</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Group.html">Group</a>s that were expanded</li>  <li><b>"TextEdited"</b>, the user has changed the string value of a TextBlock by <a href="../symbols/TextEditingTool.html">TextEditingTool</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the edited <a href="../symbols/TextBlock.html">TextBlock</a>, the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the original string</li>  <li><b>"TreeCollapsed"</b>, the user has collapsed selected Nodes with subtrees by <a href="../symbols/CommandHandler.html#collapseTree">CommandHandler#collapseTree</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Node.html">Node</a>s that were collapsed</li>  <li><b>"TreeExpanded"</b>, the user has expanded selected Nodes with subtrees by <a href="../symbols/CommandHandler.html#expandTree">CommandHandler#expandTree</a>; the <a href="../symbols/DiagramEvent.html#subject">DiagramEvent#subject</a> is the collection of <a href="../symbols/Node.html">Node</a>s that were expanded</li>  <li><b>"ViewportBoundsChanged"</b>, the visible area of the Diagram, <a href="../symbols/Diagram.html#viewportBounds">Diagram#viewportBounds</a>, has changed; the <a href="../symbols/DiagramEvent.html#parameter">DiagramEvent#parameter</a> is the old <a href="../symbols/Rect.html">Rect</a></li></ul>
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class DiagramEvent.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#constructor">DiagramEvent</a></b>()
+							</div>
+							<div class="description">The DiagramEvent class constructor produces an empty DiagramEvent.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class DiagramEvent.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#cancel">cancel</a></b>
+								</div>
+								<div class="description">Gets or sets whether any default actions associated with this diagram eventshould be avoided or cancelled.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#diagram">diagram</a></b>
+								</div>
+								<div class="description">Gets the diagram associated with the event.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#name">name</a></b>
+								</div>
+								<div class="description">Gets or sets the name of the kind of diagram event that this represents.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{*}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#parameter">parameter</a></b>
+								</div>
+								<div class="description">Gets or sets an optional object that describes the change to the subject of the diagram event.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Object}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/DiagramEvent.html#subject">subject</a></b>
+								</div>
+								<div class="description">Gets or sets an optional object that is the subject of the diagram event.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>DiagramEvent</b>()
+				</div>
+
+				<div class="description">
+					The DiagramEvent class constructor produces an empty DiagramEvent.You should not need to call this constructor.
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="cancel"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>cancel</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether any default actions associated with this diagram eventshould be avoided or cancelled.<p/>Most diagram event types ignore this property.The default value is false -- any actions proceed normally.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="diagram"> </a>
+					<div class="fixedFont">
+
+					
+					<b>diagram</b>
+
+					</div>
+					<div class="description">
+						Gets the diagram associated with the event.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="name"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>name</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of the kind of diagram event that this represents.This property should always be set to one of the recognized list of names,as listed in the documentation for <a href="../symbols/DiagramEvent.html">DiagramEvent</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="parameter"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{*}</span>
+					<b>parameter</b>
+
+					</div>
+					<div class="description">
+						Gets or sets an optional object that describes the change to the subject of the diagram event.This property defaults to null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="subject"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Object}</span>
+					<b>subject</b>
+
+					</div>
+					<div class="description">
+						Gets or sets an optional object that is the subject of the diagram event.This property defaults to null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

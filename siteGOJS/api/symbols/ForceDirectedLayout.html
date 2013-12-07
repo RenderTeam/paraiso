@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - ForceDirectedLayout</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class ForceDirectedLayout
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/Layout.html">Layout</a>.<br />
+				
+
+				Force-directed layout treats the graph as if it were a system of physicalbodies with forces acting on them and between them.The algorithm seeks a configuration of the bodies with locally minimal energy,i.e. vertex positions such that the sum of the forces on each vertex is zero.<p/>This layout makes use of a <a href="../symbols/LayoutNetwork.html">LayoutNetwork</a> of<a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>es and <a href="../symbols/ForceDirectedEdge.html">ForceDirectedEdge</a>s that normallycorrespond to the <a href="../symbols/Node.html">Node</a>s and <a href="../symbols/Link.html">Link</a>s of the <a href="../symbols/Diagram.html">Diagram</a>.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class ForceDirectedLayout.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#constructor">ForceDirectedLayout</a></b>()
+							</div>
+							<div class="description">Constructs a <a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a> with no <a href="../symbols/Layout.html#network">Layout#network</a>and with no owning <a href="../symbols/Layout.html#diagram">Layout#diagram</a>.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class ForceDirectedLayout.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#arrangementSpacing">arrangementSpacing</a></b>
+								</div>
+								<div class="description">Gets or sets the space between which the layoutwill position the connected graphs that together compose the network.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#arrangesToOrigin">arrangesToOrigin</a></b>
+								</div>
+								<div class="description">Gets or sets whether <a href="../symbols/ForceDirectedLayout.html#commitNodes">#commitNodes</a> should move all of thenodes so that the nodes all fit with the top-left corner at the<a href="../symbols/Layout.html#arrangementOrigin">Layout#arrangementOrigin</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#comments">comments</a></b>
+								</div>
+								<div class="description">Gets or sets whether this layout should find all <a href="../symbols/Node.html">Node</a>swhose category is "Comment" andwhose anchors are nodes represented in the network,and add <a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>es representing those balloon commentsas nodes in the network.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#currentIteration">currentIteration</a></b>
+								</div>
+								<div class="description">Gets the current iteration count, valid during a call to <a href="../symbols/ForceDirectedLayout.html#doLayout">#doLayout</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultCommentElectricalCharge">defaultCommentElectricalCharge</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#electricalCharge">#electricalCharge</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultCommentSpringLength">defaultCommentSpringLength</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springLength">#springLength</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultElectricalCharge">defaultElectricalCharge</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#electricalCharge">#electricalCharge</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultGravitationalMass">defaultGravitationalMass</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#gravitationalMass">#gravitationalMass</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultSpringLength">defaultSpringLength</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springLength">#springLength</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#defaultSpringStiffness">defaultSpringStiffness</a></b>
+								</div>
+								<div class="description">Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springStiffness">#springStiffness</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#epsilonDistance">epsilonDistance</a></b>
+								</div>
+								<div class="description">Gets or sets approximately how far a node must move in order for the iterations to continue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#infinityDistance">infinityDistance</a></b>
+								</div>
+								<div class="description">Gets or sets a threshold for the distance beyond which the electrical charge forces may be ignored.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#maxIterations">maxIterations</a></b>
+								</div>
+								<div class="description">Gets or sets the maximum number of iterations to perform when doing theforce-directed auto layout.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ForceDirectedLayout.html#setsPortSpots">setsPortSpots</a></b>
+								</div>
+								<div class="description">Gets or sets whether the fromSpot and the toSpot of every <a href="../symbols/Link.html">Link</a>should be set to <a href="../symbols/Spot.html#Default">Spot#Default</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Properties borrowed from class <a href="../symbols/Layout.html">Layout</a>: </dt><dd><a href="../symbols/Layout.html#arrangementOrigin">arrangementOrigin</a>, <a href="../symbols/Layout.html#diagram">diagram</a>, <a href="../symbols/Layout.html#group">group</a>, <a href="../symbols/Layout.html#isInitial">isInitial</a>, <a href="../symbols/Layout.html#isOngoing">isOngoing</a>, <a href="../symbols/Layout.html#isRealtime">isRealtime</a>, <a href="../symbols/Layout.html#isRouting">isRouting</a>, <a href="../symbols/Layout.html#isValidLayout">isValidLayout</a>, <a href="../symbols/Layout.html#isViewportSized">isViewportSized</a>, <a href="../symbols/Layout.html#network">network</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class ForceDirectedLayout.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#commitLayout">commitLayout</a></b>()
+								</div>
+								<div class="description">Position the <a href="../symbols/Node.html">Node</a>s according to the Vertex positions.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#commitLinks">commitLinks</a></b>()
+								</div>
+								<div class="description">Commit the position and routing of all edge links.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#commitNodes">commitNodes</a></b>()
+								</div>
+								<div class="description">Commit the position of all vertex nodes.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/LayoutNetwork.html">LayoutNetwork</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#createNetwork">createNetwork</a></b>()
+								</div>
+								<div class="description">Create a new <a href="../symbols/LayoutNetwork.html">LayoutNetwork</a> of <a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>es and <a href="../symbols/ForceDirectedEdge.html">ForceDirectedEdge</a>s.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#doLayout">doLayout</a></b>(coll)
+								</div>
+								<div class="description">Assign the positions of the vertexes in the network.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#electricalCharge">electricalCharge</a></b>(v)
+								</div>
+								<div class="description">Returns the charge of the vertex,the value of <a href="../symbols/ForceDirectedVertex.html#charge">ForceDirectedVertex#charge</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultElectricalCharge">#defaultElectricalCharge</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#electricalFieldX">electricalFieldX</a></b>(x, y)
+								</div>
+								<div class="description">Returns the electrical field in the X direction acting on a vertex at the given point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#electricalFieldY">electricalFieldY</a></b>(x, y)
+								</div>
+								<div class="description">Returns the electrical field in the Y direction acting on a vertex at the given point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#gravitationalFieldX">gravitationalFieldX</a></b>(x, y)
+								</div>
+								<div class="description">This returns the gravitational field in the X direction acting on a vertex at the given point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#gravitationalFieldY">gravitationalFieldY</a></b>(x, y)
+								</div>
+								<div class="description">This returns the gravitational field in the Y direction acting on a vertex at the given point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#gravitationalMass">gravitationalMass</a></b>(v)
+								</div>
+								<div class="description">Returns the mass of the vertex,the value of <a href="../symbols/ForceDirectedVertex.html#mass">ForceDirectedVertex#mass</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultGravitationalMass">#defaultGravitationalMass</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#isFixed">isFixed</a></b>(v)
+								</div>
+								<div class="description">This predicate returns true if the vertex should not be movedby the layout algorithm but still have an effect on nearby and connected vertexes.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#springLength">springLength</a></b>(e)
+								</div>
+								<div class="description">Returns the length of the spring representing an edge.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/ForceDirectedLayout.html#springStiffness">springStiffness</a></b>(e)
+								</div>
+								<div class="description">Returns the stiffness of the spring representing an edge.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/Layout.html">Layout</a>: </dt><dd><a href="../symbols/Layout.html#copy">copy</a>, <a href="../symbols/Layout.html#invalidateLayout">invalidateLayout</a>, <a href="../symbols/Layout.html#makeNetwork">makeNetwork</a>, <a href="../symbols/Layout.html#updateParts">updateParts</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>ForceDirectedLayout</b>()
+				</div>
+
+				<div class="description">
+					Constructs a <a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a> with no <a href="../symbols/Layout.html#network">Layout#network</a>and with no owning <a href="../symbols/Layout.html#diagram">Layout#diagram</a>.
+					
+				</div>
+
+				
+
+
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="arrangementSpacing"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
+					<b>arrangementSpacing</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the space between which the layoutwill position the connected graphs that together compose the network.This defaults to Size(100, 100).These distances are used during a clustered layout;afterwards the normal force-directed layoutwill likely cause the size of any space between connected graphs to change,perhaps considerably.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="arrangesToOrigin"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>arrangesToOrigin</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether <a href="../symbols/ForceDirectedLayout.html#commitNodes">#commitNodes</a> should move all of thenodes so that the nodes all fit with the top-left corner at the<a href="../symbols/Layout.html#arrangementOrigin">Layout#arrangementOrigin</a>.By default this is false -- the <a href="../symbols/Layout.html#arrangementOrigin">Layout#arrangementOrigin</a> is ignored.When this is true, nodes are moved even though <a href="../symbols/ForceDirectedLayout.html#isFixed">#isFixed</a> was true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="comments"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>comments</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether this layout should find all <a href="../symbols/Node.html">Node</a>swhose category is "Comment" andwhose anchors are nodes represented in the network,and add <a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>es representing those balloon commentsas nodes in the network.The default value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="currentIteration"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>currentIteration</b>
+
+					</div>
+					<div class="description">
+						Gets the current iteration count, valid during a call to <a href="../symbols/ForceDirectedLayout.html#doLayout">#doLayout</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultCommentElectricalCharge"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultCommentElectricalCharge</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#electricalCharge">#electricalCharge</a>.The initial value is 25.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultCommentSpringLength"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultCommentSpringLength</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springLength">#springLength</a>.The initial value is 20.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultElectricalCharge"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultElectricalCharge</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#electricalCharge">#electricalCharge</a>.The initial value is 150.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultGravitationalMass"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultGravitationalMass</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#gravitationalMass">#gravitationalMass</a>.The initial value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultSpringLength"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultSpringLength</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springLength">#springLength</a>.The initial value is 50.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="defaultSpringStiffness"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>defaultSpringStiffness</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the default value computed by <a href="../symbols/ForceDirectedLayout.html#springStiffness">#springStiffness</a>.The initial value is 0.05.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="epsilonDistance"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>epsilonDistance</b>
+
+					</div>
+					<div class="description">
+						Gets or sets approximately how far a node must move in order for the iterations to continue.The default value is 1.The value must be larger than zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="infinityDistance"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>infinityDistance</b>
+
+					</div>
+					<div class="description">
+						Gets or sets a threshold for the distance beyond which the electrical charge forces may be ignored.The default value is 1000.The value must be larger than 1.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="maxIterations"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>maxIterations</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the maximum number of iterations to perform when doing theforce-directed auto layout.The value must be non-negative.The default value is 100.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setsPortSpots"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>setsPortSpots</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether the fromSpot and the toSpot of every <a href="../symbols/Link.html">Link</a>should be set to <a href="../symbols/Spot.html#Default">Spot#Default</a>.The default value is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="commitLayout"> </a>
+					<div class="fixedFont">
+
+					
+					<b>commitLayout</b>()
+
+					</div>
+					<div class="description">
+						Position the <a href="../symbols/Node.html">Node</a>s according to the Vertex positions.<p/>You should not call this method -- it is a "protected virtual" method.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commitLinks"> </a>
+					<div class="fixedFont">
+
+					
+					<b>commitLinks</b>()
+
+					</div>
+					<div class="description">
+						Commit the position and routing of all edge links.This is called by <a href="../symbols/ForceDirectedLayout.html#commitLayout">#commitLayout</a>.This is only called if <a href="../symbols/Layout.html#isRouting">Layout#isRouting</a> is true.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commitNodes"> </a>
+					<div class="fixedFont">
+
+					
+					<b>commitNodes</b>()
+
+					</div>
+					<div class="description">
+						Commit the position of all vertex nodes.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="createNetwork"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/LayoutNetwork.html">LayoutNetwork</a>}</span>
+					<b>createNetwork</b>()
+
+					</div>
+					<div class="description">
+						Create a new <a href="../symbols/LayoutNetwork.html">LayoutNetwork</a> of <a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>es and <a href="../symbols/ForceDirectedEdge.html">ForceDirectedEdge</a>s.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/LayoutNetwork.html">LayoutNetwork</a>}</span> a new <a href="../symbols/LayoutNetwork.html">LayoutNetwork</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="doLayout"> </a>
+					<div class="fixedFont">
+
+					
+					<b>doLayout</b>(coll)
+
+					</div>
+					<div class="description">
+						Assign the positions of the vertexes in the network.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Diagram.html">Diagram</a>|<a href="../symbols/Group.html">Group</a>|<a href="../symbols/Iterable.html">Iterable</a>}</span> <b>coll</b>
+									
+								</dt>
+								<dd>A <a href="../symbols/Diagram.html">Diagram</a> or a <a href="../symbols/Group.html">Group</a> or a collection of <a href="../symbols/Part.html">Part</a>s</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="electricalCharge"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>electricalCharge</b>(v)
+
+					</div>
+					<div class="description">
+						Returns the charge of the vertex,the value of <a href="../symbols/ForceDirectedVertex.html#charge">ForceDirectedVertex#charge</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultElectricalCharge">#defaultElectricalCharge</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>}</span> <b>v</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="electricalFieldX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>electricalFieldX</b>(x, y)
+
+					</div>
+					<div class="description">
+						Returns the electrical field in the X direction acting on a vertex at the given point.<p/>Used to define an external electrical field at a pointindependent of the vertex charges.A vertex L is acted upon by a force in the X direction of magnitude<code>electricalFieldX(L.center.x, L.center.y) * electricalCharge(L)</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the default implementation returns zero.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="electricalFieldY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>electricalFieldY</b>(x, y)
+
+					</div>
+					<div class="description">
+						Returns the electrical field in the Y direction acting on a vertex at the given point.<p/>Used to define an external electrical field at a pointindependent of the vertex charges.A vertex L is acted upon by a force in the Y direction of magnitude<code>electricalFieldY(L.center.x, L.center.y) * electricalCharge(L)</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the default implementation returns zero.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="gravitationalFieldX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>gravitationalFieldX</b>(x, y)
+
+					</div>
+					<div class="description">
+						This returns the gravitational field in the X direction acting on a vertex at the given point.<p/>Used to define an external gravitational field at a pointindependent of the vertex masses.A vertex L is acted upon by a force in the X direction of magnitude<code>gravitationalFieldX(L.center.x, L.center.y) * gravitationalMass(L)</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the default implementation returns zero.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="gravitationalFieldY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>gravitationalFieldY</b>(x, y)
+
+					</div>
+					<div class="description">
+						This returns the gravitational field in the Y direction acting on a vertex at the given point.<p/>Used to define an external gravitational field at a pointindependent of the vertex masses.A vertex L is acted upon by a force in the Y direction of magnitude<code>gravitationalFieldY(L.center.x, L.center.y) * gravitationalMass(L)</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the default implementation returns zero.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="gravitationalMass"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>gravitationalMass</b>(v)
+
+					</div>
+					<div class="description">
+						Returns the mass of the vertex,the value of <a href="../symbols/ForceDirectedVertex.html#mass">ForceDirectedVertex#mass</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultGravitationalMass">#defaultGravitationalMass</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>}</span> <b>v</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isFixed"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isFixed</b>(v)
+
+					</div>
+					<div class="description">
+						This predicate returns true if the vertex should not be movedby the layout algorithm but still have an effect on nearby and connected vertexes.The default implementation returns <a href="../symbols/ForceDirectedVertex.html#isFixed">ForceDirectedVertex#isFixed</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/ForceDirectedVertex.html">ForceDirectedVertex</a>}</span> <b>v</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> returns true if the node should not be moved by the layout algorithm.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="springLength"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>springLength</b>(e)
+
+					</div>
+					<div class="description">
+						Returns the length of the spring representing an edge.The two vertexes connected by the edge E are acted upon by a force of magnitude<code>springStiffness(E) * (getNodeDistance(E.fromVertex, E.toVertex) - springLength(E))</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/ForceDirectedEdge.html">ForceDirectedEdge</a>}</span> <b>e</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> Returns the length of the edge representing a link,the value of <a href="../symbols/ForceDirectedEdge.html#length">ForceDirectedEdge#length</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultSpringLength">#defaultSpringLength</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="springStiffness"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>springStiffness</b>(e)
+
+					</div>
+					<div class="description">
+						Returns the stiffness of the spring representing an edge.The two vertexes connected by the edge E are acted upon by a force of magnitude<code>springStiffness(E) * (getNodeDistance(E.fromVertex, E.toVertex) - springLength(E))</code>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/ForceDirectedEdge.html">ForceDirectedEdge</a>}</span> <b>e</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> Returns the stiffness of the edge representing a link,the value of <a href="../symbols/ForceDirectedEdge.html#stiffness">ForceDirectedEdge#stiffness</a> if it's a number,or else the value of <a href="../symbols/ForceDirectedLayout.html#defaultSpringStiffness">#defaultSpringStiffness</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

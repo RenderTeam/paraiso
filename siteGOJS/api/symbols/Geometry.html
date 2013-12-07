@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - Geometry</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Geometry
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				
+
+				The Geometry class is used to define the "shape" of a <a href="../symbols/Shape.html">Shape</a>.A Geometry can be simple straight lines, rectangles, or ellipses.A Geometry can also be an arbitrarily complex path, consisting of a list of <a href="../symbols/PathFigure.html">PathFigure</a>s.<p/>A Geometry must not be modified once it has been used by a <a href="../symbols/Shape.html">Shape</a>.However, a Geometry may be shared by multiple Shapes.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Geometry.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#constructor">Geometry</a></b>(type)
+							</div>
+							<div class="description">Construct an empty Geometry.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Geometry.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#bounds">bounds</a></b>
+								</div>
+								<div class="description">Gets a rectangle that contains all points within the Geometry.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#endX">endX</a></b>
+								</div>
+								<div class="description">Gets or sets the ending X coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#endY">endY</a></b>
+								</div>
+								<div class="description">Gets or sets the ending Y coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/List.html">List</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#figures">figures</a></b>
+								</div>
+								<div class="description">Gets or sets the <a href="../symbols/List.html">List</a> of <a href="../symbols/PathFigure.html">PathFigure</a>sthat describes the content of thepath for Geometries of type <a href="../symbols/Geometry.html#Path">#Path</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#spot1">spot1</a></b>
+								</div>
+								<div class="description">Gets or sets the spot to use when the <a href="../symbols/Shape.html#spot1">Shape#spot1</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#spot2">spot2</a></b>
+								</div>
+								<div class="description">Gets or sets the spot to use when the <a href="../symbols/Shape.html#spot2">Shape#spot2</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#startX">startX</a></b>
+								</div>
+								<div class="description">Gets or sets the starting X coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#startY">startY</a></b>
+								</div>
+								<div class="description">Gets or sets the starting Y coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Geometry.html#type">type</a></b>
+								</div>
+								<div class="description">Gets or sets the type of the Geometry.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Geometry.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#computeBoundsWithoutOrigin">computeBoundsWithoutOrigin</a></b>()
+								</div>
+								<div class="description">Computes the Geometry's bounds without adding an origin point, and returns those bounds as a rect.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Geometry.html">Geometry</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#copy">copy</a></b>()
+								</div>
+								<div class="description">Create a copy of this Geometry, with the same values and figures.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Geometry.<b><a href="../symbols/Geometry.html#.fillPath">fillPath</a></b>(str)
+								</div>
+								<div class="description">Given a SVG or GoJS path string, returns a congruent path string with each pathfigure filled.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#normalize">normalize</a></b>()
+								</div>
+								<div class="description">Normalizes the Geometry points in place by ensuring the top-left bounds of the geometry lines up with (0, 0),returning the <a href="../symbols/Point.html">Point</a> (x, y) amount it was shifted.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#offset">offset</a></b>(x, y)
+								</div>
+								<div class="description">Offsets the Geometry in place by a given (x, y) amount</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;
+
+                            <span class="light">{<a href="../symbols/Geometry.html">Geometry</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Geometry.<b><a href="../symbols/Geometry.html#.parse">parse</a></b>(str, filled)
+								</div>
+								<div class="description">Produce a <a href="../symbols/Geometry.html">Geometry</a> from a string that uses an SVG-like compact path geometry syntax.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#rotate">rotate</a></b>(angle, x, y)
+								</div>
+								<div class="description">Rotates the Geometry in place by a given angle, with optional x and y values to rotate the geometry about.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Geometry.html#scale">scale</a></b>(x, y)
+								</div>
+								<div class="description">Scales the Geometry in place by a given (x, y) scale factor</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Geometry.<b><a href="../symbols/Geometry.html#.stringify">stringify</a></b>(val)
+								</div>
+								<div class="description"><p>This static method can be used to write out a <a href="../symbols/Geometry.html">Geometry</a> as a stringthat can be read by <a href="../symbols/Geometry.html#.parse">Geometry.parse</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Geometry.">
+					<caption>Constants</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+              <a name="Ellipse"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Ellipse</b>
+								</div>
+								<div class="description">For drawing an ellipse fitting within a rectangle;a value for <a href="../symbols/Geometry.html#type">Geometry#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Line"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Line</b>
+								</div>
+								<div class="description">For drawing a simple straight line;a value for <a href="../symbols/Geometry.html#type">Geometry#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Path"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Path</b>
+								</div>
+								<div class="description">For drawing a complex path made of a list of <a href="../symbols/PathFigure.html">PathFigure</a>s;a value for <a href="../symbols/Geometry.html#type">Geometry#type</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+              <a name="Rectangle"> </a>
+							<td class="attributes">&lt;constant&gt; &nbsp;
+
+                            <span class="light">{EnumValue}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b>Rectangle</b>
+								</div>
+								<div class="description">For drawing a rectangle;a value for <a href="../symbols/Geometry.html#type">Geometry#type</a>.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>Geometry</b>(type)
+				</div>
+
+				<div class="description">
+					Construct an empty Geometry.The geometry type must be one of the following values:<a href="../symbols/Geometry.html#Line">Geometry#Line</a>, <a href="../symbols/Geometry.html#Ellipse">Geometry#Ellipse</a>, <a href="../symbols/Geometry.html#Rectangle">Geometry#Rectangle</a>, <a href="../symbols/Geometry.html#Path">Geometry#Path</a>.
+					
+				</div>
+
+				
+
+
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{EnumValue=}</span>  <b>type</b>
+								
+							</dt>
+								<dd>If not supplied, the default Geometry type is <a href="../symbols/Geometry.html#Path">Geometry#Path</a>.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="bounds"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+					<b>bounds</b>
+
+					</div>
+					<div class="description">
+						Gets a rectangle that contains all points within the Geometry.The result will always contain the origin (0, 0).
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>endX</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the ending X coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.The initial value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>endY</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the ending Y coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.The initial value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="figures"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/List.html">List</a>}</span>
+					<b>figures</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the <a href="../symbols/List.html">List</a> of <a href="../symbols/PathFigure.html">PathFigure</a>sthat describes the content of thepath for Geometries of type <a href="../symbols/Geometry.html#Path">#Path</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="spot1"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+					<b>spot1</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the spot to use when the <a href="../symbols/Shape.html#spot1">Shape#spot1</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.The default value is <a href="../symbols/Spot.html#TopLeft">Spot#TopLeft</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="spot2"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
+					<b>spot2</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the spot to use when the <a href="../symbols/Shape.html#spot2">Shape#spot2</a> value is <a href="../symbols/Spot.html#Default">Spot#Default</a>.The default value is <a href="../symbols/Spot.html#BottomRight">Spot#BottomRight</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="startX"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>startX</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the starting X coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.The initial value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="startY"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number}</span>
+					<b>startY</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the starting Y coordinate of the Geometry if it is of type<a href="../symbols/Geometry.html#Line">#Line</a>, <a href="../symbols/Geometry.html#Rectangle">#Rectangle</a>, or <a href="../symbols/Geometry.html#Ellipse">#Ellipse</a>.The initial value is zero.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="type"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{EnumValue}</span>
+					<b>type</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the type of the Geometry.The default type is <a href="../symbols/Geometry.html#Path">Geometry#Path</a>.Other permissible values are <a href="../symbols/Geometry.html#Line">Geometry#Line</a>, <a href="../symbols/Geometry.html#Ellipse">Geometry#Ellipse</a>,or <a href="../symbols/Geometry.html#Rectangle">Geometry#Rectangle</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="computeBoundsWithoutOrigin"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
+					<b>computeBoundsWithoutOrigin</b>()
+
+					</div>
+					<div class="description">
+						Computes the Geometry's bounds without adding an origin point, and returns those bounds as a rect.This method does not modify the Geometry or its bounds.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Rect.html">Rect</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="copy"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Geometry.html">Geometry</a>}</span>
+					<b>copy</b>()
+
+					</div>
+					<div class="description">
+						Create a copy of this Geometry, with the same values and figures.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Geometry.html">Geometry</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fillPath"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+
+					<span class="light">{string}</span>
+					<span class="light">Geometry.</span><b>fillPath</b>(str)
+
+					</div>
+					<div class="description">
+						Given a SVG or GoJS path string, returns a congruent path string with each pathfigure filled.For instance, "M0 0 L22 22 L33 0" would become "F M0 0 L22 22 L33 0".
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>str</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="normalize"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
+					<b>normalize</b>()
+
+					</div>
+					<div class="description">
+						Normalizes the Geometry points in place by ensuring the top-left bounds of the geometry lines up with (0, 0),returning the <a href="../symbols/Point.html">Point</a> (x, y) amount it was shifted.After this method is called there will be no negative X or Y value for the Geometry's bounds,and no empty space at the top-left of the Geometry.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="offset"> </a>
+					<div class="fixedFont">
+
+					
+					<b>offset</b>(x, y)
+
+					</div>
+					<div class="description">
+						Offsets the Geometry in place by a given (x, y) amount
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd>The x-axis offset factor.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd>The y-axis offset factor.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".parse"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+
+					<span class="light">{<a href="../symbols/Geometry.html">Geometry</a>}</span>
+					<span class="light">Geometry.</span><b>parse</b>(str, filled)
+
+					</div>
+					<div class="description">
+						Produce a <a href="../symbols/Geometry.html">Geometry</a> from a string that uses an SVG-like compact path geometry syntax.The syntax accepts all SVG Path Syntax (<a href="http://www.w3.org/TR/SVG/paths.html" target="_blank">W3 page</a>),as well as three GoJS-specific tokens.Specifically, the following tokens are allowed:<ul><li><code>M (x,y)+ </code> - Move commands<li><code>L (x,y)+, H (x)+, V (y)+</code> Lines commands, including horizontal and vertical lines<li><code>C (x1 y1 x2 y2 x y)+, S (x2 y2 x y)+</code> Cubic bezier curves<li><code>Q (x1 y1 x y)+, T (x y)+</code> Quadratic bezier curves<li><code>A (rx ry x-axis-rotation large-arc-flag sweep-flag x y)+</code> Arcs (following SVG arc conventions)<li><code>Z</code> Denotes that the previous subpath is closed</ul>Additionally there are some tokens specific to GoJS:<ul><li><code>B (startAngle, sweepAngle, centerX, centerY, radius)+</code> Arcs following GoJS canvas arc conventions<li><code>X</code> Used before M-commands to denote separate PathFigures instead of a subpath<li><code>F</code> Denotes whether the current PathFigure is filled (true if F is present)</ul>See the <a href="../../intro/geometry.html">Introduction page on Geometry Parsing</a> for more details.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>str</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean=}</span> <b>filled</b>
+									
+								</dt>
+								<dd>whether figures should be filled.If true, all PathFigures in the string will be filled regardless of the presenceof an "F" command or not.If false, all PathFigures will determine their own filled state by the presence of an "F" command or not.Default is false.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Geometry.html">Geometry</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="rotate"> </a>
+					<div class="fixedFont">
+
+					
+					<b>rotate</b>(angle, x, y)
+
+					</div>
+					<div class="description">
+						Rotates the Geometry in place by a given angle, with optional x and y values to rotate the geometry about.If no x and y value are giving, (0, 0) is used as the rotation point.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
+									
+								</dt>
+								<dd>The angle to rotate by.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number=}</span> <b>x</b>
+									
+								</dt>
+								<dd>The optional X point to rotate the geometry about. If no point is given, this value is 0.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number=}</span> <b>y</b>
+									
+								</dt>
+								<dd>The optional Y point to rotate the geometry about. If no point is given, this value is 0.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="scale"> </a>
+					<div class="fixedFont">
+
+					
+					<b>scale</b>(x, y)
+
+					</div>
+					<div class="description">
+						Scales the Geometry in place by a given (x, y) scale factor
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>x</b>
+									
+								</dt>
+								<dd>The x-axis scale factor.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>y</b>
+									
+								</dt>
+								<dd>The y-axis scale factor.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".stringify"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+
+					<span class="light">{string}</span>
+					<span class="light">Geometry.</span><b>stringify</b>(val)
+
+					</div>
+					<div class="description">
+						<p>This static method can be used to write out a <a href="../symbols/Geometry.html">Geometry</a> as a stringthat can be read by <a href="../symbols/Geometry.html#.parse">Geometry.parse</a>.<p>The string produced by this method is a superset of the SVG pathstring rules that contains some additional GoJS-specific tokens.See the <a href="../../intro/pictures.html">Introduction page on Geometry Parsing</a> for more details.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Geometry.html">Geometry</a>}</span> <b>val</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

@@ -1,0 +1,3268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>GoJS&reg; Reference - Model</title>
+		<script type="text/javascript" src="api.js"></script>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+p.box {
+  border: 1px solid #BBB;
+  padding: 4px 4px 6px 4px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 0px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 2px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2
+{
+  font-size: 110%;
+  margin: 4px 0px 2px 0px;
+}
+
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul {
+  list-style: square;
+  margin-left: 20px;
+  margin-right: 60px;
+  padding-left: 0;
+}
+
+ul.inheritsList
+{
+  margin-right: 0px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px;
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/*
+For highlight.js
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre {
+  border: 1px solid #ccc;
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .comment * {
+  color: rgb(0,106,0);
+}
+
+pre .keyword,
+pre .literal,
+pre .nginx .title {
+  color: rgb(170,13,145);
+}
+pre .method,
+pre .list .title,
+pre .tag .title,
+pre .setting .value,
+pre .winutils,
+pre .tex .command,
+pre .http .title,
+pre .request,
+pre .status {
+  color: #008;
+}
+
+pre .envvar,
+pre .tex .special {
+  color: #660;
+}
+
+pre .string {
+  color: rgb(196,26,22);
+}
+pre .tag .value,
+pre .cdata,
+pre .filter .argument,
+pre .attr_selector,
+pre .apache .cbracket,
+pre .date,
+pre .regexp {
+  /*color: #080; was green*/
+  color: rgb(196,26,22);
+}
+
+pre .sub .identifier,
+pre .pi,
+pre .tag,
+pre .tag .keyword,
+pre .decorator,
+pre .ini .title,
+pre .shebang,
+pre .prompt,
+pre .hexcolor,
+pre .rules .value,
+pre .css .value .number,
+pre .symbol,
+pre .symbol .string,
+pre .number,
+pre .css .function,
+pre .clojure .title,
+pre .clojure .built_in {
+  color: rgb(28,0,207);
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .smalltalk .class,
+pre .javadoctag,
+pre .yardoctag,
+pre .phpdoc,
+pre .typename,
+pre .tag .attribute,
+pre .doctype,
+pre .class .id,
+pre .built_in,
+pre .setting,
+pre .params,
+pre .clojure .attribute {
+  color: rgb(92,38,153);
+}
+
+pre .variable {
+ color: rgb(63,110,116);
+}
+pre .css .tag,
+pre .rules .property,
+pre .pseudo,
+pre .subst {
+  color: #000;
+}
+
+pre .css .class, pre .css .id {
+  color: #9B703F;
+}
+
+pre .value .important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+pre .rules .keyword {
+  color: #C5AF75;
+}
+
+pre .annotation,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #9B859D;
+}
+
+pre .preprocessor,
+pre .preprocessor * {
+  color: rgb(100,56,32);
+}
+
+pre .tex .formula {
+  background-color: #EEE;
+  font-style: italic;
+}
+
+pre .diff .header,
+pre .chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+pre .diff .change {
+  background-color: #BCCFF9;
+}
+
+pre .addition {
+  background-color: #BAEEBA;
+}
+
+pre .deletion {
+  background-color: #FFC8BD;
+}
+
+pre .comment .yardoctag {
+  font-weight: bold;
+}
+
+pre .method .id {
+  color: #000;
+}
+
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->
+    <div id="header" class="fineprint">
+      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
+    </div>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div><a href="../../index.html">GoJS Home</a></div>
+<div><a href="../index.html">GoJS Class Index</a></div>
+
+<h2>Diagram Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Adornment.html">Adornment</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
+  
+    
+  
+    <li><a href="../symbols/Diagram.html">Diagram</a></li>
+  
+    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
+  
+    
+  
+    <li><a href="../symbols/Group.html">Group</a></li>
+  
+    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Layer.html">Layer</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Link.html">Link</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Node.html">Node</a></li>
+  
+    <li><a href="../symbols/Overview.html">Overview</a></li>
+  
+    <li><a href="../symbols/Palette.html">Palette</a></li>
+  
+    <li><a href="../symbols/Panel.html">Panel</a></li>
+  
+    
+  
+    <li><a href="../symbols/Part.html">Part</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Picture.html">Picture</a></li>
+  
+    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
+  
+    
+  
+    <li><a href="../symbols/Shape.html">Shape</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Geometry Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Brush.html">Brush</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Geometry.html">Geometry</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Margin.html">Margin</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
+  
+    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Point.html">Point</a></li>
+  
+    <li><a href="../symbols/Rect.html">Rect</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Size.html">Size</a></li>
+  
+    <li><a href="../symbols/Spot.html">Spot</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Model Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Binding.html">Binding</a></li>
+  
+    
+  
+    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Model.html">Model</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Transaction.html">Transaction</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
+  
+    
+  
+    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
+  
+</ul>
+
+<h2>Layout Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
+  
+    
+  
+    <li><a href="../symbols/Layout.html">Layout</a></li>
+  
+    
+  
+    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Tool Classes</h2>
+<ul class="classList">
+  
+    
+  
+    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
+  
+    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
+  
+    
+  
+    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
+  
+    
+  
+    
+  
+    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
+  
+    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
+  
+    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
+  
+    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
+  
+    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
+  
+    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
+  
+    <li><a href="../symbols/Tool.html">Tool</a></li>
+  
+    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+<h2>Collection Classes</h2>
+<ul class="classList">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Iterable.html">Iterable</a></li>
+  
+    <li><a href="../symbols/Iterator.html">Iterator</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/List.html">List</a></li>
+  
+    <li><a href="../symbols/Map.html">Map</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <li><a href="../symbols/Set.html">Set</a></li>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+			<!-- end publish.classesIndex -->
+		</div>
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Model
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->
+			<p class="description">
+				
+				
+
+				Models hold the essential data of a diagram, describing the basic entities and their properties and relationshipswithout specifying the appearance and behavior of the Nodes and Links and Groups that represent them visually.Models tend to hold only relatively simple data, making them easy to persist by serialization as JSON or XML formatted text.<p/>Models hold simple data objects, not <a href="../symbols/Part.html">Part</a>s such as <a href="../symbols/Node.html">Node</a>s or <a href="../symbols/Link.html">Link</a>s.Node data is normally represented in a <a href="../symbols/Diagram.html">Diagram</a> by instances of <a href="../symbols/Node.html">Node</a>,but they could be represented by simple <a href="../symbols/Part.html">Part</a>s or by <a href="../symbols/Group.html">Group</a>s.A Diagram constructs Parts for its <a href="../symbols/Diagram.html#model">Diagram#model</a>'s data by copying templates.Templates are <a href="../symbols/Panel.html">Panel</a>s of <a href="../symbols/GraphObject.html">GraphObject</a>s that get some property values from the model data,accessible via the <a href="../symbols/Panel.html#data">Panel#data</a> property, using data <a href="../symbols/Binding.html">Binding</a>.See <a href="../../intro/usingModels.html">Using Models</a> and <a href="../../intro/dataBinding.html">Data Binding</a> for an introduction.<p/>This Model class only supports holding an array of node dataand interpreting properties on that data to be able to refer to themusing unique key values.To support simple tree-structured graphs, use a <a href="../symbols/TreeModel.html">TreeModel</a>, which inherits from this class.To support links and grouping, use a <a href="../symbols/GraphLinksModel.html">GraphLinksModel</a>.<p/>Each node data object is assumed to have a unique key value.The <a href="../symbols/Model.html#nodeKeyProperty">#nodeKeyProperty</a> property names the property on the node data whose valueis the unique key for that node data object.The default value for this property is "key".You should not have a TwoWay data binding on the node key property,because that might cause the property value to be set to a duplicate key value.<p/>The key values must be either strings or numbers or undefined.If the key is undefined, or if there are duplicate key values,the model will automatically try to assign a new unique key value.<p/>For example, one can define a graph consisting of just two nodes:<pre class="javascript"> model.nodeDataArray = [   { key: "Alpha" },   { key: "Beta" } ];</pre><p/>This model cannot detect the modification of the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> arrayor the modification of any node data object.If you want to add or remove node data from the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a>,call the <a href="../symbols/Model.html#addNodeData">#addNodeData</a> or <a href="../symbols/Model.html#removeNodeData">#removeNodeData</a> methods.<p/>If you want to modify a node data object, it depends on whether the property you want to changeis a structural property that the model needs to know about, or whether it is a propertythat is only used for data binding or other application-specific purposes.<p/>For the former case, call the appropriate method, such as<a href="../symbols/Model.html#setKeyForNodeData">#setKeyForNodeData</a>, <a href="../symbols/Model.html#setCategoryForNodeData">#setCategoryForNodeData</a>,<a href="../symbols/GraphLinksModel.html#setToKeyForLinkData">GraphLinksModel#setToKeyForLinkData</a>, or <a href="../symbols/GraphLinksModel.html#setGroupKeyForNodeData">GraphLinksModel#setGroupKeyForNodeData</a>.These methods have names that start with "set", "add", "insert", or "remove".<p/>For the latter case, when setting an application-specific property, typically for data binding,and to support undo/redo, call <a href="../symbols/Model.html#setDataProperty">#setDataProperty</a>.<p/>Each model comes with its own <a href="../symbols/UndoManager.html">UndoManager</a> that is initially not enabled.You will need to set <a href="../symbols/UndoManager.html#isEnabled">UndoManager#isEnabled</a> to true in order for theUndoManager to record model changes and for your users to perform undo and redo.<p/>You can temporarily turn off the recording of changes by setting<a href="../symbols/Model.html#skipsUndoManager">#skipsUndoManager</a> to true.A number of places within the system do that routinely in order to avoid recording temporary changes,so be sure to remember the original value beforehand and restore it afterwards.<p/>One normally saves a diagram by just saving its model.If you can use JSON-formatted text, this is easy to do -- just call <a href="../symbols/Model.html#toJson">#toJson</a>to get the string representation of the model, and save that string.Load the diagram by replacing the <a href="../symbols/Diagram.html#model">Diagram#model</a> with one created by callingthe static function <a href="../symbols/Model.html#.fromJson">Model.fromJson</a>:<pre class="javascript">  myDiagram.model = go.Model.fromJson(loadedString);</pre>Note that JSON and other textual data formats cannot faithfully store all JavaScript functions.<a href="../symbols/Model.html#toJson">#toJson</a> and <a href="../symbols/Model.html#.fromJson">Model.fromJson</a> do not try to save and load functional property values.You should arrange that all such functions, including event handlers, are established by your app.<a href="../symbols/Model.html#toJson">#toJson</a> and <a href="../symbols/Model.html#.fromJson">Model.fromJson</a> also cannot handle circular references; any sharing ofreferences will be lost too.<p/>Note that models also do not store the templates used by diagrams,nor any transient or temporary parts such as <a href="../symbols/Adornment.html">Adornment</a>s, nor any tools,nor any <a href="../symbols/UndoManager.html">UndoManager</a> state.These objects and all other properties of diagrams must be established by your app.It is possible to add JavaScript data properties to a Model, and then save and load them,but your app must be responsible for their management and use.
+			</p>
+
+<!-- ============================== constructor summary ==================== -->
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Model.">
+				<caption>Constructor Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Model.html#constructor">Model</a></b>(nodedataarray)
+							</div>
+							<div class="description">You probably don't want to call this constructor, because this classdoes not support links (relationships between nodes) or groups (nodes and links and subgraphs as nodes):instead, create instances of a subclass such as <a href="../symbols/GraphLinksModel.html">GraphLinksModel</a> or <a href="../symbols/TreeModel.html">TreeModel</a>.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Model.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Property Attributes</th>
+							<th scope="col">Property Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{function(Object, Model):Object | null}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#copyNodeDataFunction">copyNodeDataFunction</a></b>
+								</div>
+								<div class="description">Gets or sets a function that makes a copy of a node data object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#dataFormat">dataFormat</a></b>
+								</div>
+								<div class="description">Gets or sets the name of the format of the diagram data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#isReadOnly">isReadOnly</a></b>
+								</div>
+								<div class="description">Gets or sets whether this model may be modified, such as adding nodes.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{function(Model, Object):(string|number) | null}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#makeUniqueKeyFunction">makeUniqueKeyFunction</a></b>
+								</div>
+								<div class="description">Gets or sets a function that returns a unique id number or string for a node data object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#name">name</a></b>
+								</div>
+								<div class="description">Gets or sets the name of this model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|function(Object):string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#nodeCategoryProperty">nodeCategoryProperty</a></b>
+								</div>
+								<div class="description">Gets or sets the name of the node data property that returns a string describing that data's category,or a function that takes a node data object and returns the category name;the default value is the name 'category'.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Array.&lt;Object&gt;}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#nodeDataArray">nodeDataArray</a></b>
+								</div>
+								<div class="description">Gets or sets the array of node data objects that correspond to <a href="../symbols/Node.html">Node</a>s,<a href="../symbols/Group.html">Group</a>s, or non-Link <a href="../symbols/Part.html">Part</a>s in the <a href="../symbols/Diagram.html">Diagram</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string|function(Object):(string|number)}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#nodeKeyProperty">nodeKeyProperty</a></b>
+								</div>
+								<div class="description">Gets or sets the name of the data property that returns a unique id number or stringfor each node data object, or a function taking a node data object and returning the key value;the default value is the name 'key'.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#skipsUndoManager">skipsUndoManager</a></b>
+								</div>
+								<div class="description">Gets or sets whether <a href="../symbols/ChangedEvent.html">ChangedEvent</a>s are not recorded by the <a href="../symbols/UndoManager.html">UndoManager</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{<a href="../symbols/UndoManager.html">UndoManager</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#undoManager">undoManager</a></b>
+								</div>
+								<div class="description">Gets or sets the <a href="../symbols/UndoManager.html">UndoManager</a> for this Model.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Model.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#addArrayItem">addArrayItem</a></b>(arr, val)
+								</div>
+								<div class="description">Add an item at the end of a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,in a manner that can be undone/redone and that automatically updates any bindings.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#addChangedListener">addChangedListener</a></b>(listener)
+								</div>
+								<div class="description">Register an event handler that is called when there is a ChangedEvent.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#addNodeData">addNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">When you want to add a node or group to the diagram,call this method with a new data object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#clear">clear</a></b>()
+								</div>
+								<div class="description">Clear out all references to any model data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#commitTransaction">commitTransaction</a></b>(tname)
+								</div>
+								<div class="description">Commit the changes of the current transaction.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#containsNodeData">containsNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">Decide if a given node data is in this model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Object}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#copyNodeData">copyNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">Make a copy of a node data object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{Object}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#findNodeDataForKey">findNodeDataForKey</a></b>(key)
+								</div>
+								<div class="description">Given a number or string, find the node data in this modelthat uses the given value as its unique key.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;
+
+                            <span class="light">{<a href="../symbols/Model.html">Model</a>}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Model.<b><a href="../symbols/Model.html#.fromJson">fromJson</a></b>(s, model)
+								</div>
+								<div class="description">This static method parses a string in JSON format and constructs, initializes, and returns a model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#getCategoryForNodeData">getCategoryForNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">Find the category of a given node data, a string naming the node templateor group template or part templatethat the <a href="../symbols/Diagram.html">Diagram</a> should use to represent the node data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{number|string|undefined}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#getKeyForNodeData">getKeyForNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">Given a node data object return its unique key: a number or a string.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#insertArrayItem">insertArrayItem</a></b>(arr, idx, val)
+								</div>
+								<div class="description">Add an item to a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,given a new data value and the index at which to insert the new value, in a manner that can be undone/redone and that automatically updates any bindings.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#makeNodeDataKeyUnique">makeNodeDataKeyUnique</a></b>(nodedata)
+								</div>
+								<div class="description">This method is called when a node data object is added to the model to make sure that<a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a> returns a unique key value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#raiseChangedEvent">raiseChangedEvent</a></b>(change, propertyname, obj, oldval, newval, oldparam, newparam)
+								</div>
+								<div class="description">Call this method to notify that the model or its objects have changed.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#raiseDataChanged">raiseDataChanged</a></b>(data, propertyname, oldval, newval, oldparam, newparam)
+								</div>
+								<div class="description">Call this method to notify about a data property having changed value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#removeArrayItem">removeArrayItem</a></b>(arr, idx)
+								</div>
+								<div class="description">Remove an item from a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,given the index at which to remove a data value, in a manner that can be undone/redone and that automatically updates any bindings.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#removeChangedListener">removeChangedListener</a></b>(listener)
+								</div>
+								<div class="description">Unregister an event handler listener.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#removeNodeData">removeNodeData</a></b>(nodedata)
+								</div>
+								<div class="description">When you want to remove a node or group from the diagram,call this method with an existing data object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#rollbackTransaction">rollbackTransaction</a></b>()
+								</div>
+								<div class="description">Rollback the current transaction, undoing any recorded changes.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#setCategoryForNodeData">setCategoryForNodeData</a></b>(nodedata, cat)
+								</div>
+								<div class="description">Change the category of a given node data, a string naming the node templateor group template or part templatethat the <a href="../symbols/Diagram.html">Diagram</a> should use to represent the node data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#setDataProperty">setDataProperty</a></b>(data, propname, val)
+								</div>
+								<div class="description">Change the value of some property of a node data, a link data, or an item data, given a string naming the propertyand the new value, in a manner that can be undone/redone and that automatically updates any bindings.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#setKeyForNodeData">setKeyForNodeData</a></b>(nodedata, key)
+								</div>
+								<div class="description">Change the unique key of a given node data that is already in this model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{boolean}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#startTransaction">startTransaction</a></b>(tname)
+								</div>
+								<div class="description">Begin a transaction, where the changes are held by a <a href="../symbols/Transaction.html">Transaction</a> objectin the <a href="../symbols/UndoManager.html">UndoManager</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            <span class="light">{string}</span>
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#toJson">toJson</a></b>(classname)
+								</div>
+								<div class="description">Generate a string representation of the persistent data in this model, in JSON format.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;
+
+                            
+
+							</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#updateTargetBindings">updateTargetBindings</a></b>(data, srcpropname)
+								</div>
+								<div class="description">Find a <a href="../symbols/Part.html">Part</a> corresponding to the given data andcall its <a href="../symbols/Panel.html#updateTargetBindings">Panel#updateTargetBindings</a> method, in each <a href="../symbols/Diagram.html">Diagram</a>that uses this Model.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== fields summary ===================== -->
+			
+				
+				
+
+			
+
+<!-- ============================== constructor details ==================== -->
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Constructor Detail
+				</div>
+
+				<div class="fixedFont">
+						<b>Model</b>(nodedataarray)
+				</div>
+
+				<div class="description">
+					You probably don't want to call this constructor, because this classdoes not support links (relationships between nodes) or groups (nodes and links and subgraphs as nodes):instead, create instances of a subclass such as <a href="../symbols/GraphLinksModel.html">GraphLinksModel</a> or <a href="../symbols/TreeModel.html">TreeModel</a>.
+					
+				</div>
+
+				
+
+
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{Array=}</span>  <b>nodedataarray</b>
+								
+							</dt>
+								<dd>an optional Array containing JavaScript objects to be represented by <a href="../symbols/Part.html">Part</a>s.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== property details ========================== -->
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name="copyNodeDataFunction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{function(Object, Model):Object | null}</span>
+					<b>copyNodeDataFunction</b>
+
+					</div>
+					<div class="description">
+						Gets or sets a function that makes a copy of a node data object.<p/>You may need to set this property in order to ensure that a copied <a href="../symbols/Node.html">Node</a> is boundto data that does not share certain data structures between the original node data and the copied node data.The value may be null in order to cause <a href="../symbols/Model.html#copyNodeData">#copyNodeData</a> to make a shallow copy of a JavaScript Object.The default value is null.<p/>It is common to implement a copying function when the node data has an Array of dataand that Array needs to be copied rather than shared.Often the objects that are in the Array also need to be copied.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="dataFormat"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>dataFormat</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of the format of the diagram data.The default value is the empty string.The value must not be null.Use different values to prevent parts from one model to be copy/pasted or drag-and-dropped into another diagram/model.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isReadOnly"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>isReadOnly</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether this model may be modified, such as adding nodes.By default this value is false.Setting the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> to something that is not a true Array of Objectswill cause this to be set to true.<p/>Model methods and property setters do not heed this property.It is up to code that uses a model to check this property when it might want toprevent changes to the model.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="makeUniqueKeyFunction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{function(Model, Object):(string|number) | null}</span>
+					<b>makeUniqueKeyFunction</b>
+
+					</div>
+					<div class="description">
+						Gets or sets a function that returns a unique id number or string for a node data object.This function is called by <a href="../symbols/Model.html#makeNodeDataKeyUnique">#makeNodeDataKeyUnique</a>when a node data object is added to the model, either as part of a new<a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> or by a call to <a href="../symbols/Model.html#addNodeData">#addNodeData</a>, to make sure the value of<a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a> is unique within the model.<p/>The value may be null in order to cause <a href="../symbols/Model.html#makeNodeDataKeyUnique">#makeNodeDataKeyUnique</a> behave in the standard manner.You may want to supply a function here in order to make sure all of the automatically generated keysare in a particular format.Setting this property after setting <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> has no real effect until there is a callto <a href="../symbols/Model.html#addNodeData">#addNodeData</a>.<p/>If a node data object is already in the model and you want to change its key value,call <a href="../symbols/Model.html#setKeyForNodeData">#setKeyForNodeData</a> with a new and unique key.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="name"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>name</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of this model.The initial name is an empty string.The value must not be null.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="nodeCategoryProperty"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|function(Object):string}</span>
+					<b>nodeCategoryProperty</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of the node data property that returns a string describing that data's category,or a function that takes a node data object and returns the category name;the default value is the name 'category'.This is used by the diagram to distinguish between different kinds of nodes.The name must not be null.If the value is an empty string,<a href="../symbols/Model.html#getCategoryForNodeData">#getCategoryForNodeData</a> will return an empty string for all node data objects.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Model.html#getCategoryForNodeData">#getCategoryForNodeData</a></dd>
+							
+							<dd><a href="../symbols/Model.html#setCategoryForNodeData">#setCategoryForNodeData</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="nodeDataArray"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Array.&lt;Object&gt;}</span>
+					<b>nodeDataArray</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the array of node data objects that correspond to <a href="../symbols/Node.html">Node</a>s,<a href="../symbols/Group.html">Group</a>s, or non-Link <a href="../symbols/Part.html">Part</a>s in the <a href="../symbols/Diagram.html">Diagram</a>.<p/>For each Object in the Array, <a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a> should return a number or stringuniquely identifying the node data within the model.If it returns undefined, this calls <a href="../symbols/Model.html#makeNodeDataKeyUnique">#makeNodeDataKeyUnique</a>,to make sure the node data has a unique key.These key values may be used by other objects to refer to that particular node data object.If more than one node data object has the same key,there may be some confusion about which object to reference.<p/>If you want to use a custom data property for holding the unique key value on a node data object,you should set <a href="../symbols/Model.html#nodeKeyProperty">#nodeKeyProperty</a> before you set this <code>nodeDataArray</code> property.<p/>Adding or removing data from this Array will not notify this model or the diagramthat there are any new nodes or that any nodes have been deleted.Instead you should call <a href="../symbols/Model.html#addNodeData">#addNodeData</a> or <a href="../symbols/Model.html#removeNodeData">#removeNodeData</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="nodeKeyProperty"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string|function(Object):(string|number)}</span>
+					<b>nodeKeyProperty</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the name of the data property that returns a unique id number or stringfor each node data object, or a function taking a node data object and returning the key value;the default value is the name 'key'.The name must not be null or the empty string.You must set this property before assigning the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd><a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a></dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="skipsUndoManager"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>skipsUndoManager</b>
+
+					</div>
+					<div class="description">
+						Gets or sets whether <a href="../symbols/ChangedEvent.html">ChangedEvent</a>s are not recorded by the <a href="../symbols/UndoManager.html">UndoManager</a>.The initial and normal value is false.<p/>When this property is true, changing the Model or any data object does not call <a href="../symbols/UndoManager.html#handleChanged">UndoManager#handleChanged</a>.Even when this property is true,transactions (such as calls to <a href="../symbols/Model.html#startTransaction">#startTransaction</a>) and undo/redo (such as calls to <a href="../symbols/CommandHandler.html#undo">CommandHandler#undo</a>)are still delegated to the <a href="../symbols/Model.html#undoManager">#undoManager</a>.<p/>You should set this to true only temporarily, and you should remember its previous value before setting this to true.When finishing the period for which you want the UndoManager to be disabled,do not blindly set this property to false.You should set this back to the value it had before you set it to true.For more permanent disabling of the <a href="../symbols/UndoManager.html">UndoManager</a>, set <a href="../symbols/UndoManager.html#isEnabled">UndoManager#isEnabled</a> to false.<p/>This property is also set when setting <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a>.Setting this property does not raise a <a href="../symbols/ChangedEvent.html">ChangedEvent</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="undoManager"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{<a href="../symbols/UndoManager.html">UndoManager</a>}</span>
+					<b>undoManager</b>
+
+					</div>
+					<div class="description">
+						Gets or sets the <a href="../symbols/UndoManager.html">UndoManager</a> for this Model.<p/>The default UndoManager has its <a href="../symbols/UndoManager.html#isEnabled">UndoManager#isEnabled</a> property set to false.If you want users to undo and redo, you should set that property to true once you have initialized the Diagram or its Model.<p/>This property setter does not raise a <a href="../symbols/ChangedEvent.html">ChangedEvent</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="addArrayItem"> </a>
+					<div class="fixedFont">
+
+					
+					<b>addArrayItem</b>(arr, val)
+
+					</div>
+					<div class="description">
+						Add an item at the end of a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,in a manner that can be undone/redone and that automatically updates any bindings.<p/>This also calls <a href="../symbols/Model.html#raiseChangedEvent">#raiseChangedEvent</a> to notify all listeners about the <a href="../symbols/ChangedEvent.html#Insert">ChangedEvent#Insert</a>.<p/>If you want to add a new node or part to the diagram, call <a href="../symbols/Model.html#addNodeData">#addNodeData</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>arr</b>
+									
+								</dt>
+								<dd>an Array that is the value of some <a href="../symbols/Panel.html">Panel</a>'s <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>val</b>
+									
+								</dt>
+								<dd>the new value to be pushed onto the array.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#insertArrayItem">#insertArrayItem</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="addChangedListener"> </a>
+					<div class="fixedFont">
+
+					
+					<b>addChangedListener</b>(listener)
+
+					</div>
+					<div class="description">
+						Register an event handler that is called when there is a ChangedEvent.<p/>This registration does not raise a <a href="../symbols/ChangedEvent.html">ChangedEvent</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(ChangedEvent)}</span> <b>listener</b>
+									
+								</dt>
+								<dd>a function that takes a <a href="../symbols/ChangedEvent.html">ChangedEvent</a> as its argument.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="addNodeData"> </a>
+					<div class="fixedFont">
+
+					
+					<b>addNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						When you want to add a node or group to the diagram,call this method with a new data object.This will add that data to the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> andnotify all listeners that a new node data object has been inserted into the collection.<p/>To remove a node from the diagram, you can remove its data object by calling <a href="../symbols/Model.html#removeNodeData">#removeNodeData</a>.<p/>To add or remove an object or value from an item array, call <a href="../symbols/Model.html#insertArrayItem">#insertArrayItem</a> or <a href="../symbols/Model.html#removeArrayItem">#removeArrayItem</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="clear"> </a>
+					<div class="fixedFont">
+
+					
+					<b>clear</b>()
+
+					</div>
+					<div class="description">
+						Clear out all references to any model data.This also clears out the <a href="../symbols/UndoManager.html">UndoManager</a>, so this operation is not undoable.This method is called by <a href="../symbols/Diagram.html#clear">Diagram#clear</a>; it does not notify any <a href="../symbols/Diagram.html">Diagram</a>s or other listeners.<p>Instead of calling this method, you may prefer to set <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> to an empty JavaScript Array.If this model is a <a href="../symbols/GraphLinksModel.html">GraphLinksModel</a>, you would also want to set <a href="../symbols/GraphLinksModel.html#linkDataArray">GraphLinksModel#linkDataArray</a> to a separate empty JavaScript Array.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="commitTransaction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>commitTransaction</b>(tname)
+
+					</div>
+					<div class="description">
+						Commit the changes of the current transaction.This just calls <a href="../symbols/UndoManager.html#commitTransaction">UndoManager#commitTransaction</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>tname</b>
+									
+								</dt>
+								<dd>a descriptive name for the transaction.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> the value returned by <a href="../symbols/UndoManager.html#commitTransaction">UndoManager#commitTransaction</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="containsNodeData"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>containsNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						Decide if a given node data is in this model.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if it is a node data object in this model; false otherwise.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="copyNodeData"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Object}</span>
+					<b>copyNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						Make a copy of a node data object.This uses the value of <a href="../symbols/Model.html#copyNodeDataFunction">#copyNodeDataFunction</a> to actually perform the copy,unless it is null, in which case this method just makes a shallow copy of the JavaScript Object.<p/>This does not modify the model -- the returned data object is not added to this model.This assumes that the data's constructor can be called with no arguments.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> </dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#addNodeData">#addNodeData</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="findNodeDataForKey"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{Object}</span>
+					<b>findNodeDataForKey</b>(key)
+
+					</div>
+					<div class="description">
+						Given a number or string, find the node data in this modelthat uses the given value as its unique key.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>key</b>
+									
+								</dt>
+								<dd>a string or a number.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> null if the key is not present in the model,or if the key is null or undefined or not a string or number.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#containsNodeData">#containsNodeData</a></dd>
+							
+								<dd><a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name=".fromJson"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+
+					<span class="light">{<a href="../symbols/Model.html">Model</a>}</span>
+					<span class="light">Model.</span><b>fromJson</b>(s, model)
+
+					</div>
+					<div class="description">
+						This static method parses a string in JSON format and constructs, initializes, and returns a model.<p/>Note that properties with values that are functions are not written out by <a href="../symbols/Model.html#toJson">#toJson</a>,so reading in such a model will require constructing such a model, initializing its functional property values,and explicitly passing it in as the second argument.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string|Object}</span> <b>s</b>
+									
+								</dt>
+								<dd>a String in JSON format containing all of the persistent properties of the model, or an Object already read from JSON text.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Model.html">Model</a>=}</span> <b>model</b>
+									
+								</dt>
+								<dd>an optional model to be modified; if not supplied, it constructs a new model whose name is specified by the "class" property.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Model.html">Model</a>}</span> the supplied or created model loaded with data from the given string.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getCategoryForNodeData"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>getCategoryForNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						Find the category of a given node data, a string naming the node templateor group template or part templatethat the <a href="../symbols/Diagram.html">Diagram</a> should use to represent the node data.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> </dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#nodeCategoryProperty">#nodeCategoryProperty</a></dd>
+							
+								<dd><a href="../symbols/Model.html#setCategoryForNodeData">#setCategoryForNodeData</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="getKeyForNodeData"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{number|string|undefined}</span>
+					<b>getKeyForNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						Given a node data object return its unique key: a number or a string.<p/>It is possible to change the key for a node data object by calling <a href="../symbols/Model.html#setKeyForNodeData">#setKeyForNodeData</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number|string|undefined}</span> This returns undefined if there is no key value.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#nodeKeyProperty">#nodeKeyProperty</a></dd>
+							
+								<dd><a href="../symbols/Model.html#setKeyForNodeData">#setKeyForNodeData</a></dd>
+							
+								<dd><a href="../symbols/Model.html#findNodeDataForKey">#findNodeDataForKey</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="insertArrayItem"> </a>
+					<div class="fixedFont">
+
+					
+					<b>insertArrayItem</b>(arr, idx, val)
+
+					</div>
+					<div class="description">
+						Add an item to a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,given a new data value and the index at which to insert the new value, in a manner that can be undone/redone and that automatically updates any bindings.<p/>This also calls <a href="../symbols/Model.html#raiseChangedEvent">#raiseChangedEvent</a> to notify all listeners about the <a href="../symbols/ChangedEvent.html#Insert">ChangedEvent#Insert</a>.<p/>If you want to add a new node or part to the diagram, call <a href="../symbols/Model.html#addNodeData">#addNodeData</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>arr</b>
+									
+								</dt>
+								<dd>an Array that is the value of some <a href="../symbols/Panel.html">Panel</a>'s <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the zero-based array index where the new value will be inserted; use -1 to push the new value on the end of the array.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>val</b>
+									
+								</dt>
+								<dd>the new value to be inserted into the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#removeArrayItem">#removeArrayItem</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="makeNodeDataKeyUnique"> </a>
+					<div class="fixedFont">
+
+					
+					<b>makeNodeDataKeyUnique</b>(nodedata)
+
+					</div>
+					<div class="description">
+						This method is called when a node data object is added to the model to make sure that<a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a> returns a unique key value.<p/>The key value should be unique within the set of data managed by this model:<a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a>.If the key is already in use, this will assign an unused number to the<a href="../symbols/Model.html#nodeKeyProperty">#nodeKeyProperty</a> property on the data.<p/>If you want to customize the way in which node data gets a unique key,you can set the <a href="../symbols/Model.html#makeUniqueKeyFunction">#makeUniqueKeyFunction</a> functional property.<p/>If the node data object is already in the model and you want to change its key value,call <a href="../symbols/Model.html#setKeyForNodeData">#setKeyForNodeData</a> and give it a new unique key value.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="raiseChangedEvent"> </a>
+					<div class="fixedFont">
+
+					
+					<b>raiseChangedEvent</b>(change, propertyname, obj, oldval, newval, oldparam, newparam)
+
+					</div>
+					<div class="description">
+						Call this method to notify that the model or its objects have changed.This constructs a <a href="../symbols/ChangedEvent.html">ChangedEvent</a> and calls all Changed listeners.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{EnumValue}</span> <b>change</b>
+									
+								</dt>
+								<dd>specifies the general nature of the change; typically the value is <a href="../symbols/ChangedEvent.html#Property">ChangedEvent#Property</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string|function(Object):*}</span> <b>propertyname</b>
+									
+								</dt>
+								<dd>names the property that was modified, or a function that takes an Object and returns the property value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>obj</b>
+									
+								</dt>
+								<dd>the object that was modified, typically a <a href="../symbols/GraphObject.html">GraphObject</a>, <a href="../symbols/Diagram.html">Diagram</a>, or a <a href="../symbols/Model.html">Model</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>oldval</b>
+									
+								</dt>
+								<dd>the previous or older value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>newval</b>
+									
+								</dt>
+								<dd>the next or newer value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>oldparam</b>
+									
+								</dt>
+								<dd>an optional value that helps describe the older value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>newparam</b>
+									
+								</dt>
+								<dd>an optional value that helps describe the newer value.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="raiseDataChanged"> </a>
+					<div class="fixedFont">
+
+					
+					<b>raiseDataChanged</b>(data, propertyname, oldval, newval, oldparam, newparam)
+
+					</div>
+					<div class="description">
+						Call this method to notify about a data property having changed value.This constructs a <a href="../symbols/ChangedEvent.html">ChangedEvent</a> and calls all Changed listeners.<p/>You should call this method only if the property value actually changed.This method is called by <a href="../symbols/Model.html#setDataProperty">#setDataProperty</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									
+								</dt>
+								<dd>the data object whose property changed value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string|function(Object):*}</span> <b>propertyname</b>
+									
+								</dt>
+								<dd>the name of the property, or a function that takes an Object and returns the property value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>oldval</b>
+									
+								</dt>
+								<dd>the previous or old value for the property.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>newval</b>
+									
+								</dt>
+								<dd>the next or new value for the property.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>oldparam</b>
+									
+								</dt>
+								<dd>an optional value additionally describing the old value.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*=}</span> <b>newparam</b>
+									
+								</dt>
+								<dd>an optional value additionally describing the new value.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeArrayItem"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeArrayItem</b>(arr, idx)
+
+					</div>
+					<div class="description">
+						Remove an item from a data array that may be data bound by a <a href="../symbols/Panel.html">Panel</a> as its <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>,given the index at which to remove a data value, in a manner that can be undone/redone and that automatically updates any bindings.<p/>This also calls <a href="../symbols/Model.html#raiseChangedEvent">#raiseChangedEvent</a> to notify all listeners about the <a href="../symbols/ChangedEvent.html#Remove">ChangedEvent#Remove</a>.<p/>If you want to remove a node from the diagram, call <a href="../symbols/Model.html#removeNodeData">#removeNodeData</a>.<p/>Note that there is no version of this method that takes an item value instead of an index into the array.Because item arrays may hold any JavaScript value, including numbers and strings, there may be duplicate entries with that value in the array.To avoid ambiguity, removing an item from an array requires an index.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>arr</b>
+									
+								</dt>
+								<dd>an Array that is the value of some <a href="../symbols/Panel.html">Panel</a>'s <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number=}</span> <b>idx</b>
+									
+								</dt>
+								<dd>the zero-based array index of the data item to be removed from the array;  if not supplied it will remove the last item of the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#insertArrayItem">#insertArrayItem</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="removeChangedListener"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeChangedListener</b>(listener)
+
+					</div>
+					<div class="description">
+						Unregister an event handler listener.<p/>This deregistration does not raise a <a href="../symbols/ChangedEvent.html">ChangedEvent</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(ChangedEvent)}</span> <b>listener</b>
+									
+								</dt>
+								<dd>a function that takes a <a href="../symbols/ChangedEvent.html">ChangedEvent</a> as its argument.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeNodeData"> </a>
+					<div class="fixedFont">
+
+					
+					<b>removeNodeData</b>(nodedata)
+
+					</div>
+					<div class="description">
+						When you want to remove a node or group from the diagram,call this method with an existing data object.This will remove that data from the <a href="../symbols/Model.html#nodeDataArray">#nodeDataArray</a> andnotify all listeners that a node data object has been removed from the collection.<p/>Removing a node data from a model does not automatically removeany connected link data from the model.Removing a node data that represents a group does not automatically removeany member node data or link data from the model.<p/>To add a node to the diagram, you can add its data object by calling <a href="../symbols/Model.html#addNodeData">#addNodeData</a>.<p/>To add or remove an object or value from an item array, call <a href="../symbols/Model.html#insertArrayItem">#insertArrayItem</a> or <a href="../symbols/Model.html#removeArrayItem">#removeArrayItem</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="rollbackTransaction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>rollbackTransaction</b>()
+
+					</div>
+					<div class="description">
+						Rollback the current transaction, undoing any recorded changes.This just calls <a href="../symbols/UndoManager.html#rollbackTransaction">UndoManager#rollbackTransaction</a>.
+						
+					</div>
+
+					
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> the value returned by <a href="../symbols/UndoManager.html#rollbackTransaction">UndoManager#rollbackTransaction</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="setCategoryForNodeData"> </a>
+					<div class="fixedFont">
+
+					
+					<b>setCategoryForNodeData</b>(nodedata, cat)
+
+					</div>
+					<div class="description">
+						Change the category of a given node data, a string naming the node templateor group template or part templatethat the <a href="../symbols/Diagram.html">Diagram</a> should use to represent the node data.<p/>Changing the node template for a node data will cause the existing <a href="../symbols/Node.html">Node</a>, <a href="../symbols/Group.html">Group</a>, or <a href="../symbols/Part.html">Part</a>to be replaced with a new <a href="../symbols/Node.html">Node</a>, <a href="../symbols/Group.html">Group</a>, or <a href="../symbols/Part.html">Part</a>created by copying the new node template and applying any data-bindings.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>cat</b>
+									
+								</dt>
+								<dd>Must not be null.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#nodeCategoryProperty">#nodeCategoryProperty</a></dd>
+							
+								<dd><a href="../symbols/Model.html#getCategoryForNodeData">#getCategoryForNodeData</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="setDataProperty"> </a>
+					<div class="fixedFont">
+
+					
+					<b>setDataProperty</b>(data, propname, val)
+
+					</div>
+					<div class="description">
+						Change the value of some property of a node data, a link data, or an item data, given a string naming the propertyand the new value, in a manner that can be undone/redone and that automatically updates any bindings.<p/>This gets the old value of the property; if the value is the same as the new value, no side-effects occur.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a Node, Link, Group, simple Part, or item in a <a href="../symbols/Panel.html#itemArray">Panel#itemArray</a>.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>propname</b>
+									
+								</dt>
+								<dd>a string that is not null or the empty string.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>val</b>
+									
+								</dt>
+								<dd>the new value for the property.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setKeyForNodeData"> </a>
+					<div class="fixedFont">
+
+					
+					<b>setKeyForNodeData</b>(nodedata, key)
+
+					</div>
+					<div class="description">
+						Change the unique key of a given node data that is already in this model.The new key value must be unique -- i.e. not in use by another node data object.You can call <a href="../symbols/Model.html#findNodeDataForKey">#findNodeDataForKey</a> to check if a proposed new key is already in use.<p/>This operation will check all data objects in the model and replace all referencesusing the old key value with the new one.<p/>If this is called on a node data object that is not (yet) in this model,this unconditionally modifies the property to the new key value.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>nodedata</b>
+									
+								</dt>
+								<dd>a JavaScript object representing a node, group, or non-link.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number|string|undefined}</span> <b>key</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Since:</dt>
+								<dd>1.1</dd>
+							</dl>
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/Model.html#nodeKeyProperty">#nodeKeyProperty</a></dd>
+							
+								<dd><a href="../symbols/Model.html#getKeyForNodeData">#getKeyForNodeData</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="startTransaction"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{boolean}</span>
+					<b>startTransaction</b>(tname)
+
+					</div>
+					<div class="description">
+						Begin a transaction, where the changes are held by a <a href="../symbols/Transaction.html">Transaction</a> objectin the <a href="../symbols/UndoManager.html">UndoManager</a>.This just calls <a href="../symbols/UndoManager.html#startTransaction">UndoManager#startTransaction</a>.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string=}</span> <b>tname</b>
+									
+								</dt>
+								<dd>a descriptive name for the transaction.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> the value returned by <a href="../symbols/UndoManager.html#startTransaction">UndoManager#startTransaction</a>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toJson"> </a>
+					<div class="fixedFont">
+
+					<span class="light">{string}</span>
+					<b>toJson</b>(classname)
+
+					</div>
+					<div class="description">
+						Generate a string representation of the persistent data in this model, in JSON format.<p/>Object properties whose names start with "_" are not written out.<p/>Functions are not able to be written in JSON format, so any properties that have function valueswill not be saved in the JSON string.<p/>There must not be any circular references within the model data.Any sharing of object references will be lost in the written JSON.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string=}</span> <b>classname</b>
+									
+								</dt>
+								<dd>The optional name of the model class to use in the output;    for the standard models, this is their class name prefixed with "go.".</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> a String in JSON format containing all of the persistent properties of the model.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="updateTargetBindings"> </a>
+					<div class="fixedFont">
+
+					
+					<b>updateTargetBindings</b>(data, srcpropname)
+
+					</div>
+					<div class="description">
+						Find a <a href="../symbols/Part.html">Part</a> corresponding to the given data andcall its <a href="../symbols/Panel.html#updateTargetBindings">Panel#updateTargetBindings</a> method, in each <a href="../symbols/Diagram.html">Diagram</a>that uses this Model.
+						
+					</div>
+
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									
+								</dt>
+								<dd>The data object in this model that was modified.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string=}</span> <b>srcpropname</b>
+									
+								</dt>
+								<dd>If not present or the empty string,  update all bindings on the target <a href="../symbols/Part.html">Part</a> or item <a href="../symbols/Panel.html">Panel</a>;  otherwise update only those bindings using this source property name.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== event details ========================= -->
+			
+
+			<hr />
+		</div>
+
+
+<!-- ============================== footer ================================= -->
+		<div id="footer" class="fineprint" style="clear:both">
+			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
+		</div>
+	</body>
+</html>

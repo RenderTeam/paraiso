@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>GoJS Context Menus -- Northwoods Software</title>
+  <!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
+    <link href="goIntro.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="go.js"></script>
+  <script type="text/javascript" src="goIntro.js"></script>
+</head>
+<body onload="goIntro()">
+<div id="content">
+
+<h2>Context Menus</h2>
+<p>
+<b>GoJS</b> provides a mechanism for you to define context menus for any object or for the diagram background.
+</p>
+<p>
+A context menu is an <a>Adornment</a> that is shown when the user context-clicks (right mouse clicks) an object
+that has its <a>GraphObject.contextMenu</a> set.
+The context menu is bound to the same data as the part itself.
+</p>
+<p>
+In this example each <a>Node</a> has its <a>GraphObject.contextMenu</a> property set to an Adornment that shows
+a single button that when clicked moves all selected parts by a small offset.
+The diagram gets its own context menu by setting <a>Diagram.contextMenu</a>.
+</p>
+<pre data-language="javascript" id="contextmenus">
+  // This method is called as a context menu button's click handler.
+  // Rotate the selected node's color through a predefined sequence of colors.
+  function changeColor(e, obj) {
+    diagram.startTransaction("changed color");
+    // get the context menu that holds the button that was clicked
+    var contextmenu = obj.part;
+    // get the Node that the context menu is adorning
+    var node = contextmenu.adornedPart;
+    // get the node data to which the Node is data bound
+    var nodedata = node.data;
+    // compute the next color for the node
+    var newcolor = "lightblue";
+    switch (nodedata.color) {
+      case "lightblue": newcolor = "lightgreen"; break;
+      case "lightgreen": newcolor = "lightyellow"; break;
+      case "lightyellow": newcolor = "orange"; break;
+      case "orange": newcolor = "lightblue"; break;
+    }
+    // modify the node data
+    // this evaluates data Bindings and records changes in the UndoManager
+    diagram.model.setDataProperty(nodedata, "color", newcolor);
+    diagram.commitTransaction("changed color");
+  }
+
+  // this is a normal Node template that also has a contextMenu defined for it
+  diagram.nodeTemplate =
+    $(go.Node, "Auto",
+      $(go.Shape, "RoundedRectangle",
+        { fill: "white" },
+        new go.Binding("fill", "color")),
+      $(go.TextBlock, { margin: 5 },
+        new go.Binding("text", "key")),
+      {
+        contextMenu:     // define a context menu for each node
+          $(go.Adornment, "Vertical",  // that has one button
+            $("ContextMenuButton",
+              $(go.TextBlock, "Change Color"),
+              { click: changeColor })
+          )  // end Adornment
+      }
+    );
+
+  // also define a context menu for the diagram's background
+  diagram.contextMenu =
+    $(go.Adornment, "Vertical",
+      $("ContextMenuButton",
+        $(go.TextBlock, "Undo"),
+        { click: function(e, obj) { e.diagram.commandHandler.undo(); } },
+        new go.Binding("visible", "", function(o) { return o.diagram.commandHandler.canUndo(); }).ofObject()),
+      $("ContextMenuButton",
+        $(go.TextBlock, "Redo"),
+        { click: function(e, obj) { e.diagram.commandHandler.redo(); } },
+        new go.Binding("visible", "", function(o) { return o.diagram.commandHandler.canRedo(); }).ofObject())
+    );
+
+  diagram.initialContentAlignment = go.Spot.Center;
+
+  var nodeDataArray = [
+    { key: "Alpha", color: "lightyellow" },
+    { key: "Beta", color: "orange" }
+  ];
+  var linkDataArray = [
+    { from: "Alpha", to: "Beta" }
+  ];
+  diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+  diagram.undoManager.isEnabled = true;
+</pre>
+<script type="text/javascript">goCode("contextmenus", 350, 200)</script>
+<p>
+Try context clicking a node and invoking the "Change Color" command a few times.
+With the diagram context menu you will be able to "Undo" and/or "Redo", or you can use Control-Z and/or Control-Y.
+</p>
+
+<h3>Custom Context Menus</h3>
+<p>
+It is possible to define custom context menus using HTML instead of Adornments by modifying the <a>ContextMenuTool.showContextMenu</a> and <a>ContextMenuTool.hideContextMenu</a>. <a href="../samples/customContextMenu.html">This sample shows two such custom context menus.</a>
+</p>
+
+<h3>Default Context Menu for Touch-enabled devices</h3>
+<p>
+Touch devices are presumed to have not keyboard ability, which makes actions like copying and pasting more difficult by default. Because of this, GoJS provides a built-in default context menu on touch devices. The buttons on this menu are populated dynamically, depending on the target GraphObject and Diagram and their properties.
+</p>
+
+</div>
+</body>
+</html>
