@@ -1,13 +1,16 @@
   function init() {
-    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    if (window.goSamples) { goSamples(); }
+    // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
 
     myDiagram =
       $(go.Diagram, "myDiagram",  // must be the ID or reference to div
         { allowCopy: false });
 
-    var bluegrad = $(go.Brush, go.Brush.Linear, { 0: "rgb(60, 204, 254)", 1: "rgb(70, 172, 254)" });
-    var pinkgrad = $(go.Brush, go.Brush.Linear, { 0: "rgb(255, 192, 203)", 1: "rgb(255, 142, 203)" });
+    var bluegrad = $(go.Brush, go.Brush.Linear,
+                      { 0: "rgb(60, 204, 254)", 1: "rgb(70, 172, 254)" });
+    var pinkgrad = $(go.Brush, go.Brush.Linear, 
+                      { 0: "rgb(255, 192, 203)", 1: "rgb(255, 142, 203)" });
 
     // Set up a Part as a legend, and place it directly on the diagram
     myDiagram.add(
@@ -40,7 +43,7 @@
       ));
 
     // get tooltip text from the object's data
-    function tooltipTextConverter(person) {
+    function tooltipTextConverter ( person ) {
       var str = "";
       str += "Born: " + person.birthYear;
       if (person.deathYear !== undefined) str += "\nDied: " + person.deathYear;
