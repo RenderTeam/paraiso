@@ -69,6 +69,7 @@ if ( 'development' == app.get('env') ) {
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
 // POST
+  //Tasks
   app.post( '/getOneTask',  queries.privateContent,
                             queries.log,
                             queries.getOneTask );
@@ -78,6 +79,11 @@ if ( 'development' == app.get('env') ) {
     queries.getTasksFromUser );
   app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
+  //Employees
+  app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
+  app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
+  
+  //Session
   app.post( '/login', queries.login );
   app.post( '/logout', queries.logout);
   app.post( '/saveUser', queries.privateContent, queries.saveUser );

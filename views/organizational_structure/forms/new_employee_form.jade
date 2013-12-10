@@ -1,0 +1,33 @@
+form( name = 'newEmployee' )
+  .col-md-12
+    .form-group
+      .form-label.text-right Usuario:
+      input.form-control( required, ng-model = 'employee.user' )
+
+    .form-group
+      .form-label.text-right Nombre:
+      input.form-control( required, ng-model = 'employee.name' )
+
+    .form-group
+      .form-label.text-right Apellido Paterno:
+      input.form-control( required, ng-model = 'employee.last_father_name' )
+
+    .form-group
+      .form-label.text-right Apellido Materno:
+      input.form-control( required, ng-model = 'employee.last_mother_name' )
+
+    .form-group
+      .form-label.text-right Fecha de nacimiento:
+      input.form-control( required, ng-model = 'employee.date_of_birth',
+        type='date' )
+
+    .form-group
+      .form-label.text-right Dirección:
+      input.form-control( required, ng-model = 'employee.address' )
+
+  p.clearfix
+  br
+  .col-md-4.pull-right
+    button.btn.btn-block.btn-success( ng-click = 'saveTalent()',
+      ng-disabled = 'newEmployee.$invalid' ) Aceptar
+  br

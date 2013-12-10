@@ -7,7 +7,7 @@ taskAppModule.controller( 'TasksController', tasksController );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
 function myTasksController ( scope, tasks ) {
-  tasks.getTasksFromUser().then( function ( data ) {
+  tasks.getTasksFromUser().success( function ( data ) {
     scope.tasks =  data;
   });
 
@@ -17,14 +17,16 @@ function myTasksController ( scope, tasks ) {
 
     params = this.task;
 
-    tasks.getOneTask( params ).then( function ( data ) {
-      var today = new Date(),
-          deadline = new Date( data.deadline );
+    tasks.getOneTask( params ).
+      success( function ( data ) {
+        var today = new Date(),
+            deadline = new Date( data.deadline );
 
-      data.daysToDeadline = deadline.getDate() - today.getDate();
+        data.daysToDeadline = deadline.getDate() - today.getDate();
 
-      scope.duty = data;
-    });
+        scope.duty = data;
+      }).
+      error();
   };
 }
 
@@ -108,33 +110,34 @@ function newTaskController ( scope, tasks, users ) {
 
     params.task = scope.task;
 
-    tasks.saveTask( params ).then( function ( data ) {
-      scope.task = {
-        creation_date:  new Date(),
-        creator:        '', /* Se tiene que recuperar de la sesión */
-        title:          '',
-        description:    '',
-        assigned:       [],
-        deadline:       new Date(),
-        reminder:       [],
-        label:          '',
-        priority:       0,
-        status:         'not done'
-      };
+    tasks.saveTask( params ).
+      success( function ( data ) {
+        scope.task = {
+          creation_date:  new Date(),
+          creator:        '', /* Se tiene que recuperar de la sesión */
+          title:          '',
+          description:    '',
+          assigned:       [],
+          deadline:       new Date(),
+          reminder:       [],
+          label:          '',
+          priority:       0,
+          status:         'not done'
+        };
 
-      scope.temporal = {
-        worker: ""
-      };
+        scope.temporal = {
+          worker: ""
+        };
 
-      scope.temporalForm = {
-        reminder: [],
-        assigned: []
-      };
-      alert('Excelente :)');
-    });
+        scope.temporalForm = {
+          reminder: [],
+          assigned: []
+        };
+        alert('Excelente :)');
+      });
   };
 
-  /*users.getAllUsersNames().then( function (data) {
+  /*users.getAllUsersNames().success( function (data) {
     console.log( data );
   });*/
 }
@@ -142,7 +145,7 @@ function newTaskController ( scope, tasks, users ) {
 tasksController.$inject = [ '$scope', 'Tasks' ];
 function tasksController ( scope, tasks ) {
 
-  tasks.getAllTasks().then( function ( data ) {
+  tasks.getAllTasks().success( function ( data ) {
     scope.tasks =  data;
   });
 
@@ -152,7 +155,7 @@ function tasksController ( scope, tasks ) {
 
     params = this.task;
 
-    tasks.getOneTask( params ).then( function ( data ) {
+    tasks.getOneTask( params ).success( function ( data ) {
       var today = new Date(),
           deadline = new Date( data.deadline );
 

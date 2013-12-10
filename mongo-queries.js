@@ -8,6 +8,7 @@ var Forms             = require('./mongoose_models/form'),
     Log               = require('./mongoose_models/log'),
     Resources         = require('./mongoose_models/resource'),
     Task              = require('./mongoose_models/task'),
+    Employee          = require('./mongoose_models/employee'),
     User              = require('./mongoose_models/user');
 
 /** Conection to MongoDB and Mongo queries **/
@@ -50,7 +51,7 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.getTasksFromUser = function ( req, res ) {
     var condition = {};
-    condition.assigned = [ req.user.username ];
+    condition.assigned = req.user.username;
     var query = Task.find( condition );
     
     query.select('assigned deadline description title').exec(
@@ -66,6 +67,30 @@ mongoose.connect( conectionString, function ( err ) {
     var newTask = new Task( req.body.task );
 
     newTask.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+//Employee
+  exports.getEmployees = function ( req, res ) {
+    var query = Employee.find();
+
+    query.select('-_id name profile').exec(
+      function ( err, employees ) {
+        if ( err ) { throw err; }
+        console.log(employees);
+        res.send( employees );
+      }
+    );
+  };
+
+  exports.saveEmployee = function ( req, res ) {
+    var newEmployee = new Employee( req.body.employee );
+
+    newEmployee.save( function ( err ) {
       if ( err ) {
         console.log( err );
         res.send( err );

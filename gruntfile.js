@@ -17,9 +17,14 @@ module.exports = function ( grunt ) {
               "jshintrc": true
           },
           files: {
-              src: ['Gruntfile.js','config/*.js','mongoose_models/*.js', 
-                    'public/javascripts/own/**/*.js','routes/*.js', 'app.js',
-                    'mongo-queries.js']
+              src: ['app.js',
+                    'gruntfile.js',
+                    'mongo-queries.js',
+                    'config/*.js',
+                    'mongoose_models/*.js', 
+                    'routes/*.js',
+                    'public/javascripts/own/*.js',
+                    'public/javascripts/own/**/*.js']
           }
       }
     },
@@ -35,7 +40,6 @@ module.exports = function ( grunt ) {
         }
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-exec');
@@ -44,5 +48,4 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('init', ['exec', 'nodemon']);
-
 };

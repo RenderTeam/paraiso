@@ -18,6 +18,7 @@ exports.new_form = function( req, res) {
 //Organizational Structure
   exports.talent_management = function( req, res ){
     res.render('organizational_structure/talent_management', {
+      controller: 'TalentController', 
       currentUser : req.user.username
     });
   };
