@@ -2,7 +2,15 @@ form( name = 'newEmployee' )
   .col-md-12
     .form-group
       .form-label.text-right Usuario:
-      input.form-control( required, ng-model = 'employee.user' )
+      input.form-control( required, ng-model = 'user.username' )
+
+    .form-group
+      .form-label.text-right Contraseña:
+      input.form-control( required, type = 'password', ng-model = 'user.password' )
+
+    .form-group
+      .form-label.text-right Repetir contraseña:
+      input.form-control( required, type = 'password', ng-model = 'confirmation' )
 
     .form-group
       .form-label.text-right Nombre:

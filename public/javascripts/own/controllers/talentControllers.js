@@ -1,18 +1,25 @@
 var talentAppModule  = angular.module( 'talentApp',
-  [ 'services.talent' ] );
+  [ 'services.talent', 'services.users' ] );
 
 talentAppModule.controller( 'TalentController', talentController );
 
-talentController.$inject = [ '$scope', 'Talent' ];
-function talentController ( scope, talent ) {
+talentController.$inject = [ '$scope', 'Talent', 'Users' ];
+function talentController ( scope, talent, users ) {
   scope.employee = {
-    user: '',
+    username: '',
     name: '',
     last_father_name: '',
     last_mother_name: '',
     date_of_birth: '',
     address: ''
   };
+
+  scope.user = {
+    username: '',
+    password: '',
+  };
+
+  scope.confirmation = '';
 
   talent.getAllTalent().success( function ( data ) {
     scope.employees = data;
@@ -29,22 +36,40 @@ function talentController ( scope, talent ) {
   scope.saveTalent = function () {
     var params = {};
 
-    scope.employee.age = 10;
+    scope.employee.age = 19;
+    scope.employee.username = scope.user.username;
 
-    params.employee = scope.employee;
+    users.getOneUser( scope.employee ).
+      success( function ( data ) {
+        if ( data ) {
+          alert( 'Usuario ya existe' );
+          scope.user.username = '';
+        } else {
+            params.employee = scope.employee;
+            params.user = scope.user;
 
-    talent.saveTalent(params).
-      success( function (data) {
-        scope.employee = {
-          user: '',
-          name: '',
-          last_father_name: '',
-          last_mother_name: '',
-          date_of_birth: '',
-          address: ''
-        };
+            users.saveUser( params ).
+              success( function (data) {
+                alert( 'Usuario creado' );
+              }).
+              error();
+            
+            talent.saveTalent(params).
+              success( function (data) {
 
-        alert('nice');
+                alert('nice');
+              }).
+              error();
+            
+            scope.employee = {
+              username: '',
+              name: '',
+              last_father_name: '',
+              last_mother_name: '',
+              date_of_birth: '',
+              address: ''
+            };
+        }
       }).
       error();
   };

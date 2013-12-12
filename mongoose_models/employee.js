@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var employeeSchema = new Schema({
-  user:             { type: String, required: true},
+  username:         { type: String, required: true},
   name:             { type: String, required: true },
   last_father_name: { type: String, required: true },
   last_mother_name: { type: String, required: true },
@@ -17,9 +17,9 @@ var employeeSchema = new Schema({
   },
 
   health:{
-    allergies:      { type: String},
-    blood_type:     { type: String},
-    health_record:  { type: String}
+    allergies:      { type: String },
+    blood_type:     { type: String },
+    health_record:  { type: String }
   },
 
   profile:{

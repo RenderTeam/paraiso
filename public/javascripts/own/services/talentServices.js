@@ -12,13 +12,6 @@ function talent ( http ) {
       error( onError );
     return promise;
   };
-  
-  /*talents.getTasksFromUser = function ( params ) {
-    var promise = http.post('/getTasksFromUser', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };*/
 
   talents.saveTalent = function ( params ) {
     var promise = http.post('/saveEmployee', params).

@@ -113,6 +113,22 @@ mongoose.connect( conectionString, function ( err ) {
       }
     );
   };
+
+  exports.getOneUser = function ( req, res ) {
+    var condition = {
+      username: req.body.username
+    }
+
+    var query = User.findOne( condition );
+
+    query.select('-_id username').exec(
+      function ( err, user ) {
+        if ( err ) { throw err; }
+        console.log(user);
+        res.send( user );
+      }
+    );
+  };
   
   exports.saveUser = function ( req, res ) {
     var newUser = new User({

@@ -79,6 +79,8 @@ if ( 'development' == app.get('env') ) {
     queries.getTasksFromUser );
   app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
 
+  //Users
+  app.post( '/getOneUser', queries.privateContent, queries.getOneUser );
   //Employees
   app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
   app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
