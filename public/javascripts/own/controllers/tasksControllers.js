@@ -103,7 +103,6 @@ function newTaskController ( scope, tasks, users ) {
 
   scope.newTask = function () {
     scope.task.creation_date = new Date();
-
     var params = {};
 
     params.task = scope.task;

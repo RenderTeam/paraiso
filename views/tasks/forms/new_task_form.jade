@@ -1,9 +1,12 @@
-form( name = 'newTaskForm' )
+form( name = 'newTaskForm' novalidate)
   .col-xs-6
     .input-group.input-group-sm
       span.input-group-addon Título
-      input.form-input.form-control( ng-model = 'task.title', 
-        placeholder = 'Título de la tarea' )
+      input.form-input.form-control( ng-model = 'task.title', type = 'text',
+        placeholder = 'Título de la tarea', name = 'title' required)
+    .label.label-danger.pull-right(ng-show = 'newTaskForm.title.$invalid'+
+      '&& newTaskForm.title.$dirty')
+      small(ng-show='newTaskForm.title.$error.required') Introduzca un valor valido
     br
     .input-group.input-group-sm
       span.input-group-addon Creado por
@@ -36,24 +39,24 @@ form( name = 'newTaskForm' )
     .input-group.input-group-sm
       span.input-group-addon Asignar
       input.form-control( ng-model = 'temporal.worker',
-        placeholder = 'Nombre del usuario' )
+        placeholder = 'Nombre del usuario')
       span.input-group-btn
         button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
           type='button' ) +
     #workers.panel-group
       .panel.panel-default
         .panel-heading
-          h3.panel-title.text-right
-            a.collapseToogle.glyphicon.glyphicon-chevron-up(
+          h3.panel-title Usuarios Asignados
+            a.text-right.pull-right.collapseToogle.glyphicon.glyphicon-chevron-up(
               data-toggle = 'collapse', data-parent = '#workers', 
               href = '#workers-content')
           #workers-content.panel-collapse.collapse.in
             .panel-body
-              #workers.assigned-container( 
-                ng-repeat = 'worker in temporalForm.assigned' )
-                span( ng-bind = 'worker.username' ) 
-                button.btn.btn-danger( 
-                  ng-click = 'removeWorkerFromAssigned( $index )' ) -
+                #workersRepeat.btn-group( 
+                ng-repeat = 'worker in temporalForm.assigned')
+                    button.btn.btn-xs( ng-bind = 'worker.username') 
+                    button.btn-danger.btn.btn-xs( 
+                          ng-click = 'removeWorkerFromAssigned( $index )' ) -
     br
     .input-group.input-group-sm
       span#remainderSpan.help.input-group-addon Recordatorios
@@ -65,19 +68,20 @@ form( name = 'newTaskForm' )
     #reminders.panel-group
       .panel.panel-default
         .panel-heading
-          h3.panel-title.text-right
-            a.collapseToogle.glyphicon.glyphicon-chevron-up(
+          h3.panel-title Recordatorios Asignados
+            a.text-right.pull-right.collapseToogle.glyphicon.glyphicon-chevron-up(
               data-toggle = 'collapse', data-parent = '#reminders',
               href = '#reminders-content' )
           #reminders-content.panel-collapse.collapse.in
             .panel-body
-              .reminders-container( ng-repeat = 'remind in temporalForm.reminder')
-                span( ng-bind = 'remind.numberOfDays' )
-                button.btn.btn-danger( 
+              #reminderRepeat.btn-group( 
+                ng-repeat = 'remind in temporalForm.reminder')
+                button.btn.btn-xs( ng-bind = 'remind.numberOfDays')
+                button.btn.btn-danger.btn-xs( 
                   ng-click = 'removeReminderFromReminders( $index )' ) -
 
   p.clearfix
   br
   .col-md-4.pull-right
-    button.btn.btn-block.btn-primary( ng-click = 'newTask()',
+    button#createTask.btn.btn-block.btn-primary( 
       ng-disabled = 'newTaskForm.$invalid' )  Crear tarea
