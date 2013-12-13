@@ -1,2649 +1,0 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="generator" content="JsDoc Toolkit" />
-		
-		<title>GoJS&reg; Reference - Tool</title>
-		<script type="text/javascript" src="api.js"></script>
-		<style type="text/css">
-			/* default.css */
-body
-{
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
-}
-
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
-
-p.box {
-  border: 1px solid #BBB;
-  padding: 4px 4px 6px 4px;
-}
-
-h1
-{
-	font-size: 150%;
-	font-weight: bold;
-	padding: 0;
-	margin: 1em 0 0 .3em;
-}
-
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
-
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
-}
-
-#index
-{
-	margin-top: 0px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
-}
-
-#content
-{
-	margin-left: 190px;
-	width: 600px;
-}
-
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
-
-.classList li
-{
-	padding: 0;
-	margin: 0 0 2px 0;
-}
-
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
-}
-
-h2
-{
-  font-size: 110%;
-  margin: 4px 0px 2px 0px;
-}
-
-caption, div.sectionTitle
-{
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
-	text-align: left;
-	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
-}
-
-div.sectionTitle { margin-bottom: 8px; }
-.summaryTable thead { display: none; }
-
-.summaryTable td
-{
-	vertical-align: top;
-	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
-}
-
-/*col#summaryAttributes {}*/
-.summaryTable td.attributes
-{
-	border-left: 1px #7F8FB1 solid;
-	width: 140px;
-	text-align: right;
-}
-
-td.attributes, .fixedFont
-{
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
-}
-
-.summaryTable td.nameDescription
-{
-	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
-}
-
-.summaryTable { margin-bottom: 8px; }
-
-ul {
-  list-style: square;
-  margin-left: 20px;
-  margin-right: 60px;
-  padding-left: 0;
-}
-
-ul.inheritsList
-{
-  margin-right: 0px;
-	padding-left: 0;
-}
-
-.detailList {
-	margin-left: 20px;
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
-
-.detailList .heading
-{
-	font-weight: bold;
-	padding-bottom: 6px;
-	margin-left: 0;
-}
-
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
-}
-
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
-}
-
-/*
-For highlight.js
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-*/
-
-pre {
-  border: 1px solid #ccc;
-  display: block; padding: 0.5em;
-  color: #333;
-  background: #f8f8ff;
-}
-
-pre .comment,
-pre .template_comment,
-pre .javadoc,
-pre .comment * {
-  color: rgb(0,106,0);
-}
-
-pre .keyword,
-pre .literal,
-pre .nginx .title {
-  color: rgb(170,13,145);
-}
-pre .method,
-pre .list .title,
-pre .tag .title,
-pre .setting .value,
-pre .winutils,
-pre .tex .command,
-pre .http .title,
-pre .request,
-pre .status {
-  color: #008;
-}
-
-pre .envvar,
-pre .tex .special {
-  color: #660;
-}
-
-pre .string {
-  color: rgb(196,26,22);
-}
-pre .tag .value,
-pre .cdata,
-pre .filter .argument,
-pre .attr_selector,
-pre .apache .cbracket,
-pre .date,
-pre .regexp {
-  /*color: #080; was green*/
-  color: rgb(196,26,22);
-}
-
-pre .sub .identifier,
-pre .pi,
-pre .tag,
-pre .tag .keyword,
-pre .decorator,
-pre .ini .title,
-pre .shebang,
-pre .prompt,
-pre .hexcolor,
-pre .rules .value,
-pre .css .value .number,
-pre .symbol,
-pre .symbol .string,
-pre .number,
-pre .css .function,
-pre .clojure .title,
-pre .clojure .built_in {
-  color: rgb(28,0,207);
-}
-
-pre .class .title,
-pre .haskell .type,
-pre .smalltalk .class,
-pre .javadoctag,
-pre .yardoctag,
-pre .phpdoc,
-pre .typename,
-pre .tag .attribute,
-pre .doctype,
-pre .class .id,
-pre .built_in,
-pre .setting,
-pre .params,
-pre .clojure .attribute {
-  color: rgb(92,38,153);
-}
-
-pre .variable {
- color: rgb(63,110,116);
-}
-pre .css .tag,
-pre .rules .property,
-pre .pseudo,
-pre .subst {
-  color: #000;
-}
-
-pre .css .class, pre .css .id {
-  color: #9B703F;
-}
-
-pre .value .important {
-  color: #ff7700;
-  font-weight: bold;
-}
-
-pre .rules .keyword {
-  color: #C5AF75;
-}
-
-pre .annotation,
-pre .apache .sqbracket,
-pre .nginx .built_in {
-  color: #9B859D;
-}
-
-pre .preprocessor,
-pre .preprocessor * {
-  color: rgb(100,56,32);
-}
-
-pre .tex .formula {
-  background-color: #EEE;
-  font-style: italic;
-}
-
-pre .diff .header,
-pre .chunk {
-  color: #808080;
-  font-weight: bold;
-}
-
-pre .diff .change {
-  background-color: #BCCFF9;
-}
-
-pre .addition {
-  background-color: #BAEEBA;
-}
-
-pre .deletion {
-  background-color: #FFC8BD;
-}
-
-pre .comment .yardoctag {
-  font-weight: bold;
-}
-
-pre .method .id {
-  color: #000;
-}
-
-		</style>
-	</head>
-
-	<body>
-<!-- ============================== header ================================= -->
-    <div id="header" class="fineprint">
-      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
-    </div>
-<!-- ============================== classes index ============================ -->
-		<div id="index">
-			<!-- begin publish.classesIndex -->
-			<div><a href="../../index.html">GoJS Home</a></div>
-<div><a href="../index.html">GoJS Class Index</a></div>
-
-<h2>Diagram Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Adornment.html">Adornment</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
-  
-    
-  
-    <li><a href="../symbols/Diagram.html">Diagram</a></li>
-  
-    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
-  
-    
-  
-    <li><a href="../symbols/Group.html">Group</a></li>
-  
-    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Layer.html">Layer</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Link.html">Link</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Node.html">Node</a></li>
-  
-    <li><a href="../symbols/Overview.html">Overview</a></li>
-  
-    <li><a href="../symbols/Palette.html">Palette</a></li>
-  
-    <li><a href="../symbols/Panel.html">Panel</a></li>
-  
-    
-  
-    <li><a href="../symbols/Part.html">Part</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Picture.html">Picture</a></li>
-  
-    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
-  
-    
-  
-    <li><a href="../symbols/Shape.html">Shape</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Geometry Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Brush.html">Brush</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Geometry.html">Geometry</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Margin.html">Margin</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
-  
-    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Point.html">Point</a></li>
-  
-    <li><a href="../symbols/Rect.html">Rect</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Size.html">Size</a></li>
-  
-    <li><a href="../symbols/Spot.html">Spot</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Model Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Binding.html">Binding</a></li>
-  
-    
-  
-    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Model.html">Model</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Transaction.html">Transaction</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
-  
-    
-  
-    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
-  
-</ul>
-
-<h2>Layout Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
-  
-    
-  
-    <li><a href="../symbols/Layout.html">Layout</a></li>
-  
-    
-  
-    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Tool Classes</h2>
-<ul class="classList">
-  
-    
-  
-    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
-  
-    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
-  
-    
-  
-    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
-  
-    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
-  
-    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
-  
-    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
-  
-    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
-  
-    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
-  
-    <li><a href="../symbols/Tool.html">Tool</a></li>
-  
-    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Collection Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Iterable.html">Iterable</a></li>
-  
-    <li><a href="../symbols/Iterator.html">Iterator</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/List.html">List</a></li>
-  
-    <li><a href="../symbols/Map.html">Map</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Set.html">Set</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-			<!-- end publish.classesIndex -->
-		</div>
-
-		<div id="content">
-<!-- ============================== class title ============================ -->
-			<h1 class="classTitle">
-				
-				Class Tool
-				
-			</h1>
-
-<!-- ============================== class summary ========================== -->
-			<p class="description">
-				
-				
-
-				Tools handle mouse events and keyboard events.The currently running tool, <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>, receives all input events from the <a href="../symbols/Diagram.html">Diagram</a>.<p/>Most tools are "mode-less" tools that are managed by the <a href="../symbols/ToolManager.html">ToolManager</a>,which chooses the current tool based on the kind and position of the mouse event and the parts in the diagram.The <a href="../symbols/ToolManager.html">ToolManager</a> has properties holding instances of most of the pre-defined <a href="../symbols/Tool.html">Tool</a> classes.These classes include:<ul>  <li><a href="../symbols/ActionTool.html">ActionTool</a></li>  <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>  <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>  <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>  <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>  <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>  <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>  <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>  <li><a href="../symbols/PanningTool.html">PanningTool</a></li>  <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>  <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>  <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>  <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li></ul>The ToolManager chooses a tool to make current by finding in its lists of tools the first toolwhose <a href="../symbols/Tool.html#canStart">#canStart</a> method returns true.<p/>A tool is in the "running" state when it is the value of <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>.The <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> property setter will call <a href="../symbols/Tool.html#doStop">#doStop</a> on the old tooland then call <a href="../symbols/Tool.html#doStart">#doStart</a> on the new tool.<p/>A tool can then go into the "active" state once it decides it can actually do something.This happens with a call to <a href="../symbols/Tool.html#doActivate">#doActivate</a>, normally called by the ToolManager.Later it is deactivated (<a href="../symbols/Tool.html#doDeactivate">#doDeactivate</a>) and then stopped.<a href="../symbols/Tool.html#isActive">#isActive</a> should be true when the tool is "active".Often tools should ignore certain common events, such as calls to <a href="../symbols/Tool.html#doMouseMove">#doMouseMove</a>,unless the tool is "active".<p/>You can prevent a "mode-less" tool (i.e. one managed by the <a href="../symbols/ToolManager.html">ToolManager</a>)from being started by the ToolManager by setting <a href="../symbols/Tool.html#isEnabled">#isEnabled</a> to false.<p/>You can go into a particular "mode" by setting <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> explicitly.This ignores the <a href="../symbols/Tool.html#isEnabled">#isEnabled</a> property and does not call the <a href="../symbols/Tool.html#canStart">#canStart</a> predicate.The behavior will depend on the tool -- not all of the predefined tools support operating as a "modal" tool.<p/>Tools cannot be shared amongst multiple Diagrams.<p/>If you define a Tool subclass, you may override any of the methods whose names start with "do"and any other methods that are documented to be overridable, such as <a href="../symbols/Tool.html#canStart">#canStart</a>.However you must seriously consider calling the base method in order to gets its default behavior.There may be situations where not calling the base method may cause subtle bugs.But that depends on the method and the tool.
-			</p>
-
-<!-- ============================== constructor summary ==================== -->
-			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Tool.">
-				<caption>Constructor Summary</caption>
-				<thead>
-					<tr>
-						<th scope="col">Constructor Attributes</th>
-						<th scope="col">Constructor Name and Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="attributes">&nbsp;</td>
-						<td class="nameDescription" >
-							<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#constructor">Tool</a></b>()
-							</div>
-							<div class="description">Don't construct this directly -- this is an abstract class.</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
-
-<!-- ============================== properties summary ===================== -->
-			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class Tool.">
-					<caption>Property Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Property Attributes</th>
-							<th scope="col">Property Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#diagram">diagram</a></b>
-								</div>
-								<div class="description">Gets the <a href="../symbols/Diagram.html">Diagram</a> that owns this tool andfor which this tool is handling input events.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#isActive">isActive</a></b>
-								</div>
-								<div class="description">Gets or sets whether this tool is started and is actively doing something.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#isEnabled">isEnabled</a></b>
-								</div>
-								<div class="description">Gets or sets whether this tool can be started by a mouse event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#name">name</a></b>
-								</div>
-								<div class="description">Gets or sets the name of this tool.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{?string}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Tool.html#transactionResult">transactionResult</a></b>
-								</div>
-								<div class="description">Gets or sets the name of the transaction to be committed by <a href="../symbols/Tool.html#stopTransaction">#stopTransaction</a>;if null, the transaction will be rolled back.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-
-				
-			
-
-<!-- ============================== methods summary ======================== -->
-			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Tool.">
-					<caption>Method Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Method Attributes</th>
-							<th scope="col">Method Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#cancelWaitAfter">cancelWaitAfter</a></b>()
-								</div>
-								<div class="description">This is called to cancel any running "WaitAfter" timer.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#canStart">canStart</a></b>()
-								</div>
-								<div class="description">This predicate is used by the <a href="../symbols/ToolManager.html">ToolManager</a> to decide if this tool can be started mode-lesslyby mouse and touch events.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doActivate">doActivate</a></b>()
-								</div>
-								<div class="description">This method is called by the diagram after setting <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>,to make the new tool active.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doCancel">doCancel</a></b>()
-								</div>
-								<div class="description">The diagram will call this method when the user wishes to cancel thecurrent tool's operation.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doDeactivate">doDeactivate</a></b>()
-								</div>
-								<div class="description">This method is called by the diagram on the old tool when<a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> is set to a new tool.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doKeyDown">doKeyDown</a></b>()
-								</div>
-								<div class="description">The diagram will call this method upon a key down event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doKeyUp">doKeyUp</a></b>()
-								</div>
-								<div class="description">The diagram will call this method upon a key up event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doMouseDown">doMouseDown</a></b>()
-								</div>
-								<div class="description">The diagram will call this method upon a mouse down event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doMouseMove">doMouseMove</a></b>()
-								</div>
-								<div class="description">The diagram will call this method upon a mouse move event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doMouseUp">doMouseUp</a></b>()
-								</div>
-								<div class="description">The diagram will call this method upon a mouse up event.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doMouseWheel">doMouseWheel</a></b>()
-								</div>
-								<div class="description">The diagram will call this method as the mouse wheel is rotated.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doStart">doStart</a></b>()
-								</div>
-								<div class="description">This method is called by the diagram when this tool becomes the current tool; you should not call this method.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doStop">doStop</a></b>()
-								</div>
-								<div class="description">This method is called by the diagram when this tool stops being the current tool; you should not call this method.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#doWaitAfter">doWaitAfter</a></b>()
-								</div>
-								<div class="description">This is called a certain delay after a call to <a href="../symbols/Tool.html#standardWaitAfter">#standardWaitAfter</a> if therehas not been any call to <a href="../symbols/Tool.html#cancelWaitAfter">#cancelWaitAfter</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#findToolHandleAt">findToolHandleAt</a></b>(p, category)
-								</div>
-								<div class="description">This convenience function finds the front-most <a href="../symbols/GraphObject.html">GraphObject</a>that is at a given point and that is part of an <a href="../symbols/Adornment.html">Adornment</a>that is of a given category.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#isBeyondDragSize">isBeyondDragSize</a></b>(first, last)
-								</div>
-								<div class="description">Return true when the last mouse point is far enough away from the first mouse down pointto constitute a drag operation instead of just a potential click.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#standardMouseClick">standardMouseClick</a></b>(navig, pred)
-								</div>
-								<div class="description">Implement the standard behavior for mouse clicks,searching for and calling click handler functions on <a href="../symbols/GraphObject.html">GraphObject</a>sor on <a href="../symbols/Diagram.html">Diagram</a>,and raising the corresponding <a href="../symbols/DiagramEvent.html">DiagramEvent</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#standardMouseOver">standardMouseOver</a></b>()
-								</div>
-								<div class="description">Implement the standard behavior for mouse enter, over, and leave events,where the mouse is moving but no button is pressed.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#standardMouseSelect">standardMouseSelect</a></b>()
-								</div>
-								<div class="description">Implement the standard behavior for selecting parts with the mouse,depending on the control and shift modifier keys.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#standardMouseWheel">standardMouseWheel</a></b>()
-								</div>
-								<div class="description">Implement the standard behavior for mouse wheel events.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#standardWaitAfter">standardWaitAfter</a></b>(delay)
-								</div>
-								<div class="description">This is called to start a new timer to call <a href="../symbols/Tool.html#doWaitAfter">#doWaitAfter</a> after a given delay.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#startTransaction">startTransaction</a></b>(tname)
-								</div>
-								<div class="description">Call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> with the given transaction name.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#stopTool">stopTool</a></b>()
-								</div>
-								<div class="description">If the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> is this tool,stop this tool and start the <a href="../symbols/Diagram.html#defaultTool">Diagram#defaultTool</a>by making it be the new current tool.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#stopTransaction">stopTransaction</a></b>()
-								</div>
-								<div class="description">If <a href="../symbols/Tool.html#transactionResult">#transactionResult</a> is null, call <a href="../symbols/Diagram.html#rollbackTransaction">Diagram#rollbackTransaction</a>,otherwise call <a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Tool.html#updateAdornments">updateAdornments</a></b>(part)
-								</div>
-								<div class="description">The diagram asks each tool to update any adornments the tool mightuse for a given part.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-
-				
-			
-<!-- ============================== events summary ======================== -->
-			
-
-<!-- ============================== fields summary ===================== -->
-			
-				
-				
-
-			
-
-<!-- ============================== constructor details ==================== -->
-			
-			<div class="details"><a name="constructor"> </a>
-				<div class="sectionTitle">
-					Constructor Detail
-				</div>
-
-				<div class="fixedFont">
-						<b>Tool</b>()
-				</div>
-
-				<div class="description">
-					Don't construct this directly -- this is an abstract class.
-					
-				</div>
-
-				
-
-
-					
-					
-					
-					
-					
-					
-					
-
-			</div>
-			
-
-<!-- ============================== property details ========================== -->
-			
-				<div class="sectionTitle">
-					Property Detail
-				</div>
-				
-					<a name="diagram"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
-					<b>diagram</b>
-
-					</div>
-					<div class="description">
-						Gets the <a href="../symbols/Diagram.html">Diagram</a> that owns this tool andfor which this tool is handling input events.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="isActive"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isActive</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether this tool is started and is actively doing something.<p/>You can set this to true after your tool is started (i.e. when it is the<a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> and <a href="../symbols/Tool.html#doStart">#doStart</a>had been called), but when it is not yet in a statethat it is actually "doing" something, because it is waiting for the rightcircumstances.  This is typically only important when the tool is used ina modal fashion.<p/>The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="isEnabled"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isEnabled</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether this tool can be started by a mouse event.<p/>Set this to false to prevent <a href="../symbols/Tool.html#canStart">#canStart</a> from returning true.Setting this property to false should prevent this tool from being used in a mode-less fashionby the <a href="../symbols/ToolManager.html">ToolManager</a> with a mouse down/move/up event.However, even when this property is false, this tool can still be used in a modal fashion:it can still be started by explicitly setting the<a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> property to this tool.<p/>The default value is true.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="name"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string}</span>
-					<b>name</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the name of this tool.The initial name is an empty string.<p/>This name is sometimes used by tools that use <a href="../symbols/Adornment.html">Adornment</a>s as the <a href="../symbols/Part.html#category">Part#category</a> for their Adornments.It is also sometimes used by tools that conduct transactions as the transaction name.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="transactionResult"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{?string}</span>
-					<b>transactionResult</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the name of the transaction to be committed by <a href="../symbols/Tool.html#stopTransaction">#stopTransaction</a>;if null, the transaction will be rolled back.<p/>If this is non-null at the time of a call to <a href="../symbols/Tool.html#stopTransaction">#stopTransaction</a>,it calls <a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a> with this transaction name;if this is null at that time, it calls <a href="../symbols/Diagram.html#rollbackTransaction">Diagram#rollbackTransaction</a>.<p/>The default value is null; <a href="../symbols/Tool.html#startTransaction">#startTransaction</a> will also set this to null.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					
-				
-			
-
-<!-- ============================== method details ========================= -->
-			
-				<div class="sectionTitle">
-					Method Detail
-				</div>
-				
-					<a name="cancelWaitAfter"> </a>
-					<div class="fixedFont">
-
-					
-					<b>cancelWaitAfter</b>()
-
-					</div>
-					<div class="description">
-						This is called to cancel any running "WaitAfter" timer.<p/>This is called when a tool is stopped.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="canStart"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>canStart</b>()
-
-					</div>
-					<div class="description">
-						This predicate is used by the <a href="../symbols/ToolManager.html">ToolManager</a> to decide if this tool can be started mode-lesslyby mouse and touch events.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>By default this method returns <a href="../symbols/Tool.html#isEnabled">#isEnabled</a>.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if <a href="../symbols/Tool.html#isEnabled">#isEnabled</a> is true andif the <a href="../symbols/Diagram.html#toolManager">Diagram#toolManager</a> can make this tool the current one andthen call the <a href="../symbols/Tool.html#doStart">#doStart</a> method.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="doActivate"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doActivate</b>()
-
-					</div>
-					<div class="description">
-						This method is called by the diagram after setting <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>,to make the new tool active.This should set <a href="../symbols/Tool.html#isActive">#isActive</a> to true.Overrides of this method might call <a href="../symbols/Tool.html#startTransaction">#startTransaction</a>,if this tool's activity involves modification of the model.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>You should call this method only after setting <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> to the Tool that you want to activate.<p/>By default this only sets <a href="../symbols/Tool.html#isActive">#isActive</a> to true.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doCancel"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doCancel</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method when the user wishes to cancel thecurrent tool's operation.Typically this is called when the user hits the ESCAPE key.This should restore the original state and then call <a href="../symbols/Tool.html#stopTool">#stopTool</a>.<p/>By default this method just calls <a href="../symbols/Tool.html#stopTool">#stopTool</a>.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doDeactivate"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doDeactivate</b>()
-
-					</div>
-					<div class="description">
-						This method is called by the diagram on the old tool when<a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> is set to a new tool.This needs to set <a href="../symbols/Tool.html#isActive">#isActive</a> to false.Overrides of this method might call <a href="../symbols/Tool.html#stopTransaction">#stopTransaction</a>,if this tool's activity involves modification of the model.<p/>You should have no reason to call this method, because it is automatically called by the<a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> property setter on the old tool.<p/>By default this only sets <a href="../symbols/Tool.html#isActive">#isActive</a> to false.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doKeyDown"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doKeyDown</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method upon a key down event.By default this just calls <a href="../symbols/Tool.html#doCancel">#doCancel</a> if the key is the ESCAPE key.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the key.<p/>This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doKeyUp"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doKeyUp</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method upon a key up event.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the key.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doMouseDown"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doMouseDown</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method upon a mouse down event.This is normally overridden for mouse-down tools;it is not called for mouse-move or mouse-up tools.However it may also be called when the tool is run in a modal fashion,when code explicitly sets the diagram's <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>By default this method checks <a href="../symbols/Tool.html#isActive">#isActive</a>; if that is false it calls <a href="../symbols/Tool.html#canStart">#canStart</a>.If that in turn is true, this calls <a href="../symbols/Tool.html#doActivate">#doActivate</a>.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doMouseMove"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doMouseMove</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method upon a mouse move event.This is normally overridden for mouse-move tools;it is not called for mouse-up tools.However it may also be called when the tool is run in a modal fashion,when code explicitly sets the diagram's <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a>.An override of this method usually does nothing when <a href="../symbols/Tool.html#isActive">#isActive</a> is false.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doMouseUp"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doMouseUp</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method upon a mouse up event.This is normally overridden for mouse-up tools.An override of this method usually does nothing when <a href="../symbols/Tool.html#isActive">#isActive</a> is false,except for calling <a href="../symbols/Tool.html#stopTool">#stopTool</a>.Tools normally stop upon a mouse up, by calling <a href="../symbols/Tool.html#stopTool">#stopTool</a>.If you want to handle multiple mouse down-up gestures in one tool activation,you will need to override this method to only stop the tool when you want.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>By default this method just calls <a href="../symbols/Tool.html#stopTool">#stopTool</a>.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doMouseWheel"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doMouseWheel</b>()
-
-					</div>
-					<div class="description">
-						The diagram will call this method as the mouse wheel is rotated.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doStart"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doStart</b>()
-
-					</div>
-					<div class="description">
-						This method is called by the diagram when this tool becomes the current tool; you should not call this method.Tool implementations should perform their per-use initialization here, suchas setting up internal data structures, or capturing the mouse.Implementations of this method can look at <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a> to get the mouseevent and input state.<p/>You should not call this method -- only the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> property setter should call this method.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doStop"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doStop</b>()
-
-					</div>
-					<div class="description">
-						This method is called by the diagram when this tool stops being the current tool; you should not call this method.Tool implementations should perform their per-use cleanup here,such as releasing mouse capture.<p/>You should not call this method -- only the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> property setter should call this method.If you want to stop a tool unexpectedly, you should call <a href="../symbols/Tool.html#doCancel">#doCancel</a>.If your implementation of a tool wants to stop itself, you should call <a href="../symbols/Tool.html#stopTool">#stopTool</a>.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doWaitAfter"> </a>
-					<div class="fixedFont">
-
-					
-					<b>doWaitAfter</b>()
-
-					</div>
-					<div class="description">
-						This is called a certain delay after a call to <a href="../symbols/Tool.html#standardWaitAfter">#standardWaitAfter</a> if therehas not been any call to <a href="../symbols/Tool.html#cancelWaitAfter">#cancelWaitAfter</a>.<p/>By default this does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="findToolHandleAt"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
-					<b>findToolHandleAt</b>(p, category)
-
-					</div>
-					<div class="description">
-						This convenience function finds the front-most <a href="../symbols/GraphObject.html">GraphObject</a>that is at a given point and that is part of an <a href="../symbols/Adornment.html">Adornment</a>that is of a given category.<p/>This method may be overridden.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> <b>p</b>
-									
-								</dt>
-								<dd>a Point in document coordinates.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{string}</span> <b>category</b>
-									
-								</dt>
-								<dd>the required <a href="../symbols/Part.html#category">Part#category</a> of the <a href="../symbols/Adornment.html">Adornment</a>.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="isBeyondDragSize"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isBeyondDragSize</b>(first, last)
-
-					</div>
-					<div class="description">
-						Return true when the last mouse point is far enough away from the first mouse down pointto constitute a drag operation instead of just a potential click.<p/>This uses the value of <a href="../symbols/ToolManager.html#dragSize">ToolManager#dragSize</a>.On touch devices the value is automatically increased to accommodate the unavoidable movement of fingers.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>=}</span> <b>first</b>
-									
-								</dt>
-								<dd>Point in view coordinates, defaults to <a href="../symbols/Diagram.html#firstInput">Diagram#firstInput</a>'s <a href="../symbols/InputEvent.html#viewPoint">InputEvent#viewPoint</a>.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>=}</span> <b>last</b>
-									
-								</dt>
-								<dd>Point in view coordinates, defaults to <a href="../symbols/Diagram.html#lastInput">Diagram#lastInput</a>'s <a href="../symbols/InputEvent.html#viewPoint">InputEvent#viewPoint</a>.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="standardMouseClick"> </a>
-					<div class="fixedFont">
-
-					
-					<b>standardMouseClick</b>(navig, pred)
-
-					</div>
-					<div class="description">
-						Implement the standard behavior for mouse clicks,searching for and calling click handler functions on <a href="../symbols/GraphObject.html">GraphObject</a>sor on <a href="../symbols/Diagram.html">Diagram</a>,and raising the corresponding <a href="../symbols/DiagramEvent.html">DiagramEvent</a>.<p/>A click on a <a href="../symbols/GraphObject.html">GraphObject</a> of the diagram will raise one of the following <a href="../symbols/DiagramEvent.html">DiagramEvent</a>s:"ObjectSingleClicked", "ObjectDoubleClicked", or "ObjectContextClicked".This will also look at the corresponding click property:<a href="../symbols/GraphObject.html#click">GraphObject#click</a>, <a href="../symbols/GraphObject.html#doubleClick">GraphObject#doubleClick</a>, or <a href="../symbols/GraphObject.html#contextClick">GraphObject#contextClick</a>.If the value is a function, this will call it, passing the current <a href="../symbols/InputEvent.html">InputEvent</a>and the GraphObject.If the value is null, it tries looking at the parent <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>,and so on, walking up the visual tree until it finds the appropriate function to call.After calling the click function, if the value of <a href="../symbols/InputEvent.html#handled">InputEvent#handled</a> is false,this method will continue walking up the visual tree looking for more click functionsto call.Once it has looked at the top-level object (a <a href="../symbols/Part.html">Part</a>)for a click function, this method stops.<p/>A click in the background of the diagram will raise one of the following <a href="../symbols/DiagramEvent.html">DiagramEvent</a>s:"BackgroundSingleClicked", "BackgroundDoubleClicked", or "BackgroundContextClicked".This will also look at the corresponding click property:<a href="../symbols/Diagram.html#click">Diagram#click</a>, <a href="../symbols/Diagram.html#doubleClick">Diagram#doubleClick</a>, or <a href="../symbols/Diagram.html#contextClick">Diagram#contextClick</a>.If the value is a function, this will call it, passing the current <a href="../symbols/InputEvent.html">InputEvent</a>.<p/>This method is not responsible for selecting or deselecting any parts.Call <a href="../symbols/Tool.html#standardMouseSelect">#standardMouseSelect</a> for that functionality.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{function(GraphObject):GraphObject | null=}</span> <b>navig</b>
-									
-								</dt>
-								<dd>An optional custom navigationfunction to find target objects.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{function(GraphObject):boolean | null=}</span> <b>pred</b>
-									
-								</dt>
-								<dd>An optional custom predicatefunction to find target objects. No value means that only objects in layers holding permanent objects.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="standardMouseOver"> </a>
-					<div class="fixedFont">
-
-					
-					<b>standardMouseOver</b>()
-
-					</div>
-					<div class="description">
-						Implement the standard behavior for mouse enter, over, and leave events,where the mouse is moving but no button is pressed.This should be called by mouse move event handlers when wanting todetect and invoke mouse enter/over/leave event handlers.<p/>The <a href="../symbols/GraphObject.html#mouseEnter">GraphObject#mouseEnter</a> property provides a function to callwhen the mouse first enters an object or any of its contained objects(if the object is actually a <a href="../symbols/Panel.html">Panel</a>).<p/>The <a href="../symbols/GraphObject.html#mouseLeave">GraphObject#mouseLeave</a> property provides a function to callwhen the mouse leaves an object and all of its contained objects(if the object is actually a <a href="../symbols/Panel.html">Panel</a>).<p/>The <a href="../symbols/GraphObject.html#mouseOver">GraphObject#mouseOver</a> property and <a href="../symbols/Diagram.html#mouseOver">Diagram#mouseOver</a>properties provide functions to call when the mouse moves but stayswithin the same <a href="../symbols/GraphObject.html">GraphObject</a> or when the mouse moves in thebackground of the <a href="../symbols/Diagram.html">Diagram</a>.<p/>This method is also responsible for updating the <a href="../symbols/Diagram.html#currentCursor">Diagram#currentCursor</a>according to the value of <a href="../symbols/GraphObject.html#cursor">GraphObject#cursor</a> and <a href="../symbols/Diagram.html#defaultCursor">Diagram#defaultCursor</a>.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="standardMouseSelect"> </a>
-					<div class="fixedFont">
-
-					
-					<b>standardMouseSelect</b>()
-
-					</div>
-					<div class="description">
-						Implement the standard behavior for selecting parts with the mouse,depending on the control and shift modifier keys.<p/>Control-clicking on a part will select it if it wasn't already,and will deselect if it had been selected.Shift-clicking on a part will add it to the selection (if it wasn't already).Otherwise, clicking on a part will select it (if it wasn't already).<p/>Note that there are restrictions on selection.For example, a part cannot be selected in this manner if GraphObject#selectable is false,or if <a href="../symbols/Diagram.html#maxSelectionCount">Diagram#maxSelectionCount</a> would be exceeded.<p/>A left click in the background of the diagram with no modifier keys clears the selection.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="standardMouseWheel"> </a>
-					<div class="fixedFont">
-
-					
-					<b>standardMouseWheel</b>()
-
-					</div>
-					<div class="description">
-						Implement the standard behavior for mouse wheel events.<p/>Turning the mouse wheel if <a href="../symbols/Diagram.html#allowVerticalScroll">Diagram#allowVerticalScroll</a> is truecauses the diagram to scroll up or down.If <a href="../symbols/InputEvent.html#shift">InputEvent#shift</a> and <a href="../symbols/Diagram.html#allowHorizontalScroll">Diagram#allowHorizontalScroll</a> are true,the diagram scrolls left or right.<p/>If <a href="../symbols/InputEvent.html#control">InputEvent#control</a> and <a href="../symbols/Diagram.html#allowZoom">Diagram#allowZoom</a> are true,turning the mouse wheel changes the diagram's scale,zooming in or out while trying to keep the point in the modelat the same point as the mouse.<p/>The value of <a href="../symbols/ToolManager.html#mouseWheelBehavior">ToolManager#mouseWheelBehavior</a> affects what operations might occurupon mouse wheel events.<p/>This method may be overridden, but you should consider calling this base method in order to get all of its functionality.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="standardWaitAfter"> </a>
-					<div class="fixedFont">
-
-					
-					<b>standardWaitAfter</b>(delay)
-
-					</div>
-					<div class="description">
-						This is called to start a new timer to call <a href="../symbols/Tool.html#doWaitAfter">#doWaitAfter</a> after a given delay.It first cancels any previously running "WaitAfter" timer, by calling <a href="../symbols/Tool.html#cancelWaitAfter">#cancelWaitAfter</a>.<p/>This is normally used to implement mouse hover and mouse hold events.If the mouse has moved, it must not have moved beyond the distance as determined by<a href="../symbols/Tool.html#isBeyondDragSize">Tool#isBeyondDragSize</a> for it be considered "stationary".So the regular <a href="../symbols/ToolManager.html#doMouseMove">ToolManager#doMouseMove</a> implementation only callsthis method when the mouse has moved beyond the drag size.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>delay</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="startTransaction"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>startTransaction</b>(tname)
-
-					</div>
-					<div class="description">
-						Call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> with the given transaction name.This always sets <a href="../symbols/Tool.html#transactionResult">#transactionResult</a> to null.<p/>This is normally called in an override of <a href="../symbols/Tool.html#doActivate">#doActivate</a>, if the tool modifies the model,along with a call to <a href="../symbols/Tool.html#stopTransaction">#stopTransaction</a> in an override of <a href="../symbols/Tool.html#doDeactivate">#doDeactivate</a>.Alternatively, you can surround a block of code that sets the <a href="../symbols/Tool.html#transactionResult">#transactionResult</a>with calls to startTransaction and stopTransaction.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{string=}</span> <b>tname</b>
-									
-								</dt>
-								<dd>a string describing the transaction.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> the value of the call to <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a>.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="stopTool"> </a>
-					<div class="fixedFont">
-
-					
-					<b>stopTool</b>()
-
-					</div>
-					<div class="description">
-						If the <a href="../symbols/Diagram.html#currentTool">Diagram#currentTool</a> is this tool,stop this tool and start the <a href="../symbols/Diagram.html#defaultTool">Diagram#defaultTool</a>by making it be the new current tool.The implementation of various tool methods can call this method to stop the current tool.This will call <a href="../symbols/Tool.html#doStop">#doStop</a> -- you should not call that method directly.<p/>If you want to stop the current tool and have it restore the original state, call <a href="../symbols/Tool.html#doCancel">#doCancel</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="stopTransaction"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>stopTransaction</b>()
-
-					</div>
-					<div class="description">
-						If <a href="../symbols/Tool.html#transactionResult">#transactionResult</a> is null, call <a href="../symbols/Diagram.html#rollbackTransaction">Diagram#rollbackTransaction</a>,otherwise call <a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.<p/>This is normally called in an override of <a href="../symbols/Tool.html#doDeactivate">#doDeactivate</a>,if <a href="../symbols/Tool.html#startTransaction">#startTransaction</a> was called in <a href="../symbols/Tool.html#doActivate">#doActivate</a>.Alternatively, you can surround a block of code that sets the <a href="../symbols/Tool.html#transactionResult">#transactionResult</a>with calls to startTransaction and stopTransaction.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> the result of the call to rollback or commit the transaction.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="updateAdornments"> </a>
-					<div class="fixedFont">
-
-					
-					<b>updateAdornments</b>(part)
-
-					</div>
-					<div class="description">
-						The diagram asks each tool to update any adornments the tool mightuse for a given part.If the tool uses its own tool handles,this should display them or hide them as appropriate.Typically this should only show them if the part is selected.<p/>By default this method does nothing.This method may be overridden.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Part.html">Part</a>}</span> <b>part</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					
-				
-			
-
-<!-- ============================== event details ========================= -->
-			
-
-			<hr />
-		</div>
-
-
-<!-- ============================== footer ================================= -->
-		<div id="footer" class="fineprint" style="clear:both">
-			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
-		</div>
-	</body>
-</html>
