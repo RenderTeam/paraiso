@@ -52,8 +52,6 @@ if ( 'development' == app.get('env') ) {
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
 //Index
   app.get( '/', routes.index );
-//Forms
-  app.get( '/forms/new_form', routes.new_form );
 //Organizational Structure
   app.get( '/organizational_structure/talent_management', 
     queries.privateContent, routes.talent_management );
