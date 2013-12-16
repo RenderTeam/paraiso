@@ -30,7 +30,6 @@ function myTasksController ( scope, tasks ) {
 
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
 function newTaskController ( scope, tasks, users ) {
-
   scope.task = {
     creation_date:  new Date(),
     creator:        '', /* Se tiene que recuperar de la sesión */
@@ -139,9 +138,7 @@ function newTaskController ( scope, tasks, users ) {
   scope.newTask = function () {
     scope.task.creation_date = new Date();
     var params = {};
-
     params.task = scope.task;
-
     tasks.saveTask( params ).then( function ( data ) {
       scope.task = {
         creation_date:  new Date(),

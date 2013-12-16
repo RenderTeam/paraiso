@@ -13,13 +13,26 @@
     "html2jade": "0.5.3",
     "jade": "0.35.0",
     "less-middleware": "0.1.12",
-    "mongoose": "3.6.20"
+    "mongoose": "3.6.20",
+    "moment": "= 1.7.0",
+    "bufferjs": "=1.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "0.7.2",
     "grunt-shell": "~0.6.1",
     "grunt-nodemon": "~0.1.2",
-    "grunt-exec": "~0.4.2"
+    "grunt-exec": "~0.4.2",
+    "mocha": "= 1.7.4",
+    "chai": "= 1.1.0",
+    "simplesmtp": "= 0.1.18",
+    "mailparser": "0.2.27"
+  },
+  "optionalDependencies": {
+    "bufferjs": "=1.1.0"
+  },
+  "main": "email",
+  "scripts": {
+    "test": "mocha -R spec -t 5000"
   }
 }
