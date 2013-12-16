@@ -48,20 +48,23 @@ if ( 'development' == app.get('env') ) {
 }
 
 // GET
-//Control Panel
+// Control Panel
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
-//Index
+// Index
   app.get( '/', routes.index );
-//Organizational Structure
+// Forms Generator
+    app.get( '/forms_generator/create_form', 
+      queries.privateContent, routes.create_form );
+// Organizational Structure
   app.get( '/organizational_structure/talent_management', 
     queries.privateContent, routes.talent_management );
   app.get('/organizational_structure/departments',
     queries.privateContent, routes.departments);
   app.get( '/organizational_structure/employments', 
     queries.privateContent, routes.employments);
-//Resources
+// Resources
   app.get( '/resources', queries.privateContent, routes.resources );
-//Tasks
+// Tasks
   app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
   app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
