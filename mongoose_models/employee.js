@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var employeeSchema = new Schema({
   username:         { type: String, required: true},
   name:             { type: String, required: true },
+  mail:             { type: String, required: true },
   last_father_name: { type: String, required: true },
   last_mother_name: { type: String, required: true },
   date_of_birth:    { type: Date, required: true },

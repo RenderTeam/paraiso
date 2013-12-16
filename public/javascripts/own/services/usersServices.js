@@ -6,7 +6,7 @@ users.$inject = ['$http'];
 function users ( http ) {
   var user = {};
 
-  user.saveUser = function () {
+  user.saveUser = function ( params ) {
     var promise = http.post('/saveUser', params).
       success( returnData ).
       error( onError );

@@ -78,7 +78,7 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
 
-    query.select('-_id name profile').exec(
+    query.select('-_id').exec(
       function ( err, employees ) {
         if ( err ) { throw err; }
         console.log(employees);
@@ -131,10 +131,7 @@ mongoose.connect( conectionString, function ( err ) {
   };
   
   exports.saveUser = function ( req, res ) {
-    var newUser = new User({
-      username: req.body.user,
-      password: req.body.password
-    });
+    var newUser = new User( req.body.user );
 
     newUser.save( function ( err ) {
       if ( err ) {

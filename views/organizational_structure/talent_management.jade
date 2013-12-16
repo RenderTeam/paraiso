@@ -9,9 +9,9 @@ block main-navbar
 
 block content
   .col-md-12( ng-app = 'talentApp', ng-controller = controller )
-    a( data-toggle = 'modal', href = '#newEmployee' )
-      span.glyphicon.glyphicon-search
-    .form-search.text-right
+    .form-search
+      a( data-toggle = 'modal', href = '#newEmployee' )
+        span.lead.strong.glyphicon.glyphicon-plus
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
           span.glyphicon.glyphicon-search
@@ -20,6 +20,7 @@ block content
     table.table-striped
       thead
         tr
+          th Usuario
           th Nombre
           th Departamento
           th Puesto
@@ -27,9 +28,16 @@ block content
             span.glyphicon.glyphicon-user
       tbody
         tr( ng-repeat = 'employee in employees | filter:query' )
-          td( ng-bind = 'employee.name' )
-          td( ng-bind = 'employee.department' )
-          td( ng-bind = 'employee.employment' )
+          td( ng-bind = 'employee.username' )
+          td
+            span( ng-bind = 'employee.name' )
+            &nbsp;
+            span( ng-bind = 'employee.last_father_name' )
+            &nbsp;
+            span( ng-bind = 'employee.last_mother_name' )
+
+          td( ng-bind = 'employee.profile.department' )
+          td( ng-bind = 'employee.profile.employment' )
           td.launch-modal-preview
             a( data-toggle='modal', href='#employeePreview',
               ng-click = 'talentPreview()' )
