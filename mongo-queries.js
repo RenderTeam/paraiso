@@ -62,7 +62,7 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getAllPermissionsStatus = function ( req, res ) {
     var query = Permission.find();
 
-    query.select('-_id -tasks.can -employees.can').exec(
+    query.select('-_id').exec(
       function ( err, permissions ) {
         if ( err ) { throw err; }
         res.send( permissions );

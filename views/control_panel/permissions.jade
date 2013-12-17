@@ -25,14 +25,8 @@ block content
         tr( ng-repeat = 'permission in permissions | filter:query' )
           td( ng-bind = 'permission.username' )
           td
-            span.label( class = 'label-{{permission.tasks.status}}' )
-              | Tareas
-            span.label( class = 'label-{{permission.employees.status}}' )
-              | Talento Humano
-            span.label( class = 'label-{{permission.control_panel.status}}' )
-              | Panel de control
-            span.label( class = 'label-{{permission.departments.status}}' )
-              | Departamentos
+            span.label( ng-repeat = 'module in permission.permissions',
+              class = 'label-{{module.status}}', ng-bind = 'module.label' )
           td.text-center.launch-modal-preview
             a( data-toggle='modal', href='#permissions',
               ng-click = 'getPermissions()' )

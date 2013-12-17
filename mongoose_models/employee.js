@@ -36,7 +36,65 @@ var employeeSchema = new Schema({
  */
 employeeSchema.post( 'save', function ( doc ) {
   permission = new Permission( {
-    username: doc.username
+    username: doc.username,
+    permissions: [
+      {
+        module: 'tasks',
+        label:  'Tareas',
+        status: 'danger',
+        actions: [
+          {
+            what:   'access',
+            label:  'Acceder',
+            value:  false
+          },
+          {
+            what:   'remove',
+            label:  'Eliminar',
+            value:  false
+          }
+        ]
+      },
+      {
+        module: 'control_panel',
+        label:  'Panel de control',
+        status: 'warning',
+        actions: [
+          {
+            what:   'access',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'remove',
+            label:  'Eliminar',
+            value:  false
+          }
+        ]
+      },
+      {
+        module: 'organizational_structure',
+        label:  'Estructura organizacional',
+        status: 'success',
+        actions: [
+          {
+            what:   'access',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'modificar',
+            label:  'Modificar',
+            value:  true
+          },
+          {
+            what:   'remove',
+            label:  'Eliminar',
+            value:  true
+          }
+        ]
+      }
+    ]
   } );
 
   permission.save( function ( err, res ) {
