@@ -50,6 +50,8 @@ if ( 'development' == app.get('env') ) {
 // GET
 //Control Panel
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
+  app.get( '/control_panel/permissions', queries.privateContent, 
+    routes.permissions );
 //Index
   app.get( '/', routes.index );
 //Forms

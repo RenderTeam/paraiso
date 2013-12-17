@@ -2,7 +2,13 @@
 exports.control_panel = function( req, res ){
   res.render('control_panel/control_panel', { 
     controller: 'NewUserController' ,
-    //currentUser : req.user.username
+    currentUser : req.user.username
+  });
+};
+exports.permissions = function( req, res ){
+  res.render('control_panel/permissions', { 
+    controller: '' ,
+    currentUser : req.user.username
   });
 };
 //Index

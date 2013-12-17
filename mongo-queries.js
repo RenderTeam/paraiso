@@ -81,7 +81,6 @@ mongoose.connect( conectionString, function ( err ) {
     query.select('-_id').exec(
       function ( err, employees ) {
         if ( err ) { throw err; }
-        console.log(employees);
         res.send( employees );
       }
     );

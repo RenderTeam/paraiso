@@ -1,0 +1,14 @@
+extends ../layout
+
+block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/control-panel.css')
+
+block main-navbar
+  include ../navbars/control_panel_navbar
+
+block content
+  .col-md-12
+    h1 Lol
+
+block custom-scripts
+  script( src='/javascripts/own/controllers/controlPanelControllers.js')

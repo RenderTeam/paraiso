@@ -1,23 +1,8 @@
 var controlPanelAppModule  = angular.module('controlPanelApp', []);
 
-controlPanelAppModule.controller('NewUserController', newUserController);
+controlPanelAppModule.controller('PermissionsController', permissionsController);
 
-newUserController.$inject = ['$scope', '$http'];
-function newUserController( scope, http ){
+permissionsController.$inject = ['$scope'];
+function permissionsController( scope ){
 
-  scope.newUser = function(){
-    http.post('/saveUser', scope.user)
-      .success( function ( data, status, headers, config ){
-        if ( data.status ){
-          scope.user = {
-            user: '',
-            password: ''
-          };
-        } else{
-          alert('Hubo un error sorry');
-        }
-      }).error( function ( data, status, headers, config ){
-        console.log( 'Error :O' );
-      });
-  };
 }
