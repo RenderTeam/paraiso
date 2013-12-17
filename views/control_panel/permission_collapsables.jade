@@ -1,0 +1,56 @@
+#accordion.panel-group
+  .panel( class = 'panel-{{permission.tasks.status}}' )
+    .panel-heading
+      h4.panel-title Tareas
+        input.pull-right( type = 'checkbox',
+          ng-checked = 'checkStatus("tasks")' )
+        a.pull-left(data-toggle='collapse', data-parent='#accordion',
+          href='#tasks')
+          span.glyphicon.glyphicon-chevron-down &nbsp;
+    #tasks.panel-collapse.collapse
+      .panel-body
+        div( ng-repeat = 'field in temporal.tasks' )
+          span( ng-bind = 'field.field' )
+          input( type = 'checkbox', ng-checked = 'field.value' )
+
+  .panel( class = 'panel-{{permission.employees.status}}' )
+    .panel-heading
+      h4.panel-title Talento Humano
+        input.pull-right( type = 'checkbox',
+          ng-checked = 'checkStatus("employees")' )
+        a.pull-left(data-toggle='collapse', data-parent='#accordion', 
+          href='#employees')
+          span.glyphicon.glyphicon-chevron-down &nbsp;
+    #employees.panel-collapse.collapse
+      .panel-body
+        div( ng-repeat = 'field in temporal.employees' )
+          span( ng-bind = 'field.field' )
+          input( type = 'checkbox', ng-checked = 'field.value' )
+
+  .panel( class = 'panel-{{permission.control_panel.status}}' )
+    .panel-heading
+      h4.panel-title Panel de control
+        input.pull-right( type = 'checkbox',
+          ng-checked = 'checkStatus("control_panel")' )
+        a.pull-left(data-toggle='collapse', data-parent='#accordion', 
+          href='#controlPanel')
+          span.glyphicon.glyphicon-chevron-down &nbsp;
+    #controlPanel.panel-collapse.collapse
+      .panel-body
+        div( ng-repeat = 'field in temporal.control_panel' )
+          span( ng-bind = 'field.field' )
+          input( type = 'checkbox', ng-checked = 'field.value' )
+
+  .panel( class = 'panel-{{permission.departments.status}}' )
+    .panel-heading
+      h4.panel-title Departmentos
+        input.pull-right( type = 'checkbox',
+          ng-checked = 'checkStatus("departments")' )
+        a.pull-left(data-toggle='collapse', data-parent='#accordion', 
+          href='#departments')
+          span.glyphicon.glyphicon-chevron-down &nbsp;
+    #departments.panel-collapse.collapse
+      .panel-body
+        div( ng-repeat = 'field in temporal.departments' )
+          span( ng-bind = 'field.field' )
+          input( type = 'checkbox', ng-checked = 'field.value' )

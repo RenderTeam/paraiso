@@ -1,26 +1,26 @@
-var services = angular.module( 'services.talent', [] );
+var services = angular.module( 'services.employee', [] );
 
-services.factory( 'Talent', talent );
+services.factory( 'Employee', employee );
 
-talent.$inject = ['$http'];
-function talent ( http ) {
-  var talents = {};
+employee.$inject = ['$http'];
+function employee ( http ) {
+  var employees = {};
 
-  talents.getAllTalent = function () {
+  employees.getAllTalent = function () {
     var promise = http.post('/getEmployees').
       success( returnData ).
       error( onError );
     return promise;
   };
 
-  talents.saveTalent = function ( params ) {
+  employees.saveTalent = function ( params ) {
     var promise = http.post('/saveEmployee', params).
       success( returnData ).
       error( onError );
     return promise;
   };
 
-  return talents;
+  return employees;
 }
 
 function returnData ( response ) {

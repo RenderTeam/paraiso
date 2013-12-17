@@ -7,8 +7,50 @@ block main-navbar
   include ../navbars/control_panel_navbar
 
 block content
-  .col-md-12
-    h1 Lol
+  .col-md-12( ng-app = 'controlPanelApp', ng-controller = controller )
+    .form-search
+      .input-group.col-md-3.pull-right
+        span.input-group-addon 
+          span.glyphicon.glyphicon-search
+        input.form-control.input( ng-model = 'query' )
+
+    table.table.table-striped
+      thead
+        tr
+          th Usuario
+          th Permisos
+          th.text-center
+            span.glyphicon.glyphicon-check
+      tbody.permission-table
+        tr( ng-repeat = 'permission in permissions | filter:query' )
+          td( ng-bind = 'permission.username' )
+          td
+            span.label( class = 'label-{{permission.tasks.status}}' )
+              | Tareas
+            span.label( class = 'label-{{permission.employees.status}}' )
+              | Talento Humano
+            span.label( class = 'label-{{permission.control_panel.status}}' )
+              | Panel de control
+            span.label( class = 'label-{{permission.departments.status}}' )
+              | Departamentos
+          td.text-center.launch-modal-preview
+            a( data-toggle='modal', href='#permissions',
+              ng-click = 'getPermissions()' )
+              span.glyphicon.glyphicon-check
+
+    #permissions.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h1.modal-title( ng-bind = 'permission.username' )
+          .modal-body
+            include permission_collapsables
+          .modal-footer
+            button.btn.btn-danger(type='button', data-dismiss='modal' ,
+              aria-hidden="true")
+              | Cancelar
 
 block custom-scripts
+  script( src='/javascripts/own/services/permissionsServices.js')
   script( src='/javascripts/own/controllers/controlPanelControllers.js')

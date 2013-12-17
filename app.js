@@ -71,27 +71,31 @@ if ( 'development' == app.get('env') ) {
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
 // POST
+  //Employees
+  app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
+  app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
+  //Permissions
+  app.post( '/getAllPermissionsStatus', queries.privateContent, 
+    queries.getAllPermissionsStatus );
+  app.post( '/getOnePermission', queries.privateContent, 
+    queries.getOnePermission );
   //Tasks
   app.post( '/getOneTask',  queries.privateContent,
                             queries.log,
                             queries.getOneTask );
-
   app.post( '/getTasks', queries.privateContent, queries.getTasks );
   app.post( '/getTasksFromUser', queries.privateContent, 
     queries.getTasksFromUser );
-  app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
+  app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
-  //Users
-  app.post( '/getOneUser', queries.privateContent, queries.getOneUser );
-  //Employees
-  app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
-  app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
-  
   //Session
   app.post( '/login', queries.login );
   app.post( '/logout', queries.logout);
+  
+  //Users
+  app.post( '/getOneUser', queries.privateContent, queries.getOneUser );
+  app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
   app.post( '/saveUser', queries.privateContent, queries.saveUser );
-  app.post( '/saveTask', queries.privateContent, queries.saveTask );
 
   app.post( '/createForm', queries.createForm );
 

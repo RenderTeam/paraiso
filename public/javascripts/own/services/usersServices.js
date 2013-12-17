@@ -11,7 +11,7 @@ function users ( http ) {
       success( returnData ).
       error( onError );
     return promise;
-  }
+  };
 
   user.getOneUser = function ( params ) {
     var promise = http.post('/getOneUser', params).

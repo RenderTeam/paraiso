@@ -1,10 +1,10 @@
 var talentAppModule  = angular.module( 'talentApp',
-  [ 'services.talent', 'services.users' ] );
+  [ 'services.employee', 'services.users' ] );
 
 talentAppModule.controller( 'TalentController', talentController );
 
-talentController.$inject = [ '$scope', 'Talent', 'Users' ];
-function talentController ( scope, talent, users ) {
+talentController.$inject = [ '$scope', 'Employee', 'Users' ];
+function talentController ( scope, employee, users ) {
   scope.employee = {
     username: '',
     name: '',
@@ -22,14 +22,14 @@ function talentController ( scope, talent, users ) {
 
   scope.confirmation = '';
 
-  talent.getAllTalent().success( function ( data ) {
+  employee.getAllTalent().success( function ( data ) {
     scope.employees = data;
   });
 
   scope.talentPreview = function () {
     console.log(this);
 
-    talent.getPreview( params ).
+    employee.getPreview( params ).
       success().
       error();
   };
@@ -55,7 +55,7 @@ function talentController ( scope, talent, users ) {
               }).
               error();
             
-            talent.saveTalent(params).
+            employee.saveTalent(params).
               success( function (data) {
                 alert('Employee creado');
               }).
@@ -82,15 +82,13 @@ function talentController ( scope, talent, users ) {
 /**
  * Calculates age
  * @param { birthDate (Date) } The Date object that represents the bithdate to 
-    calculate.
+ *   calculate.
  * @return { age (Number) } The age today
  */
 function calculateAge( birthDate ) {
 
-  var age = 0,
-      today = new Date(),
-
-  age = today.getFullYear() - birthDate.getFullYear();
+  var today = new Date(),
+      age = today.getFullYear() - birthDate.getFullYear();
 
   if ( ( today.getMonth() < birthDate.getMonth() ) || 
     ( today.getMonth() === birthDate.getMonth() && 
@@ -99,4 +97,4 @@ function calculateAge( birthDate ) {
   }
   
   return age;
-};
+}

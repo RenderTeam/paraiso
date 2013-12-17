@@ -9,6 +9,7 @@ var Forms             = require('./mongoose_models/form'),
     Resources         = require('./mongoose_models/resource'),
     Task              = require('./mongoose_models/task'),
     Employee          = require('./mongoose_models/employee'),
+    Permission        = require('./mongoose_models/permission'),
     User              = require('./mongoose_models/user');
 
 /** Conection to MongoDB and Mongo queries **/
@@ -19,6 +20,114 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+//Employee
+  exports.getEmployees = function ( req, res ) {
+    var query = Employee.find();
+
+    query.select('-_id').exec(
+      function ( err, employees ) {
+        if ( err ) { throw err; }
+        res.send( employees );
+      }
+    );
+  };
+
+  exports.saveEmployee = function ( req, res ) {
+    var newEmployee = new Employee( req.body.employee );
+
+    newEmployee.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+//Log
+  exports.log = function ( req, res, next ) {
+    var log = new Log({
+      user:   req.user.username,
+      where:  req.route.path
+    });
+
+    log.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+      }
+    });
+
+    next();
+  };
+//Permission
+  exports.getAllPermissionsStatus = function ( req, res ) {
+    var query = Permission.find();
+
+    query.select('-_id -tasks.can -employees.can').exec(
+      function ( err, permissions ) {
+        if ( err ) { throw err; }
+        res.send( permissions );
+      }
+    );
+  };
+
+  exports.getOnePermission = function ( req, res ) {
+    var condition = {
+      username: req.body.username
+    };
+
+    var query = Permission.findOne( condition );
+
+    query.select('-_id').exec( function ( err, permission ) {
+      if ( err ) { throw err; }
+      res.send( permission );
+    });
+  };
+//Session handlers
+  exports.login = function( req, res ) {
+    var user = req.body.user,
+        candidatePassword = req.body.password;
+    // fetch user and test password verification
+    User.findOne( { username: user }, function ( err, user ) {
+      if ( err ) { throw err; }
+
+      // test a matching password
+      if ( user === null ) {
+        res.send( { flag: false } );
+      } else {
+        user.comparePassword( candidatePassword , function ( err, isMatch ) {
+          if ( isMatch ) {
+            req.session.user = user;
+            res.send( { flag: true } );
+          }else{
+            res.send( { flag: false } );
+          }
+        });
+      }
+    });
+  };
+
+  exports.logout = function( req, res ) {
+    //req.session.destroy( function ( err ){
+    req.session.destroy();
+    res.redirect('/');
+    //}); linted function on err is unused. Looking for other solutions
+  };
+
+  exports.privateContent = function ( req, res, next ) {
+    if ( req.session.user ) {
+      var username = req.session.user.username;
+      User.findOne( { 'username': username }, function ( err, obj ) {
+        if ( true ) {
+          req.user = obj;
+          next();
+        } else {
+          res.redirect('/');
+        }
+      });
+    } else {
+      res.redirect('/');
+    }
+  };
 //Tasks
   /**
    * Obtains one specified task
@@ -74,29 +183,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-//Employee
-  exports.getEmployees = function ( req, res ) {
-    var query = Employee.find();
-
-    query.select('-_id').exec(
-      function ( err, employees ) {
-        if ( err ) { throw err; }
-        res.send( employees );
-      }
-    );
-  };
-
-  exports.saveEmployee = function ( req, res ) {
-    var newEmployee = new Employee( req.body.employee );
-
-    newEmployee.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
 //User
   exports.getUsersNames = function ( req, res ) {
     var query = User.find();
@@ -116,14 +202,13 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getOneUser = function ( req, res ) {
     var condition = {
       username: req.body.username
-    }
+    };
 
     var query = User.findOne( condition );
 
     query.select('-_id username').exec(
       function ( err, user ) {
         if ( err ) { throw err; }
-        console.log(user);
         res.send( user );
       }
     );
@@ -140,67 +225,7 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-//Log
-  exports.log = function ( req, res, next ) {
-    var log = new Log({
-      user:   req.user.username,
-      where:  req.route.path
-    });
 
-    log.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-      }
-    });
-
-    next();
-  };
-//Session handlers
-  exports.login = function( req, res ) {
-    var user = req.body.user,
-        candidatePassword = req.body.password;
-    // fetch user and test password verification
-    User.findOne( { username: user }, function ( err, user ) {
-      if ( err ) { throw err; }
-
-      // test a matching password
-      if ( user === null ) {
-        res.send( { flag: false } );
-      } else {
-        user.comparePassword( candidatePassword , function ( err, isMatch ) {
-          if ( isMatch ) {
-            req.session.user = user;
-            res.send( { flag: true } );
-          }else{
-            res.send( { flag: false } );
-          }
-        });
-      }
-    });
-  };
-
-  exports.logout = function( req, res ) {
-    //req.session.destroy( function ( err ){
-    req.session.destroy();
-    res.redirect('/');
-    //}); linted function on err is unused. Looking for other solutions
-  };
-
-  exports.privateContent = function ( req, res, next ) {
-    if ( req.session.user ) {
-      var username = req.session.user.username;
-      User.findOne( { 'username': username }, function ( err, obj ) {
-        if ( true ) {
-          req.user = obj;
-          next();
-        } else {
-          res.redirect('/');
-        }
-      });
-    } else {
-      res.redirect('/');
-    }
-  };
 // Form buider mock
 
   exports.createForm = function ( req, res ) {

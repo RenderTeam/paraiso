@@ -1,5 +1,6 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose    = require('mongoose'),
+    Schema      = mongoose.Schema,
+    Permission  = require('./permission');
 
 var employeeSchema = new Schema({
   username:         { type: String, required: true},
@@ -27,6 +28,20 @@ var employeeSchema = new Schema({
     department: { type: String },
     employment: { type: String }
   }
+});
+
+/**
+ * After saving the employee this middleware will initiate their permissions
+ * @param {doc (Object)} This is the employee saved we need its username value
+ */
+employeeSchema.post( 'save', function ( doc ) {
+  permission = new Permission( {
+    username: doc.username
+  } );
+
+  permission.save( function ( err, res ) {
+    if ( err ) { throw err; }
+  });
 });
 
 module.exports = mongoose.model('Employee', employeeSchema);
