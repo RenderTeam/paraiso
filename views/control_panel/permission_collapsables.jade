@@ -4,14 +4,17 @@
     .panel-heading
       h4.panel-title
         span( ng-bind = 'module.label' )
-        input.pull-right( type = 'checkbox', 
+        input.pull-right( type = 'checkbox',
+          ng-click = 'changeOnModuleClick( module.module )',
           ng-checked = 'checkStatus( module.status )' )
         a.pull-left(data-toggle='collapse', data-parent='#accordion',
           href = '#{{module.module}}')
           span.glyphicon.glyphicon-chevron-down &nbsp;
     .panel-collapse.collapse( id = '{{module.module}}' )
       .panel-body
-        .input-group( ng-repeat = 'action in module.actions' )
+        .input-group.checkboxes( ng-repeat = 'action in module.actions' )
           span.form-control( ng-bind = 'action.label' )
           span.input-group-addon
-            input( type = 'checkbox', ng-checked = 'action.value' )
+            input( type = 'checkbox', 
+              ng-click = 'changeOnActionClick( module.module, action.what )',
+              ng-checked = 'action.value' )

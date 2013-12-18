@@ -82,6 +82,21 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( permission );
     });
   };
+
+  exports.updatePermission = function ( req, res ) {
+    var condition = {
+          username: req.body.username
+        },
+        update = {
+          permissions: req.body.permissions
+        };
+    
+    Permission.update( condition, update, 
+      function ( err, number, raw ) {
+        res.send();
+      }
+    );
+  };
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,

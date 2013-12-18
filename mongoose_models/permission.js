@@ -5,10 +5,12 @@ var PermissionSchema = new Schema({
   username:         { type: String, required: true},
 
   permissions: [{
+    _id: false,
     module:   { type: String },
     label:   { type: String },
     status:   { type: String },
     actions:  [{
+      _id: false,
       what:   { type: String },
       label:   { type: String },
       value: { type: Boolean }

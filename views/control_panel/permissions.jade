@@ -44,6 +44,8 @@ block content
             button.btn.btn-danger(type='button', data-dismiss='modal' ,
               aria-hidden="true")
               | Cancelar
+            button.btn.btn-info( data-dismiss='modal', 
+              ng-click = 'updatePermissions()' ) Aceptar
 
 block custom-scripts
   script( src='/javascripts/own/services/permissionsServices.js')

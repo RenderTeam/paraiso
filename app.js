@@ -79,6 +79,8 @@ if ( 'development' == app.get('env') ) {
     queries.getAllPermissionsStatus );
   app.post( '/getOnePermission', queries.privateContent, 
     queries.getOnePermission );
+  app.post( '/updatePermission', queries.privateContent, 
+    queries.updatePermission );
   //Tasks
   app.post( '/getOneTask',  queries.privateContent,
                             queries.log,
