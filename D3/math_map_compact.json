@@ -8,7 +8,12 @@
                     "name": "DanBlack1",
                     "children": [
                         {
-                            "name": "El Soberbio"
+                            "name": "El Soberbio",
+                            "children" :[
+                                {
+                                    "name": "TeAmoMarisol"
+                                }
+                            ]
                         },
                         {
                             "name": "El Soberbio"
@@ -101,7 +106,7 @@
                             "name": "IPN"
                         },
                         {
-                            "name": "Holi"
+                            "name": "In love with DanBlack"
                         },
                         {
                             "name": "Javascript"
