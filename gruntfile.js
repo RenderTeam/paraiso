@@ -39,13 +39,34 @@ module.exports = function ( grunt ) {
           delayTime: 1
         }
       }
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          require: 'coverage/blanket'
+        },
+
+        src: ['test/*.js']
+      },
+      coverage: {
+        options: {
+          reporter: 'html-cov',
+          quiet: true,
+          captureFile: 'test/test-report.html'
+        },
+        src: ['test/**/*.js']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('init', ['exec', 'nodemon']);
+  grunt.registerTask('mocha-server', 'mochaTest');
 };

@@ -28,7 +28,7 @@ function permissionsController( scope, permission ){
   scope.checkStatus = function ( status ) {
     flag = status === 'success' ? true:false;
     return flag;
-  }
+  };
 
   scope.getPermissions = function () {
     permission.getOnePermission( this.permission ).
@@ -37,13 +37,13 @@ function permissionsController( scope, permission ){
         toUpdate = data.permissions;
       }).
       error();
-  }
+  };
 
   scope.updatePermissions = function () {
     var params = {
       username:     scope.permission.username,
       permissions:  toUpdate
-    }
+    };
 
     permission.updatePermission( params ).
       success(function () {}).
@@ -51,7 +51,7 @@ function permissionsController( scope, permission ){
 
     scope.permissions = changePermissionsOnUpdate( scope.permissions, 
       scope.permission );
-  }
+  };
 }
 
 function changePermissionsOnUpdate ( permissions, updated ) {

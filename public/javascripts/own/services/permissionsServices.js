@@ -18,14 +18,14 @@ function permissions ( http ) {
       success( returnData ).
       error( onError );
     return promise;
-  }
+  };
 
   permission.updatePermission = function ( params ) {
     var promise = http.post( '/updatePermission', params ).
       success( returnData ).
       error( onError );
     return promise;
-  }
+  };
 
   return permission;
 }
