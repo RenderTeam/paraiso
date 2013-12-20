@@ -95,7 +95,7 @@ if ( 'development' == app.get('env') ) {
   app.post( '/logout', queries.logout);
   
   //Users
-  app.post( '/getOneUser', queries.getOneUser );
+  app.post( '/getOneUser', queries.privateContent, queries.getOneUser );
   app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
   app.post( '/saveUser', queries.privateContent, queries.saveUser );
 

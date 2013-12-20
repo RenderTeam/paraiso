@@ -23,7 +23,7 @@
     "grunt-nodemon": "~0.1.2",
     "grunt-exec": "~0.4.2",
     "grunt-mocha-test": "~0.8.1",
-    "mocha": "0.3.x",
+    "mocha": "1.16.x",
     "mocha-mongoose": "x",
     "request": "~2.30.0",
     "expect.js": "~0.2.0"

@@ -1,4 +1,4 @@
-var queries = require('./../mongo-queries'),
+/*var queries = require('./../mongo-queries'),
     assert = require('assert'),
     expect = require('expect.js'),
     request = require('request').defaults({ encoding: null }),
@@ -18,7 +18,7 @@ describe('Get to index', function () {
   });
 });
 
-/*describe('User post' , function () {
+describe('User post' , function () {
   it('should get one user', function ( done ) {
     request(
       { method: 'POST',

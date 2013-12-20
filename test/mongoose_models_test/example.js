@@ -1,4 +1,4 @@
-var expect = require('expect.js')
+/*var expect = require('expect.js')
   , mongoose = require('mongoose')
   , Dummy    = mongoose.model('Dummy', new mongoose.Schema({a:Number}))
 ;
@@ -47,4 +47,4 @@ describe("Example spec for a model", function() {
       });
     });
   });
-});
+});*/
