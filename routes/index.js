@@ -30,7 +30,7 @@ exports.new_form = function( req, res) {
   };
 
   exports.employments = function( req, res){
-    res.render('organizational_structure/employments', {
+    res.render('organizational_structure/employmentsDiagram', {
       currentUser : req.user.username
     });
   };
