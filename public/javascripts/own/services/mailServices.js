@@ -7,10 +7,16 @@ function mail ( http ) {
   var mail = {};
   mail.sendMail = function ( params ) {
     var promise = http.post( '/sendMail', params ).
-      success( function ( response ) {
-        console.log("Hola");
-        return response.data;
-      });
+      success( 
+        function ( response ) {
+          return response.data;
+        }
+      ).
+      error(
+        function ( data, status ) {
+          console.log( status );
+        }
+      );;
     return promise;
   };
   return mail;

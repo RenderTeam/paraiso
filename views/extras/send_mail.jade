@@ -1,43 +1,52 @@
 extends ../layout
 
 block custom-stylesheets
-
+  link( rel='stylesheet', href='/stylesheets/own/send-mail.css')
 block main-navbar
   include ../navbars/extras_navbar
 
 block content
-  .page-header.text-center
+  #modalResult.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h4.modal-title.text-center Se esta enviando su correo.
+        .modal-body.text-center
+        .modal-footer.text-center Espere un momento, por favor...
+  .page-header.text-center.col-md-12( ng-app = 'emailApp' )
     h3 Formulario para 
       small envio de correo electrónico
-  div.col-md-9( ng-app = 'emailApp' )
-    form( ng-controller = controller, name = 'newMailForm' )
-      br
-      .input-group
-        span.input-group-addon Destinatario
-        input.form-control( ng-model = 'mail.to', type = 'text',
-          placeholder = 'Correo destinatario', name = 'to' required)
-      .label.label-danger.pull-right(
-        ng-show = 'newMailForm.to.$invalid && newMailForm.to.$dirty')
-        small(ng-show='newMailForm.to.$error.required') Introduzca un valor valido
-      br
-      .input-group
-        span.input-group-addon Tema del Mensaje
-        input.form-input.form-control( ng-model = 'mail.subject', type = 'text',
-          placeholder = 'Correo destinatario', name = 'subject' required)
-      .label.label-danger.pull-right(
-        ng-show = 'newMailForm.subject.$invalid && newMailForm.subject.$dirty')
-        small(ng-show='newMailForm.subject.$error.required') Introduzca un valor valido
-      br
-      .input-group
-        span.input-group.input-group-addon Mensaje
-        textarea.form-control( ng-model = 'mail.message', name = 'message'
-        rows="10", placeholder = 'Correo destinatario', required)
-      .label.label-danger.pull-right(
-        ng-show = 'newMailForm.message.$invalid && newMailForm.message.$dirty')
-        small(ng-show='newMailForm.message.$error.required') Introduzca un valor valido
-      br
-      button.btn.btn-block.btn-primary( ng-click = 'sendMail()', 
-          ng-disabled = 'newMailForm.$invalid') Enviar correo
+    div
+      form( ng-controller = controller, name = 'newMailForm' novalidate)
+        br
+        .input-group
+          span.input-group-addon Destinatario
+          input.form-control( ng-model = 'mail.to', type = 'email',
+            placeholder = 'Correo destinatario', name = 'to' required)
+        .label.label-danger.pull-right(
+          ng-show = 'newMailForm.to.$dirty && newMailForm.to.$invalid')
+          small(ng-show='newMailForm.to.$error.required') Introduzca un destinatario
+          small(ng-show='newMailForm.to.$error.email') Introduzca un correo valido
+        br
+        .input-group
+          span.input-group-addon Tema del Mensaje
+          input.form-input.form-control( ng-model = 'mail.subject', type = 'text',
+            placeholder = 'Tema del mensaje', name = 'subject' required)
+        .label.label-danger.pull-right(
+          ng-show = 'newMailForm.subject.$invalid && newMailForm.subject.$dirty')
+          small(ng-show='newMailForm.subject.$error.required') Introduzca un tema.
+        br
+        .panel.panel-default
+          .panel-heading Mensaje
+          .panel-body
+            textarea.form-control( ng-model = 'mail.message', name = 'message'
+            rows="10", placeholder = 'Mensaje', required)
+            .label.label-danger.pull-right(
+              ng-show = 'newMailForm.message.$invalid && newMailForm.message.$dirty')
+              small(ng-show='newMailForm.message.$error.required') Introduzca un mensaje.
+        br
+        button.btn.btn-block.btn-primary( ng-click = 'sendMail()', 
+            ng-disabled = 'newMailForm.$invalid') Enviar correo
 block custom-scripts
   script( src='/javascripts/own/services/mailServices.js')
   script( src='/javascripts/own/controllers/sendMailController.js')
