@@ -47,8 +47,7 @@ module.exports = function ( grunt ) {
           reporter: 'spec',
           require: 'coverage/blanket'
         },
-
-        src: ['test/*.js']
+        src: ['test/**/*.js']
       },
       coverage: {
         options: {
@@ -68,5 +67,5 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('init', ['exec', 'nodemon']);
-  grunt.registerTask('mocha-server', 'mochaTest');
+  grunt.registerTask('test', 'mochaTest');
 };

@@ -13,7 +13,9 @@ var Forms             = require('./mongoose_models/form'),
     User              = require('./mongoose_models/user');
 
 /** Conection to MongoDB and Mongo queries **/
-var conectionString = 'mongodb://localhost:27017/test';
+// var conectionString = 'mongodb://localhost:27017/test';
+//Tests use mocha db 
+var conectionString = 'mongodb://localhost:27017/mocha';
 
 mongoose.connect( conectionString, function ( err ) {
   if ( err ) { throw err; }
@@ -174,6 +176,7 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.getTasksFromUser = function ( req, res ) {
+    console.log(req.headers);
     var condition = {};
     condition.assigned = req.user.username;
     var query = Task.find( condition );
@@ -224,6 +227,8 @@ mongoose.connect( conectionString, function ( err ) {
     query.select('-_id username').exec(
       function ( err, user ) {
         if ( err ) { throw err; }
+        console.log(user.username);
+        return user.username;
         res.send( user );
       }
     );
