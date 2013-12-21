@@ -4,7 +4,6 @@ var expect    = require('expect.js'),
 
 var conectionString = 'mongodb://localhost:27017/mocha';
 
-
 describe( 'User model', function() {
   before( function ( done ) {
     mongoose.connect( conectionString, function ( err ) {
