@@ -231,7 +231,7 @@ mongoose.connect( conectionString, function ( err ) {
       }
     );
   };
-  
+
   exports.saveUser = function ( req, res ) {
     var newUser = new User( req.body.user );
 

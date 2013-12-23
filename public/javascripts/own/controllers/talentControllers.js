@@ -95,6 +95,6 @@ function calculateAge( birthDate ) {
       today.getDate() < birthDate.getDate() ) ) {
     age--;
   }
-  
+
   return age;
 }
