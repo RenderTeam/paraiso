@@ -1,0 +1,93 @@
+!!! 5
+html(lang='es')
+head
+    meta(charset='utf-8')
+    title Bootstrap Form Builder
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='/assets/css/lib/bootstrap.min.css', rel='stylesheet')
+    link(href='/assets/css/lib/bootstrap-responsive.min.css', rel='stylesheet')
+    link(href='/assets/css/custom.css', rel='stylesheet')
+    link( rel='stylesheet', href='/stylesheets/vendor/bootstrap/bootstrap.css' )
+    link( rel='stylesheet', href='/stylesheets/own/index.css' )
+    link( rel='stylesheet', href='/stylesheets/own/side-menu.css' )
+    link( rel='stylesheet', href='/stylesheets/own/shame.css' )
+    link( rel='stylesheet', href='/+javascripts/vendor/sidr/stylesheets/jquery.sidr.light.css' )
+  body
+    header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse',
+                               data-target='.bs-navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand#side-menu-trigger(href='#side-menu') Menú
+        .pull-right
+          nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+            ul.nav.navbar-nav
+              li.dropdown
+                a.dropdown-toggle(href='', data-toggle="dropdown")
+                  span.glyphicon.glyphicon-user#username
+                  | &nbsp;&nbsp; #{ currentUser } &nbsp;&nbsp;
+                  span.glyphicon.glyphicon-exclamation-sign &nbsp;
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    form( action='/logout', method='POST' )
+                      button( type='submit' ) Cerrar sesión 
+        nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+          ul.nav.navbar-nav
+            li
+                a(href='create_form') Nuevo Formulario
+
+
+
+
+    #side-menu.side-menu.hidden
+      ul
+        a( href='/' )
+          li.glyphicon-home &nbsp;Inicio
+        a( href='/organizational_structure/talent_management' )
+          li.glyphicon-th &nbsp;Estructura Organizacional
+        a( href='' )
+          li.glyphicon-refresh &nbsp;Procesos
+        a( href='' )
+          li.glyphicon-folder-open &nbsp;Documentación
+        a(href='/control_panel')
+          li.glyphicon-wrench &nbsp;Panel de Control
+        a(href='/tasks/tasks')
+          li.glyphicon-edit &nbsp;Tareas y pendientes
+        a(href='/resources')
+          li.glyphicon-globe &nbsp;Recursos
+        a(href='/forms_generator/custom_form')
+          li.glyphicon-list-alt &nbsp;Formularios
+
+
+    .container
+      .row.clearfix
+        .col-md-6
+          .clearfix
+            h2 Your Form
+            hr
+            #build
+              form#target.form-horizontal
+        .col-md-6
+          h2 Drag & Drop components
+          hr
+          .tabbable
+            ul#formtabs.nav.nav-tabs
+            form#components.form-horizontal
+              fieldset
+                .tab-content
+
+    script( src='/javascripts/vendor/jquery/jquery.min.js' )
+    script( src='/javascripts/vendor/angular/angular.min.js' )
+    script( src='/javascripts/vendor/bootstrap/bootstrap.js' )
+    script( src='/javascripts/vendor/bootstrap/modal.js' )
+    script( src='/javascripts/own/sidr-functions.js' )
+    script( src='/javascripts/own/resources-table-functions.js' )
+    script( src='/javascripts/own/control-panel.js' )
+    script( src='/javascripts/vendor/sidr/jquery.sidr.min.js' )
+    
+    script(data-main='/assets/js/main-built.js', src='/assets/js/lib/require.js')

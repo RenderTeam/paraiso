@@ -7,7 +7,7 @@ exports.control_panel = function ( req, res ) {
 };
 //Forms Generator
   exports.create_form = function ( req, res ) {
-    res.render('forms_generator/create_form', {
+    res.render('custom_form', {
       currentUser : req.user.username
     });
   };

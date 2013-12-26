@@ -53,7 +53,7 @@ if ( 'development' == app.get('env') ) {
 // Index
   app.get( '/', routes.index );
 // Forms Generator
-    app.get( '/forms_generator/create_form', 
+    app.get( '/forms_generator/custom_form', 
       queries.privateContent, routes.create_form );
 // Organizational Structure
   app.get( '/organizational_structure/talent_management', 
