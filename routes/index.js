@@ -11,6 +11,13 @@ exports.permissions = function( req, res ){
     currentUser : req.user.username
   });
 };
+//Extras
+exports.send_mail = function( req, res ){
+  res.render('extras/send_mail', { 
+    currentUser : req.user.username,
+    controller  : 'MailController'
+  });
+};
 //Index
 exports.index = function( req, res ){
   res.render('index', { 

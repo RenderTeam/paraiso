@@ -1,9 +1,12 @@
-form( name = 'newTaskForm' )
+form( name = 'newTaskForm')
   .col-xs-6
     .input-group.input-group-sm
       span.input-group-addon Título
-      input.form-input.form-control( ng-model = 'task.title', 
-        placeholder = 'Título de la tarea' )
+      input.form-input.form-control( ng-model = 'task.title', type = 'text',
+        placeholder = 'Título de la tarea', name = 'title' required)
+    .label.label-danger.pull-right( 
+      ng-show = 'newTaskForm.title.$invalid && newTaskForm.title.$dirty')
+      small(ng-show='newTaskForm.title.$error.required') Introduzca un valor valido
     br
     .input-group.input-group-sm
       span.input-group-addon Creado por
@@ -11,7 +14,13 @@ form( name = 'newTaskForm' )
     br
     .input-group.input-group-sm
       span.input-group-addon Fecha límite
-      input.form-input.form-control( ng-model = 'task.deadline', type='date' )
+      input.form-input.form-control( ng-model = 'task.deadline', type='date' ,
+        name = 'deadline', required, ng-change = 'validateDate()')
+    #validationTask.label.label-danger.pull-right( 
+      ng-show = 'newTaskForm.deadline.$invalid && newTaskForm.deadline.$dirty')
+      small(ng-show='newTaskForm.deadline.$error.required') Se requiere de una fecha
+    .label.label-danger.pull-right( ng-hide = 'dateValidation.status')
+      small{{dateValidation.message}}
     br
     .input-group.input-group-sm
       span#creationDayspan.help.input-group-addon en
@@ -20,11 +29,16 @@ form( name = 'newTaskForm' )
     br
     .input-group.input-group-sm
       span.input-group-addon Prioridad
-      input.form-control( ng-model = 'task.priority', 
-        placeholder = '1', type = 'number', min = '1', max = '5')
+      input.form-control( ng-model = 'task.priority', name = 'priority',
+        placeholder = '1', type = 'number', ng-minlength = '1', ng-maxlength = '5'
+        min = '1', max = '5', required)
+    .label.label-danger.pull-right( 
+      ng-show = 'newTaskForm.priority.$invalid && newTaskForm.priority.$dirty')
+      small(ng-show='newTaskForm.priority.$error.max') El valor máximo es 5
+      small(ng-show='newTaskForm.priority.$error.min') El valor mínimo es 1
     br
     textarea.form-control( ng-model = 'task.description',
-      rows="10", placeholder = 'Descripción de la tarea' )
+      rows="10", placeholder = 'Descripción de la tarea', required)
     br
     #descriptionlabel.col-md-12.task-labels-container
       div( ng-repeat = 'label in labels', 
@@ -36,24 +50,24 @@ form( name = 'newTaskForm' )
     .input-group.input-group-sm
       span.input-group-addon Asignar
       input.form-control( ng-model = 'temporal.worker',
-        placeholder = 'Nombre del usuario' )
+        placeholder = 'Nombre del usuario')
       span.input-group-btn
         button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
           type='button' ) +
     #workers.panel-group
       .panel.panel-default
         .panel-heading
-          h3.panel-title.text-right
-            a.collapseToogle.glyphicon.glyphicon-chevron-up(
+          h3.panel-title Usuarios Asignados
+            a.text-right.pull-right.collapseToogle.glyphicon.glyphicon-chevron-up(
               data-toggle = 'collapse', data-parent = '#workers', 
               href = '#workers-content')
           #workers-content.panel-collapse.collapse.in
             .panel-body
-              #workers.assigned-container( 
-                ng-repeat = 'worker in temporalForm.assigned' )
-                span( ng-bind = 'worker.username' ) 
-                button.btn.btn-danger( 
-                  ng-click = 'removeWorkerFromAssigned( $index )' ) -
+                #workersRepeat.btn-group( 
+                ng-repeat = 'worker in temporalForm.assigned')
+                    button.btn.btn-xs( ng-bind = 'worker.username') 
+                    button.btn-danger.btn.btn-xs( 
+                          ng-click = 'removeWorkerFromAssigned( $index )' ) -
     br
     .input-group.input-group-sm
       span#remainderSpan.help.input-group-addon Recordatorios
@@ -65,19 +79,20 @@ form( name = 'newTaskForm' )
     #reminders.panel-group
       .panel.panel-default
         .panel-heading
-          h3.panel-title.text-right
-            a.collapseToogle.glyphicon.glyphicon-chevron-up(
+          h3.panel-title Recordatorios Asignados
+            a.text-right.pull-right.collapseToogle.glyphicon.glyphicon-chevron-up(
               data-toggle = 'collapse', data-parent = '#reminders',
               href = '#reminders-content' )
           #reminders-content.panel-collapse.collapse.in
             .panel-body
-              .reminders-container( ng-repeat = 'remind in temporalForm.reminder')
-                span( ng-bind = 'remind.numberOfDays' )
-                button.btn.btn-danger( 
-                  ng-click = 'removeReminderFromReminders( $index )' ) -
+              #reminderRepeat.btn-group( 
+                ng-repeat = 'remind in temporalForm.reminder')
+                button.btn.btn-xs( ng-bind = 'remind.numberOfDays')
+                button.btn.btn-danger.btn-xs( 
+                  ng-click = 'removeReminderFromReminders( $index )') -
 
   p.clearfix
   br
   .col-md-4.pull-right
-    button.btn.btn-block.btn-primary( ng-click = 'newTask()',
-      ng-disabled = 'newTaskForm.$invalid' )  Crear tarea
+    button#createTask.btn.btn-block.btn-primary( ng-click = 'newTask()',
+      ng-disabled = 'newTaskForm.$invalid || validateDate(task.deadline)' )  Crear tarea

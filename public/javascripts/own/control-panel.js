@@ -11,6 +11,7 @@ function start() {
   sidr_inner.find('.sidr-class-glyphicon-edit').addClass('glyphicon-edit');
   sidr_inner.find('.sidr-class-glyphicon-globe').addClass('glyphicon-globe');
   sidr_inner.find('.sidr-class-glyphicon-list-alt').addClass('glyphicon-list-alt');
+  sidr_inner.find('.sidr-class-glyphicon-plus').addClass('glyphicon-plus');
 }
 
 $( document ).ready( start );

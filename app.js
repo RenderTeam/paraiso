@@ -15,7 +15,8 @@ var app = express();
  * Mongo queries and management is on mongo-queries.js
  */
 
-var queries = require('./mongo-queries');
+var queries = require('./mongo-queries'),
+    mail    = require('./send-mail-utilities');
 
 // all environments
 app.set( 'port', process.env.PORT || 3000 );
@@ -52,6 +53,8 @@ if ( 'development' == app.get('env') ) {
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
   app.get( '/control_panel/permissions', queries.privateContent, 
     routes.permissions );
+//Extras
+  app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
 //Index
   app.get( '/', routes.index );
 //Forms
@@ -85,6 +88,8 @@ if ( 'development' == app.get('env') ) {
   app.post( '/getOneTask',  queries.privateContent,
                             queries.log,
                             queries.getOneTask );
+  //Extras
+  app.post( '/sendMail', queries.privateContent, mail.sendMail );
   app.post( '/getTasks', queries.privateContent, queries.getTasks );
   app.post( '/getTasksFromUser', queries.privateContent, 
     queries.getTasksFromUser );

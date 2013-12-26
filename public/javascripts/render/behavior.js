@@ -9,4 +9,3 @@ function tooltipConstructor ( element, text, position) {
   $( element ).tooltip({ 'trigger':'hover', 'title': text , 
     'placement': position});
 }
-

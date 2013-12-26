@@ -32,7 +32,6 @@ function myTasksController ( scope, tasks ) {
 
 newTaskController.$inject = [ '$scope', 'Tasks', 'Users' ];
 function newTaskController ( scope, tasks, users ) {
-
   scope.task = {
     creation_date:  new Date(),
     creator:        '', /* Se tiene que recuperar de la sesión */
@@ -55,6 +54,10 @@ function newTaskController ( scope, tasks, users ) {
     assigned: []
   };
 
+  scope.dateValidation = {
+    message : '',
+    status  : false
+  }
   scope.labels = [{ label: 'P'},
                   { label: 'NC'},
                   { label: 'AC'},
@@ -103,15 +106,51 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
+  scope.validateDate= function (date){
+    var deadline,
+        flag = true,
+        today = new Date(),
+        deadline = new Date( scope.task.deadline );
+    if( deadline.getYear() < today.getYear() ){
+      scope.dateValidation.message = 'El año seleccionado es menor';
+      scope.dateValidation.status = false;
+      flag = false;
+    }
+    if( deadline.getDate() < today.getDate() ){
+      scope.dateValidation.message = 'El dia seleccionado es menor';
+      scope.dateValidation.status = false;
+      flag = false;
+
+    }
+    if( deadline.getMonth() < today.getMonth() ){
+      scope.dateValidation.message = 'El mes seleccionado es menor';
+      scope.dateValidation.status = false;
+      flag = false;
+      console.log(deadline.getMonth());
+      console.log(today.getMonth());
+    }
+    if ( flag ){
+      console.log("Fecha correcta");
+      //scope.newFormTask = newTaskController();
+      scope.dateValidation.message = null;
+      scope.dateValidation.status = true;
+    }
+    return !scope.dateValidation.status;
+  };
+
   scope.newTask = function () {
     scope.task.creation_date = new Date();
-
     var params = {};
-
     params.task = scope.task;
-
-    tasks.saveTask( params ).
-      success( function ( data ) {
+    var flag = false;
+    if( scope.task.assigned.length > 0 ) {
+      flag = true;
+      if( scope.task.reminder.length > 0 ) {
+        flag = true;
+      }
+    }
+    if( flag === true ) {
+      tasks.saveTask( params ).then( function ( data ) {
         scope.task = {
           creation_date:  new Date(),
           creator:        '', /* Se tiene que recuperar de la sesión */
@@ -135,12 +174,14 @@ function newTaskController ( scope, tasks, users ) {
         };
         alert('Excelente :)');
       });
-  };
-
-  /*users.getAllUsersNames().success( function (data) {
+    } else {
+      alert('Verifique que tenga usuarios y recordatorios agregados');
+    }
+  }
+  /*users.getAllUsersNames().then( function (data) {
     console.log( data );
   });*/
-}
+};
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
 function tasksController ( scope, tasks ) {

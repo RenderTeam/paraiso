@@ -6,7 +6,7 @@ var TaskSchema = new Schema({
   assigned:       [String],
   creation_date:  { type: Date, default: Date.now },
   creator:        [String],
-  deadline:       { type: Date, default: Date.now},
+  deadline:       { type: Date, default: Date.now },
   description:    String, 
   label:          String,
   priority:       Number,
