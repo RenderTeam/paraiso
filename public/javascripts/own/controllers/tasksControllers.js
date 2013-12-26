@@ -54,7 +54,7 @@ function newTaskController ( scope, tasks, users ) {
 
   scope.dateValidation = {
     message : '',
-    status  : true
+    status  : false
   }
   scope.labels = [{ label: 'P'},
                   { label: 'NC'},
@@ -104,7 +104,7 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
-  scope.validateDate= function (){
+  scope.validateDate= function (date){
     var deadline,
         flag = true,
         today = new Date(),
@@ -133,42 +133,55 @@ function newTaskController ( scope, tasks, users ) {
       scope.dateValidation.message = null;
       scope.dateValidation.status = true;
     }
+    return !scope.dateValidation.status;
   };
 
   scope.newTask = function () {
     scope.task.creation_date = new Date();
     var params = {};
     params.task = scope.task;
-    tasks.saveTask( params ).then( function ( data ) {
-      scope.task = {
-        creation_date:  new Date(),
-        creator:        '', /* Se tiene que recuperar de la sesión */
-        title:          '',
-        description:    '',
-        assigned:       [],
-        deadline:       new Date(),
-        reminder:       [],
-        label:          '',
-        priority:       0,
-        status:         'not done'
-      };
+    var flag = false;
+    if( scope.task.assigned.length > 0 ) {
+      flag = true;
+      if( scope.task.reminder.length > 0 ) {
+        flag = true;
+      }
+    }
+    if( flag === true ){
+      tasks.saveTask( params ).then( function ( data ) {
+        scope.task = {
+          creation_date:  new Date(),
+          creator:        '', /* Se tiene que recuperar de la sesión */
+          title:          '',
+          description:    '',
+          assigned:       [],
+          deadline:       new Date(),
+          reminder:       [],
+          label:          '',
+          priority:       0,
+          status:         'not done'
+        };
 
-      scope.temporal = {
-        worker: ""
-      };
+        scope.temporal = {
+          worker: ""
+        };
 
-      scope.temporalForm = {
-        reminder: [],
-        assigned: []
-      };
-      alert('Excelente :)');
-    });
-  };
-
+        scope.temporalForm = {
+          reminder: [],
+          assigned: []
+        };
+        alert('Excelente :)');
+      });
+    }
+    else
+    {
+      alert('Verifique que tenga usuarios y recordatorios agregados');
+    }
+  }
   /*users.getAllUsersNames().then( function (data) {
     console.log( data );
   });*/
-}
+};
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
 function tasksController ( scope, tasks ) {

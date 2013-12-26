@@ -15,8 +15,7 @@ form( name = 'newTaskForm')
     .input-group.input-group-sm
       span.input-group-addon Fecha límite
       input.form-input.form-control( ng-model = 'task.deadline', type='date' ,
-        name = 'deadline', required, 
-        ng-change = 'validateDate()')
+        name = 'deadline', required, ng-change = 'validateDate()')
     #validationTask.label.label-danger.pull-right( 
       ng-show = 'newTaskForm.deadline.$invalid && newTaskForm.deadline.$dirty')
       small(ng-show='newTaskForm.deadline.$error.required') Se requiere de una fecha
@@ -90,10 +89,10 @@ form( name = 'newTaskForm')
                 ng-repeat = 'remind in temporalForm.reminder')
                 button.btn.btn-xs( ng-bind = 'remind.numberOfDays')
                 button.btn.btn-danger.btn-xs( 
-                  ng-click = 'removeReminderFromReminders( $index )' ) -
+                  ng-click = 'removeReminderFromReminders( $index )') -
 
   p.clearfix
   br
   .col-md-4.pull-right
-    button#createTask.btn.btn-block.btn-primary( 
-      ng-disabled = 'newTaskForm.$invalid' )  Crear tarea
+    button#createTask.btn.btn-block.btn-primary( ng-click = 'newTask()',
+      ng-disabled = 'newTaskForm.$invalid || validateDate(task.deadline)' )  Crear tarea
