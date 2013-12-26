@@ -35,15 +35,13 @@ exports.talent_management = function( req, res ){
     currentUser : req.user.username
   });
 };
-
 exports.departments = function( req, res){
   res.render('organizational_structure/departments', {
     currentUser : req.user.username
   });
 };
-
 exports.employments = function( req, res){
-  res.render('organizational_structure/employments', {
+  res.render('organizational_structure/employmentsDiagram', {
     currentUser : req.user.username
   });
 };
@@ -60,14 +58,12 @@ exports.my_tasks = function( req, res ){
     currentUser : req.user.username
   });
 };
-
 exports.new_task = function( req, res ){
   res.render('tasks/new_task', { 
     controller: 'NewTaskController',
     currentUser : req.user.username
   });
 };
-
 exports.tasks = function( req, res ){
   res.render('tasks/tasks', { 
     controller: 'TasksController',

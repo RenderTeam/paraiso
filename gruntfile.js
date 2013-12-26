@@ -8,7 +8,7 @@ module.exports = function ( grunt ) {
         command: 'mongod&'
       }
     },
-    
+
     jshint: {
       uses_defaults: [],
       /*special files that don't will be linted with override options */
