@@ -1,5014 +1,0 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="generator" content="JsDoc Toolkit" />
-		
-		<title>GoJS&reg; Reference - GraphObject</title>
-		<script type="text/javascript" src="api.js"></script>
-		<style type="text/css">
-			/* default.css */
-body
-{
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
-}
-
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
-
-p.box {
-  border: 1px solid #BBB;
-  padding: 4px 4px 6px 4px;
-}
-
-h1
-{
-	font-size: 150%;
-	font-weight: bold;
-	padding: 0;
-	margin: 1em 0 0 .3em;
-}
-
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
-
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
-}
-
-#index
-{
-	margin-top: 0px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
-}
-
-#content
-{
-	margin-left: 190px;
-	width: 600px;
-}
-
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
-
-.classList li
-{
-	padding: 0;
-	margin: 0 0 2px 0;
-}
-
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
-}
-
-h2
-{
-  font-size: 110%;
-  margin: 4px 0px 2px 0px;
-}
-
-caption, div.sectionTitle
-{
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
-	text-align: left;
-	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
-}
-
-div.sectionTitle { margin-bottom: 8px; }
-.summaryTable thead { display: none; }
-
-.summaryTable td
-{
-	vertical-align: top;
-	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
-}
-
-/*col#summaryAttributes {}*/
-.summaryTable td.attributes
-{
-	border-left: 1px #7F8FB1 solid;
-	width: 140px;
-	text-align: right;
-}
-
-td.attributes, .fixedFont
-{
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
-}
-
-.summaryTable td.nameDescription
-{
-	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
-}
-
-.summaryTable { margin-bottom: 8px; }
-
-ul {
-  list-style: square;
-  margin-left: 20px;
-  margin-right: 60px;
-  padding-left: 0;
-}
-
-ul.inheritsList
-{
-  margin-right: 0px;
-	padding-left: 0;
-}
-
-.detailList {
-	margin-left: 20px;
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
-
-.detailList .heading
-{
-	font-weight: bold;
-	padding-bottom: 6px;
-	margin-left: 0;
-}
-
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
-}
-
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
-}
-
-/*
-For highlight.js
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-*/
-
-pre {
-  border: 1px solid #ccc;
-  display: block; padding: 0.5em;
-  color: #333;
-  background: #f8f8ff;
-}
-
-pre .comment,
-pre .template_comment,
-pre .javadoc,
-pre .comment * {
-  color: rgb(0,106,0);
-}
-
-pre .keyword,
-pre .literal,
-pre .nginx .title {
-  color: rgb(170,13,145);
-}
-pre .method,
-pre .list .title,
-pre .tag .title,
-pre .setting .value,
-pre .winutils,
-pre .tex .command,
-pre .http .title,
-pre .request,
-pre .status {
-  color: #008;
-}
-
-pre .envvar,
-pre .tex .special {
-  color: #660;
-}
-
-pre .string {
-  color: rgb(196,26,22);
-}
-pre .tag .value,
-pre .cdata,
-pre .filter .argument,
-pre .attr_selector,
-pre .apache .cbracket,
-pre .date,
-pre .regexp {
-  /*color: #080; was green*/
-  color: rgb(196,26,22);
-}
-
-pre .sub .identifier,
-pre .pi,
-pre .tag,
-pre .tag .keyword,
-pre .decorator,
-pre .ini .title,
-pre .shebang,
-pre .prompt,
-pre .hexcolor,
-pre .rules .value,
-pre .css .value .number,
-pre .symbol,
-pre .symbol .string,
-pre .number,
-pre .css .function,
-pre .clojure .title,
-pre .clojure .built_in {
-  color: rgb(28,0,207);
-}
-
-pre .class .title,
-pre .haskell .type,
-pre .smalltalk .class,
-pre .javadoctag,
-pre .yardoctag,
-pre .phpdoc,
-pre .typename,
-pre .tag .attribute,
-pre .doctype,
-pre .class .id,
-pre .built_in,
-pre .setting,
-pre .params,
-pre .clojure .attribute {
-  color: rgb(92,38,153);
-}
-
-pre .variable {
- color: rgb(63,110,116);
-}
-pre .css .tag,
-pre .rules .property,
-pre .pseudo,
-pre .subst {
-  color: #000;
-}
-
-pre .css .class, pre .css .id {
-  color: #9B703F;
-}
-
-pre .value .important {
-  color: #ff7700;
-  font-weight: bold;
-}
-
-pre .rules .keyword {
-  color: #C5AF75;
-}
-
-pre .annotation,
-pre .apache .sqbracket,
-pre .nginx .built_in {
-  color: #9B859D;
-}
-
-pre .preprocessor,
-pre .preprocessor * {
-  color: rgb(100,56,32);
-}
-
-pre .tex .formula {
-  background-color: #EEE;
-  font-style: italic;
-}
-
-pre .diff .header,
-pre .chunk {
-  color: #808080;
-  font-weight: bold;
-}
-
-pre .diff .change {
-  background-color: #BCCFF9;
-}
-
-pre .addition {
-  background-color: #BAEEBA;
-}
-
-pre .deletion {
-  background-color: #FFC8BD;
-}
-
-pre .comment .yardoctag {
-  font-weight: bold;
-}
-
-pre .method .id {
-  color: #000;
-}
-
-		</style>
-	</head>
-
-	<body>
-<!-- ============================== header ================================= -->
-    <div id="header" class="fineprint">
-      GoJS&reg; Diagramming Components, version 1.2.7, by Northwoods Software&reg;
-    </div>
-<!-- ============================== classes index ============================ -->
-		<div id="index">
-			<!-- begin publish.classesIndex -->
-			<div><a href="../../index.html">GoJS Home</a></div>
-<div><a href="../index.html">GoJS Class Index</a></div>
-
-<h2>Diagram Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Adornment.html">Adornment</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/CommandHandler.html">CommandHandler</a></li>
-  
-    
-  
-    <li><a href="../symbols/Diagram.html">Diagram</a></li>
-  
-    <li><a href="../symbols/DiagramEvent.html">DiagramEvent</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GraphObject.html">GraphObject</a></li>
-  
-    
-  
-    <li><a href="../symbols/Group.html">Group</a></li>
-  
-    <li><a href="../symbols/InputEvent.html">InputEvent</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Layer.html">Layer</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Link.html">Link</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Node.html">Node</a></li>
-  
-    <li><a href="../symbols/Overview.html">Overview</a></li>
-  
-    <li><a href="../symbols/Palette.html">Palette</a></li>
-  
-    <li><a href="../symbols/Panel.html">Panel</a></li>
-  
-    
-  
-    <li><a href="../symbols/Part.html">Part</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Picture.html">Picture</a></li>
-  
-    <li><a href="../symbols/Placeholder.html">Placeholder</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a></li>
-  
-    
-  
-    <li><a href="../symbols/Shape.html">Shape</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TextBlock.html">TextBlock</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Geometry Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Brush.html">Brush</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Geometry.html">Geometry</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Margin.html">Margin</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/PathFigure.html">PathFigure</a></li>
-  
-    <li><a href="../symbols/PathSegment.html">PathSegment</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Point.html">Point</a></li>
-  
-    <li><a href="../symbols/Rect.html">Rect</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Size.html">Size</a></li>
-  
-    <li><a href="../symbols/Spot.html">Spot</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Model Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Binding.html">Binding</a></li>
-  
-    
-  
-    <li><a href="../symbols/ChangedEvent.html">ChangedEvent</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GraphLinksModel.html">GraphLinksModel</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Model.html">Model</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Transaction.html">Transaction</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TreeModel.html">TreeModel</a></li>
-  
-    
-  
-    <li><a href="../symbols/UndoManager.html">UndoManager</a></li>
-  
-</ul>
-
-<h2>Layout Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/CircularLayout.html">CircularLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/ForceDirectedLayout.html">ForceDirectedLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/GridLayout.html">GridLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/LayeredDigraphLayout.html">LayeredDigraphLayout</a></li>
-  
-    
-  
-    <li><a href="../symbols/Layout.html">Layout</a></li>
-  
-    
-  
-    <li><a href="../symbols/LayoutNetwork.html">LayoutNetwork</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TreeLayout.html">TreeLayout</a></li>
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Tool Classes</h2>
-<ul class="classList">
-  
-    
-  
-    <li><a href="../symbols/ActionTool.html">ActionTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/ClickCreatingTool.html">ClickCreatingTool</a></li>
-  
-    <li><a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a></li>
-  
-    
-  
-    <li><a href="../symbols/ContextMenuTool.html">ContextMenuTool</a></li>
-  
-    
-  
-    
-  
-    <li><a href="../symbols/DraggingTool.html">DraggingTool</a></li>
-  
-    <li><a href="../symbols/DragSelectingTool.html">DragSelectingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/LinkingBaseTool.html">LinkingBaseTool</a></li>
-  
-    <li><a href="../symbols/LinkingTool.html">LinkingTool</a></li>
-  
-    <li><a href="../symbols/LinkReshapingTool.html">LinkReshapingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/PanningTool.html">PanningTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/RelinkingTool.html">RelinkingTool</a></li>
-  
-    <li><a href="../symbols/ResizingTool.html">ResizingTool</a></li>
-  
-    <li><a href="../symbols/RotatingTool.html">RotatingTool</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/TextEditingTool.html">TextEditingTool</a></li>
-  
-    <li><a href="../symbols/Tool.html">Tool</a></li>
-  
-    <li><a href="../symbols/ToolManager.html">ToolManager</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-<h2>Collection Classes</h2>
-<ul class="classList">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Iterable.html">Iterable</a></li>
-  
-    <li><a href="../symbols/Iterator.html">Iterator</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/List.html">List</a></li>
-  
-    <li><a href="../symbols/Map.html">Map</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    <li><a href="../symbols/Set.html">Set</a></li>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</ul>
-
-			<!-- end publish.classesIndex -->
-		</div>
-
-		<div id="content">
-<!-- ============================== class title ============================ -->
-			<h1 class="classTitle">
-				
-				Class GraphObject
-				
-			</h1>
-
-<!-- ============================== class summary ========================== -->
-			<p class="description">
-				
-				
-
-				This is the abstract base class for all graphical objects.Classes inheriting from GraphObject include:<a href="../symbols/Shape.html">Shape</a>, <a href="../symbols/TextBlock.html">TextBlock</a>, <a href="../symbols/Picture.html">Picture</a>, and <a href="../symbols/Panel.html">Panel</a>.From the Panel class the <a href="../symbols/Part.html">Part</a> class is derived, from which the<a href="../symbols/Node.html">Node</a> and <a href="../symbols/Link.html">Link</a> classes derive.<p>It is very common to make use of the static method <a href="../symbols/GraphObject.html#.make">GraphObject.make</a> in order to build upa visual tree of GraphObjects.  You can see many examples of this throughout theIntroduction, starting at <a href="../../intro/buildingObjects.html">Building Objects</a>,and the Samples, starting with <a href="../../samples/minimal.html">Minimal Sample</a>.<p>Since GraphObject is an abstract class, programmers do not create GraphObjects themselves,but this class defines many properties used by all kinds of GraphObjects.<p>The only visual properties on GraphObject are <a href="../symbols/GraphObject.html#background">#background</a> and <a href="../symbols/GraphObject.html#areaBackground">#areaBackground</a>.However one can control whether the GraphObject is drawn at all by setting <a href="../symbols/GraphObject.html#visible">#visible</a>.Also, if you want to control whether any mouse or touch events "see" the GraphObject,you can set <a href="../symbols/GraphObject.html#pickable">#pickable</a> to false.<p>For more information about specifying how things get drawn, see the properties on the<a href="../symbols/Shape.html">Shape</a>, <a href="../symbols/TextBlock.html">TextBlock</a>, and <a href="../symbols/Picture.html">Picture</a> classes.<hr/><p>GraphObject defines most of the properties that cause objects to size themselves differently.The most prominent ones include:<ul><li>The <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a>, <a href="../symbols/GraphObject.html#minSize">#minSize</a>, and <a href="../symbols/GraphObject.html#maxSize">#maxSize</a> properties are used toexplicitly set or limit the size of visual elements. <a href="../symbols/GraphObject.html#width">#width</a> and <a href="../symbols/GraphObject.html#height">#height</a> areconvenience properties that set the <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a> width and height, respectively.</li><li>The <a href="../symbols/GraphObject.html#angle">#angle</a> and <a href="../symbols/GraphObject.html#scale">#scale</a> properties are used to transform visual elements.</li><li>The <a href="../symbols/GraphObject.html#stretch">#stretch</a> property determines how a GraphObject will fill its visual space,contextually granted to it by its containing <a href="../symbols/Panel.html">Panel</a>. Top-level (<a href="../symbols/Part.html">Part</a>)GraphObjects are not affected by this property because they are always granted infinite space.</li></ul><p>All GraphObjects in a Diagram are measured and then arranged by their containing <a href="../symbols/Panel.html">Panel</a>s in a tree-like fashion.After measuring and arranging, a GraphObject will have valid values for the read-onlyproperties <a href="../symbols/GraphObject.html#naturalBounds">#naturalBounds</a>, <a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a>, and <a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a>.<p><ul><li>The <a href="../symbols/GraphObject.html#naturalBounds">#naturalBounds</a> of a GraphObject describe its local size,without any transformations (<a href="../symbols/GraphObject.html#scale">#scale</a>, <a href="../symbols/GraphObject.html#angle">#angle</a>) affecting it.</li><li>The <a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a> of a GraphObject describe its size relative to its containing Panel.</li><li>The <a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a> of a GraphObject describe its position and given size inside of its panel.This size may be smaller than <a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a>, for instance if a GraphObject with a large <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a>is placed in a <a href="../symbols/Panel.html">Panel</a> of a smaller <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a>. Smaller <a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a> than <a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a>typically means an object will be cropped.</li></ul><p class="box">See <a href="../../intro/sizing.html">the Introduction page on sizing</a>for usage information and examples.<hr/>Several GraphObject properties guide the containing <a href="../symbols/Panel.html">Panel</a> for how to size and position the object within the panel.<ul><li>The <a href="../symbols/GraphObject.html#alignment">#alignment</a> specifies where the object should be relative to some area of the panel.For example, an alignment value of <a href="../symbols/Spot.html#BottomRight">Spot#BottomRight</a> means that the GraphObject should be at the bottom-right corner of the panel.</li><li>The <a href="../symbols/GraphObject.html#alignmentFocus">#alignmentFocus</a> specifies precisely which point of the GraphObject should be aligned at the <a href="../symbols/GraphObject.html#alignment">#alignment</a> spot.</li><li>The <a href="../symbols/GraphObject.html#column">#column</a> and <a href="../symbols/GraphObject.html#row">#row</a> properties are only used by <a href="../symbols/Panel.html#Table">Panel#Table</a> panels, to indicate where the GraphObject should be.</li><li>The <a href="../symbols/GraphObject.html#columnSpan">#columnSpan</a> and <a href="../symbols/GraphObject.html#rowSpan">#rowSpan</a> properties tell the <a href="../symbols/Panel.html#Table">Panel#Table</a> panel how large the GraphObject should be.</li><li>The <a href="../symbols/GraphObject.html#isPanelMain">#isPanelMain</a> property indicates to some kinds of <a href="../symbols/Panel.html">Panel</a>s that the GraphObject is the "primary" object that other panel children should be measured with or positioned in.</li><li>The <a href="../symbols/GraphObject.html#margin">#margin</a> property tells the containing <a href="../symbols/Panel.html">Panel</a> how much extra space to put around this GraphObject.</li><li>The <a href="../symbols/GraphObject.html#position">#position</a> property is used to determine the relative position of GraphObjects when they are elements of a <a href="../symbols/Panel.html#Position">Panel#Position</a> panel.</li></ul><p class="box">See <a href="../../intro/panels.html">the Introduction page on Panels</a>and <a href="../../intro/tablePanels.html">Table Panels</a> for an overview of the capabilities.<hr/><p>When a GraphObject is a top-level object, it will be a <a href="../symbols/Part.html">Part</a>.The position of a Part determines the point of the Part's top-left corner in document coordinates.See also <a href="../symbols/Part.html#location">Part#location</a>, which supports an way to specify the position based on a differentspot of a different element within the Part.<p>There are several read-only properties that help navigate up the visual tree.<ul><li><a href="../symbols/GraphObject.html#panel">#panel</a> returns the <a href="../symbols/Panel.html">Panel</a> that directly contains this GraphObject</li><li><a href="../symbols/GraphObject.html#part">#part</a> returns the <a href="../symbols/Part.html">Part</a> that this GraphObject is in, perhaps via intervening Panels; this is frequently used in order to get to the model data, <a href="../symbols/Panel.html#data">Panel#data</a></li><li><a href="../symbols/GraphObject.html#layer">#layer</a> returns the <a href="../symbols/Layer.html">Layer</a> that this GraphObject's Part is in</li><li><a href="../symbols/GraphObject.html#diagram">#diagram</a> returns the <a href="../symbols/Diagram.html">Diagram</a> that this GraphObject's Part's Layer is in</li></ul><p class="box">See <a href="../../samples/visualTree.html">the Visual Tree sample</a>for a diagram displaying the visual tree of a simple diagram.<hr/>GraphObjects have several properties enabling dynamic customizable interaction.There are several definable functions that execute on input events: <a href="../symbols/GraphObject.html#mouseDragEnter">#mouseDragEnter</a>,<a href="../symbols/GraphObject.html#mouseDragLeave">#mouseDragLeave</a>, <a href="../symbols/GraphObject.html#mouseDrop">#mouseDrop</a>, <a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a>, <a href="../symbols/GraphObject.html#mouseHold">#mouseHold</a>,<a href="../symbols/GraphObject.html#mouseHover">#mouseHover</a>, <a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a>, and <a href="../symbols/GraphObject.html#mouseOver">#mouseOver</a>.For example, you could define mouse enter-and-leave event handlers to modify the appearance of a linkas the mouse passes over it:<pre>myDiagram.linkTemplate =  $(go.Link,    $(go.Shape,      { strokeWidth: 2, stroke: "gray" },  // default color is "gray"      { // here E is the InputEvent and OBJ is this Shape        mouseEnter: function(e, obj) { obj.strokeWidth = 4; obj.stroke = "dodgerblue"; },        mouseLeave: function(e, obj) { obj.strokeWidth = 2; obj.stroke = "gray"; }      }));</pre><p>There are <a href="../symbols/GraphObject.html#click">#click</a>, <a href="../symbols/GraphObject.html#doubleClick">#doubleClick</a>, and <a href="../symbols/GraphObject.html#contextClick">#contextClick</a> functionsthat execute when a user appropriately clicks the GraphObject.These click functions are called with the <a href="../symbols/InputEvent.html">InputEvent</a> as the first argumentand this GraphObject as the second argument.For example, you could define a click event handler on a Node that goes to another page:<pre>myDiagram.nodeTemplate =  $(go.Node, "Auto",    $(go.Shape, "RoundedRectangle",      new go.Binding("fill", "color")),    $(go.TextBlock,      { name: "TB", margin: 3 },      new go.Binding("text", "key")),    { // second arg will be this GraphObject, which in this case is the Node itself:      click: function(e, node) {        window.open("http://en.wikipedia.org/Wiki/" + node.data.key);      }    });</pre><p>Note: you may prefer defining <a href="../symbols/DiagramEvent.html">DiagramEvent</a> listeners on the <a href="../symbols/Diagram.html">Diagram</a>rather than on individual GraphObjects.  DiagramEvents also include more general events thatdo not necessarily correspond to input events.<p>The properties <a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a>, <a href="../symbols/GraphObject.html#actionDown">#actionDown</a>, <a href="../symbols/GraphObject.html#actionMove">#actionMove</a>,and <a href="../symbols/GraphObject.html#actionUp">#actionUp</a> define functions to execute when the GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a> propertyis set to true (default false). See the <a href="../symbols/ActionTool.html">ActionTool</a> for more detail.<p class="box">See <a href="../../intro/events.html">the Introduction page on Events</a> for a more general discussion.<hr/><p>GraphObjects have several properties that are only relevant when they are acting as "ports" within a <a href="../symbols/Node.html">Node</a>.These port-related properties are:<ul><li><a href="../symbols/GraphObject.html#portId">#portId</a>, which must be set to a string that is unique within the <a href="../symbols/Node.html">Node</a>,    in order for this GraphObject to be treated as a "port", rather than the whole node</li><li><a href="../symbols/GraphObject.html#fromSpot">#fromSpot</a> and <a href="../symbols/GraphObject.html#toSpot">#toSpot</a>, where a link should connect with this port</li><li><a href="../symbols/GraphObject.html#fromEndSegmentLength">#fromEndSegmentLength</a> and <a href="../symbols/GraphObject.html#toEndSegmentLength">#toEndSegmentLength</a>, the length of the link segment adjacent to this port</li><li><a href="../symbols/GraphObject.html#fromEndSegmentDirection">#fromEndSegmentDirection</a> and <a href="../symbols/GraphObject.html#toEndSegmentDirection">#toEndSegmentDirection</a>, the orientation of the link when connecting to this port</li><li><a href="../symbols/GraphObject.html#fromShortLength">#fromShortLength</a> and <a href="../symbols/GraphObject.html#toShortLength">#toShortLength</a>, the distance the link should terminate before touching this port</li><li><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a> and <a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a>, whether the user may draw links connecting with this port<li><li><a href="../symbols/GraphObject.html#fromLinkableDuplicates">#fromLinkableDuplicates</a> and <a href="../symbols/GraphObject.html#toLinkableDuplicates">#toLinkableDuplicates</a>, whether the user may draw multiple links between the same pair of ports<li><li><a href="../symbols/GraphObject.html#fromLinkableSelfNode">#fromLinkableSelfNode</a> and <a href="../symbols/GraphObject.html#toLinkableSelfNode">#toLinkableSelfNode</a>, whether the user may draw a link between ports on the same node<li><li><a href="../symbols/GraphObject.html#fromMaxLinks">#fromMaxLinks</a> and <a href="../symbols/GraphObject.html#toMaxLinks">#toMaxLinks</a>, to limit the number of links connecting with this port in a particular direction<li></ul><p class="box">See <a href="../../intro/ports.html">the Introduction page on ports</a>for port usage information and examples.<hr/>GraphObjects can also be used as "labels" on a <a href="../symbols/Link.html">Link</a>.In addition to the <a href="../symbols/GraphObject.html#alignmentFocus">#alignmentFocus</a> property, these properties direct a Link Panelto position a "label" at a particular point along the route of the link, in a particular manner:<ul><li><a href="../symbols/GraphObject.html#segmentIndex">#segmentIndex</a>, which segment the label should be on<li><li><a href="../symbols/GraphObject.html#segmentFraction">#segmentFraction</a>, how far along the segment the label should be<li><li><a href="../symbols/GraphObject.html#segmentOffset">#segmentOffset</a>, where the label should be positioned relative to the segment<li><li><a href="../symbols/GraphObject.html#segmentOrientation">#segmentOrientation</a>, how the label should be rotated relative to the angle of the segment<li></ul><p class="box">See <a href="../../intro/linkLabels.html">the Introduction page on link labels</a>for examples of how to make use of labels on Links.<hr/>Finally, there are several properties that specify fairly high-level interactive behavior:<ul><li><a href="../symbols/GraphObject.html#cursor">#cursor</a>, a CSS string specifying a cursor</li><li><a href="../symbols/GraphObject.html#contextMenu">#contextMenu</a>, an <a href="../symbols/Adornment.html">Adornment</a></li><li><a href="../symbols/GraphObject.html#toolTip">#toolTip</a>, an <a href="../symbols/Adornment.html">Adornment</a></li></ul><p class="box">For more information, please read <a href="../../intro/contextMenus.html">the Introduction page about Context Menus</a>and <a href="../../intro/toolTips.html">the page about ToolTips</a>.Also see <a href="../../samples/basic.html">the Basic sample</a>for examples of how to show context menus and tooltips.
-			</p>
-
-<!-- ============================== constructor summary ==================== -->
-			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class GraphObject.">
-				<caption>Constructor Summary</caption>
-				<thead>
-					<tr>
-						<th scope="col">Constructor Attributes</th>
-						<th scope="col">Constructor Name and Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="attributes">&nbsp;</td>
-						<td class="nameDescription" >
-							<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#constructor">GraphObject</a></b>()
-							</div>
-							<div class="description">This is an abstract class, so you should not use this constructor.</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
-
-<!-- ============================== properties summary ===================== -->
-			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class GraphObject.">
-					<caption>Property Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Property Attributes</th>
-							<th scope="col">Property Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#actionCancel">actionCancel</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the <a href="../symbols/ActionTool.html">ActionTool</a> is cancelled and this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#actionDown">actionDown</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute on a mouse-down event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#actionMove">actionMove</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute on a mouse-move event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#actionUp">actionUp</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute on a mouse-up event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#actualBounds">actualBounds</a></b>
-								</div>
-								<div class="description">Gets the bounds of this GraphObject in container coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#alignment">alignment</a></b>
-								</div>
-								<div class="description">Gets or sets the alignment <a href="../symbols/Spot.html">Spot</a> of this GraphObject used in <a href="../symbols/Panel.html">Panel</a> layouts,to determine where in the area allocated by the panel this object should be placed.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#alignmentFocus">alignmentFocus</a></b>
-								</div>
-								<div class="description">Gets or sets the spot on this GraphObject to be used as the alignment pointin Spot and Fixed <a href="../symbols/Panel.html">Panel</a>s.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#angle">angle</a></b>
-								</div>
-								<div class="description">Gets or sets the angle transform, in degrees, of this GraphObject.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#areaBackground">areaBackground</a></b>
-								</div>
-								<div class="description">Gets or sets the areaBackground Brush of this GraphObject.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#background">background</a></b>
-								</div>
-								<div class="description">Gets or sets the background Brush of this GraphObject,filling the rectangle of this object's local coordinate space.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#click">click</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user single-primary-clicks on this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#column">column</a></b>
-								</div>
-								<div class="description">Gets or sets the column of this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#columnSpan">columnSpan</a></b>
-								</div>
-								<div class="description">Gets or sets the number of columns spanned by this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#contextClick">contextClick</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user single-secondary-clicks on this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#contextMenu">contextMenu</a></b>
-								</div>
-								<div class="description">This <a href="../symbols/Adornment.html">Adornment</a> is shown upon a context click on this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#cursor">cursor</a></b>
-								</div>
-								<div class="description">Gets or sets the mouse cursor to use when the mouse is over this object with no mouse buttons pressed.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#desiredSize">desiredSize</a></b>
-								</div>
-								<div class="description">Gets or sets the desired size of this GraphObject in local coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#diagram">diagram</a></b>
-								</div>
-								<div class="description">Gets the <a href="../symbols/Diagram.html">Diagram</a> that this GraphObject is in, if it is.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#doubleClick">doubleClick</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user double-primary-clicks on this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromEndSegmentDirection">fromEndSegmentDirection</a></b>
-								</div>
-								<div class="description">Gets or sets how the direction of the last segment of a link coming from this port is computed when the node is rotated.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromEndSegmentLength">fromEndSegmentLength</a></b>
-								</div>
-								<div class="description">Gets or sets the length of the last segment of a link coming from this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{?boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromLinkable">fromLinkable</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw Links from this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromLinkableDuplicates">fromLinkableDuplicates</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw duplicate Links from this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromLinkableSelfNode">fromLinkableSelfNode</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw Links that connect from this port's Node.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromMaxLinks">fromMaxLinks</a></b>
-								</div>
-								<div class="description">Gets or sets the maximum number of links that may come out of this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromShortLength">fromShortLength</a></b>
-								</div>
-								<div class="description">Gets or sets how far the end segment of a link coming from this port stops short of the actual port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#fromSpot">fromSpot</a></b>
-								</div>
-								<div class="description">Gets or sets where a link should connect from this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#height">height</a></b>
-								</div>
-								<div class="description">Gets or sets the desired height of this GraphObject in local coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#isActionable">isActionable</a></b>
-								</div>
-								<div class="description">This property determines whether or not this GraphObject's events occurbefore all other events, including selection.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#isPanelMain">isPanelMain</a></b>
-								</div>
-								<div class="description">Gets or sets whether a GraphObject is the "main" object for some types of <a href="../symbols/Panel.html">Panel</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Layer.html">Layer</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#layer">layer</a></b>
-								</div>
-								<div class="description">Gets the GraphObject's containing <a href="../symbols/Layer.html">Layer</a>, if there is any.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Margin.html">Margin</a>|number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#margin">margin</a></b>
-								</div>
-								<div class="description">Gets or sets the size of empty area around this GraphObject, as a <a href="../symbols/Margin.html">Margin</a>,in the containing <a href="../symbols/Panel.html">Panel</a> coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#maxSize">maxSize</a></b>
-								</div>
-								<div class="description">Gets or sets the maximum size of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#measuredBounds">measuredBounds</a></b>
-								</div>
-								<div class="description">Gets the measuredBounds of the GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#minSize">minSize</a></b>
-								</div>
-								<div class="description">Gets or sets the minimum size of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseDragEnter">mouseDragEnter</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user moves the mouseinto this stationary object during a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to provide feedback during a drag based on where it might drop.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseDragLeave">mouseDragLeave</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user moves the mouseout of this stationary object during a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to provide feedback during a drag based on where it might drop.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseDrop">mouseDrop</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when a user drops the selection on this objectat the end of a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to customize the behavior when a drop occurs on an object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseEnter">mouseEnter</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user moves the mouseinto this object without holding down any buttons.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseHold">mouseHold</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user holds the mouse still for a whileover this object while holding down a button.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseHover">mouseHover</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user holds the mouse still for a whileover this object without holding down any buttons.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseLeave">mouseLeave</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user moves the mouseinto this object without holding down any buttons.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{function(InputEvent, GraphObject) | null}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#mouseOver">mouseOver</a></b>
-								</div>
-								<div class="description">Gets or sets the function to execute when the user moves the mouseover this object without holding down any buttons.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#name">name</a></b>
-								</div>
-								<div class="description">Gets or sets the name for this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#naturalBounds">naturalBounds</a></b>
-								</div>
-								<div class="description">Gets the natural bounding rectangle of this GraphObject in local coordinates,before any transformation by <a href="../symbols/GraphObject.html#scale">#scale</a> or <a href="../symbols/GraphObject.html#angle">#angle</a>,and before any resizing due to <a href="../symbols/GraphObject.html#minSize">#minSize</a> or <a href="../symbols/GraphObject.html#maxSize">#maxSize</a> or <a href="../symbols/GraphObject.html#stretch">#stretch</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#panel">panel</a></b>
-								</div>
-								<div class="description">Gets the GraphObject's containing <a href="../symbols/Panel.html">Panel</a>, or null if this object is not in a Panel.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Part.html">Part</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#part">part</a></b>
-								</div>
-								<div class="description">Gets the <a href="../symbols/Part.html">Part</a> containing this object, if any.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#pickable">pickable</a></b>
-								</div>
-								<div class="description">Gets or sets whether or not this GraphObject can be chosen by visual "find" methods suchas <a href="../symbols/Diagram.html#findObjectAt">Diagram#findObjectAt</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{string}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#portId">portId</a></b>
-								</div>
-								<div class="description">Gets or sets an identifier for an object acting as a port on a Node.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#position">position</a></b>
-								</div>
-								<div class="description">Gets or sets the position of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#row">row</a></b>
-								</div>
-								<div class="description">Gets or sets the row of this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#rowSpan">rowSpan</a></b>
-								</div>
-								<div class="description">Gets or sets the number of rows spanned by this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#scale">scale</a></b>
-								</div>
-								<div class="description">Gets or sets the scale transform of this GraphObject.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#segmentFraction">segmentFraction</a></b>
-								</div>
-								<div class="description">Gets or sets the fractional distance along a segment of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#segmentIndex">segmentIndex</a></b>
-								</div>
-								<div class="description">Gets or sets the segment index of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#segmentOffset">segmentOffset</a></b>
-								</div>
-								<div class="description">Gets or sets the offset of a GraphObject that is in a <a href="../symbols/Link.html">Link</a> from a point on a segment.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#segmentOrientation">segmentOrientation</a></b>
-								</div>
-								<div class="description">Gets or sets the orientation of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#stretch">stretch</a></b>
-								</div>
-								<div class="description">Gets or sets the stretch of the GraphObject.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toEndSegmentDirection">toEndSegmentDirection</a></b>
-								</div>
-								<div class="description">Gets or sets how the direction of the last segment of a link going to this port is computed when the node is rotated.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toEndSegmentLength">toEndSegmentLength</a></b>
-								</div>
-								<div class="description">Gets or sets the length of the last segment of a link going to this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{?boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toLinkable">toLinkable</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw Links to this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toLinkableDuplicates">toLinkableDuplicates</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw duplicate Links to this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toLinkableSelfNode">toLinkableSelfNode</a></b>
-								</div>
-								<div class="description">Gets or sets whether the user may draw Links that connect to this port's Node.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toMaxLinks">toMaxLinks</a></b>
-								</div>
-								<div class="description">Gets or sets the maximum number of links that may go into this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toolTip">toolTip</a></b>
-								</div>
-								<div class="description">This <a href="../symbols/Adornment.html">Adornment</a> is shown when the mouse hovers over this object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toShortLength">toShortLength</a></b>
-								</div>
-								<div class="description">Gets or sets how far the end segment of a link going to this port stops short of the actual port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#toSpot">toSpot</a></b>
-								</div>
-								<div class="description">Gets or sets where a link should connect to this port.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#visible">visible</a></b>
-								</div>
-								<div class="description">Gets or sets whether a GraphObject is visible.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/GraphObject.html#width">width</a></b>
-								</div>
-								<div class="description">Gets or sets the desired width of this GraphObject in local coordinates.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-
-				
-			
-
-<!-- ============================== methods summary ======================== -->
-			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class GraphObject.">
-					<caption>Method Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Method Attributes</th>
-							<th scope="col">Method Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#bind">bind</a></b>(binding)
-								</div>
-								<div class="description">Add a data-binding of a property on this GraphObject to a property on a data object.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#copy">copy</a></b>()
-								</div>
-								<div class="description">Creates a deep copy of this GraphObject and returns it.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#getDocumentAngle">getDocumentAngle</a></b>()
-								</div>
-								<div class="description">Returns the effective angle that the object is drawn at, in document coordinates, normalized to between 0 and 360.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#getDocumentPoint">getDocumentPoint</a></b>(s, result)
-								</div>
-								<div class="description">Returns the Point in document coordinates for a given Spot in this object's bounds.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{number}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#getDocumentScale">getDocumentScale</a></b>()
-								</div>
-								<div class="description">Returns the total scale that the object is drawn at, in document coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#getLocalPoint">getLocalPoint</a></b>(p, result)
-								</div>
-								<div class="description">Given a Point in document coordinates, returns a new Point in local coordinates.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#isContainedBy">isContainedBy</a></b>(panel)
-								</div>
-								<div class="description">This predicate is true if this object is an element, perhaps indirectly,of the given panel.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;
-
-                            <span class="light">{boolean}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GraphObject.html#isVisibleObject">isVisibleObject</a></b>()
-								</div>
-								<div class="description">This predicate is true if this object is <a href="../symbols/GraphObject.html#visible">#visible</a>and each of its visual containing panels are also visible.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;
-
-                            <span class="light">{Object}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">GraphObject.<b><a href="../symbols/GraphObject.html#.make">make</a></b>(type, initializers)
-								</div>
-								<div class="description">This static function builds an object given its class and additional argumentsproviding initial properties or <a href="../symbols/GraphObject.html">GraphObject</a>s that become <a href="../symbols/Panel.html">Panel</a> elements.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-
-				
-			
-<!-- ============================== events summary ======================== -->
-			
-
-<!-- ============================== fields summary ===================== -->
-			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the properties documented in the class GraphObject.">
-					<caption>Constants</caption>
-					<thead>
-						<tr>
-							<th scope="col">Property Attributes</th>
-							<th scope="col">Property Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-              <a name="Default"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>Default</b>
-								</div>
-								<div class="description">GraphObjects with this enumeration as the value of <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a>are stretched depending on the context they are used.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="Fill"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>Fill</b>
-								</div>
-								<div class="description">GraphObjects with this enumeration as the value of <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a>are scaled in both directions so as to fit exactly in the given bounds;there is no clipping but the aspect ratio may change, causing the object to appear stretched.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="Horizontal"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>Horizontal</b>
-								</div>
-								<div class="description">GraphObjects with this enumeration as the value of <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a>are scaled as much as possible in the x-axis.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="None"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>None</b>
-								</div>
-								<div class="description">GraphObjects with this enumeration as the value of <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a>are not automatically scaled to fit in the given bounds;there may be clipping in one or both directions if the available dimensions are too small.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="Uniform"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>Uniform</b>
-								</div>
-								<div class="description">Pictures with this enumeration as the value of <a href="../symbols/Picture.html#imageStretch">Picture#imageStretch</a> are drawn with equalscale in both directions to fit the arranged (actual) bounds;Panels of type Viewbox with this as the value of <a href="../symbols/Panel.html#viewboxStretch">Panel#viewboxStretch</a>are scaled equally in both directions to fit in the given bounds.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="UniformToFill"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>UniformToFill</b>
-								</div>
-								<div class="description">Pictures with this enumeration as the value of <a href="../symbols/Picture.html#imageStretch">Picture#imageStretch</a> are drawn with equalscale in both directions to fit the larger side of the image bounds;Panels of type Viewbox with this as the value of <a href="../symbols/Panel.html#viewboxStretch">Panel#viewboxStretch</a>are scaled equally in both directions to fit the larger side of the element's bounds.</div>
-							</td>
-						</tr>
-					
-						<tr>
-              <a name="Vertical"> </a>
-							<td class="attributes">&lt;constant&gt; &nbsp;
-
-                            <span class="light">{EnumValue}</span>
-
-							</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b>Vertical</b>
-								</div>
-								<div class="description">GraphObjects with this enumeration as the value of <a href="../symbols/GraphObject.html#stretch">GraphObject#stretch</a>are scaled as much as possible in the y-axis.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-
-			
-
-<!-- ============================== constructor details ==================== -->
-			
-			<div class="details"><a name="constructor"> </a>
-				<div class="sectionTitle">
-					Constructor Detail
-				</div>
-
-				<div class="fixedFont">
-						<b>GraphObject</b>()
-				</div>
-
-				<div class="description">
-					This is an abstract class, so you should not use this constructor.
-					
-				</div>
-
-				
-
-
-					
-					
-					
-					
-					
-					
-					
-
-			</div>
-			
-
-<!-- ============================== property details ========================== -->
-			
-				<div class="sectionTitle">
-					Property Detail
-				</div>
-				
-					<a name="actionCancel"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>actionCancel</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the <a href="../symbols/ActionTool.html">ActionTool</a> is cancelled and this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.This property is infrequently set.By default this property is null.<p>This functional property is only set on objects such as buttons, knobs, or sliders that want to handle all events,in conjunction with <a href="../symbols/ActionTool.html">ActionTool</a>, pre-empting the normal tool mechanisms.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#actionDown">#actionDown</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionMove">#actionMove</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionUp">#actionUp</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="actionDown"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>actionDown</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute on a mouse-down event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.This property is infrequently set.By default this property is null.<p>This functional property is only set on objects such as buttons, knobs, or sliders that want to handle all events,in conjunction with <a href="../symbols/ActionTool.html">ActionTool</a>, pre-empting the normal tool mechanisms.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#actionMove">#actionMove</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionUp">#actionUp</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="actionMove"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>actionMove</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute on a mouse-move event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.This property is infrequently set.By default this property is null.<p>This functional property is only set on objects such as buttons, knobs, or sliders that want to handle all events,in conjunction with <a href="../symbols/ActionTool.html">ActionTool</a>, pre-empting the normal tool mechanisms.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#actionDown">#actionDown</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionUp">#actionUp</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="actionUp"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>actionUp</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute on a mouse-up event when this GraphObject's <a href="../symbols/GraphObject.html#isActionable">#isActionable</a>is set to true.This property is infrequently set.By default this property is null.<p>This functional property is only set on objects such as buttons, knobs, or sliders that want to handle all events,in conjunction with <a href="../symbols/ActionTool.html">ActionTool</a>, pre-empting the normal tool mechanisms.<p>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#actionDown">#actionDown</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionMove">#actionMove</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="actualBounds"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-					<b>actualBounds</b>
-
-					</div>
-					<div class="description">
-						Gets the bounds of this GraphObject in container coordinates. This means thatthe actualBounds are in the coordinate space of the GraphObject's <a href="../symbols/Panel.html">Panel</a>,unless this is a <a href="../symbols/Part.html">Part</a>, in which case they are inthe <a href="../symbols/Diagram.html">Diagram</a>'s coordinate system.<p>If the GraphObject is a Part,then the x and y values of the actualBounds are identical to that Part's <a href="../symbols/GraphObject.html#position">#position</a>,and the width and height values of the actualBounds represent the rectangular space occupiedby the Part in <a href="../symbols/Diagram.html#documentBounds">Diagram#documentBounds</a> coordinates.<p>If the GraphObject is not a top-level object (not a <a href="../symbols/Part.html">Part</a>), then the actualBoundsx and y values represent that GraphObject's position within its Panel. In a Panel of type <a href="../symbols/Panel.html#Position">Panel#Position</a>this is identical to the GraphObject's <a href="../symbols/GraphObject.html#position">#position</a>, but in other cases it is dependent onthe unique workings of each Panel type. The actualBounds width and heightof a GraphObject are relative to the compounded transformations of its Panel.<p>It is possible for a GraphObject (be it an GraphObject or a Panel containing several more GraphObjects)to have no containing Part, in which case these GraphObjects cannot possibly be in a Diagram.These GraphObjects are unlikely to have real-number values for their actualBounds, as they maynever have had the chance to be measured and arranged.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="alignment"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-					<b>alignment</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the alignment <a href="../symbols/Spot.html">Spot</a> of this GraphObject used in <a href="../symbols/Panel.html">Panel</a> layouts,to determine where in the area allocated by the panel this object should be placed.<p>The default value is Spot.Default, which lets the Panel determine the Spot using<a href="../symbols/Panel.html#defaultAlignment">Panel#defaultAlignment</a>. If that property is also Spot.Default,then the alignment spot will be different depending on the Panel type.<p>The <a href="../symbols/GraphObject.html#alignmentFocus">#alignmentFocus</a> is often used along with this property to specifywhere this object should be positioned in a Panel.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#alignmentFocus">#alignmentFocus</a></dd>
-							
-							<dd><a href="../symbols/Panel.html#defaultAlignment">Panel#defaultAlignment</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="alignmentFocus"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-					<b>alignmentFocus</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the spot on this GraphObject to be used as the alignment pointin Spot and Fixed <a href="../symbols/Panel.html">Panel</a>s.Value must be of the Spot.<p>The default value is Spot.Default, which means that the Panel type can decide the effective alignment spot.<p>The <a href="../symbols/GraphObject.html#alignment">#alignment</a> is often used along with this property to specifywhere this object should be positioned in a Panel.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="angle"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>angle</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the angle transform, in degrees, of this GraphObject.Value must be a number. If the value is not between (0 <= val < 360),it will be normalized to be in that range.Zero is along the positive X-axis; 90 is along the positive Y-axis.Default is 0.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#scale">#scale</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#stretch">#stretch</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="areaBackground"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
-					<b>areaBackground</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the areaBackground Brush of this GraphObject.The areaBackground fills the rectangle described by this GraphObject's containing panel's coordinates.If the object is rotated, the area background will expand to fill the entire measured bounds of the object,without rotating the brush.<p>The value may be either a <a href="../symbols/Brush.html">Brush</a> object or a string that is a CSS color.The default value is null -- no area background is drawn.More information about the syntax of CSS color strings is available at:<a href="http://developer.mozilla.org/en-US/docs/Web/CSS/color">CSS colors</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#background">#background</a></dd>
-							
-							<dd><a href="../symbols/Shape.html#fill">Shape#fill</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="background"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string|<a href="../symbols/Brush.html">Brush</a>}</span>
-					<b>background</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the background Brush of this GraphObject,filling the rectangle of this object's local coordinate space.If the object is rotated, the background will rotate with it.<p>The value may be either a <a href="../symbols/Brush.html">Brush</a> object or a string that is a CSS color.The default value is null -- no background is drawn.More information about the syntax of CSS color strings is available at:<a href="http://developer.mozilla.org/en-US/docs/Web/CSS/color">CSS colors</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#areaBackground">#areaBackground</a></dd>
-							
-							<dd><a href="../symbols/Shape.html#fill">Shape#fill</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="click"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>click</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user single-primary-clicks on this object.This typically involves a mouse-down followed by a prompt mouse-upat approximately the same position using the left (primary) mouse button.This property is used by the <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>when the user clicks on a <a href="../symbols/GraphObject.html">GraphObject</a>.The function is called in addition to the <a href="../symbols/DiagramEvent.html">DiagramEvent</a>that is raised with the name "ObjectSingleClicked".<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>and this <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.<p/>An example of a click event handler is shown in the<a href="../../samples/arrowheads.html">Arrowheads sample</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#doubleClick">#doubleClick</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#contextClick">#contextClick</a></dd>
-							
-							<dd><a href="../symbols/Diagram.html#click">Diagram#click</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="column"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>column</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the column of this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.The value cannot be negative. The default is 0.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="columnSpan"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>columnSpan</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the number of columns spanned by this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.The value cannot be negative or zero. The default is 1.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="contextClick"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>contextClick</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user single-secondary-clicks on this object.This typically involves a mouse-down followed by a prompt mouse-upat approximately the same position using the right (secondary) mouse button.This property is used by the <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>when the user clicks on a <a href="../symbols/GraphObject.html">GraphObject</a>.The function is called in addition to the <a href="../symbols/DiagramEvent.html">DiagramEvent</a>that is raised with the name "ObjectContextClicked".<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>and this <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#click">#click</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#doubleClick">#doubleClick</a></dd>
-							
-							<dd><a href="../symbols/Diagram.html#contextClick">Diagram#contextClick</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="contextMenu"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
-					<b>contextMenu</b>
-
-					</div>
-					<div class="description">
-						This <a href="../symbols/Adornment.html">Adornment</a> is shown upon a context click on this object.The default value is null, which means no context menu is shown.<p/>Changing this value will not modify or remove any existing menu that is being shown for this object.<p/>A typical context menu is implemented as an Adornment with several buttons in it.For example, this context menu is defined in the<a href="../../samples/dynamicPorts.html">Dynamic Port sample</a>:<pre>var nodeMenu =  // context menu for each Node $(go.Adornment, "Vertical",    $("ContextMenuButton",      $(go.TextBlock, "Add top port"),      { click: function (e, obj) { addPort("top"); } }),    $("ContextMenuButton",      $(go.TextBlock, "Add left port"),      { click: function (e, obj) { addPort("left"); } }),    $("ContextMenuButton",      $(go.TextBlock, "Add right port"),      { click: function (e, obj) { addPort("right"); } }),    $("ContextMenuButton",      $(go.TextBlock, "Add bottom port"),      { click: function (e, obj) { addPort("bottom"); } }));</pre>and is used in the node template:<pre>myDiagram.nodeTemplate =  $(go.Node, "Table",    { . . .      contextMenu: nodeMenu    },    . . .);</pre><p/>The <a href="../../samples/basic.html">Basic sample</a> also shows howto make context menu items invisible when the command is disabled.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="cursor"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string}</span>
-					<b>cursor</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the mouse cursor to use when the mouse is over this object with no mouse buttons pressed.The value is null when no particular cursor is specified for this object;the actual cursor is determined by any containing <a href="../symbols/Panel.html">Panel</a>.<p>The default value is the empty string, which means thecurrent mouse cursor is determined by the Diagram.Other strings should be valid CSS strings that specify a cursor.This provides some more information about cursor syntax:<a href="http://developer.mozilla.org/en-US/docs/Web/CSS/cursor">CSS cursors</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/Diagram.html#defaultCursor">Diagram#defaultCursor</a></dd>
-							
-							<dd><a href="../symbols/Diagram.html#currentCursor">Diagram#currentCursor</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="desiredSize"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-					<b>desiredSize</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the desired size of this GraphObject in local coordinates.Value must be of type <a href="../symbols/Size.html">Size</a>.Default is Size(NaN, NaN).The size does not include any transformation due to <a href="../symbols/GraphObject.html#scale">#scale</a> or <a href="../symbols/GraphObject.html#angle">#angle</a>,nor any pen thickness due to <a href="../symbols/Shape.html#strokeWidth">Shape#strokeWidth</a> if this is a <a href="../symbols/Shape.html">Shape</a>.If there is a containing <a href="../symbols/Panel.html">Panel</a> the Panel will determine the actual size.<p/>Getting or setting <a href="../symbols/GraphObject.html#width">#width</a> or <a href="../symbols/GraphObject.html#height">#height</a> is equivalent to getting or setting thewidth or height of this property.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#minSize">#minSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#maxSize">#maxSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#naturalBounds">#naturalBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="diagram"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Diagram.html">Diagram</a>}</span>
-					<b>diagram</b>
-
-					</div>
-					<div class="description">
-						Gets the <a href="../symbols/Diagram.html">Diagram</a> that this GraphObject is in, if it is.<p/>This property is not settable.Although you cannot add any plain GraphObject to a Diagram, you can call <a href="../symbols/Diagram.html#add">Diagram#add</a>to add a <a href="../symbols/Part.html">Part</a> to a Diagram.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="doubleClick"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>doubleClick</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user double-primary-clicks on this object.This typically involves a mouse-down/up/down/up in rapid successionat approximately the same position using the left (primary) mouse button.This property is used by the <a href="../symbols/ClickSelectingTool.html">ClickSelectingTool</a>when the user clicks on a <a href="../symbols/GraphObject.html">GraphObject</a>.The function is called in addition to the <a href="../symbols/DiagramEvent.html">DiagramEvent</a>that is raised with the name "ObjectDoubleClicked".<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>and this <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.<p/>The <a href="../../samples/classHierarchy.html">Class Hierarchy sample</a>demonstrates the definition of a double-click event handler that opens upa web page with the documentation for that class:<pre>diagram.nodeTemplate =  $(go.Node, . . .,    {      doubleClick:  // here the second argument is this object, which is this Node        function(e, node) { window.open("../api/symbols/" + node.data.key + ".html"); }    },    . . .    );</pre>
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#click">#click</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#contextClick">#contextClick</a></dd>
-							
-							<dd><a href="../symbols/Diagram.html#doubleClick">Diagram#doubleClick</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromEndSegmentDirection"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{EnumValue}</span>
-					<b>fromEndSegmentDirection</b>
-
-					</div>
-					<div class="description">
-						Gets or sets how the direction of the last segment of a link coming from this port is computed when the node is rotated.This value is used by <a href="../symbols/Link.html#getLinkDirection">Link#getLinkDirection</a>.<p>The value must be one of <a href="../symbols/Node.html#DirectionAbsolute">Node#DirectionAbsolute</a>,<a href="../symbols/Node.html#DirectionRotatedNode">Node#DirectionRotatedNode</a>, or <a href="../symbols/Node.html#DirectionRotatedNodeOrthogonal">Node#DirectionRotatedNodeOrthogonal</a>.The default value is <a href="../symbols/Node.html#DirectionRotatedNodeOrthogonal">Node#DirectionRotatedNodeOrthogonal</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toEndSegmentDirection">#toEndSegmentDirection</a></dd>
-							
-							<dd><a href="../symbols/Link.html#fromEndSegmentDirection">Link#fromEndSegmentDirection</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromEndSegmentLength"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>fromEndSegmentLength</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the length of the last segment of a link coming from this port.This value is used when the computed "from spot" is not Spot.None.The default value is 10.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toEndSegmentLength">#toEndSegmentLength</a></dd>
-							
-							<dd><a href="../symbols/Link.html#fromEndSegmentLength">Link#fromEndSegmentLength</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromLinkable"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{?boolean}</span>
-					<b>fromLinkable</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw Links from this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidFrom">LinkingBaseTool#isValidFrom</a>.<p>The default value is null, which indicates that the real value is inherited fromthe parent <a href="../symbols/Panel.html">Panel</a>, or false if there is no containing panel.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromMaxLinks">#fromMaxLinks</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#cursor">#cursor</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromLinkableDuplicates"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>fromLinkableDuplicates</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw duplicate Links from this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidLink">LinkingBaseTool#isValidLink</a>.The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkableSelfNode">#fromLinkableSelfNode</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkableDuplicates">#toLinkableDuplicates</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromLinkableSelfNode"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>fromLinkableSelfNode</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw Links that connect from this port's Node.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidLink">LinkingBaseTool#isValidLink</a>.The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkableDuplicates">#fromLinkableDuplicates</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkableSelfNode">#toLinkableSelfNode</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromMaxLinks"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>fromMaxLinks</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the maximum number of links that may come out of this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidFrom">LinkingBaseTool#isValidFrom</a>.<p>The value must be non-negative.The default value is Infinity.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toMaxLinks">#toMaxLinks</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromShortLength"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>fromShortLength</b>
-
-					</div>
-					<div class="description">
-						Gets or sets how far the end segment of a link coming from this port stops short of the actual port.Negative values cause the link to extend into the port.The default value is zero.<p/>This property is useful when you have a thick link and a pointy arrowhead.Normally the link Shape extends all the way to the end of the arrowhead.If the link Shape is wide, its edges will be seen behind the arrowhead.By setting this property to a small positive value, the link Shape can end within thebody of the arrowhead, leaving only the point of the arrowhead visible at the end of the link.<p/>A negative value for this property can also be useful when you want the link Shape to continueinto the port, perhaps because a portion of the port is transparent and you want the link toappear to connect visually with a different point on the node.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toShortLength">#toShortLength</a></dd>
-							
-							<dd><a href="../symbols/Link.html#fromShortLength">Link#fromShortLength</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="fromSpot"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-					<b>fromSpot</b>
-
-					</div>
-					<div class="description">
-						Gets or sets where a link should connect from this port.The default value is <a href="../symbols/Spot.html#None">Spot#None</a>, meaning that the link routingmust consider the shape of the port and connect at closest point.<p>For examples of how to use this property, see <a href="../../intro/connectionPoints.html">Link Connection Points</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toSpot">#toSpot</a></dd>
-							
-							<dd><a href="../symbols/Link.html#fromSpot">Link#fromSpot</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="height"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>height</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the desired height of this GraphObject in local coordinates.This just gets or sets the height component of the <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a>.Default is NaN.The height does not include any transformation due to <a href="../symbols/GraphObject.html#scale">#scale</a> or <a href="../symbols/GraphObject.html#angle">#angle</a>,nor any pen thickness due to <a href="../symbols/Shape.html#strokeWidth">Shape#strokeWidth</a> if this is a <a href="../symbols/Shape.html">Shape</a>.If there is a containing <a href="../symbols/Panel.html">Panel</a> the Panel will determine the actual size.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="isActionable"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isActionable</b>
-
-					</div>
-					<div class="description">
-						This property determines whether or not this GraphObject's events occurbefore all other events, including selection. This enables the <a href="../symbols/GraphObject.html#actionDown">#actionDown</a>,<a href="../symbols/GraphObject.html#actionMove">#actionMove</a>, <a href="../symbols/GraphObject.html#actionUp">#actionUp</a>, and <a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a> events,which are all handled by the <a href="../symbols/ActionTool.html">ActionTool</a>.<p>This property is infrequently used -- typically only when implementing objectsthat act as buttons or knobs or sliders.The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#actionDown">#actionDown</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionMove">#actionMove</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionUp">#actionUp</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actionCancel">#actionCancel</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="isPanelMain"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isPanelMain</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether a GraphObject is the "main" object for some types of <a href="../symbols/Panel.html">Panel</a>.Panels that use a "main" object include <a href="../symbols/Panel.html#Auto">Panel#Auto</a>, <a href="../symbols/Panel.html#Spot">Panel#Spot</a>, and <a href="../symbols/Panel.html#Link">Panel#Link</a>.<p>Panels that use a "main" object will use the first object that has this property set to true,or else just the first object, if none have the property set.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="layer"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Layer.html">Layer</a>}</span>
-					<b>layer</b>
-
-					</div>
-					<div class="description">
-						Gets the GraphObject's containing <a href="../symbols/Layer.html">Layer</a>, if there is any.A plain GraphObject cannot belong directly to a Layer -- only a <a href="../symbols/Part.html">Part</a> can belong directly to a Layer.<p/>This property is not settable.Normally one changes which Layer that a GraphObject is in by setting <a href="../symbols/Part.html#layerName">Part#layerName</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="margin"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Margin.html">Margin</a>|number}</span>
-					<b>margin</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the size of empty area around this GraphObject, as a <a href="../symbols/Margin.html">Margin</a>,in the containing <a href="../symbols/Panel.html">Panel</a> coordinates.<p>Negative values are permitted but may cause overlaps with adjacentobjects in a <a href="../symbols/Panel.html">Panel</a>.Default margin is Margin(0,0,0,0).<p>The property setter accepts a number instead of a Margin object: providing anumber N will result in using a Margin(N, N, N, N).The property getter will always return a Margin.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="maxSize"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-					<b>maxSize</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the maximum size of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).Any new value must be of type Size; the width and height must not be NaN.The default value is Infinity by Infinity.A containing Panel will determine the actual size of this object.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#minSize">#minSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="measuredBounds"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-					<b>measuredBounds</b>
-
-					</div>
-					<div class="description">
-						Gets the measuredBounds of the GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).This describes the transformed bounds with margins excluded.Default is null.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#naturalBounds">#naturalBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="minSize"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Size.html">Size</a>}</span>
-					<b>minSize</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the minimum size of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).Any new value must be of type Size; the width and height must not be NaN.The default value is zero by zero.A containing Panel will determine the actual size of this object.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#maxSize">#maxSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseDragEnter"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-					<b>mouseDragEnter</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user moves the mouseinto this stationary object during a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to provide feedback during a drag based on where it might drop.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>,this <a href="../symbols/GraphObject.html">GraphObject</a>, and any previous <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>This function is called with <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a> temporarily set to true,so that any changes to <a href="../symbols/GraphObject.html">GraphObject</a>s are not recorded in the <a href="../symbols/UndoManager.html">UndoManager</a>.You do not need to start and commit any transaction in this function.After calling this function the diagram will be updated immediately.<p/>For an example of a mouseDragEnter event handler, see the node template in the<a href="../../samples/orgChartEditor.html">Org Chart Editor sample</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragLeave">#mouseDragLeave</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHold">#mouseHold</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDrop">#mouseDrop</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseDragLeave"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-					<b>mouseDragLeave</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user moves the mouseout of this stationary object during a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to provide feedback during a drag based on where it might drop.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>,this <a href="../symbols/GraphObject.html">GraphObject</a>, and any new <a href="../symbols/GraphObject.html">GraphObject</a> that the mouse is in.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>This function is called with <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a> temporarily set to true,so that any changes to <a href="../symbols/GraphObject.html">GraphObject</a>s are not recorded in the <a href="../symbols/UndoManager.html">UndoManager</a>.You do not need to start and commit any transaction in this function.After calling this function the diagram will be updated immediately.<p/>For an example of a mouseDragLeave event handler, see the node template in the<a href="../../samples/orgChartEditor.html">Org Chart Editor sample</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragEnter">#mouseDragEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHold">#mouseHold</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDrop">#mouseDrop</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseDrop"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>mouseDrop</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when a user drops the selection on this objectat the end of a <a href="../symbols/DraggingTool.html">DraggingTool</a> drag;this allows you to customize the behavior when a drop occurs on an object.<p>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>,this <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.The function is called within the transaction performed by the <a href="../symbols/DraggingTool.html">DraggingTool</a>.By default this property is null.<p/>For an example of a mouseDrop event handler, see the node template in the<a href="../../samples/orgChartEditor.html">Org Chart Editor sample</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragEnter">#mouseDragEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragLeave">#mouseDragLeave</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHold">#mouseHold</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseEnter"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-					<b>mouseEnter</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user moves the mouseinto this object without holding down any buttons.This property is used by the <a href="../symbols/ToolManager.html">ToolManager</a>.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>,this <a href="../symbols/GraphObject.html">GraphObject</a>, and any previous <a href="../symbols/GraphObject.html">GraphObject</a> that the mouse was in.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>This function is called with <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a> temporarily set to true,so that any changes to <a href="../symbols/GraphObject.html">GraphObject</a>s are not recorded in the <a href="../symbols/UndoManager.html">UndoManager</a>.You do not need to start and commit any transaction in this function.After calling this function the diagram will be updated immediately.<p/>For example, consider the situation where one wants to display buttons that the user can clickwhenever the user passes the mouse over a node, and the buttons automatically disappear when themouse leaves the node.  This can be implemented by showing an Adornment holding the buttons.<pre>var nodeContextMenu =  $(go.Adornment, "Spot",    { background: "transparent" },  // to help detect when the mouse leaves the area    $(go.Placeholder),    $(go.Panel, "Vertical",      { alignment: go.Spot.Right, alignmentFocus: go.Spot.Left },      $("Button",        $(go.TextBlock, "Command 1"),        {          click: function(e, obj) {            var node = obj.part.adornedPart;            alert("Command 1 on " + node.data.text);            node.removeAdornment("ContextMenuOver");          }        }),      $("Button",        $(go.TextBlock, "Command 2"),        {          click: function(e, obj) {            var node = obj.part.adornedPart;            alert("Command 2 on " + node.data.text);            node.removeAdornment("ContextMenuOver");          }        })      ));</pre>Then in the definition of the Node we can implement a mouseEnter event handler:<pre>myDiagram.nodeTemplate =  $(go.Node,    . . .    {      mouseEnter: function(e, node) {        nodeContextMenu.adornedObject = node;        nodeContextMenu.mouseLeave = function(ev, cm) {          node.removeAdornment("ContextMenuOver");        };        node.addAdornment("ContextMenuOver", nodeContextMenu);      }    });</pre>Note how it automatically defines a <a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a> event handler too.The context menu Adornment is removed either when the mouse leaves the area of the Adornmentor when the user executes a button click event handler.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseOver">#mouseOver</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHover">#mouseHover</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragEnter">#mouseDragEnter</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseHold"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>mouseHold</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user holds the mouse still for a whileover this object while holding down a button.This property is used by the <a href="../symbols/ToolManager.html">ToolManager</a>.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>.By default this property is null.<p/>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.<p/>You can control how long the user must wait during a drag with a motionless mouse beforea "mouse hold" event occurs, by setting <a href="../symbols/ToolManager.html#holdDelay">ToolManager#holdDelay</a>.For example:<pre>myDiagram =  $(go.Diagram, "myDiagramDiv",    { "toolManager.holdDelay": 500 });  // 500 milliseconds</pre>or:<pre>myDiagram.toolManager.holdDelay = 500;  // 500 milliseconds</pre>
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragEnter">#mouseDragEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragLeave">#mouseDragLeave</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHover">#mouseHover</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseHover"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>mouseHover</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user holds the mouse still for a whileover this object without holding down any buttons.This property is used by the <a href="../symbols/ToolManager.html">ToolManager</a>.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>.By default this property is null.<p/>If you do provide a function that makes changes to the diagram or to its model,you should do so within a transaction -- call <a href="../symbols/Diagram.html#startTransaction">Diagram#startTransaction</a> and<a href="../symbols/Diagram.html#commitTransaction">Diagram#commitTransaction</a>.<p/>You can control how long the user must wait with a motionless mouse beforea "mouse hover" event occurs, by setting <a href="../symbols/ToolManager.html#hoverDelay">ToolManager#hoverDelay</a>.For example:<pre>myDiagram =  $(go.Diagram, "myDiagramDiv",    { "toolManager.hoverDelay": 500 });  // 500 milliseconds</pre>or:<pre>myDiagram.toolManager.hoverDelay = 500;  // 500 milliseconds</pre>
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseOver">#mouseOver</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseLeave"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject, GraphObject) | null}</span>
-					<b>mouseLeave</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user moves the mouseinto this object without holding down any buttons.This property is used by the <a href="../symbols/ToolManager.html">ToolManager</a>.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>,this <a href="../symbols/GraphObject.html">GraphObject</a>, and any previous <a href="../symbols/GraphObject.html">GraphObject</a> that the mouse had been in.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>This function is called with <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a> temporarily set to true,so that any changes to <a href="../symbols/GraphObject.html">GraphObject</a>s are not recorded in the <a href="../symbols/UndoManager.html">UndoManager</a>.You do not need to start and commit any transaction in this function.After calling this function the diagram will be updated immediately.<p/>For example, the <a href="../../samples/flowchart.html">Flow Chart sample</a>automatically shows and hides the ports as the mouse passes over a node.The node template includes the following settings:<pre>myDiagram.nodeTemplate =  $(go.Node,    . . .    {      . . .      // handle mouse enter/leave events to show/hide the ports      mouseEnter: function (e, obj) { showPorts(obj.part, true); },      mouseLeave: function (e, obj) { showPorts(obj.part, false); }      . . .    });</pre>where the <code>showPorts</code> function is defined to set the <a href="../symbols/GraphObject.html#visible">#visible</a>property of each of the port elements of the node.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseOver">#mouseOver</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHover">#mouseHover</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseDragLeave">#mouseDragLeave</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="mouseOver"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{function(InputEvent, GraphObject) | null}</span>
-					<b>mouseOver</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the function to execute when the user moves the mouseover this object without holding down any buttons.This property is used by the <a href="../symbols/ToolManager.html">ToolManager</a>.This property is infrequently used -- it is more common to implement <a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a>and <a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a> functions.<p/>If this property value is a function, it is called with an <a href="../symbols/InputEvent.html">InputEvent</a>and this <a href="../symbols/GraphObject.html">GraphObject</a>.The <a href="../symbols/InputEvent.html#targetObject">InputEvent#targetObject</a> provides the GraphObject that was foundat the mouse point before looking up the visual tree of <a href="../symbols/GraphObject.html#panel">GraphObject#panel</a>sto get to this object.By default this property is null.<p/>This function is called with <a href="../symbols/Diagram.html#skipsUndoManager">Diagram#skipsUndoManager</a> temporarily set to true,so that any changes to <a href="../symbols/GraphObject.html">GraphObject</a>s are not recorded in the <a href="../symbols/UndoManager.html">UndoManager</a>.You do not need to start and commit any transaction in this function.After calling this function the diagram will be updated immediately.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseHover">#mouseHover</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseEnter">#mouseEnter</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#mouseLeave">#mouseLeave</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="name"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string}</span>
-					<b>name</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the name for this object.The default value is the empty string.The name need not be unique within a <a href="../symbols/Panel.html">Panel</a>, although if it isn't,it reduces the usefulness of methods such as <a href="../symbols/Panel.html#findObject">Panel#findObject</a>.<p/>You must not modify the name of a GraphObject once it is in the visual tree of a Part.<p/>This is frequently needed to identify a particular GraphObject in the visual tree of a Part,for example as the value of the <a href="../symbols/Part.html#locationObjectName">Part#locationObjectName</a> or<a href="../symbols/Part.html#selectionObjectName">Part#selectionObjectName</a> properties.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="naturalBounds"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Rect.html">Rect</a>}</span>
-					<b>naturalBounds</b>
-
-					</div>
-					<div class="description">
-						Gets the natural bounding rectangle of this GraphObject in local coordinates,before any transformation by <a href="../symbols/GraphObject.html#scale">#scale</a> or <a href="../symbols/GraphObject.html#angle">#angle</a>,and before any resizing due to <a href="../symbols/GraphObject.html#minSize">#minSize</a> or <a href="../symbols/GraphObject.html#maxSize">#maxSize</a> or <a href="../symbols/GraphObject.html#stretch">#stretch</a>.Defaults to unknown (NaN,NaN).Can only be changed by changing properties of the particular GraphObject,such as <a href="../symbols/Shape.html#geometry">Shape#geometry</a> or <a href="../symbols/TextBlock.html#font">TextBlock#font</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="panel"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Panel.html">Panel</a>}</span>
-					<b>panel</b>
-
-					</div>
-					<div class="description">
-						Gets the GraphObject's containing <a href="../symbols/Panel.html">Panel</a>, or null if this object is not in a Panel.<p/>Although <a href="../symbols/Part.html">Part</a> inherits from this class, a Part will never belong to a Panel.<p/>This property is not settable.Instead, call <a href="../symbols/Panel.html#add">Panel#add</a> in order to put a GraphObject in a Panel.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="part"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Part.html">Part</a>}</span>
-					<b>part</b>
-
-					</div>
-					<div class="description">
-						Gets the <a href="../symbols/Part.html">Part</a> containing this object, if any.<p>It is common to refer to the containing Part of a GraphObjectin order to refer to the data to which it is bound.<p>This property is not settable.If you want this GraphObject to belong to a Part, you will need to add it to a Part,or else add it to some visual tree structure that is added to a Part using <a href="../symbols/Panel.html#add">Panel#add</a>.<p>Note that for objects such as buttons that are in <a href="../symbols/Adornment.html">Adornment</a>s such as tooltips or context menus,this property will return that Adornment, not the Node or Link that is adorned.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="pickable"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>pickable</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether or not this GraphObject can be chosen by visual "find" methods suchas <a href="../symbols/Diagram.html#findObjectAt">Diagram#findObjectAt</a>.<p/>The default value is true -- mouse events on this object will be noticed.If this is a <a href="../symbols/Panel.html">Panel</a>, not only is this Panel not "hittable", but all of theelements inside the Panel will be ignored.
-						
-					</div>
-
-					
-
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Since:</dt>
-								<dd>1.2</dd>
-							</dl>
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/Layer.html#pickable">Layer#pickable</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="portId"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{string}</span>
-					<b>portId</b>
-
-					</div>
-					<div class="description">
-						Gets or sets an identifier for an object acting as a port on a Node.The default value is null -- this object is not a port.<p>A value that is the empty string is used by convention to mean the primary(and usually only) port of the node.<p>If a Node has no named ports, then the Node itself is the sole port.<p>The value should be unique within the <a href="../symbols/Node.html">Node</a>.You must not modify this property once this GraphObject is in the visual tree of a Node.<p class="box">See <a href="../../intro/ports.html">the Introduction page on ports</a>for usage information and examples.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromSpot">#fromSpot</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toSpot">#toSpot</a></dd>
-							
-							<dd><a href="../symbols/Link.html#fromSpot">Link#fromSpot</a></dd>
-							
-							<dd><a href="../symbols/Link.html#toSpot">Link#toSpot</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="position"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-					<b>position</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the position of this GraphObject in container coordinates(either a <a href="../symbols/Panel.html">Panel</a> or the document).Value must be of type Point.Default is Point(NaN, NaN).<p/>For <a href="../symbols/Part.html">Part</a>s, see also <a href="../symbols/Part.html#location">Part#location</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="row"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>row</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the row of this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.The value cannot be negative. The default is 0.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="rowSpan"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>rowSpan</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the number of rows spanned by this GraphObject if it is in a Table <a href="../symbols/Panel.html">Panel</a>.The value cannot be negative or zero. The default is 1.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="scale"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>scale</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the scale transform of this GraphObject.Value must be a number; larger values will make this object appear bigger.Default is 1.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#angle">#angle</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#stretch">#stretch</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="segmentFraction"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>segmentFraction</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the fractional distance along a segment of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.The value should be between zero and one, where zero is at the point at the start of the segment,and where one is at the point at the end of the segment.The default value is zero.<p>For examples of how to use this property, see <a href="../../intro/linkLabels.html">Link Labels</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentIndex">#segmentIndex</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOffset">#segmentOffset</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOrientation">#segmentOrientation</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="segmentIndex"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>segmentIndex</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the segment index of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.Non-negative numbers count up from zero, which is the first segment, at the "from" end of the Link.Negative numbers count segments from the "to" end of the Link, where -1 means the last segmentand -2 means the next-to-last segment.The value should be an integer.<p>If you do not set this property, the Link will choose a place that is approximately at themid-point of the link's route.<p>For examples of how to use this property, see <a href="../../intro/linkLabels.html">Link Labels</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentFraction">#segmentFraction</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOffset">#segmentOffset</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOrientation">#segmentOrientation</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="segmentOffset"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-					<b>segmentOffset</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the offset of a GraphObject that is in a <a href="../symbols/Link.html">Link</a> from a point on a segment.The X component of the Point indicates the distance along the route,with positive values going further toward the "to" end of the link.The Y component of the Point indicates the distance away from the route,with positive values towards the right as seen when facing further towards the "to" end of the link.The value defaults to the Point (0, 0).<p>For examples of how to use this property, see <a href="../../intro/linkLabels.html">Link Labels</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentFraction">#segmentFraction</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentIndex">#segmentIndex</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOrientation">#segmentOrientation</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="segmentOrientation"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{EnumValue}</span>
-					<b>segmentOrientation</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the orientation of a GraphObject that is in a <a href="../symbols/Link.html">Link</a>.This controls the automatic rotation of the object by the Link Panel.The only accepted values are the <a href="../symbols/Link.html">Link</a> "Orient..." values of Linkand the default value: <a href="../symbols/Link.html#None">Link#None</a>.<p>When the value is Link.None, the <a href="../symbols/GraphObject.html#angle">#angle</a> of this object is set to zero.A value of Link#Along sets the angle to be the angle of the segment that this object is on.Other values compute the angle somewhat differently.<p>For examples of how to use this property, see <a href="../../intro/linkLabels.html">Link Labels</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentFraction">#segmentFraction</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentIndex">#segmentIndex</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#segmentOffset">#segmentOffset</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="stretch"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{EnumValue}</span>
-					<b>stretch</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the stretch of the GraphObject.This controls whether the width and/or height of this object automatically adjusts to fillthe area allotted by the containing Panel.<p>The only accepted values are listed as constant properties of GraphObject,such as <a href="../symbols/GraphObject.html#None">GraphObject#None</a>, <a href="../symbols/GraphObject.html#Fill">GraphObject#Fill</a>, <a href="../symbols/GraphObject.html#Horizontal">GraphObject#Horizontal</a>, or <a href="../symbols/GraphObject.html#Vertical">GraphObject#Vertical</a>.The default value is Spot.Default, which allows the Panel to decide how to treat this object, depending on the type of Panel.<p>Objects with an angle that are stretched may look incorrect unless the angle is a multiple of 90.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/Panel.html#defaultStretch">Panel#defaultStretch</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#minSize">#minSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#maxSize">#maxSize</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#measuredBounds">#measuredBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#actualBounds">#actualBounds</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#scale">#scale</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#angle">#angle</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toEndSegmentDirection"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{EnumValue}</span>
-					<b>toEndSegmentDirection</b>
-
-					</div>
-					<div class="description">
-						Gets or sets how the direction of the last segment of a link going to this port is computed when the node is rotated.This value is used by <a href="../symbols/Link.html#getLinkDirection">Link#getLinkDirection</a>.<p>The value must be one of <a href="../symbols/Node.html#DirectionAbsolute">Node#DirectionAbsolute</a>,<a href="../symbols/Node.html#DirectionRotatedNode">Node#DirectionRotatedNode</a>, or <a href="../symbols/Node.html#DirectionRotatedNodeOrthogonal">Node#DirectionRotatedNodeOrthogonal</a>.The default value is <a href="../symbols/Node.html#DirectionRotatedNodeOrthogonal">Node#DirectionRotatedNodeOrthogonal</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromEndSegmentDirection">#fromEndSegmentDirection</a></dd>
-							
-							<dd><a href="../symbols/Link.html#toEndSegmentDirection">Link#toEndSegmentDirection</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toEndSegmentLength"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>toEndSegmentLength</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the length of the last segment of a link going to this port.This value is used when the computed "to spot" is not Spot.None.The default value is 10.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromEndSegmentLength">#fromEndSegmentLength</a></dd>
-							
-							<dd><a href="../symbols/Link.html#toEndSegmentLength">Link#toEndSegmentLength</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toLinkable"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{?boolean}</span>
-					<b>toLinkable</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw Links to this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidTo">LinkingBaseTool#isValidTo</a>.<p>The default value is null, which indicates that the real value is inherited fromthe parent <a href="../symbols/Panel.html">Panel</a>, or false if there is no containing panel.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkable">#fromLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toMaxLinks">#toMaxLinks</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#cursor">#cursor</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toLinkableDuplicates"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>toLinkableDuplicates</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw duplicate Links to this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidLink">LinkingBaseTool#isValidLink</a>.The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkableSelfNode">#toLinkableSelfNode</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkableDuplicates">#fromLinkableDuplicates</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toLinkableSelfNode"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>toLinkableSelfNode</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether the user may draw Links that connect to this port's Node.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidLink">LinkingBaseTool#isValidLink</a>.The default value is false.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkableDuplicates">#toLinkableDuplicates</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromLinkableSelfNode">#fromLinkableSelfNode</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toMaxLinks"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>toMaxLinks</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the maximum number of links that may go into this port.This property is used by <a href="../symbols/LinkingBaseTool.html#isValidTo">LinkingBaseTool#isValidTo</a>.<p>The value must be non-negative.The default value is Infinity.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#toLinkable">#toLinkable</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#fromMaxLinks">#fromMaxLinks</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toolTip"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Adornment.html">Adornment</a>}</span>
-					<b>toolTip</b>
-
-					</div>
-					<div class="description">
-						This <a href="../symbols/Adornment.html">Adornment</a> is shown when the mouse hovers over this object.The default value is null, which means no tooltip is shown.<p>A typical tooltip is defined in the following manner, as taken fromthe <a href="../../samples/kittenMonitor.html">Kitten Monitor sample</a>:<pre>myDiagram.nodeTemplate =  $(go.Node,    . . .    { // this tooltip shows the name and picture of the kitten      toolTip:        $(go.Adornment, "Auto",          $(go.Shape, { fill: "lightyellow" }),          $(go.Panel, "Vertical",            $(go.Picture,              new go.Binding("source", "src", function(s) { return "images/" + s + ".png"; })),            $(go.TextBlock, { margin: 3 },              new go.Binding("text", "key"))))    });</pre>Note that this Adornment depends on having the same data binding as the adorned Part.<p>Tooltips are shown after a timed delay given by the <a href="../symbols/ToolManager.html#hoverDelay">ToolManager#hoverDelay</a>.You can change the delay time by:<pre>myDiagram =  $(go.Diagram, "myDiagramDiv",    { "toolManager.hoverDelay": 500 });  // 500 milliseconds</pre>or:<pre>myDiagram.toolManager.hoverDelay = 500;  // 500 milliseconds</pre><p>Changing this value will not modify or remove any existing tooltip that is being shown for this object.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="toShortLength"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>toShortLength</b>
-
-					</div>
-					<div class="description">
-						Gets or sets how far the end segment of a link going to this port stops short of the actual port.Negative values cause the link to extend into the port.The default value is zero.<p/>This property is useful when you have a thick link and a pointy arrowhead.Normally the link Shape extends all the way to the end of the arrowhead.If the link Shape is wide, its edges will be seen behind the arrowhead.By setting this property to a small positive value, the link Shape can end within thebody of the arrowhead, leaving only the point of the arrowhead visible at the end of the link.<p/>A negative value for this property can also be useful when you want the link Shape to continueinto the port, perhaps because a portion of the port is transparent and you want the link toappear to connect visually with a different point on the node.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromShortLength">#fromShortLength</a></dd>
-							
-							<dd><a href="../symbols/Link.html#toShortLength">Link#toShortLength</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="toSpot"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Spot.html">Spot</a>}</span>
-					<b>toSpot</b>
-
-					</div>
-					<div class="description">
-						Gets or sets where a link should connect to this port.The default value is <a href="../symbols/Spot.html#None">Spot#None</a>, meaning that the link routingmust consider the shape of the port and connect to closest point.<p>For examples of how to use this property, see <a href="../../intro/connectionPoints.html">Link Connection Points</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">See:</dt>
-							
-							<dd><a href="../symbols/GraphObject.html#fromSpot">#fromSpot</a></dd>
-							
-							<dd><a href="../symbols/Link.html#toSpot">Link#toSpot</a></dd>
-							
-							<dd><a href="../symbols/GraphObject.html#portId">#portId</a></dd>
-							
-							</dl>
-						
-						
-
-					<hr />
-				
-					<a name="visible"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>visible</b>
-
-					</div>
-					<div class="description">
-						Gets or sets whether a GraphObject is visible.The default value is true.A not visible object takes no space in the Panel that it is in.Making a Panel not visible causes all of its elements not to be seen or receive input events.Changing a Panel to become visible causes all of its elements to be seen and be active,unless those elements are themselves not visible.<p/>One can have a visible <a href="../symbols/Shape.html">Shape</a> that is not drawn by setting its <a href="../symbols/Shape.html#fill">Shape#fill</a> and <a href="../symbols/Shape.html#stroke">Shape#stroke</a> to null or to "transparent".Similarly, one can set <a href="../symbols/TextBlock.html#stroke">TextBlock#stroke</a> to null or to "transparent".It is also possible make a <a href="../symbols/Panel.html">Panel</a>-full of GraphObjects transparent by setting <a href="../symbols/Panel.html#opacity">Panel#opacity</a> to 0.0.Finally, one can make a whole <a href="../symbols/Layer.html">Layer</a>-full of Parts invisible by setting <a href="../symbols/Layer.html#visible">Layer#visible</a> to false.<p/>Use the <a href="../symbols/GraphObject.html#isVisibleObject">#isVisibleObject</a> predicate to see if this GraphObject is visible and is inside a <a href="../symbols/Panel.html">Panel</a>that is <a href="../symbols/GraphObject.html#isVisibleObject">#isVisibleObject</a>, and so forth up the chain of panels until reaching the <a href="../symbols/Part.html">Part</a>.<p/>For <a href="../symbols/Part.html">Part</a>s, you can call the <a href="../symbols/Part.html#isVisible">Part#isVisible</a> predicate to determineif not only the Part is visible but also any containing <a href="../symbols/Group.html">Group</a> or <a href="../symbols/Link.html">Link</a>,and whether the <a href="../symbols/Layer.html">Layer</a> it is in is visible.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="width"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>width</b>
-
-					</div>
-					<div class="description">
-						Gets or sets the desired width of this GraphObject in local coordinates.This just gets or sets the width component of the <a href="../symbols/GraphObject.html#desiredSize">#desiredSize</a>.Default is NaN.The width does not include any transformation due to <a href="../symbols/GraphObject.html#scale">#scale</a> or <a href="../symbols/GraphObject.html#angle">#angle</a>,nor any pen thickness due to <a href="../symbols/Shape.html#strokeWidth">Shape#strokeWidth</a> if this is a <a href="../symbols/Shape.html">Shape</a>.If there is a containing <a href="../symbols/Panel.html">Panel</a> the Panel will determine the actual size.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-
-					
-				
-			
-
-<!-- ============================== method details ========================= -->
-			
-				<div class="sectionTitle">
-					Method Detail
-				</div>
-				
-					<a name="bind"> </a>
-					<div class="fixedFont">
-
-					
-					<b>bind</b>(binding)
-
-					</div>
-					<div class="description">
-						Add a data-binding of a property on this GraphObject to a property on a data object.<p/>Read more about <a href="../symbols/Binding.html">Binding</a>s at <a href="../../intro/dataBinding.html">the Introduction page about Data Bindings</a>.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Binding.html">Binding</a>}</span> <b>binding</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="copy"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span>
-					<b>copy</b>()
-
-					</div>
-					<div class="description">
-						Creates a deep copy of this GraphObject and returns it.This method is the same as a clone for simple GraphObjectssuch as <a href="../symbols/Shape.html">Shape</a>, <a href="../symbols/TextBlock.html">TextBlock</a>, and <a href="../symbols/Picture.html">Picture</a>.For <a href="../symbols/Panel.html">Panel</a> this method copies the visual tree of GraphObjects that it contains.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getDocumentAngle"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>getDocumentAngle</b>()
-
-					</div>
-					<div class="description">
-						Returns the effective angle that the object is drawn at, in document coordinates, normalized to between 0 and 360.<p/>Basically this adds together all of the rotation declared by this <a href="../symbols/GraphObject.html#angle">#angle</a> and the angles of all of its containing Panels, including the Part.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{number}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getDocumentPoint"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-					<b>getDocumentPoint</b>(s, result)
-
-					</div>
-					<div class="description">
-						Returns the Point in document coordinates for a given Spot in this object's bounds.<p/>For example, for an instance of a Node like this:<pre>myDiagram.nodeTemplate =  $(go.Node, "Auto",    $(go.Shape, "RoundedRectangle",      new go.Binding("fill", "color")),    $(go.TextBlock,      { name: "TB", margin: 3 },      new go.Binding("text", "key")));</pre>where the Node is positioned at <code>100, 200</code>,<pre>  node.findObject("TB").getDocumentPoint(go.Spot.Center)</pre>could return a Point that is approximately at <code>122, 213</code>.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Spot.html">Spot</a>}</span> <b>s</b>
-									
-								</dt>
-								<dd>a real Spot describing a location relative to the GraphObject.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>=}</span> <b>result</b>
-									
-								</dt>
-								<dd>an optional Point that is modified and returned.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> in document coordinates.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getDocumentScale"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{number}</span>
-					<b>getDocumentScale</b>()
-
-					</div>
-					<div class="description">
-						Returns the total scale that the object is drawn at, in document coordinates.<p/>Basically this multiplies together this <a href="../symbols/GraphObject.html#scale">#scale</a> with the scales of all of its containing Panels, including the Part.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{number}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getLocalPoint"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{<a href="../symbols/Point.html">Point</a>}</span>
-					<b>getLocalPoint</b>(p, result)
-
-					</div>
-					<div class="description">
-						Given a Point in document coordinates, returns a new Point in local coordinates.<p/>For example, if you have a mouse event whose <a href="../symbols/InputEvent.html#documentPoint">InputEvent#documentPoint</a> is at <code>122, 213</code>,and if you have a Node whose <a href="../symbols/GraphObject.html#position">#position</a> is at <code>100, 200</code>,<code>node.getLocalPoint(e.documentPoint)</code> could return a Point that is at <code>22, 13</code>.For a GraphObject within the Node named "TB",<pre>  node.findObject("TB").getLocalPoint(e.documentPoint)</pre>could return a Point that is at <code>15.7, 6.7</code>,if that "TB" object is positioned somewhat inside the bounds of the Node.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> <b>p</b>
-									
-								</dt>
-								<dd>a Point in document coordinates.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>=}</span> <b>result</b>
-									
-								</dt>
-								<dd>an optional Point that is modified and returned.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Point.html">Point</a>}</span> The corresponding Point in local coordinates.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="isContainedBy"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isContainedBy</b>(panel)
-
-					</div>
-					<div class="description">
-						This predicate is true if this object is an element, perhaps indirectly,of the given panel.<p/>For example, if this GraphObject is inside a Part but is not itself the Part,<code>obj.isContainedBy(obj.part)</code> should be true.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/GraphObject.html">GraphObject</a>}</span> <b>panel</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if this object is contained by the given panel,or if it is contained by another panel that is contained by the given panel,to any depth; false if the argument is null or is not a <a href="../symbols/Panel.html">Panel</a>.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="isVisibleObject"> </a>
-					<div class="fixedFont">
-
-					<span class="light">{boolean}</span>
-					<b>isVisibleObject</b>()
-
-					</div>
-					<div class="description">
-						This predicate is true if this object is <a href="../symbols/GraphObject.html#visible">#visible</a>and each of its visual containing panels are also visible.This ignores the actual location or appearance (except visibility)of the panel that this object is part of, as well as ignoring allproperties of the <a href="../symbols/Layer.html">Layer</a> or <a href="../symbols/Diagram.html">Diagram</a>.<p/>For <a href="../symbols/Part.html">Part</a>s, you can call the <a href="../symbols/Part.html#isVisible">Part#isVisible</a> predicate to determineif not only the Part is visible but also any containing <a href="../symbols/Group.html">Group</a> or <a href="../symbols/Link.html">Link</a>.
-						
-					</div>
-
-					
-
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".make"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-
-					<span class="light">{Object}</span>
-					<span class="light">GraphObject.</span><b>make</b>(type, initializers)
-
-					</div>
-					<div class="description">
-						This static function builds an object given its class and additional argumentsproviding initial properties or <a href="../symbols/GraphObject.html">GraphObject</a>s that become <a href="../symbols/Panel.html">Panel</a> elements.<p/>The first argument must be the class type or the name of a class or the name of a predefined kind of Panel.The rest of the arguments are used to initialize the object being built.<p/>If an initializer argument is an enumerated value, this tries to set the property that seems most appropriate.<p/>If an initializer argument is a string, this sets a particular property depending on the type of object being built.<ul><li>If the object is a <a href="../symbols/TextBlock.html">TextBlock</a>, it sets <a href="../symbols/TextBlock.html#text">TextBlock#text</a>.</li><li>If the object is a <a href="../symbols/Shape.html">Shape</a>, it sets <a href="../symbols/Shape.html#figure">Shape#figure</a>.</li><li>If the object is a <a href="../symbols/Picture.html">Picture</a>, it sets <a href="../symbols/Picture.html#source">Picture#source</a>.</li><li>If the object is a <a href="../symbols/Panel.html">Panel</a> (including <a href="../symbols/Part.html">Part</a>, <a href="../symbols/Node.html">Node</a>, or <a href="../symbols/Group.html">Group</a>), it sets <a href="../symbols/Panel.html#type">Panel#type</a>.</li></ul><p/>If an initializer argument is a particular kind of object, this can add that object to the object being built.<ul><li><a href="../symbols/GraphObject.html">GraphObject</a>s and <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>s can only be added as elements of <a href="../symbols/Panel.html">Panel</a>s.</li><li><a href="../symbols/Binding.html">Binding</a>s can only be applied to <a href="../symbols/GraphObject.html">GraphObject</a>s and <a href="../symbols/RowColumnDefinition.html">RowColumnDefinition</a>s.</li><li><a href="../symbols/PathFigure.html">PathFigure</a>s can only be added to <a href="../symbols/Geometry.html">Geometry</a> objects.</li><li><a href="../symbols/PathSegment.html">PathSegment</a>s can only be added to <a href="../symbols/PathFigure.html">PathFigure</a> objects.</li><li>Regular JavaScript objects provide property/value pairs that are set on the object being built.</li></ul>When the initializer argument is a plain JavaScript Object, there are several ways that that object's properties are applied.If the property name is a string with a period inside it, this has a special meaning if the object is a <a href="../symbols/Panel.html">Panel</a> or a <a href="../symbols/Diagram.html">Diagram</a>.At the current time only a single period separator is valid syntax for a property string, and it is valid only on Panels and Diagrams.<p/>For Panels, the substring before the period is used as the name passed to <a href="../symbols/Panel.html#findObject">Panel#findObject</a>to get the actual object on which to set the property, which is the substring after the period.This is normally useful only on the predefined Panels:<ul><li>a <b>"Button"</b> has a <a href="../symbols/Shape.html">Shape</a> named "ButtonBorder" surrounding the content of the Panel.</li><li>a <b>"TreeExpanderButton"</b> has a "ButtonBorder" Shape and a "ButtonIcon" Shape that is the plus-or-minus sign.</li><li>a <b>"SubGraphExpanderButton"</b> has a "ButtonBorder" Shape and a "ButtonIcon" Shape that is the plus-or-minus sign.</li><li>a <b>"ContextMenuButton"</b> has a Shape named "ButtonBorder" surrounding the content of the Panel.</li></ul><p/>For Diagrams, the substring before the period is used as the name of a property on the Diagram itselfto get the actual object on which to set the property.As a special case, if such a property value does not exist on the Diagram, it looks on the <a href="../symbols/Diagram.html#toolManager">Diagram#toolManager</a>.See some examples below.<p/>If the property name is a number and if the object being constructed is a <a href="../symbols/Brush.html">Brush</a>,the number and value are added to the Brush by calling <a href="../symbols/Brush.html#addColorStop">Brush#addColorStop</a>.<p/>Otherwise the property name is used as a regular property name on the object being built.This tries to do some property name and value checking:when a property is not defined on the object being built, it will signal an error.Many typos can be found this way that would be ignored by JavaScript code.<p/>If the property name begins with an underscore, this will not complain about the property being undefined.Not only is that underscore property set on the object being built, but calls to <a href="../symbols/GraphObject.html#copy">#copy</a>will also copy the values of such named properties to the new objects.<p/>In the samples and in the intro pages this function is called using the alias "$".You can use a different short name if you would like to preserve the use of "$" for another JavaScript library.<pre> var $ = go.GraphObject.make; var diagram =   $(go.Diagram, "myDiagramDiv",     {       initialContentAlignment: go.Spot.Center,       allowZoom: false,       "grid.visible": true,  // display a background grid for the whole diagram       "grid.gridCellSize": new go.Size(20, 20),       // allow double-click in background to create a new node       "clickCreatingTool.archetypeNodeData": { text: "Node" },       // allow Ctrl-G to call the groupSelection command       "commandHandler.archetypeGroupData":           { text: "Group", isGroup: true, color: "blue" },       "toolManager.hoverDelay": 100,  // how quickly tooltips are shown       // mouse wheel zooms instead of scrolls       "toolManager.mouseWheelBehavior": go.ToolManager.WheelZoom,       "commandHandler.copiesTree": true,  // for the copy command       "commandHandler.deletesTree": true, // for the delete command       "draggingTool.dragsTree": true,  // dragging for both move and copy       "draggingTool.isGridSnapEnabled": true,       layout: $(go.TreeLayout,                 { angle: 90, sorting: go.TreeLayout.SortingAscending })     }); diagram.nodeTemplate =   $(go.Node, "Auto",  // or go.Panel.Auto     new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),     $(go.Shape, "RoundedRectangle",       { fill: $(go.Brush, go.Brush.Linear, { 0: "#FEC901", 1: "#FEA200" }),         stroke: "gray",         strokeWidth: 2,         strokeDashArray: [3, 3] }),     $(go.TextBlock,       { margin: 5, font: "bold 12pt sans-serif" },       new go.Binding("text", "key"))   );</pre><p class="box">See <a href="../../intro/buildingObjects.html">the Introduction page on building objects</a>for usage information and examples of GraphObject.make.
-						
-					</div>
-
-					
-
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{function()|string}</span> <b>type</b>
-									
-								</dt>
-								<dd>a class function or the name of a class in the "go" namespace,or one of several predefined kinds of <a href="../symbols/Panel.html">Panel</a>s: "Button", "TreeExpanderButton","SubGraphExpanderButton", or "ContextMenuButton".</dd>
-							
-								<dt>
-									<span class="light fixedFont">{...*}</span> <b>initializers</b>
-									
-								</dt>
-								<dd>zero or more values that initialize the new object,typically an Object with properties whose values are set on the new object,or a <a href="../symbols/GraphObject.html">GraphObject</a> that is added to a <a href="../symbols/Panel.html">Panel</a>,or a <a href="../symbols/Binding.html">Binding</a> for one of the new object's properties,or an EnumValue as the initial value of a single property of the new object thatis recognized to take that value,or a string that is used as the value of a commonly set property.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					
-				
-			
-
-<!-- ============================== event details ========================= -->
-			
-
-			<hr />
-		</div>
-
-
-<!-- ============================== footer ================================= -->
-		<div id="footer" class="fineprint" style="clear:both">
-			Copyright &copy; 1998-2013 by Northwoods Software Corporation.
-		</div>
-	</body>
-</html>

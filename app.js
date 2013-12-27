@@ -49,26 +49,27 @@ if ( 'development' == app.get('env') ) {
 }
 
 // GET
-//Control Panel
+// Control Panel
   app.get( '/control_panel', queries.privateContent, routes.control_panel );
   app.get( '/control_panel/permissions', queries.privateContent, 
     routes.permissions );
 //Extras
   app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
-//Index
+// Index
   app.get( '/', routes.index );
-//Forms
-  app.get( '/forms/new_form', routes.new_form );
-//Organizational Structure
+// Forms Generator
+    app.get( '/forms_generator/custom_form', 
+      queries.privateContent, routes.create_form );
+// Organizational Structure
   app.get( '/organizational_structure/talent_management', 
     queries.privateContent, routes.talent_management );
   app.get('/organizational_structure/departments',
     queries.privateContent, routes.departments);
   app.get( '/organizational_structure/employments', 
     queries.privateContent, routes.employments);
-//Resources
+// Resources
   app.get( '/resources', queries.privateContent, routes.resources );
-//Tasks
+// Tasks
   app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
   app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
