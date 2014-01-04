@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var PermissionSchema = new Schema({
-  username:         { type: String, required: true},
+  username: { type: String, required: true},
 
   permissions: [{
     _id: false,
@@ -12,8 +12,8 @@ var PermissionSchema = new Schema({
     actions:  [{
       _id: false,
       what:   { type: String },
-      label:   { type: String },
-      value: { type: Boolean }
+      label:  { type: String },
+      value:  { type: Boolean }
     }]
   }]
 });
