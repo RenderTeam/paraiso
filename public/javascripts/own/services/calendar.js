@@ -11,7 +11,6 @@
 angular.module('ui.calendar', [])
   .constant('uiCalendarConfig', {})
   .controller('uiCalendarCtrl', ['$scope', function($scope){
-      
       var sourceSerialId = 1, 
           eventSerialId = 1,
           sources = $scope.eventSources;
@@ -60,7 +59,7 @@ angular.module('ui.calendar', [])
       // arguments:
       //  arraySource array of function that returns array of objects to watch
       //  tokenFn function(object) that returns the token for a given object
-      this.changeWatcher = function(arraySource, tokenFn) {
+      this.changeWatcher = function( arraySource, tokenFn ) {
         var self;
         var getTokens = function() {
           var array = angular.isFunction(arraySource) ? arraySource() : arraySource;
@@ -145,6 +144,7 @@ angular.module('ui.calendar', [])
       }
       return r;
     };
+
     var dtf = $locale.DATETIME_FORMATS;
     uiCalendarConfig = angular.extend({
       monthNames: tValues(dtf.MONTH),
@@ -158,7 +158,6 @@ angular.module('ui.calendar', [])
       scope: {eventSources:'=ngModel',calendarWatchEvent: '&'},
       controller: 'uiCalendarCtrl',
       link: function(scope, elm, attrs, controller) {
-
         var sources = scope.eventSources,
             sourcesChanged = false;
             eventSourcesWatcher = controller.changeWatcher(sources, controller.sourcesFingerprint),

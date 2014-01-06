@@ -3,12 +3,13 @@ extends ../layout
 block custom-stylesheets
   link( rel='stylesheet', href='/stylesheets/own/tasks.css')
   link( rel='stylesheet', href='/stylesheets/render/calendar.css')
+  link( rel="stylesheet", href='/stylesheets/vendor/fullCalendar.css')
 
 block main-navbar
   include ../navbars/tasks_navbar
 
 block content
-  .col-md-12( ng-app = 'taskApp' )
+  .col-md-12( ng-app = 'taskApp', ng-controller = controller )
     .col-md-11.main-wrapper
       .col-md-4
         .input-group
@@ -21,83 +22,23 @@ block content
       span.clearfix
 
       include agenda
-      section#directives-calendar(ng-controller='CalendarCtrl')
-      .page-header
-        h1 UI-Calendar
-      .well
-        .row-fluid
-          .span4
-            .btn-group.calTools
-              button.btn(ng-click='changeLang()')
-                | {{changeTo}}
-              button.btn(ng-click='addRemoveEventSource(eventSources,eventSource)')
-                | Toggle Source
-              button.btn.btn-primary(type='button', ng-click='addEvent()')
-                | Add Event
-            ul.unstyled
-              li(ng-repeat='e in events')
-                .alert.alert-info
-                  a.close(ng-click='remove($index)')
-                    i.icon-remove
-                  b
-                    input(ng-model='e.title')
-                  | {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
-          .span8
-            tabset
-              tab(select='renderCalender(myCalendar1);')
-                tab-heading
-                  i.glyphicon.glyphicon-bell
-                  | Calendar One
-                .alert-success.calAlert(ng-show='alertMessage != undefined && alertMessage != ""')
-                  h4 {{alertMessage}}
-                .btn-toolbar
-                  p.pull-right.lead Calendar One View Options
-                  .btn-group
-                    button.btn.btn-success(ng-click='changeView("agendaDay", myCalendar1)') AgendaDay
-                    button.btn.btn-success(ng-click='changeView("agendaWeek", myCalendar1)') AgendaWeek
-                    button.btn.btn-success(ng-click='changeView("month", myCalendar1)') Month
-                .calendar(ng-model='eventSources', calendar='myCalendar1', config='uiConfig.calendar', ui-calendar='uiConfig.calendar')
-              tab(select='renderCalender(myCalendar2);')
-                tab-heading
-                  i.glyphicon.glyphicon-bell
-                  | Calendar Two
-                .alert-success.calAlert(ng-show='alertMessage != undefined && alertMessage != ""')
-                  h4 {{alertMessage}}
-                .btn-toolbar
-                  p.pull-right.lead Calendar Two View Options
-                  .btn-group
-                    button.btn.btn-success(ng-click='changeView("agendaDay", myCalendar2)') AgendaDay
-                    button.btn.btn-success(ng-click='changeView("agendaWeek", myCalendar2)') AgendaWeek
-                    button.btn.btn-success(ng-click='changeView("month", myCalendar2)') Month
-                .calendar(ng-model='eventSources', calendar='myCalendar2', config='uiConfig.calendar', ui-calendar='uiConfig.calendar')
-              tab(select='renderCalender(myCalendar3);')
-                tab-heading
-                  i.glyphicon.glyphicon-bell
-                  | Calendar Three
-                .alert-success.calAlert
-                  h4 This calendar uses the extended form
-                .btn-toolbar
-                  p.pull-right.lead Calendar Three View Options
-                  .btn-group
-                    button.btn.btn-success(ng-click='changeView("agendaDay", myCalendar3)') AgendaDay
-                    button.btn.btn-success(ng-click='changeView("agendaWeek", myCalendar3)') AgendaWeek
-                    button.btn.btn-success(ng-click='changeView("month", myCalendar3)') Month
-                .calendar(ng-model='eventSources2', calendar='myCalendar3', config='uiConfig.calendar', ui-calendar='uiConfig.calendar')
-      h3 How?
-      pre.prettyprint.linenums.
+      
+      .span8.calendar( ng-model = 'eventSources', 
+        ui-calendar = 'uiConfig.calendar' )
 
 block custom-scripts
-  //
-    Hacer que funcione para mañana n.n
-    Errores causados son:
-      No se encuentra la propiedad de lenght en angular.js
-  script( src='/javascripts/render/calendar.js')
-  script( src='/javascripts/vendor/jquery/jquery.js')
-  script( src='/javascripts/own/services/calendar.js')
-  script( src='http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js')
-  script( src='/javascripts/vendor/angular/angular.js')
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')
+  script( src='/javascripts/vendor/jquery-ui/ui/jquery-ui.js')
+  script( src='/javascripts/render/calendar.js')
+
+  script( src='http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js')
   script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/services/tasksServices.js')
-  script( src='/javascripts/own/controllers/tasksControllers.js')
+  script( src='/javascripts/own/services/calendar.js')
+
+  script( src='/javascripts/own/controllers/tasksController.js')
+  script( src='/javascripts/own/controllers/myTasksController.js')
+  script( src='/javascripts/own/controllers/newTaskController.js')
   script( src='/javascripts/own/controllers/calendarController.js')
+
+  script( src='/javascripts/own/apps/tasksApp.js')
