@@ -25,6 +25,7 @@ function myTasksController ( scope, tasks ) {
   var d = date.getDate();
   var m = date.getMonth();
   var y = date.getFullYear();
+
   /* event source that pulls from google.com */
   scope.eventSource = {
           url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
@@ -32,6 +33,8 @@ function myTasksController ( scope, tasks ) {
           currentTimezone: 'America/Chicago' // an option!
   };
   /* event source that contains custom events on the scope */
+  console.log(scope.task);
+  
   scope.events = [
     {title: 'All Day Event',start: new Date(y, m, 1)},
     {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},

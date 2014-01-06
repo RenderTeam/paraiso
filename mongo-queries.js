@@ -167,7 +167,7 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getTasks = function ( req, res ) {
     var query = Task.find();
 
-    query.select('assigned deadline description title').exec(
+    query.select('assigned deadline description title creation_date').exec(
       function ( err, tasks ) {
         if ( err ) { throw err; }
         res.send( tasks );
