@@ -61,12 +61,21 @@ if ( 'development' == app.get('env') ) {
     app.get( '/forms_generator/custom_form', 
       queries.privateContent, routes.create_form );
 // Organizational Structure
-  app.get( '/organizational_structure/talent_management', 
-    queries.privateContent, routes.talent_management );
   app.get('/organizational_structure/departments',
     queries.privateContent, routes.departments);
-  app.get( '/organizational_structure/employments', 
-    queries.privateContent, routes.employments);
+  //Employments
+    /*
+     * Default route for /organizational_structure/employments
+     */
+    app.get( '/organizational_structure/employments', 
+      queries.privateContent, routes.employments_management);
+    app.get( '/organizational_structure/employments/employments_management', 
+      queries.privateContent, routes.employments_management);
+    app.get( '/organizational_structure/employments/employments_tree', 
+      queries.privateContent, routes.employments_tree);
+
+  app.get( '/organizational_structure/talent_management', 
+    queries.privateContent, routes.talent_management );
 // Resources
   app.get( '/resources', queries.privateContent, routes.resources );
 // Tasks

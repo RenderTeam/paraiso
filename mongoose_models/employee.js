@@ -102,4 +102,4 @@ employeeSchema.post( 'save', function ( doc ) {
   });
 });
 
-module.exports = mongoose.model('Employee', employeeSchema);
+module.exports = mongoose.model( 'Employee', employeeSchema );

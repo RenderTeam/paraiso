@@ -1,12 +1,14 @@
-var mongoose = require ('mongoose'),
-  Schema = mongoose.Schema;
+var mongoose  = require ('mongoose'),
+    Schema    = mongoose.Schema;
 
-var employmentSchema = new Schema({
+var EmploymentSchema = new Schema();
 
-  name: String,
+//.add() is necesary if we want the recursive model
+EmploymentSchema.add({
+
+  name:     String,
+  children: [ EmploymentSchema ]
   //ancestors:  [String],
-  children:   [{}]
-
 });
 
-module.exports = mongoose.model('Employments', employmentSchema);
+module.exports = mongoose.model( 'Employments', EmploymentSchema );
