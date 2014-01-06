@@ -1,5 +1,6 @@
 var taskAppModule  = angular.module( 'taskApp',
-  [ 'services.tasks', 'services.users' ] );
+  [ 'services.tasks', 'services.users' , 'ui.calendar' , 'ui.bootstrap' ,
+   'uiCalendarCtrl'] );
 
 taskAppModule.controller( 'MyTasksController', myTasksController );
 taskAppModule.controller( 'NewTaskController', newTaskController );
@@ -188,6 +189,7 @@ function tasksController ( scope, tasks ) {
 
   tasks.getAllTasks().success( function ( data ) {
     scope.tasks =  data;
+    console.log( data );
   });
 
   //Call to one task when an user clicks the expand button
