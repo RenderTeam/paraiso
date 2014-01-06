@@ -100,6 +100,7 @@ function tasksController ( scope, tasks ) {
     calendar:{
       height: 450,
       editable: true,
+      theme: false,
       header:{
         left: 'title',
         center: '',
@@ -120,7 +121,8 @@ function loadtoCalendar ( scope ) {
     event = {
       title: element.title,
       start: element.creation_date,
-      end: element.deadline
+      end: element.deadline,
+      className: ['openSesame']
     }
     scope.addEvent(event);
   });

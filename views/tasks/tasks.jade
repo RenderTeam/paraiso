@@ -2,6 +2,7 @@ extends ../layout
 
 block custom-stylesheets
   link( rel='stylesheet', href='/stylesheets/own/tasks.css')
+  link( rel='stylesheet', href='/stylesheets/own/tasksCalendar.css')
   link( rel='stylesheet', href='/stylesheets/render/calendar.css')
   link( rel="stylesheet", href='/stylesheets/vendor/fullCalendar.css')
 
@@ -22,7 +23,7 @@ block content
       span.clearfix
 
       include agenda
-      
+
       .span8.calendar( ng-model = 'eventSources', 
         ui-calendar = 'uiConfig.calendar' )
 

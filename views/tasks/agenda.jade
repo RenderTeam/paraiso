@@ -1,4 +1,4 @@
-.agenda-container.clearfix( ng-controller = controller )
+.agenda-container.clearfix
   .table-responsive
     table.table.table-hover
       thead
@@ -16,8 +16,6 @@
           td.text-center
             a(data-toggle='modal', href='#taskView', ng-click='callOfDuty()') 
               span.glyphicon.glyphicon-expand 
-  #calendar
-    .panel.panel-default(ng-repeat = 'task in tasks')
   #taskView.modal.fade(tabindex='-1', role='dialog', 
     aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog

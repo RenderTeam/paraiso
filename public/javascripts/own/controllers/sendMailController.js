@@ -1,9 +1,4 @@
-var sendMailAppModule = angular.module ( 'emailApp', [ 'services.mail' ] );
-
-sendMailAppModule.controller('MailController', newMailController );
-
-newMailController.$inject = ['$scope', 'Mail'];
-function newMailController( scope , mail){
+function newMailController( scope , mail ){
   scope.sendMail = function(){
     function hideModalMessage(){
       modal.modal('hide')
@@ -56,4 +51,3 @@ function newMailController( scope , mail){
       );
   }
 }
-
