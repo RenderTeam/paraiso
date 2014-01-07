@@ -1,10 +1,64 @@
 extends ../../layout
 
 block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
 
 block main-navbar
   include ../../navbars/organizational_structure_navbar
 
 block content
+  .col-md-12( ng-app = 'employmentsApp', ng-controller = controller )
+    .form-search
+      a( data-toggle = 'modal', href = '#newEmployee' )
+        span.lead.strong.glyphicon.glyphicon-plus
+      .input-group.col-lg-3.pull-right
+        span.input-group-addon 
+          span.glyphicon.glyphicon-search
+        input.form-control.input( ng-model = 'query' )
+
+    //- Top part of the table
+    table.table-striped
+      thead
+        tr
+          th Usuario  
+            span.glyphicon.glyphicon-user
+          th Nombre
+          th DepartamentoPredecesor
+          th Departamento
+          th 
+            span.glyphicon.glyphicon-user
+
+    //- Dont
+      tbody
+        tr( ng-repeat = 'employee in employees | filter:query' )
+          td( ng-bind = 'employee.username' )
+          td
+            span( ng-bind = 'employee.name' )
+            &nbsp;
+            span( ng-bind = 'employee.last_father_name' )
+            &nbsp;
+            span( ng-bind = 'employee.last_mother_name' )
+
+          td( ng-bind = 'employee.profile.department' )
+          td( ng-bind = 'employee.profile.employment' )
+          td.launch-modal-preview
+            a( data-toggle='modal', href='#employeePreview',
+              ng-click = 'talentPreview()' )
+              span.glyphicon.glyphicon-user
+
+    #newEmployee.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title Nuevo Puesto
+          .modal-body
+            //- Aqui debe ir un formulario
+          .modal-footer
+            button.btn.btn-danger(type='button', data-dismiss='modal' ,
+              aria-hidden="true") Cancelar
 
 block custom-scripts
+  script(src='/javascripts/own/services/employeeServices.js')
+  script(src='/javascripts/own/services/usersServices.js')
+  script(src='/javascripts/own/controllers/talentControllers.js')
