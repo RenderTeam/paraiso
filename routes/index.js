@@ -47,10 +47,18 @@
         currentUser : req.user.username
       });
     };
+  //Talent
   exports.talent_management = function( req, res ){
-    res.render('organizational_structure/talent_management', {
+    res.render('organizational_structure/talent/talent_management', {
       controller: 'TalentController', 
       currentUser : req.user.username
+    });
+  };
+  exports.talent_management_profile = function( req, res ){
+    res.render('organizational_structure/talent/talent_management_profile', {
+      controller:   'TalentProfileController',
+      currentUser:  req.user.username,
+      username:     req.params.employee
     });
   };
 //Resources

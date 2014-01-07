@@ -73,9 +73,12 @@ if ( 'development' == app.get('env') ) {
       queries.privateContent, routes.employments_management);
     app.get( '/organizational_structure/employments/employments_tree', 
       queries.privateContent, routes.employments_tree);
-
+  //Talent
   app.get( '/organizational_structure/talent_management', 
     queries.privateContent, routes.talent_management );
+
+  app.get( '/organizational_structure/talent_management/:employee', 
+    queries.privateContent, routes.talent_management_profile );
 // Resources
   app.get( '/resources', queries.privateContent, routes.resources );
 // Tasks

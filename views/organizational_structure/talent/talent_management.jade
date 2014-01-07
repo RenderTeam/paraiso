@@ -1,11 +1,11 @@
-extends ../layout
+extends ../../layout
 
 block custom-stylesheets
   link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
   link(rel='stylesheet', href='/stylesheets/own/talent_management.css')
 
 block main-navbar
-  include ../navbars/organizational_structure_navbar
+  include ../../navbars/organizational_structure_navbar
 
 block content
   .col-md-12( ng-app = 'talentApp', ng-controller = controller )
@@ -50,7 +50,7 @@ block content
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4.modal-title Nuevo Talento
           .modal-body
-            include forms/new_employee_form
+            include ../forms/new_employee_form
           .modal-footer
             button.btn.btn-danger(type='button', data-dismiss='modal' ,
               aria-hidden="true")
@@ -58,13 +58,15 @@ block content
 
     #employeePreview.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4.modal-title 
-            .modal-body
-            .modal-footer
-              button.btn(type='button', data-dismiss='modal' , aria-hidden="true") Close
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title 
+          .modal-body
+          .modal-footer
+            a.btn.btn-info( href = '/organizational_structure/talent_management/dan' ) 
+              |Perfil avanzado
+            button.btn(type='button', data-dismiss='modal' , aria-hidden="true") Close
 
 block custom-scripts
   script(src='/javascripts/own/services/employeeServices.js')

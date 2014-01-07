@@ -1,0 +1,62 @@
+extends ../../layout
+
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
+  link(rel='stylesheet', href='/stylesheets/own/talent_profile.css')
+
+block main-navbar
+  include ../../navbars/organizational_structure_navbar
+
+block content
+  .col-md-12.profile-wrapper
+    .col-md-3.text-center
+      img.img-rounded.profile-pic(src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=180")
+      h3
+        | Daniel Arturo 
+        br
+        |Rodriguez Rosas&nbsp;
+        br
+        small dan
+      .col-md-10.profile-info
+        .text-left
+          h4
+            span.label.label-primary
+              span.glyphicon.glyphicon-briefcase 
+              |&nbsp;Gato del gato
+          h4
+            span.label.label-primary
+              span.glyphicon.glyphicon-home 
+              |&nbsp;Master
+          h4
+            span.label.label-primary
+              span.glyphicon.glyphicon-envelope 
+              |&nbsp;ardroz@ardroz.com
+          h4
+            span.label.label-primary
+              span.glyphicon.glyphicon-earphone 
+              |&nbsp;(55)55-56-67-43
+    .col-md-9
+      ul.nav.nav-tabs
+        li.active
+            a(href='#personal', data-toggle='tab') Personal
+        li
+          a(href='#formation', data-toggle='tab') Formación
+        li
+          a(href='#performance', data-toggle='tab') Desempeño
+        li
+          a(href='#health', data-toggle='tab') Salud
+        
+      .tab-content
+        #personal.tab-pane.fade.in.active
+          include tabs/personal
+        #formation.tab-pane.fade
+          include tabs/formation
+        #performance.tab-pane.fade
+          include tabs/performance
+        #health.tab-pane.fade
+          include tabs/health
+
+block custom-scripts
+  script(src='/javascripts/own/services/employeeServices.js')
+  script(src='/javascripts/own/services/usersServices.js')
+  script(src='/javascripts/own/controllers/talentControllers.js')
