@@ -1,10 +1,4 @@
-var controlPanelAppModule  = angular.module('controlPanelApp',
-  ['services.permissions']);
-
-controlPanelAppModule.controller('PermissionsController', permissionsController);
-
-permissionsController.$inject = [ '$scope', 'Permission' ];
-function permissionsController( scope, permission ){
+function permissionsController ( scope, permission ){
 
   var toUpdate = [];
   
