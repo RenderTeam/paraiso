@@ -1,11 +1,20 @@
-!!! 5
+extends ../../layout
+doctype 5
 html
   head
     meta(http-equiv='Content-Type', content='text/html;charset=utf-8')
     title Puestos de Paraiso
-    link(href='/stylesheets/own/interactive_tree.css', rel='stylesheet', type='text/css')
-  body
-    #chart
 
-  script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
-  script( src='/javascripts/own/employmentsDiagram.js')
+    block content
+      link(href='/stylesheets/own/interactive_tree.css', rel='stylesheet', type='text/css')
+
+  body
+    block main-navbar
+      include ../../navbars/organizational_structure_navbar
+
+    block content
+      #chart
+
+  block custom-scripts
+    script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
+    script( src='/javascripts/own/employmentsDiagram.js')
