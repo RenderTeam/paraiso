@@ -9,22 +9,25 @@ var employeeSchema = new Schema({
   last_father_name: { type: String, required: true },
   last_mother_name: { type: String, required: true },
   date_of_birth:    { type: Date, required: true },
-  age:              { type: Number, required: true },
   address:          { type: String, required: true },
+  phone:            { type: String, required: true }, 
 
   profesional:{
+    _id: false,
     degree:               { type: String },
     resume:               { type: String },
     professional_license: { type: String }
   },
 
   health:{
+    _id: false,
     allergies:      { type: String },
     blood_type:     { type: String },
     health_record:  { type: String }
   },
 
   profile:{
+    _id: false,
     department: { type: String },
     employment: { type: String }
   }

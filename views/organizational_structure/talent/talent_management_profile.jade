@@ -1,40 +1,42 @@
 extends ../../layout
 
 block custom-stylesheets
-  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
   link(rel='stylesheet', href='/stylesheets/own/talent_profile.css')
 
 block main-navbar
   include ../../navbars/organizational_structure_navbar
 
 block content
-  .col-md-12.profile-wrapper
+  .col-md-12.profile-wrapper( ng-app = 'organizationalStructureApp', 
+    ng-controller = controller, ng-init = 'init("#{username}")')
     .col-md-3.text-center
       img.img-rounded.profile-pic(src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=180")
       h3
-        | Daniel Arturo 
+        span( ng-bind = 'user.name' )
         br
-        |Rodriguez Rosas&nbsp;
+        span( ng-bind = 'user.last_father_name ')
+        span &nbsp;
+        span( ng-bind = 'user.last_mother_name')
         br
-        small dan
+        small( ng-bind = 'user.username' )
       .col-md-10.profile-info
         .text-left
           h4
-            span.label.label-primary
-              span.glyphicon.glyphicon-briefcase 
-              |&nbsp;Gato del gato
+            span.glyphicon.glyphicon-briefcase
+            span &nbsp;
+            span( ng-bind = 'user.profile.employment' )
           h4
-            span.label.label-primary
-              span.glyphicon.glyphicon-home 
-              |&nbsp;Master
+            span.glyphicon.glyphicon-home
+            span &nbsp;
+            span( ng-bind = 'user.profile.department' )
           h4
-            span.label.label-primary
-              span.glyphicon.glyphicon-envelope 
-              |&nbsp;ardroz@ardroz.com
+            span.glyphicon.glyphicon-envelope
+            span &nbsp;
+            span( ng-bind = 'user.mail' )
           h4
-            span.label.label-primary
-              span.glyphicon.glyphicon-earphone 
-              |&nbsp;(55)55-56-67-43
+            span.glyphicon.glyphicon-earphone 
+            span &nbsp;
+            span( ng-bind = 'user.phone' )
     .col-md-9
       ul.nav.nav-tabs
         li.active
@@ -59,4 +61,8 @@ block content
 block custom-scripts
   script(src='/javascripts/own/services/employeeServices.js')
   script(src='/javascripts/own/services/usersServices.js')
-  script(src='/javascripts/own/controllers/talentControllers.js')
+
+  script(src='/javascripts/own/controllers/talentController.js')
+  script(src='/javascripts/own/controllers/talentProfileController.js')
+
+  script(src='/javascripts/own/apps/organizationalStructureApp.js')

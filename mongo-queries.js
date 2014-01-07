@@ -34,6 +34,21 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 
+  exports.getOneEmployee = function ( req, res ) {
+    var condition = {
+      username: req.body.username
+    }
+
+    var query = Employee.findOne( condition );
+
+    query.select('-_id').exec(
+      function ( err, employee ) {
+        if ( err ) { throw err; }
+        res.send( employee );
+      }
+    );
+  };
+
   exports.saveEmployee = function ( req, res ) {
     var newEmployee = new Employee( req.body.employee );
 

@@ -26,8 +26,6 @@ function tasksController ( scope, tasks ) {
   var m = date.getMonth();
   var y = date.getFullYear();
 
-
-  
   /* event source that contains custom events on the scope */
   scope.events = [];
   /* event source that calls a function on every view switch */

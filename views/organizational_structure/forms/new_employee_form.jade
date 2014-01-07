@@ -42,6 +42,10 @@ form( name = 'newEmployee' )
       .form-label.text-right Dirección:
       input.form-control( required, ng-model = 'employee.address' )
 
+    .form-group
+      .form-label.text-right Teléfono:
+      input.form-control( required, ng-model = 'employee.phone', type = 'number' )
+
   p.clearfix
   br
   .col-md-4.pull-right

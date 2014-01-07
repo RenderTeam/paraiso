@@ -13,6 +13,13 @@ function employee ( http ) {
     return promise;
   };
 
+  employees.getOneEmployee = function ( params ) {
+    var promise = http.post('/getOneEmployee', params).
+      success( returnData ).
+      error( onError );
+    return promise;
+  }
+
   employees.saveTalent = function ( params ) {
     var promise = http.post('/saveEmployee', params).
       success( returnData ).
