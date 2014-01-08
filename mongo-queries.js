@@ -22,6 +22,14 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+mongoose.set('debug', function ( collectionName, method, query, doc ) {
+  console.log( method );
+  for ( key in query ) {
+    console.log( key + ':' + query[ key ] );
+  }
+
+});
+
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
