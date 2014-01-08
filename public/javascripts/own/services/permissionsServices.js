@@ -4,28 +4,16 @@ services.factory( 'Permission', permissions );
 
 permissions.$inject = ['$http'];
 function permissions ( http ) {
-  var permission = {};
+  var permission = new Service();
 
-  permission.getAllPermissionsStatus = function () {
-    var promise = http.post('/getAllPermissionsStatus').
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  permission.addPostPetition( 'getAllPermissionsStatus', 
+    '/getAllPermissionsStatus', http, returnData, onError );
 
-  permission.getOnePermission = function ( params ) {
-    var promise = http.post( '/getOnePermission', params ).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  permission.addPostPetition( 'getOnePermission', 
+    '/getOnePermission', http, returnData, onError );
 
-  permission.updatePermission = function ( params ) {
-    var promise = http.post( '/updatePermission', params ).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  permission.addPostPetition( 'updatePermission', 
+    '/updatePermission', http, returnData, onError );
 
   return permission;
 }

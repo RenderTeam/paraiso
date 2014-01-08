@@ -4,35 +4,16 @@ services.factory( 'Tasks', tasks );
 
 tasks.$inject = ['$http'];
 function tasks ( http ) {
-  var task = {};
+  var task = new Service();
 
-  task.getAllTasks = function () {
-    var promise = http.post('/getTasks').
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
-  
-  task.getTasksFromUser = function ( params ) {
-    var promise = http.post('/getTasksFromUser', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  task.addPostPetition( 'getAllTasks', '/getTasks', http, returnData, onError );
 
-  task.getOneTask = function ( params ) {
-    var promise = http.post('/getOneTask', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  task.addPostPetition( 'getTasksFromUser', '/getTasksFromUser', http, 
+    returnData, onError );
 
-  task.saveTask = function ( params ) {
-    var promise = http.post('/saveTask', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  task.addPostPetition( 'getOneTask', '/getOneTask', http, returnData, onError );
+
+  task.addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );
 
   return task;
 }
