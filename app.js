@@ -91,6 +91,7 @@ if ( 'development' == app.get('env') ) {
   //Employees
   app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
   app.post( '/getOneEmployee', queries.privateContent, queries.getOneEmployee );
+  app.post( '/updateEmployee', queries.privateContent, queries.updateEmployee );
   app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
   //Permissions
   app.post( '/getAllPermissionsStatus', queries.privateContent, 

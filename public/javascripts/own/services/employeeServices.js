@@ -18,7 +18,14 @@ function employee ( http ) {
       success( returnData ).
       error( onError );
     return promise;
-  }
+  };
+
+  employees.updateEmployee = function ( params ) {
+    var promise = http.post('/updateEmployee', params).
+      success( returnData ).
+      error( onError );
+    return promise;
+  };
 
   employees.saveTalent = function ( params ) {
     var promise = http.post('/saveEmployee', params).

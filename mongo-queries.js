@@ -49,6 +49,19 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 
+  exports.updateEmployee = function ( req, res ) {
+    var condition = {
+          username: req.body.user.username
+        },
+        update = req.body.user;
+
+    Employee.update( condition, update, 
+      function ( err, number, raw ) {
+        res.send();
+      }
+    );
+  }
+
   exports.saveEmployee = function ( req, res ) {
     var newEmployee = new Employee( req.body.employee );
 

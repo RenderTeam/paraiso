@@ -18,7 +18,7 @@ function talentProfileController ( scope, employee, users ) {
       error();
   }
 
-  scope.toogleEditable = function ( panel ) {
+  scope.toogleEditable = function () {
     if ( this.editability.status === 'danger' ) {
       this.editability.icon = 'pencil';
       this.editability.status = 'success';
@@ -31,11 +31,15 @@ function talentProfileController ( scope, employee, users ) {
   }
 
   scope.updateEmployee = function () {
-    employee.updateEmployee( params ).
-      success( function () {
+    var params = {
+      user: scope.user
+    };
 
+    employee.updateEmployee( params ).
+      success(function (){
+        scope.toogleEditable();
       }).
-      error();
+      error(function (){});
   }
 }
 
@@ -46,7 +50,6 @@ function talentProfileController ( scope, employee, users ) {
  * @return { age (Number) } The age today
  */
 function calculateAge( birthDate ) {
-
   var today = new Date(),
       age = today.getFullYear() - birthDate.getFullYear();
 
