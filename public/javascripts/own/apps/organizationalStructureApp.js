@@ -4,5 +4,6 @@ var organizationalStructureAppModule = angular.module( 'organizationalStructureA
 talentController.$inject = [ '$scope', 'Employee', 'Users' ];
 organizationalStructureAppModule.controller( 'TalentController', talentController );
 
-talentProfileController.$inject = [ '$scope', 'Employee', 'Users' ]
-organizationalStructureAppModule.controller( 'TalentProfileController', talentProfileController );
+talentProfileController.$inject = [ '$scope', 'Employee', 'Users' ];
+organizationalStructureAppModule.controller( 'TalentProfileController', 
+  talentProfileController );

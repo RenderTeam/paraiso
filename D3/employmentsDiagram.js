@@ -33,7 +33,8 @@ function update(source) {
 
   var nodeEnter = node.enter().append("svg:g")
     .attr("class", "node")
-    .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
+    .attr("transform", function(d) { return "translate(" + source.y0 + "," + 
+      source.x0 + ")"; });
       //.style("opacity", 1e-6);
  
   // Enter any new nodes at the parent's previous position.
@@ -50,7 +51,8 @@ function update(source) {
     .attr("x", function(d) { return d._children ? -8 : 8; })
     .attr("y", 3)
         //.attr("fill","#ccc")
-        //.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+        //.attr("transform", function(d) { return "translate(" + d.y + "," 
+        //  + d.x + ")"; })
     .text(function(d) { return d.name; });
 
   // Transition nodes to their new position.
@@ -70,7 +72,8 @@ function update(source) {
 
   node.exit().transition()
     .duration(duration)
-    .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+    .attr("transform", function(d) { return "translate(" + source.y + "," + 
+      source.x + ")"; })
     .style("opacity", 1e-6)
     .remove();
 /*

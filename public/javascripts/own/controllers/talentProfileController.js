@@ -3,12 +3,12 @@ function talentProfileController ( scope, employee, users ) {
     bool: false,
     icon: 'lock',
     status: 'danger'
-  }
+  };
 
   scope.init = function ( username ) {
     var params = {
       username: username
-    }
+    };
 
     employee.getOneEmployee( params ).
       success( function ( data ) {
@@ -28,6 +28,14 @@ function talentProfileController ( scope, employee, users ) {
       this.editability.status = 'danger';
       this.editability.bool = false; 
     }
+  }
+
+  scope.updateEmployee = function () {
+    employee.updateEmployee( params ).
+      success( function () {
+
+      }).
+      error();
   }
 }
 

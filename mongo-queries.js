@@ -37,7 +37,7 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getOneEmployee = function ( req, res ) {
     var condition = {
       username: req.body.username
-    }
+    };
 
     var query = Employee.findOne( condition );
 

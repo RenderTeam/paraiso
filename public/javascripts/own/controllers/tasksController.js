@@ -41,9 +41,12 @@ function tasksController ( scope, tasks ) {
      color: '#f00',
      textColor: 'yellow',
      events: [ 
-        {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-        {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-        {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+        {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),
+        end: new Date(y, m, d, 14, 0),allDay: false},
+        {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),
+        end: new Date(y, m, d, 14, 0),allDay: false},
+        {type:'party',title: 'Click for Google',start: new Date(y, m, 28),
+        end: new Date(y, m, 29),url: 'http://google.com/'}
       ]
   };
   /* alert on eventClick */
@@ -53,13 +56,15 @@ function tasksController ( scope, tasks ) {
       });
   };
   /* alert on Drop */
-   scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
+   scope.alertOnDrop = function ( event, dayDelta, minuteDelta, allDay, 
+    revertFunc, jsEvent, ui, view){
       scope.$apply(function(){
         scope.alertMessage = ('Event Droped to make dayDelta ' + dayDelta);
       });
   };
   /* alert on Resize */
-  scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ){
+  scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, 
+    jsEvent, ui, view ){
       scope.$apply(function(){
         scope.alertMessage = ('Event Resized to make dayDelta ' + minuteDelta);
       });
