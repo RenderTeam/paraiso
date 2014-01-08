@@ -17,7 +17,7 @@ function talentController ( scope, employee, users ) {
 
   scope.confirmation = '';
 
-  employee.getAllTalent().success( function ( data ) {
+  employee.getEmployees().success( function ( data ) {
     scope.employees = data;
   });
 
@@ -67,24 +67,4 @@ function talentController ( scope, employee, users ) {
       }).
       error();
   };
-}
-
-/**
- * Calculates age
- * @param { birthDate (Date) } The Date object that represents the bithdate to 
- *   calculate.
- * @return { age (Number) } The age today
- */
-function calculateAge( birthDate ) {
-
-  var today = new Date(),
-      age = today.getFullYear() - birthDate.getFullYear();
-
-  if ( ( today.getMonth() < birthDate.getMonth() ) || 
-    ( today.getMonth() === birthDate.getMonth() && 
-      today.getDate() < birthDate.getDate() ) ) {
-    age--;
-  }
-
-  return age;
 }
