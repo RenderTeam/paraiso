@@ -26,29 +26,14 @@ function myTasksController ( scope, tasks ) {
   var m = date.getMonth();
   var y = date.getFullYear();
 
-  /* event source that pulls from google.com */
-  scope.eventSource = {
-          url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-          className: 'gcal-event',           // an option!
-          currentTimezone: 'America/Chicago' // an option!
-  };
   /* event source that contains custom events on the scope */
-  console.log(scope.task);
-  
-  scope.events = [
-    {title: 'All Day Event',start: new Date(y, m, 1)},
-    {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-    {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-    {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-    {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-    {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-  ];
+  scope.events = [];
   /* event source that calls a function on every view switch */
   scope.eventsF = function (start, end, callback) {
     var s = new Date(start).getTime() / 1000;
     var e = new Date(end).getTime() / 1000;
     var m = new Date(start).getMonth();
-    var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
+    var events = [];
     callback(events);
   };
 
@@ -56,9 +41,12 @@ function myTasksController ( scope, tasks ) {
      color: '#f00',
      textColor: 'yellow',
      events: [ 
-        {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-        {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-        {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+        {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),
+        end: new Date(y, m, d, 14, 0),allDay: false},
+        {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),
+        end: new Date(y, m, d, 14, 0),allDay: false},
+        {type:'party',title: 'Click for Google',start: new Date(y, m, 28),
+        end: new Date(y, m, 29),url: 'http://google.com/'}
       ]
   };
   /* alert on eventClick */
@@ -68,13 +56,15 @@ function myTasksController ( scope, tasks ) {
       });
   };
   /* alert on Drop */
-   scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
+   scope.alertOnDrop = function ( event, dayDelta, minuteDelta, allDay, 
+    revertFunc, jsEvent, ui, view){
       scope.$apply(function(){
         scope.alertMessage = ('Event Droped to make dayDelta ' + dayDelta);
       });
   };
   /* alert on Resize */
-  scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ){
+  scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, 
+    jsEvent, ui, view ){
       scope.$apply(function(){
         scope.alertMessage = ('Event Resized to make dayDelta ' + minuteDelta);
       });
@@ -93,13 +83,8 @@ function myTasksController ( scope, tasks ) {
     }
   };
   /* add custom event*/
-  scope.addEvent = function() {
-    scope.events.push({
-      title: 'Open Sesame',
-      start: new Date(y, m, 28),
-      end: new Date(y, m, 29),
-      className: ['openSesame']
-    });
+  scope.addEvent = function( event ) {
+    scope.events.push( event );
   };
   /* remove event */
   scope.remove = function(index) {
@@ -118,6 +103,7 @@ function myTasksController ( scope, tasks ) {
     calendar:{
       height: 450,
       editable: true,
+      theme: false,
       header:{
         left: 'title',
         center: '',
@@ -129,6 +115,18 @@ function myTasksController ( scope, tasks ) {
     }
   };
   /* event sources array*/
-  scope.eventSources = [scope.events, scope.eventSource, scope.eventsF];
-  scope.eventSources2 = [scope.calEventsExt, scope.eventsF, scope.events];
+  scope.eventSources = [scope.events, scope.eventsF];
+}
+
+function loadtoCalendar ( scope ) {
+  var event = {};
+  scope.tasks.forEach(function (element, array, index) {
+    event = {
+      title: element.title,
+      start: element.creation_date,
+      end: element.deadline,
+      className: ['openSesame']
+    }
+    scope.addEvent(event);
+  });
 }

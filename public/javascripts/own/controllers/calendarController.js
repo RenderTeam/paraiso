@@ -113,12 +113,12 @@ function CalendarCtrl($scope) {
 
   $scope.changeLang = function() {
     if($scope.changeTo === 'Hungarian'){
-      $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
+      $scope.uiConfig.calendar.dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+      $scope.uiConfig.calendar.dayNamesShort = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
       $scope.changeTo= 'English';
     } else {
-      $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      $scope.uiConfig.calendar.dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+      $scope.uiConfig.calendar.dayNamesShort = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
       $scope.changeTo = 'Hungarian';
     }
   };
