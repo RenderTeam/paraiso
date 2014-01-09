@@ -33,6 +33,7 @@
 //Organizational Structure
   exports.departments = function( req, res){
     res.render('organizational_structure/departments', {
+      controller : 'TalentController',
       currentUser : req.user.username
     });
   };
