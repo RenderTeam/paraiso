@@ -22,48 +22,6 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
-mongoose.set('debug', function ( collectionStuff, method, query, doc ) {
-
-  /*console.log('collectionStuff \n');
-  console.log(collectionStuff);
-
-  console.log('method \n');
-  console.log(method);
-
-  console.log('the query is: \n');
-  for ( key in query ) {
-    console.log( key + ':' + query[ key ] );
-  }  
-
-  console.log('doc \n');
-  for ( key in doc ) {
-    console.log( key + ':' + doc[ key ] );
-  }*/
-
-  console.log( getOperationDate() );
-
-  switch( method ) {
-    case 'find':
-      console.log('What: find');
-      console.log('Who:'); 
-      console.log('When: ' + getOperationDate() );
-    break;
-    case 'findOne':
-      console.log('What: findOne');
-    break;
-    case 'update':
-      console.log('What: update');
-    break;
-    case 'remove':
-      console.log('What: remove');
-    break;
-    default:
-      console.log( 'an irrelevant operation took place. It was a: ' + method );
-    break;
-  }
-
-});
-
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
@@ -92,13 +50,21 @@ mongoose.set('debug', function ( collectionStuff, method, query, doc ) {
     var log = new Log({
       user:   req.user.username,
       where:  req.route.path
+
     });
 
-    log.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-      }
-    });
+    switch(true){
+      case /update/.test(req.route.path):
+        console.log('update');
+      break;
+      case /get/.test(req.route.path):
+        console.log('get');
+      break;
+      case /find/.test(req.route.path):
+        console.log('find');
+      break;
+    }
+
 
     next();
   };
