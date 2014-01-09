@@ -14,9 +14,11 @@ block content
             input.form-control( ng-model = 'user.user', name = 'userName',
               placeholder = 'Usuario', type = 'text', autofocus = 'autofocus', 
               required)
-            span(ng-Validation, field = 'user.user')
+            
             input.form-control( ng-model = 'user.password', type = 'password',
-              placeholder = 'Contraseña', required )
+              placeholder = 'Contraseña', required , ng-Validation)
+            span(ng-show='formLogin.$error.validNumber') Doesn't look like an integer
+            
             button.btn.btn-lg.btn-primary.btn-block( ng-click = 'login()',
               ng-disabled = 'formLogin.$invalid' )
               | Iniciar sesión
