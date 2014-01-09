@@ -79,22 +79,25 @@ mongoose.connect( conectionString, function ( err ) {
   };
 //Employment
 //EmploymentsTree
-
-var lol = EmploymentsTree.findOne();
+// //////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
+/*var lol = EmploymentsTree.findOne();
 lol.select('-_id').exec( function ( err, tree) {
   // tree.getEmployment( '12' );
   // console.log(tree.children[0].children[0]);
   tree.insertChildren( '2', { employment: '13' } , function ( pepe ){
-    console.log(pepe);
-    EmploymentsTree.update( { employment: pepe.employment }, pepe,
-      function ( err, number, raw ) {
+    EmploymentsTree.remove();
+    var newTree = new EmploymentsTree( pepe );
+    newTree.save( function ( err ) {
         if ( err ) { throw err; };
         console.log('cool');
       }
     );
   });
   
-});
+});*/
 
 
 //Log

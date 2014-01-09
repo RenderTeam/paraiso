@@ -2,7 +2,9 @@ var mongoose    = require ('mongoose'),
     Employment  = require('./employment'),
     Schema      = mongoose.Schema;
 
-var EmploymentsTreeSchema = new Schema();
+var EmploymentsTreeSchema = new Schema({
+  _id: false
+});
 
 //.add() is necesary if we want the recursive model
 EmploymentsTreeSchema.add({
