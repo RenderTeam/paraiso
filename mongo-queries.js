@@ -22,10 +22,44 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
-mongoose.set('debug', function ( collectionName, method, query, doc ) {
-  console.log( method );
+mongoose.set('debug', function ( collectionStuff, method, query, doc ) {
+
+  /*console.log('collectionStuff \n');
+  console.log(collectionStuff);
+
+  console.log('method \n');
+  console.log(method);
+
+  console.log('the query is: \n');
   for ( key in query ) {
     console.log( key + ':' + query[ key ] );
+  }  
+
+  console.log('doc \n');
+  for ( key in doc ) {
+    console.log( key + ':' + doc[ key ] );
+  }*/
+
+  console.log( getOperationDate() );
+
+  switch( method ) {
+    case 'find':
+      console.log('What: find');
+      console.log('Who:'); 
+      console.log('When: ' + getOperationDate() );
+    break;
+    case 'findOne':
+      console.log('What: findOne');
+    break;
+    case 'update':
+      console.log('What: update');
+    break;
+    case 'remove':
+      console.log('What: remove');
+    break;
+    default:
+      console.log( 'an irrelevant operation took place. It was a: ' + method );
+    break;
   }
 
 });
@@ -284,3 +318,27 @@ mongoose.set('debug', function ( collectionName, method, query, doc ) {
   /*Change a collection target
     User.collection.name = 'test';
   */
+
+/** Utility stuff */
+
+  function getOperationDate () {
+    var operationDate = new Date(),
+        day = operationDate.getDate(),
+        month = operationDate.getMonth() + 1,
+        year = operationDate.getFullYear();
+
+    if ( day < 10 ) { 
+      day = '0' + day
+    }
+
+    if ( month < 10 ) { 
+      month= '0'+ month
+    } 
+
+    operation = day + '/' + month + '/' + year;
+
+  var hour = operationDate.getHours(),
+      minute = operationDate.getMinutes();
+
+    return operation + ' @ ' + hour + ':' + minute;
+  }
