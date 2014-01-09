@@ -9,7 +9,7 @@ block main-navbar
 block content
   .col-md-12( ng-app = 'employmentsApp', ng-controller = controller )
     .form-search
-      a( data-toggle = 'modal', href = '#newEmployee' )
+      a( data-toggle = 'modal', href = '#newEmployment' )
         span.lead.strong.glyphicon.glyphicon-plus
       .input-group.col-lg-3.pull-right
         span.input-group-addon
@@ -23,10 +23,8 @@ block content
           th Usuario
             span.glyphicon.glyphicon-user
           th Nombre
-          th DepartamentoPredecesor
-          th Departamento
           th
-            span.glyphicon.glyphicon-user
+            span.glyphicon.glyphicon-briefcase
 
     //- Dont
       tbody
@@ -46,7 +44,7 @@ block content
               ng-click = 'talentPreview()' )
               span.glyphicon.glyphicon-user
 
-    #newEmployee.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+    #newEmployment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
         .modal-content
           .modal-header

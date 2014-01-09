@@ -1,1 +1,55 @@
-h1 Marisol
+extends ../layout
+
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
+
+block main-navbar
+  include ../navbars/organizational_structure_navbar
+
+block content
+  .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
+    .form-search
+      a( data-toggle = 'modal', href = '#newDepartment' )
+        span.lead.strong.glyphicon.glyphicon-plus.text-success
+      .input-group.col-lg-3.pull-right
+        span.input-group-addon 
+          span.glyphicon.glyphicon-search
+        input.form-control.input( ng-model = 'query' )
+
+    table.table-striped
+      thead
+        tr
+          th Departamento
+          th 
+            span.glyphicon.glyphicon-home
+      tbody
+        tr( ng-repeat = 'department in departments | filter:query' )
+          td( ng-bind = 'department.username' )
+          td.launch-modal-preview
+            a( data-toggle='modal', href='#employeePreview',
+              ng-click = 'talentPreview( this )' )
+              span.glyphicon.glyphicon-user
+
+    #newDepartment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title Nuevo Departamento
+          .modal-body
+            include forms/new_department_form
+          .modal-footer
+            button.btn.btn-danger(type='button', data-dismiss='modal' ,
+              aria-hidden="true")
+              | Cancelar
+
+
+block custom-scripts
+  script(src='/javascripts/own/services/employeeServices.js')
+  script(src='/javascripts/own/services/usersServices.js')
+
+  script(src='/javascripts/own/controllers/departmentsController.js')
+  script(src='/javascripts/own/controllers/talentController.js')
+  script(src='/javascripts/own/controllers/talentProfileController.js')
+
+  script(src='/javascripts/own/apps/organizationalStructureApp.js')

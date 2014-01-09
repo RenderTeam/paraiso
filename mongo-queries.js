@@ -9,6 +9,9 @@ var Forms             = require('./mongoose_models/form'),
     Resources         = require('./mongoose_models/resource'),
     Task              = require('./mongoose_models/task'),
     Employee          = require('./mongoose_models/employee'),
+    Employment        = require('./mongoose_models/employment'),
+    EmploymentsTree   = require('./mongoose_models/employmentsTree'),
+    Department        = require('./mongoose_models/department'),
     Permission        = require('./mongoose_models/permission'),
     User              = require('./mongoose_models/user');
 
@@ -22,6 +25,7 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+//Department
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
@@ -73,6 +77,26 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
+//Employment
+//EmploymentsTree
+
+var lol = EmploymentsTree.findOne();
+lol.select('-_id').exec( function ( err, tree) {
+  // tree.getEmployment( '12' );
+  // console.log(tree.children[0].children[0]);
+  tree.insertChildren( '2', { employment: '13' } , function ( pepe ){
+    console.log(pepe);
+    EmploymentsTree.update( { employment: pepe.employment }, pepe,
+      function ( err, number, raw ) {
+        if ( err ) { throw err; };
+        console.log('cool');
+      }
+    );
+  });
+  
+});
+
+
 //Log
   exports.log = function ( req, res, next ) {
     var log = new Log({

@@ -1,0 +1,17 @@
+//- Validar que todo sea requerido con tus spansitos 
+  Que la contraseña coincida en ambos campos
+  Si quieres validar asincronamente que el usuario sea unico (ya esta validado
+  en el controlador pero una asincrona se veria mas padre)
+
+form( name = 'newEmployee' )
+  .col-md-12
+    .form-group
+      .form-label.text-right Usuario:
+      input.form-control( required, ng-model = 'user.username' )
+
+  p.clearfix
+  br
+  .col-md-4.pull-right
+    button.btn.btn-block.btn-success( ng-click = 'saveDepartment()',
+      ng-disabled = 'newEmployee.$invalid' ) Aceptar
+  br
