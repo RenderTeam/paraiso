@@ -1,10 +1,7 @@
-extends ../../layout
+extends ../organizational_structure_layout
 
 block custom-stylesheets
   link(rel='stylesheet', href='/stylesheets/own/talent_profile.css')
-
-block main-navbar
-  include ../../navbars/organizational_structure_navbar
 
 block content
   .col-md-12.profile-wrapper( ng-app = 'organizationalStructureApp', 
@@ -57,13 +54,3 @@ block content
           include tabs/performance
         #health.tab-pane.fade
           include tabs/health
-
-block custom-scripts
-  script(src='/javascripts/own/services/employeeServices.js')
-  script(src='/javascripts/own/services/usersServices.js')
-
-  script(src='/javascripts/own/controllers/departmentsController.js')
-  script(src='/javascripts/own/controllers/talentController.js')
-  script(src='/javascripts/own/controllers/talentProfileController.js')
-
-  script(src='/javascripts/own/apps/organizationalStructureApp.js')

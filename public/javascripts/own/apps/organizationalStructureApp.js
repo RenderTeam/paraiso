@@ -6,7 +6,7 @@ departmentsController.$inject = [ '$scope', 'Departments' ];
 organizationalStructureAppModule.controller( 'DepartmentsController', 
   departmentsController );
 
-employmentsController.$inject = [ '$scope', 'Employment' ];
+employmentsController.$inject = [ '$scope', 'Employment', 'Departments' ];
 organizationalStructureAppModule.controller( 'EmploymentsController',
   employmentsController );
 

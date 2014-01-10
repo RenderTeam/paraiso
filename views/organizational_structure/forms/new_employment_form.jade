@@ -6,14 +6,20 @@
 form( name = 'newEmployment' )
   .col-md-12
     .form-group
-      .form-label.text-right Puesto:
+      .form-label Puesto:
       input.form-control( required, ng-model = 'employment.name' )
 
     .form-group
-      .form-label.text-right Puesto padre:
+      .form-label Superior:
       select.form-control( ng-model = 'father', 
         ng-options = 'employment.name for employment in employments')
         option( value = '' )-
+
+    .form-group
+      .form-label Departamento:
+      select.form-control( required, ng-model = 'department', 
+        ng-options = 'department.name for department in departments')
+
   p.clearfix
   br
   .col-md-4.pull-right

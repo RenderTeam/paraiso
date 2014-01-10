@@ -1,27 +1,8 @@
-extends ../../layout
+extends ../organizational_structure_layout
 
 block custom-stylesheets
   link(href='/stylesheets/own/interactive_tree.css', rel='stylesheet', type='text/css')
 
-block main-navbar
-  include ../../navbars/organizational_structure_navbar
-
 block content
   div( ng-app = 'organizationalStructureApp', ng-controller = controller )
     #chart
-
-block custom-scripts
-  script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
-  //- script(src='/javascripts/own/employmentsDiagram.js')
-  script(src='/javascripts/own/services/employeeServices.js')
-  script(src='/javascripts/own/services/employmentsServices.js')
-  script(src='/javascripts/own/services/employmentsTreeServices.js')
-  script(src='/javascripts/own/services/usersServices.js')
-
-  script(src='/javascripts/own/controllers/departmentsController.js')
-  script(src='/javascripts/own/controllers/employmentsController.js')
-  script(src='/javascripts/own/controllers/employmentsTreeController.js')
-  script(src='/javascripts/own/controllers/talentController.js')
-  script(src='/javascripts/own/controllers/talentProfileController.js')
-
-  script(src='/javascripts/own/apps/organizationalStructureApp.js')
