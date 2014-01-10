@@ -47,40 +47,25 @@ mongoose.connect( conectionString, function ( err ) {
   };
 //Log
   exports.log = function ( req, res, next ) {
-    var log = new Log({
-      user:   req.user.username,
-      where:  req.route.path
-
-    });
 
     console.log( 'the path is: '  + req.route.path );
 
     switch( true ) {
+
       case /get/.test( req.route.path ) :
         console.log('get');
         console.log( 'who: ' + req.user.username );
         console.log( 'what: visited (find)' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'consulta de datos',
-          where: req.route.path,
-          when: getOperationDate
-        });
       break;
+
       case /save/.test( req.route.path ) :
         console.log( 'save' );
         console.log( 'who: ' + req.user.username );
         console.log( 'what: datos creados' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'consulta de datos',
-          where: req.route.path,
-          when: getOperationDate
-        });
       break;
       case /update/.test( req.route.path ) :
         console.log( 'update' );
@@ -88,15 +73,10 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( 'what: datos cambiados' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'consulta de datos',
-          where: req.route.path,
-          when: getOperationDate
-        });
       break;
 
     }
+
     next();
   };
 
