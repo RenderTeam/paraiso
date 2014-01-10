@@ -8,6 +8,8 @@ function departmentsController ( scope. department,){
   //Agregar el getDepartment
   //Save Deparments
 
-  //department.
+  department.getDepartments().success( function ( data ) {
+    scope.departments = data;
+  });
 
 }
