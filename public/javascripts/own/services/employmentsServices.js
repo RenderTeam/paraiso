@@ -9,6 +9,9 @@ function employment ( http ) {
   employments.addPostPetition( 'getEmployments', '/getEmployments', http, 
     returnData, onError );
 
+  employments.addPostPetition( 'getEmploymentsByDepartment', 
+    '/getEmploymentsByDepartment', http, returnData, onError );
+
   employments.addPostPetition( 'saveEmployment', '/saveEmployment', http, 
     returnData, onError );
 

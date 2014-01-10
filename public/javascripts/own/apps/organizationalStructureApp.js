@@ -6,6 +6,11 @@ departmentsController.$inject = [ '$scope', 'Departments' ];
 organizationalStructureAppModule.controller( 'DepartmentsController', 
   departmentsController );
 
+departmentsChartController.$inject = [ '$scope', 'Departments', 'Employment',
+ 'EmploymentTree' ];
+organizationalStructureAppModule.controller( 'DepartmentsChartController', 
+  departmentsChartController );
+
 employmentsController.$inject = [ '$scope', 'Employment', 'Departments' ];
 organizationalStructureAppModule.controller( 'EmploymentsController',
   employmentsController );

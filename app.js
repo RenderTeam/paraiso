@@ -63,12 +63,11 @@ if ( 'development' == app.get('env') ) {
       queries.privateContent, routes.create_form );
 // Organizational Structure
   //Departments
-  app.get('/organizational_structure/departments',
-    queries.privateContent, routes.departments);
+  app.get('/organizational_structure/departments/departments', queries.privateContent, 
+    routes.departments);
+  app.get('/organizational_structure/departments/departments_chart', 
+    queries.privateContent, routes.departments_chart);
   //Employments
-    /*
-     * Default route for /organizational_structure/employments
-     */
     app.get( '/organizational_structure/employments', 
       queries.privateContent, routes.employments_management);
     app.get( '/organizational_structure/employments/employments_management', 
@@ -98,11 +97,15 @@ if ( 'development' == app.get('env') ) {
   app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
   // Employments
   app.post( '/getEmployments', queries.privateContent, queries.getEmployments );
+  app.post( '/getEmploymentsByDepartment', queries.privateContent,
+    queries.getEmploymentsByDepartment );
   app.post( '/saveEmployment', queries.privateContent, 
     queries.updateEmploymentsTree, queries.saveEmployment );
   // EmploymentsTree
   app.post( '/getEmploymentsTree', queries.privateContent, 
     queries.getEmploymentsTree );
+  app.post( '/getSmallEmploymentsTree', queries.privateContent, 
+    queries.getSmallEmploymentsTree );
   //Permissions
   app.post( '/getAllPermissionsStatus', queries.privateContent, 
     queries.getAllPermissionsStatus );

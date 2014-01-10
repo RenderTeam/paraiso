@@ -109,6 +109,19 @@ mongoose.connect( conectionString, function ( err ) {
     });
   }
 
+  exports.getEmploymentsByDepartment = function ( req, res ) {
+    var condition = {
+      department: req.body.department
+    }
+
+    var query = Employment.find( condition );
+
+    query.select('-id').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    } );
+  }
+
   exports.saveEmployment = function ( req, res ) {
     var father = req.body.father;
     if ( father === '' ) { 
@@ -178,7 +191,7 @@ mongoose.connect( conectionString, function ( err ) {
     query.select('-_id').exec( function ( err, tree ) {
       if ( err ) { throw err };
       tree.getEmployment( employment, function ( smallTree ) {
-        // res.send( smallTree );
+        res.send( smallTree );
       });
     });
   };

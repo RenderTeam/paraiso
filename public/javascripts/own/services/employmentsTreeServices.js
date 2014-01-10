@@ -9,6 +9,9 @@ function employmentTree ( http ) {
   employmentsTrees.addPostPetition( 'getEmploymentsTree', '/getEmploymentsTree', 
     http, returnData, onError );
 
+  employmentsTrees.addPostPetition( 'getSmallEmploymentsTree', 
+    '/getSmallEmploymentsTree', http, returnData, onError );
+
   return employmentsTrees;
 }
 

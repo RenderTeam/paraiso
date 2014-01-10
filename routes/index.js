@@ -38,6 +38,12 @@
         currentUser : req.user.username
       });
     };
+    exports.departments_chart = function( req, res){
+      res.render('organizational_structure/departments/departments_chart', {
+        controller : 'DepartmentsChartController',
+        currentUser : req.user.username
+      });
+    };
   //Employments
     exports.employments_management = function( req, res){
       res.render('organizational_structure/employments/employments_management', {
