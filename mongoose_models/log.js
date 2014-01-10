@@ -3,8 +3,8 @@ var mongoose = require('mongoose'),
 
 var logSchema = new Schema({
   user:   { type: String, required: true },
-  where:  { type: String, required: true },
   what:   { type: String, required: true},
+  where:  { type: String, required: true },
   date:   { type: Date, default: Date.now }
 });
 

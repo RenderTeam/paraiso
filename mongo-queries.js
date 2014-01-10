@@ -53,14 +53,18 @@ mongoose.connect( conectionString, function ( err ) {
 
     });
 
-    switch(true){
-      case /update/.test(req.route.path):
+    switch( true ) {
+      case /update/.test( req.route.path ) :
         console.log('update');
       break;
-      case /get/.test(req.route.path):
+      case /get/.test( req.route.path ) :
         console.log('get');
+        console.log( 'who: ' + req.user.username + '\n' );
+        console.log( 'what: visited (find)' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
       break;
-      case /find/.test(req.route.path):
+      case /find/.test( req.route.path ) :
         console.log('find');
       break;
     }
