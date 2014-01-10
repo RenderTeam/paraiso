@@ -69,39 +69,37 @@ if ( 'development' == app.get('env') ) {
      * Default route for /organizational_structure/employments
      */
     app.get( '/organizational_structure/employments', 
-      queries.privateContent,queries.log,  routes.employments_management);
+      queries.privateContent, queries.log,  routes.employments_management);
     app.get( '/organizational_structure/employments/employments_management', 
-      queries.privateContent,queries.log,  routes.employments_management);
+      queries.privateContent, queries.log,  routes.employments_management);
     app.get( '/organizational_structure/employments/employments_tree', 
-      queries.privateContent,queries.log,  routes.employments_tree);
+      queries.privateContent, queries.log,  routes.employments_tree);
   //Talent
   app.get( '/organizational_structure/talent_management', 
-    queries.privateContent,queries.log,  routes.talent_management );
+    queries.privateContent, queries.log,  routes.talent_management );
 
   app.get( '/organizational_structure/talent_management/:employee', 
-    queries.privateContent,queries.log,  routes.talent_management_profile );
+    queries.privateContent, queries.log,  routes.talent_management_profile );
 // Resources
-  app.get( '/resources', queries.privateContent,queries.log,  routes.resources );
+  app.get( '/resources', queries.privateContent, queries.log,  routes.resources );
 // Tasks
-  app.get( '/tasks/new_task', queries.privateContent,queries.log,  routes.new_task );
-  app.get( '/tasks/my_tasks', queries.privateContent,queries.log,  routes.my_tasks );
-  app.get( '/tasks/tasks', queries.privateContent,queries.log,  routes.tasks );
+  app.get( '/tasks/new_task', queries.privateContent, queries.log,  routes.new_task );
+  app.get( '/tasks/my_tasks', queries.privateContent, queries.log,  routes.my_tasks );
+  app.get( '/tasks/tasks', queries.privateContent, queries.log,  routes.tasks );
 
 // POST
   //Employees
-  app.post( '/getEmployees', queries.privateContent,queries.log,  queries.getEmployees );
-  app.post( '/saveEmployee', queries.privateContent,queries.log,  queries.saveEmployee );
+  app.post( '/getEmployees', queries.privateContent, queries.log,  queries.getEmployees );
+  app.post( '/saveEmployee', queries.privateContent ,queries.log,  queries.saveEmployee );
   //Permissions
-  app.post( '/getAllPermissionsStatus', queries.privateContent,queries.log,  
+  app.post( '/getAllPermissionsStatus', queries.privateContent, queries.log,  
     queries.getAllPermissionsStatus );
-  app.post( '/getOnePermission', queries.privateContent,queries.log,  
+  app.post( '/getOnePermission', queries.privateContent, queries.log,  
     queries.getOnePermission );
-  app.post( '/updatePermission', queries.privateContent,queries.log,  
+  app.post( '/updatePermission', queries.privateContent, queries.log,  
     queries.updatePermission );
   //Tasks
-  app.post( '/getOneTask',  queries.privateContent,queries.log, 
-                            queries.log,
-                            queries.getOneTask );
+  app.post( '/getOneTask',  queries.privateContent, queries.log, queries.getOneTask );
   //Extras
   app.post( '/sendMail', queries.privateContent,queries.log,  mail.sendMail );
   app.post( '/getTasks', queries.privateContent,queries.log,  queries.getTasks );
@@ -110,8 +108,8 @@ if ( 'development' == app.get('env') ) {
   app.post( '/saveTask', queries.privateContent,queries.log,  queries.saveTask );
 
   //Session
-  app.post( '/login', queries.login );
-  app.post( '/logout', queries.logout);
+  app.post( '/login', queries.login);
+  app.post( '/logout', queries.logout );
   
   //Users
   app.post( '/getOneUser', queries.privateContent,queries.log,  queries.getOneUser );

@@ -53,25 +53,53 @@ mongoose.connect( conectionString, function ( err ) {
 
     });
 
+    console.log( 'the path is: '  + req.route.path );
+
     switch( true ) {
-      case /update/.test( req.route.path ) :
-        console.log('update');
-      break;
       case /get/.test( req.route.path ) :
         console.log('get');
-        console.log( 'who: ' + req.user.username + '\n' );
+        console.log( 'who: ' + req.user.username );
         console.log( 'what: visited (find)' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta de datos',
+          where: req.route.path,
+          when: getOperationDate
+        });
       break;
-      case /find/.test( req.route.path ) :
-        console.log('find');
+      case /save/.test( req.route.path ) :
+        console.log( 'save' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos creados' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta de datos',
+          where: req.route.path,
+          when: getOperationDate
+        });
       break;
+      case /update/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos cambiados' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta de datos',
+          where: req.route.path,
+          when: getOperationDate
+        });
+      break;
+
     }
-
-
     next();
   };
+
 //Permission
   exports.getAllPermissionsStatus = function ( req, res ) {
     var query = Permission.find();
@@ -112,7 +140,7 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 //Session handlers
-  exports.login = function( req, res ) {
+  exports.login = function ( req, res ) {
     var user = req.body.user,
         candidatePassword = req.body.password;
     // fetch user and test password verification
