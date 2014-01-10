@@ -81,48 +81,71 @@ mongoose.connect( conectionString, function ( err ) {
   exports.getEmployments = function ( req, res ) {
     var query = Employment.find();
 
-    query.select('-id -department -route').exec(
-      function ( err, employments ) {
-        if ( err ) { throw err };
-        res.send( employments );
-      }
-    );
+    query.select('-_id -route').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    });
   }
 
   exports.saveEmployment = function ( req, res ) {
     var father = req.body.father;
 
-    Employment.findOne( { employment: father }, function ( err, employment) {
-      if ( err ) { throw err };
+    if ( father === '' ) { 
       var newEmployment = new Employment( {
-        employment: req.body.employment.employment,
-        department: req.body.employment.department,
-        route:      employment.route.push( employment.route.length )
-      });
-
-      newEmployment.save( function ( err ) {
-        if ( err ) { throw err; }
-        res.send();
-      } );
+      employment: req.body.employment.employment,
+      department: req.body.employment.department,
+      route:      [ req.children ]
     });
+
+    newEmployment.save( function ( err ) {
+      if ( err ) { throw err; }
+      res.send();
+    } );
+
+    } else {
+      Employment.findOne( { employment: father }, function ( err, employment) {
+        if ( err ) { throw err };
+        var route = employment.route;
+        route.push( req.children );
+        var newEmployment = new Employment( {
+          employment: req.body.employment.employment,
+          department: req.body.employment.department,
+          route:      route
+        });
+
+        newEmployment.save( function ( err ) {
+          if ( err ) { throw err; }
+          res.send();
+        } );
+      });
+    }
   }
 //EmploymentsTree
-  exports.updateEmploymentsTree = function ( req, res ) {
+  exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
-        child   = req.body.child,
+        child   = req.body.employment.employment,
         query   = EmploymentsTree.findOne();
 
-    query.exec( function ( err, tree) {
+    query.exec( function ( err, tree ) {
       if ( err ) { throw err };
       tree.remove( function ( err, employmentsTree ) {
         if ( err ) { throw err };
       });
 
+      if ( father === '' ) {
+        req.children = tree.children.length
+      } else {
+        tree.getEmployment( father, function ( smallTree ) {
+          req.children = smallTree.children.length;
+        });
+      }
+      console.log(father);
       tree.insertChildren( father, { employment: child } , 
         function ( newTree ){
           var newTree = new EmploymentsTree( newTree );
           newTree.save( function ( err ) {
               if ( err ) { throw err; };
+              next();
               // res.send();
             }
           );

@@ -32,16 +32,22 @@ EmploymentsTreeSchema.methods.insertChildren = function ( employment, child, cb 
   var query = Employment.findOne( { employment: employment } ),
       temporaryTree = this,
       that = this;
+  console.log(employment);
+  if ( employment === '' ) {
+    this.children.push( { employment: child.employment, children: []} );
+    cb ( that );
+    return;
+  } else {
+    query.select('-_id').exec( function ( err, employment ) {
+      if ( err ) { throw err; };
+      employment.route.forEach( function ( element, index, array) {
+        temporaryTree = temporaryTree.children[element];
+      } );
+      temporaryTree.children.push({ employment: child.employment, children: []});
 
-  query.select('-_id').exec( function ( err, employment ) {
-    if ( err ) { throw err; };
-    employment.route.forEach( function ( element, index, array) {
-      temporaryTree = temporaryTree.children[element];
-    } );
-    temporaryTree.children.push({ employment: child.employment, children: []});
-
-    cb( that );
-  });
+      cb( that );
+    });
+  }
 }
 
 module.exports = mongoose.model( 'EmploymentsTree', EmploymentsTreeSchema );

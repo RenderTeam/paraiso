@@ -7,7 +7,7 @@ block main-navbar
   include ../../navbars/organizational_structure_navbar
 
 block content
-  .col-md-12( ng-app = 'employmentsApp', ng-controller = controller )
+  .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
     .form-search
       a( data-toggle = 'modal', href = '#newEmployment' )
         span.lead.strong.glyphicon.glyphicon-plus
@@ -16,33 +16,15 @@ block content
           span.glyphicon.glyphicon-search
         input.form-control.input( ng-model = 'query' )
 
-    //- Top part of the table
     table.table-striped
       thead
         tr
-          th Usuario
-            span.glyphicon.glyphicon-user
-          th Nombre
-          th
-            span.glyphicon.glyphicon-briefcase
-
-    //- Dont
+          th Puesto
+          th Departamento
       tbody
-        tr( ng-repeat = 'employee in employees | filter:query' )
-          td( ng-bind = 'employee.username' )
-          td
-            span( ng-bind = 'employee.name' )
-            &nbsp;
-            span( ng-bind = 'employee.last_father_name' )
-            &nbsp;
-            span( ng-bind = 'employee.last_mother_name' )
-
-          td( ng-bind = 'employee.profile.department' )
-          td( ng-bind = 'employee.profile.employment' )
-          td.launch-modal-preview
-            a( data-toggle='modal', href='#employeePreview',
-              ng-click = 'talentPreview()' )
-              span.glyphicon.glyphicon-user
+        tr( ng-repeat = 'employment in employments | filter:query' )
+          td( ng-bind = 'employment.employment' )
+            td( ng-bind = 'employment.department' )
 
     #newEmployment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
@@ -51,12 +33,19 @@ block content
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4.modal-title Nuevo Puesto
           .modal-body
-            //- Aqui debe ir un formulario
+            include ../forms/new_employment_form
           .modal-footer
             button.btn.btn-danger(type='button', data-dismiss='modal' ,
               aria-hidden="true") Cancelar
 
 block custom-scripts
   script(src='/javascripts/own/services/employeeServices.js')
+  script(src='/javascripts/own/services/employmentsServices.js')
   script(src='/javascripts/own/services/usersServices.js')
-  script(src='/javascripts/own/controllers/talentControllers.js')
+
+  script(src='/javascripts/own/controllers/departmentsController.js')
+  script(src='/javascripts/own/controllers/employmentsController.js')
+  script(src='/javascripts/own/controllers/talentController.js')
+  script(src='/javascripts/own/controllers/talentProfileController.js')
+
+  script(src='/javascripts/own/apps/organizationalStructureApp.js')

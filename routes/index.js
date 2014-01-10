@@ -40,6 +40,7 @@
   //Employments
     exports.employments_management = function( req, res){
       res.render('organizational_structure/employments/employments_management', {
+        controller: 'EmploymentsController', 
         currentUser : req.user.username
       });
     };

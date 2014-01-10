@@ -1,0 +1,22 @@
+//- Validar que todo sea requerido con tus spansitos 
+  Que la contraseña coincida en ambos campos
+  Si quieres validar asincronamente que el usuario sea unico (ya esta validado
+  en el controlador pero una asincrona se veria mas padre)
+
+form( name = 'newEmployment' )
+  .col-md-12
+    .form-group
+      .form-label.text-right Puesto:
+      input.form-control( required, ng-model = 'employment.employment' )
+
+    .form-group
+      .form-label.text-right Puesto padre:
+      select.form-control( ng-model = 'father', 
+        ng-options = 'employment.employment for employment in employments')
+        option( value = '' )-
+  p.clearfix
+  br
+  .col-md-4.pull-right
+    button.btn.btn-block.btn-success( ng-click = 'saveEmployment()',
+      ng-disabled = 'newEmployment.$invalid' ) Aceptar
+  br
