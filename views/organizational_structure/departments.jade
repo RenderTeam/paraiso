@@ -10,7 +10,7 @@ block main-navbar
 block content
   .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
     .form-search
-      a( data-toggle = 'modal', href = '#newEmployee' )
+      a( data-toggle = 'modal', href = '#newDepartment' )
         span.lead.strong.glyphicon.glyphicon-plus
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
@@ -31,7 +31,7 @@ block content
               a( data-toggle='modal', href='#employeePreview',
                 ng-click = 'talentPreview( this )' ) Vista Avanzada
 
-    #newEmployee.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+    #newDepartment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
         .modal-content
           .modal-header

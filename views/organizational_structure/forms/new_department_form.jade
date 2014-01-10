@@ -7,11 +7,10 @@ form( name = 'newDepartment' )
   .col-md-12
     .form-group
       .form-label.text-right Usuario:
-      input.form-control( required, ng-model = 'departments.name' )
+      input.form-control( required, ng-model = 'department.name' )
 
   p.clearfix
   br
   .col-md-4.pull-right
-    button.btn.btn-block.btn-success( ng-click = 'saveDepartments()',
-      ng-disabled = 'newDepartments.$invalid' ) Aceptar
+    button.btn.btn-block.btn-success( ng-click = 'saveDepartments()' ) Aceptar
   br

@@ -1,5 +1,5 @@
 var organizationalStructureAppModule = angular.module( 'organizationalStructureApp',
-  [ 'services.employee', 'services.users' ] );
+  [ 'services.employee', 'services.users', 'services.departments' ] );
 
 talentController.$inject = [ '$scope', 'Employee', 'Users' ];
 organizationalStructureAppModule.controller( 'TalentController', talentController );

@@ -3,6 +3,7 @@ var services = angular.module( 'services.departments', [] );
 services.factory( 'Departments', department );
 
 department.$inject = ['$http'];
+
 function department ( http ) {
   var departments = new Service();
 
