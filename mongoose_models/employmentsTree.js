@@ -8,13 +8,13 @@ var EmploymentsTreeSchema = new Schema({
 
 //.add() is necesary if we want the recursive model
 EmploymentsTreeSchema.add({
-  employment: String,
+  name: String,
   children:   [ EmploymentsTreeSchema ]
   //ancestors:  [String],
 });
 
 EmploymentsTreeSchema.methods.getEmployment = function ( employment, cb ) {
-  var query = Employment.findOne( { employment: employment } ),
+  var query = Employment.findOne( { name: employment } ),
       temporaryTree = this,
       that = this;
 
@@ -29,12 +29,12 @@ EmploymentsTreeSchema.methods.getEmployment = function ( employment, cb ) {
 }
 
 EmploymentsTreeSchema.methods.insertChildren = function ( employment, child, cb ) {
-  var query = Employment.findOne( { employment: employment } ),
+  var query = Employment.findOne( { name: employment } ),
       temporaryTree = this,
       that = this;
-  console.log(employment);
+
   if ( employment === '' ) {
-    this.children.push( { employment: child.employment, children: []} );
+    this.children.push( { name: child.name, children: []} );
     cb ( that );
     return;
   } else {
@@ -43,7 +43,7 @@ EmploymentsTreeSchema.methods.insertChildren = function ( employment, child, cb 
       employment.route.forEach( function ( element, index, array) {
         temporaryTree = temporaryTree.children[element];
       } );
-      temporaryTree.children.push({ employment: child.employment, children: []});
+      temporaryTree.children.push({ name: child.name, children: []});
 
       cb( that );
     });

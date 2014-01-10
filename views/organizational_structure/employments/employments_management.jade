@@ -23,8 +23,8 @@ block content
           th Departamento
       tbody
         tr( ng-repeat = 'employment in employments | filter:query' )
-          td( ng-bind = 'employment.employment' )
-            td( ng-bind = 'employment.department' )
+          td( ng-bind = 'employment.name' )
+          td( ng-bind = 'employment.department' )
 
     #newEmployment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
@@ -41,10 +41,12 @@ block content
 block custom-scripts
   script(src='/javascripts/own/services/employeeServices.js')
   script(src='/javascripts/own/services/employmentsServices.js')
+  script(src='/javascripts/own/services/employmentsTreeServices.js')
   script(src='/javascripts/own/services/usersServices.js')
 
   script(src='/javascripts/own/controllers/departmentsController.js')
   script(src='/javascripts/own/controllers/employmentsController.js')
+  script(src='/javascripts/own/controllers/employmentsTreeController.js')
   script(src='/javascripts/own/controllers/talentController.js')
   script(src='/javascripts/own/controllers/talentProfileController.js')
 

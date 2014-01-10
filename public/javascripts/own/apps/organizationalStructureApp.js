@@ -1,5 +1,6 @@
 var organizationalStructureAppModule = angular.module( 'organizationalStructureApp',
-  [ 'services.employee', 'services.employment', 'services.users' ] );
+  [ 'services.employee', 'services.employment', 'services.tree', 
+  'services.users' ] );
 
 departmentsController.$inject = [ '$scope' ];
 organizationalStructureAppModule.controller( 'DepartmentsController',
@@ -8,6 +9,10 @@ organizationalStructureAppModule.controller( 'DepartmentsController',
 employmentsController.$inject = [ '$scope', 'Employment' ];
 organizationalStructureAppModule.controller( 'EmploymentsController',
   employmentsController );
+
+employmentsTreeController.$inject = [ '$scope', 'EmploymentTree' ];
+organizationalStructureAppModule.controller( 'EmploymentsTreeController',
+  employmentsTreeController );
 
 talentController.$inject = [ '$scope', 'Employee', 'Users' ];
 organizationalStructureAppModule.controller( 'TalentController', talentController );

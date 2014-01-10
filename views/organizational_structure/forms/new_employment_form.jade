@@ -7,12 +7,12 @@ form( name = 'newEmployment' )
   .col-md-12
     .form-group
       .form-label.text-right Puesto:
-      input.form-control( required, ng-model = 'employment.employment' )
+      input.form-control( required, ng-model = 'employment.name' )
 
     .form-group
       .form-label.text-right Puesto padre:
       select.form-control( ng-model = 'father', 
-        ng-options = 'employment.employment for employment in employments')
+        ng-options = 'employment.name for employment in employments')
         option( value = '' )-
   p.clearfix
   br

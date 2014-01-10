@@ -1,5 +1,5 @@
 var w = 800,
-h = 800,
+h = 500,
 i = 0,
 duration = 500,
 root;
@@ -16,11 +16,6 @@ var vis = d3.select("#chart").append("svg:svg")
   .append("svg:g")
   .attr("transform", "translate(40,0)");
 
-d3.json("math_map_compact.json", function(json) {
-  json.x0 = 800;
-  json.y0 = 0;
-  update(root = json);
-});
 
 function update(source) {
 

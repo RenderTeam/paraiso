@@ -89,30 +89,26 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.saveEmployment = function ( req, res ) {
     var father = req.body.father;
-
     if ( father === '' ) { 
       var newEmployment = new Employment( {
-      employment: req.body.employment.employment,
-      department: req.body.employment.department,
-      route:      [ req.children ]
-    });
-
-    newEmployment.save( function ( err ) {
-      if ( err ) { throw err; }
-      res.send();
-    } );
-
+        name: req.body.employment.name,
+        department: req.body.employment.department,
+        route:      [ req.children ]
+      });
+      newEmployment.save( function ( err ) {
+        if ( err ) { throw err; }
+        res.send();
+      } );
     } else {
-      Employment.findOne( { employment: father }, function ( err, employment) {
+      Employment.findOne( { name: father }, function ( err, employment) {
         if ( err ) { throw err };
         var route = employment.route;
         route.push( req.children );
         var newEmployment = new Employment( {
-          employment: req.body.employment.employment,
+          name: req.body.employment.name,
           department: req.body.employment.department,
           route:      route
         });
-
         newEmployment.save( function ( err ) {
           if ( err ) { throw err; }
           res.send();
@@ -123,7 +119,7 @@ mongoose.connect( conectionString, function ( err ) {
 //EmploymentsTree
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
-        child   = req.body.employment.employment,
+        child   = req.body.employment.name,
         query   = EmploymentsTree.findOne();
 
     query.exec( function ( err, tree ) {
@@ -131,7 +127,6 @@ mongoose.connect( conectionString, function ( err ) {
       tree.remove( function ( err, employmentsTree ) {
         if ( err ) { throw err };
       });
-
       if ( father === '' ) {
         req.children = tree.children.length
       } else {
@@ -139,8 +134,8 @@ mongoose.connect( conectionString, function ( err ) {
           req.children = smallTree.children.length;
         });
       }
-      console.log(father);
-      tree.insertChildren( father, { employment: child } , 
+
+      tree.insertChildren( father, { name: child } , 
         function ( newTree ){
           var newTree = new EmploymentsTree( newTree );
           newTree.save( function ( err ) {
@@ -171,7 +166,7 @@ mongoose.connect( conectionString, function ( err ) {
 
     query.select('-id').exec( function ( err, tree ) {
       if ( err ) { throw err };
-      // res.send( tree );
+      res.send( tree );
     } );
   };
 //Log

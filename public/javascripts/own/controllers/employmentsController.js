@@ -1,6 +1,6 @@
 function employmentsController ( scope, employment ) {
   scope.father = {
-    employment: ''
+    name: ''
   };
 
   employment.getEmployments().success( function ( data ) {
@@ -9,7 +9,7 @@ function employmentsController ( scope, employment ) {
 
   scope.saveEmployment = function () {
     var params = {
-      father: scope.father.employment,
+      father: scope.father.name,
       employment: scope.employment
     }
 

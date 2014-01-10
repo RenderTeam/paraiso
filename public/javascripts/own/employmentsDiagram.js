@@ -18,7 +18,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("/json/math_map_compact.json", function(error, flare) {
+d3.json("/json/math_map_compact.json", function ( error, flare ) {
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;

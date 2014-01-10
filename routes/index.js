@@ -46,6 +46,7 @@
     };
     exports.employments_tree = function( req, res){
       res.render('organizational_structure/employments/employments_tree', {
+        controller: 'EmploymentsTreeController', 
         currentUser : req.user.username
       });
     };
