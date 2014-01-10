@@ -1,34 +1,34 @@
-extends ../layout
+extends ../../layout
 
 block custom-stylesheets
   link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
 
 block main-navbar
-  include ../navbars/organizational_structure_navbar
+  include ../../navbars/organizational_structure_navbar
 
 block content
   .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
     .form-search
       a( data-toggle = 'modal', href = '#newDepartment' )
-        span.lead.strong.glyphicon.glyphicon-plus.text-success
+        span.lead.strong.glyphicon.glyphicon-plus
       .input-group.col-lg-3.pull-right
         span.input-group-addon 
           span.glyphicon.glyphicon-search
         input.form-control.input( ng-model = 'query' )
-
+    
+    //- Table at center with Departments and Preview
     table.table-striped
       thead
         tr
-          th Departamento
-          th 
+          th Departamentos
+          th
             span.glyphicon.glyphicon-home
       tbody
         tr( ng-repeat = 'department in departments | filter:query' )
-          td( ng-bind = 'department.username' )
+          td( ng-bind = 'department.name' )
           td.launch-modal-preview
-            a( data-toggle='modal', href='#employeePreview',
-              ng-click = 'talentPreview( this )' )
-              span.glyphicon.glyphicon-user
+            a( data-toggle='modal', href='#departmentPreview',
+              ng-click = 'talentPreview( this )' ) Vista Avanzada
 
     #newDepartment.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
       .modal-dialog
@@ -37,15 +37,29 @@ block content
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4.modal-title Nuevo Departamento
           .modal-body
-            include forms/new_department_form
+            include  ../forms/new_department_form
           .modal-footer
             button.btn.btn-danger(type='button', data-dismiss='modal' ,
               aria-hidden="true")
               | Cancelar
 
+    #departmentPreview.modal.fade( tabindex='-1', role='dialog', 
+      aria-hidden='true' )
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title
+              
+          .modal-body
+            
+          .modal-footer
+            button.btn.btn-danger(type='button', data-dismiss='modal' , 
+              aria-hidden="true") Cerrar
 
 block custom-scripts
   script(src='/javascripts/own/services/employeeServices.js')
+  script(src='/javascripts/own/services/departmentsServices.js')
   script(src='/javascripts/own/services/usersServices.js')
 
   script(src='/javascripts/own/controllers/departmentsController.js')

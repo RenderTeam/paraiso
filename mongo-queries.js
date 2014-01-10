@@ -3,15 +3,15 @@ var fs        = require('fs-extra'),
     html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var Forms             = require('./mongoose_models/form'),
+var Departments       = require('./mongoose_models/departments')
+    Employee          = require('./mongoose_models/employee'),
+    Employment        = require('./mongoose_models/employment'),
+    EmploymentsTree   = require('./mongoose_models/employmentsTree'),
+    Forms             = require('./mongoose_models/form'),
     FormsDescription  = require('./mongoose_models/formDescription'),
     Log               = require('./mongoose_models/log'),
     Resources         = require('./mongoose_models/resource'),
     Task              = require('./mongoose_models/task'),
-    Employee          = require('./mongoose_models/employee'),
-    Employment        = require('./mongoose_models/employment'),
-    EmploymentsTree   = require('./mongoose_models/employmentsTree'),
-    Department        = require('./mongoose_models/department'),
     Permission        = require('./mongoose_models/permission'),
     User              = require('./mongoose_models/user');
 
@@ -25,7 +25,29 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
-//Department
+//Departments
+  exports.getDepartments = function ( req, res ) {
+    var query = Departments.find();
+    query.select('-_id').exec(
+      function ( err, departments ) {
+        if ( err ) { throw err; }
+        res.send( departments );
+      }
+    );
+  };
+
+  exports.saveDepartment = function ( req, res ) {
+    var newDepartment = new Departments( req.body.department );
+
+    newDepartment.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
@@ -248,7 +270,7 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.logout = function( req, res ) {
-    //req.session.destroy( function ( err ){
+    //req.session.destroy( function*( err ){
     req.session.destroy();
     res.redirect('/');
     //}); linted function on err is unused. Looking for other solutions

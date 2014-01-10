@@ -3,15 +3,15 @@
   Si quieres validar asincronamente que el usuario sea unico (ya esta validado
   en el controlador pero una asincrona se veria mas padre)
 
-form( name = 'newEmployee' )
+form( name = 'newDepartment' )
   .col-md-12
     .form-group
-      .form-label.text-right Usuario:
-      input.form-control( required, ng-model = 'user.username' )
+      .form-label.text-right Departamento:
+      input.form-control( required, ng-model = 'department.name' )
 
   p.clearfix
   br
   .col-md-4.pull-right
     button.btn.btn-block.btn-success( ng-click = 'saveDepartment()',
-      ng-disabled = 'newEmployee.$invalid' ) Aceptar
+      data-dismiss='modal' ) Aceptar
   br
