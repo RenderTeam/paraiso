@@ -58,23 +58,72 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( 'what: visited (find)' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta de datos',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
       break;
 
       case /save/.test( req.route.path ) :
         console.log( 'save' );
         console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos creados' );
+        console.log( 'what: datos creados');
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'Datos creados: ',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
       break;
       case /update/.test( req.route.path ) :
         console.log( 'update' );
         console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos cambiados' );
+        console.log( 'what: datos cambiados ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
-      break;
+        var log = new Log({
+          who: req.user.username,
+          what: 'update data',
+          where: req.route.path,
+          when: getOperationDate()
+        });
 
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
+      break;
     }
 
     next();
