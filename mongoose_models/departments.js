@@ -1,9 +1,8 @@
 var mongoose    = require('mongoose'),
-    Schema      = mongoose.Schema,
-    Permission  = require('./permission');
+    Schema      = mongoose.Schema;
 
-var DepartmensSchema = new Schema({
-  name: { type:String , required = true }
+var DeparmentsSchema = new Schema({
+  name: { type:String , required: true, index: { unique: true } }
 });
 
-module.exports = mongoose.model( 'Departments' , DepartmensSchema);
+module.exports = mongoose.model( 'Departments' , DeparmentsSchema);

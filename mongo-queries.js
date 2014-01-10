@@ -3,7 +3,8 @@ var fs        = require('fs-extra'),
     html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var Forms             = require('./mongoose_models/form'),
+var Departments       = require('./mongoose_models/departments')
+    Forms             = require('./mongoose_models/form'),
     FormsDescription  = require('./mongoose_models/formDescription'),
     Log               = require('./mongoose_models/log'),
     Resources         = require('./mongoose_models/resource'),

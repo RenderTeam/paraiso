@@ -3,15 +3,14 @@ var services = angular.module( 'services.departments', [] );
 services.factory( 'Departments', department );
 
 department.$inject = ['$http'];
-
 function department ( http ) {
   var departments = new Service();
 
-  departments.addPostPetition( 'getDepartments', '/getDepartments', http, returnData,
-    onError );
+  departments.addPostPetition( 'getDepartments', '/getDepartments', http, 
+    returnData, onError );
 
-  departments.addPostPetition( 'saveDepartments', '/saveDepartments', http, returnData,
-    onError );
+  departments.addPostPetition( 'saveDepartment', '/saveDepartment', http, 
+    returnData, onError );
 
   return departments;
 }

@@ -32,12 +32,12 @@
   };
 //Organizational Structure
   //Departments
-  exports.departments = function( req, res){
-    res.render('organizational_structure/departments', {
-      controller : 'departmentsController',
-      currentUser : req.user.username
-    });
-  };
+    exports.departments = function( req, res){
+      res.render('organizational_structure/departments/departments', {
+        controller : 'DepartmentsController',
+        currentUser : req.user.username
+      });
+    };
   //Employments
     exports.employments_management = function( req, res){
       res.render('organizational_structure/employments/employments_management', {
