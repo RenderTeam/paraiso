@@ -31,6 +31,7 @@
     });
   };
 //Organizational Structure
+  //Departments
   exports.departments = function( req, res){
     res.render('organizational_structure/departments', {
       controller : 'TalentController',

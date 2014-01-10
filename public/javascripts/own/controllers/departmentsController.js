@@ -12,4 +12,7 @@ function departmentsController ( scope. department,){
     scope.departments = data;
   });
 
+  scope.saveDepartments = function () {
+    var params = {};
+  };
 }

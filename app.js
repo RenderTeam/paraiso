@@ -90,6 +90,7 @@ if ( 'development' == app.get('env') ) {
 // POST
   //Departments
   app.post( '/getDepartments', queries.privateContent, queries.getDepartments );
+  app.post( '/SaveDepartments', queries.privateContent, queries.getDepartments );
   //Employees
   app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
   app.post( '/getOneEmployee', queries.privateContent, queries.getOneEmployee );

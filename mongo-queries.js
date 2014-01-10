@@ -24,14 +24,27 @@ mongoose.connect( conectionString, function ( err ) {
 
 //Departments
   exports.getDepartments = function ( req, res ) {
-  var query = Departments.find();
-  query.select('-_id').exec(
-    function ( err, departments ) {
-      if ( err ) { throw err; }
-      res.send( departments );
-    }
-  );
-};
+    var query = Departments.find();
+    query.select('-_id').exec(
+      function ( err, departments ) {
+        if ( err ) { throw err; }
+        res.send( departments );
+      }
+    );
+  };
+
+  exports.saveDepartment = function ( req, res ) {
+    var newDepartment = new Departments( req.body.department );
+
+    newDepartment.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
