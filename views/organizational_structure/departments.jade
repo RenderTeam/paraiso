@@ -25,8 +25,8 @@ block content
             th Departamentos
             th Departamentos View
         tbody
-          tr( ng-repeat = 'employee in employees | filter:query' )
-            td( ng-bind = 'employee.username' )
+          tr( ng-repeat = 'department in departments | filter:query' )
+            td( ng-bind = 'departments.name' )
             td.launch-modal-preview
               a( data-toggle='modal', href='#employeePreview',
                 ng-click = 'talentPreview( this )' ) Vista Avanzada
@@ -38,7 +38,7 @@ block content
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4.modal-title Nuevo Departamento
           .modal-body
-            include  forms/new_employee_form
+            include  forms/new_department_form
           .modal-footer
             button.btn.btn-danger(type='button', data-dismiss='modal' ,
               aria-hidden="true")

@@ -1,9 +1,7 @@
-function departmentsController ( scope. department,){
+function departmentsController ( scope, department){
   scope.department = {
     name: ''
   };
-
-  scope.confirmation = '';
 
   //Agregar el getDepartment
   //Save Deparments
@@ -14,5 +12,17 @@ function departmentsController ( scope. department,){
 
   scope.saveDepartments = function () {
     var params = {};
+      params.department = scope.department;
+      params.user = scope.user;
+
+      department.saveDepartments(params).
+        success( function (data) {
+          alert('More CHelas PLis creado');
+        }).
+        error();
+            
+      scope.department = {
+        name: '',
+      };
   };
 }

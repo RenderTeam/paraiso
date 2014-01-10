@@ -25,7 +25,7 @@ function talentController ( scope, employee, users ) {
     scope.modal = this.employee;
   };
 
-  scope.saveTalent = function () {|
+  scope.saveTalent = function () {
     var params = {};
 
     scope.employee.username = scope.user.username;

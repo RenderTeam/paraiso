@@ -7,3 +7,7 @@ organizationalStructureAppModule.controller( 'TalentController', talentControlle
 talentProfileController.$inject = [ '$scope', 'Employee', 'Users' ];
 organizationalStructureAppModule.controller( 'TalentProfileController', 
   talentProfileController );
+
+departmentsController.$inject = [ '$scope', 'Departments', 'Users' ];
+organizationalStructureAppModule.controller( 'DepartmentsController', 
+  departmentsController );
