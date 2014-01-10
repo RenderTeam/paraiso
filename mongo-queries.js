@@ -22,6 +22,16 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+//Departments
+  exports.getDepartments = function ( req, res ) {
+  var query = Departments.find();
+  query.select('-_id').exec(
+    function ( err, departments ) {
+      if ( err ) { throw err; }
+      res.send( departments );
+    }
+  );
+};
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
