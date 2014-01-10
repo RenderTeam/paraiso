@@ -62,6 +62,7 @@ if ( 'development' == app.get('env') ) {
     app.get( '/forms_generator/custom_form', 
       queries.privateContent, routes.create_form );
 // Organizational Structure
+  //Departments
   app.get('/organizational_structure/departments',
     queries.privateContent, routes.departments);
   //Employments
@@ -77,7 +78,6 @@ if ( 'development' == app.get('env') ) {
   //Talent
   app.get( '/organizational_structure/talent_management', 
     queries.privateContent, routes.talent_management );
-
   app.get( '/organizational_structure/talent_management/:employee', 
     queries.privateContent, routes.talent_management_profile );
 // Resources
@@ -88,6 +88,8 @@ if ( 'development' == app.get('env') ) {
   app.get( '/tasks/tasks', queries.privateContent, routes.tasks );
 
 // POST
+  //Departments
+  app.post( '/getDepartments', queries.privateContent, queries.getDepartments );
   //Employees
   app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
   app.post( '/getOneEmployee', queries.privateContent, queries.getOneEmployee );

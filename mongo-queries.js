@@ -152,7 +152,7 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.logout = function( req, res ) {
-    //req.session.destroy( function ( err ){
+    //req.session.destroy( function*( err ){
     req.session.destroy();
     res.redirect('/');
     //}); linted function on err is unused. Looking for other solutions
