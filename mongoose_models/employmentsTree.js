@@ -13,13 +13,18 @@ EmploymentsTreeSchema.add({
   //ancestors:  [String],
 });
 
-EmploymentsTreeSchema.methods.getEmployment = function ( employment ) {
+EmploymentsTreeSchema.methods.getEmployment = function ( employment, cb ) {
   var query = Employment.findOne( { employment: employment } ),
+      temporaryTree = this,
       that = this;
 
-  query.exec( function ( err, employment ) {
+  query.select('-_id').exec( function ( err, employment ) {
     if ( err ) { throw err; }
-    treeSearch( that, employment.route );
+   employment.route.forEach( function ( element, index, array) {
+      temporaryTree = temporaryTree.children[element];
+    } );
+
+    cb ( temporaryTree );
   });
 }
 
@@ -36,15 +41,6 @@ EmploymentsTreeSchema.methods.insertChildren = function ( employment, child, cb 
     temporaryTree.children.push({ employment: child.employment, children: []});
 
     cb( that );
-  });
-}
-
-
-function treeSearch ( tree, route ) {
-  var smallTree = tree;
-  route.forEach( function ( element, index, array) {
-    smallTree = smallTree.children[element];
-    console.log(smallTree);
   });
 }
 

@@ -78,28 +78,79 @@ mongoose.connect( conectionString, function ( err ) {
     });
   };
 //Employment
-//EmploymentsTree
-// //////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////
-/*var lol = EmploymentsTree.findOne();
-lol.select('-_id').exec( function ( err, tree) {
-  // tree.getEmployment( '12' );
-  // console.log(tree.children[0].children[0]);
-  tree.insertChildren( '2', { employment: '13' } , function ( pepe ){
-    EmploymentsTree.remove();
-    var newTree = new EmploymentsTree( pepe );
-    newTree.save( function ( err ) {
-        if ( err ) { throw err; };
-        console.log('cool');
+  exports.getEmployments = function ( req, res ) {
+    var query = Employment.find();
+
+    query.select('-id -department -route').exec(
+      function ( err, employments ) {
+        if ( err ) { throw err };
+        res.send( employments );
       }
     );
-  });
-  
-});*/
+  }
 
+  exports.saveEmployment = function ( req, res ) {
+    var father = req.body.father;
 
+    Employment.findOne( { employment: father }, function ( err, employment) {
+      if ( err ) { throw err };
+      var newEmployment = new Employment( {
+        employment: req.body.employment.employment,
+        department: req.body.employment.department,
+        route:      employment.route.push( employment.route.length )
+      });
+
+      newEmployment.save( function ( err ) {
+        if ( err ) { throw err; }
+        res.send();
+      } );
+    });
+  }
+//EmploymentsTree
+  exports.updateEmploymentsTree = function ( req, res ) {
+    var father  = req.body.father,
+        child   = req.body.child,
+        query   = EmploymentsTree.findOne();
+
+    query.exec( function ( err, tree) {
+      if ( err ) { throw err };
+      tree.remove( function ( err, employmentsTree ) {
+        if ( err ) { throw err };
+      });
+
+      tree.insertChildren( father, { employment: child } , 
+        function ( newTree ){
+          var newTree = new EmploymentsTree( newTree );
+          newTree.save( function ( err ) {
+              if ( err ) { throw err; };
+              // res.send();
+            }
+          );
+        }
+      );
+    });
+  };
+
+  exports.getSmallEmploymentsTree = function ( req, res ) {
+    var employment = req.body.employment,
+        query = EmploymentsTree.findOne();
+
+    query.select('-_id').exec( function ( err, tree ) {
+      if ( err ) { throw err };
+      tree.getEmployment( employment, function ( smallTree ) {
+        // res.send( smallTree );
+      });
+    });
+  };
+
+  exports.getEmploymentsTree = function ( req, res ) {
+    var query = EmploymentsTree.findOne();
+
+    query.select('-id').exec( function ( err, tree ) {
+      if ( err ) { throw err };
+      // res.send( tree );
+    } );
+  };
 //Log
   exports.log = function ( req, res, next ) {
     var log = new Log({
@@ -298,7 +349,6 @@ lol.select('-_id').exec( function ( err, tree) {
       res.send( { status: true } );
     });
   };
-
 // Form buider mock
 
   exports.createForm = function ( req, res ) {
