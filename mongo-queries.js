@@ -131,7 +131,6 @@ mongoose.connect( conectionString, function ( err ) {
   exports.login = function( req, res ) {
     var user = req.body.user,
         candidatePassword = req.body.password;
-    console.log(user);
     // fetch user and test password verification
     User.findOne( { username: user }, function ( err, user ) {
       if ( err ) { throw err; }

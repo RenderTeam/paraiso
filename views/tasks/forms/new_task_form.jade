@@ -3,10 +3,8 @@ form( name = 'newTaskForm')
     .input-group.input-group-sm
       span.input-group-addon Título
       input.form-input.form-control( ng-model = 'task.title', type = 'text',
-        placeholder = 'Título de la tarea', name = 'title' required)
-    .label.label-danger.pull-right( 
-      ng-show = 'newTaskForm.title.$invalid && newTaskForm.title.$dirty')
-      small(ng-show='newTaskForm.title.$error.required') Introduzca un valor valido
+        placeholder = 'Título de la tarea', name = 'title', required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'text')
     br
     .input-group.input-group-sm
       span.input-group-addon Creado por
@@ -15,12 +13,9 @@ form( name = 'newTaskForm')
     .input-group.input-group-sm
       span.input-group-addon Fecha límite
       input.form-input.form-control( ng-model = 'task.deadline', type='date' ,
-        name = 'deadline', required, ng-change = 'validateDate()')
-    #validationTask.label.label-danger.pull-right( 
-      ng-show = 'newTaskForm.deadline.$invalid && newTaskForm.deadline.$dirty')
-      small(ng-show='newTaskForm.deadline.$error.required') Se requiere de una fecha
-    .label.label-danger.pull-right( ng-hide = 'dateValidation.status')
-      small{{dateValidation.message}}
+        name = 'deadline', required, ng-change = 'validateDate()', rd-Validation,
+        vText = 'Coloca un valor válido',
+        validationtype = 'text')
     br
     .input-group.input-group-sm
       span#creationDayspan.help.input-group-addon en
@@ -31,14 +26,13 @@ form( name = 'newTaskForm')
       span.input-group-addon Prioridad
       input.form-control( ng-model = 'task.priority', name = 'priority',
         placeholder = '1', type = 'number', ng-minlength = '1', ng-maxlength = '5'
-        min = '1', max = '5', required)
-    .label.label-danger.pull-right( 
-      ng-show = 'newTaskForm.priority.$invalid && newTaskForm.priority.$dirty')
-      small(ng-show='newTaskForm.priority.$error.max') El valor máximo es 5
-      small(ng-show='newTaskForm.priority.$error.min') El valor mínimo es 1
+        min = '1', max = '5', required, rd-Validation, vText = 'Coloca un valor válido',
+        validationtype = 'text')
     br
-    textarea.form-control( ng-model = 'task.description',
-      rows="10", placeholder = 'Descripción de la tarea', required)
+    #textarea
+      textarea.form-control( ng-model = 'task.description',
+        rows="10", placeholder = 'Descripción de la tarea', required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'text')
     br
     #descriptionlabel.col-md-12.task-labels-container
       div( ng-repeat = 'label in labels', 

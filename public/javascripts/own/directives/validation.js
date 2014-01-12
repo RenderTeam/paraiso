@@ -24,12 +24,15 @@ validation.directive(
           }
         }
         if( !flag ){
-          $element.after('<h1 class=\'label label-danger \'>Please insert ng-Model and vText atributes.</h1>');
+          console.log($element.children().eq(0));
+          console.log($element.children().eq(1));
+          console.log($element.parent());
+          $element.parent().after('<div class=\'label label-danger \'><small>Please insert ng-Model and vText atributes.</small></div>');
           controllers.$setValidity('valid', false);
         }else{
-          $element.after('<div id=\'rdView'+ uniqueName 
-          +'\' class=\'label label-danger pull-right\' hidden>'+ valOfView 
-          +'</h1>');
+          $element.parent().after('<div id=\'rdView'+ uniqueName 
+          +'\' class=\'label label-danger pull-right\' hidden><small>'+ valOfView 
+          +'</small></div>');
           $('#rdView'+ uniqueName +'').hide();
           controllers.$setValidity('valid', true);
         }
