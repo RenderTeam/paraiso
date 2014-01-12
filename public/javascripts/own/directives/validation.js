@@ -8,13 +8,14 @@ validation.directive(
           validationType   = $attributes.validationtype,
           flag             = false;
       function verified( value ){
-        if (validationstypes(validationType, value)){
-          controllers.$setValidity('required', true);
+        if ( validationstypes( validationType, value ) ){
+          controllers.$setValidity('required', true );
           $('#rdView'+ uniqueName +'').fadeOut();
         }else{
           $('#rdView'+ uniqueName +'').fadeIn();
-          controllers.$setValidity('required', false);
+          controllers.$setValidity('required', false );
         }
+        return $scope = value;
       }
       function init(){
         if( !isEmpty( uniqueName ) ){
@@ -30,6 +31,7 @@ validation.directive(
           +'\' class=\'label label-danger pull-right\' hidden>'+ valOfView 
           +'</h1>');
           $('#rdView'+ uniqueName +'').hide();
+          controllers.$setValidity('valid', true);
         }
       }
       controllers.$parsers.push( verified );
@@ -58,7 +60,7 @@ validation.directive(
     return({
       link   : link,
       require : 'ngModel',
-      restrict: 'AE'
+      restrict: 'AE',
     });
   }
 );
