@@ -11,14 +11,14 @@ validation.directive( 'rdValidation' , function() {
           ngModelController.$setValidity('required', true);
           return value;
         });
-        $element.after('<div id=\'elementor'+$attrs.ngModel.replace('.','')+'\' class=\'label label-danger pull-right\' hidden>'+val+'</h1>');
-        $('#elementor'+$attrs.ngModel.replace('.','')+'').hide();
+        $element.after('<div id=\'rdView'+$attrs.ngModel.replace('.','')+'\' class=\'label label-danger pull-right\' hidden>'+val+'</h1>');
+        $('#rdView'+$attrs.ngModel.replace('.','')+'').hide();
         ngModelController.$parsers.push(function(value) {
           if (validationstypes($attrs.validationtype, value)){
             ngModelController.$setValidity('required', true);
-            $('#elementor'+$attrs.ngModel.replace('.','')+'').fadeOut();
+            $('#rdView'+$attrs.ngModel.replace('.','')+'').fadeOut();
           }else{
-            $('#elementor'+$attrs.ngModel.replace('.','')+'').fadeIn();
+            $('#rdView'+$attrs.ngModel.replace('.','')+'').fadeIn();
           }
           console.log('Despues', true);
           return true ? value : undefined;
