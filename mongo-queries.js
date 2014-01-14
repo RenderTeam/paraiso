@@ -125,7 +125,6 @@ mongoose.connect( conectionString, function ( err ) {
 
       break;
     }
-
     next();
   };
 
