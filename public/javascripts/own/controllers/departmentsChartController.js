@@ -31,10 +31,10 @@ function departmentsChartController ( scope, departments, employment, employment
                 .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
             d3.json("/json/area.json", function(data) {
-              node = root = data;
-              console.log(data);
+              node = root = finalChart;
+              console.log(finalChart);
 
-              var nodes = pack.nodes(root);
+              var nodes = pack.nodes(finalChart);
 
               vis.selectAll("circle")
                   .data(nodes)

@@ -47,7 +47,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
