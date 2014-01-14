@@ -1,0 +1,39 @@
+.panel( class = 'panel-{{editability.status}}' )
+  .panel-heading
+    h4.editability-header
+      span.pull-right.glyphicon( ng-click = 'toogleEditable("personal")', 
+       class = 'glyphicon-{{editability.icon}} text-{{editability.status}}' )
+    span.clearfix
+  .panel-body
+    form( name = '' )
+      .col-md-6
+        label.panel-form Usuario
+        input.form-control( disabled, type = 'text', ng-model = 'user.username' )
+        label.panel-form Nombre
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.name' )
+        label.panel-form Apellido paterno
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.last_father_name' )
+        label.panel-form Apellido materno
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.last_mother_name' )
+
+      .col-md-6
+        label.panel-form Correo
+        input.form-control( ng-disabled = '!editability.bool', type = 'mail',
+          ng-model = 'user.mail' )
+        label.panel-form Fecha de nacimiento
+        input.form-control( ng-disabled = '!editability.bool', type = 'date',
+          ng-model = 'user.date_of_birth' )
+        label.panel-form Dirección
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.address' )
+        label.panel-form Teléfono
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.phone' )
+
+        br
+        button.btn.btn-info.btn-block( ng-disabled = '!editability.bool',
+          ng-click = 'updateEmployee()' ) 
+          |Actualizar

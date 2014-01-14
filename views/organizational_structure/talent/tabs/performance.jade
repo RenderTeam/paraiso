@@ -1,0 +1,22 @@
+.panel( class = 'panel-{{editability.status}}' )
+  .panel-heading
+    h4.editability-header
+      span.pull-right.glyphicon( ng-click = 'toogleEditable("personal")', 
+       class = 'glyphicon-{{editability.icon}} text-{{editability.status}}' )
+    span.clearfix
+  .panel-body
+    form( name = '' )
+      .col-md-6
+        label.panel-form Puesto
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.profile.employment' )
+
+      .col-md-6
+        label.panel-form Departamento
+        input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'user.profile.department' )
+
+        br
+        button.btn.btn-info.btn-block( ng-disabled = '!editability.bool',
+          ng-click = 'updateEmployee()' ) 
+          |Actualizar

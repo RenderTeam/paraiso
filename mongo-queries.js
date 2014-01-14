@@ -3,12 +3,15 @@ var fs        = require('fs-extra'),
     html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var Forms             = require('./mongoose_models/form'),
+var Departments       = require('./mongoose_models/departments')
+    Employee          = require('./mongoose_models/employee'),
+    Employment        = require('./mongoose_models/employment'),
+    EmploymentsTree   = require('./mongoose_models/employmentsTree'),
+    Forms             = require('./mongoose_models/form'),
     FormsDescription  = require('./mongoose_models/formDescription'),
     Log               = require('./mongoose_models/log'),
     Resources         = require('./mongoose_models/resource'),
     Task              = require('./mongoose_models/task'),
-    Employee          = require('./mongoose_models/employee'),
     Permission        = require('./mongoose_models/permission'),
     User              = require('./mongoose_models/user');
 
@@ -22,6 +25,29 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
+//Departments
+  exports.getDepartments = function ( req, res ) {
+    var query = Departments.find();
+    query.select('-_id').exec(
+      function ( err, departments ) {
+        if ( err ) { throw err; }
+        res.send( departments );
+      }
+    );
+  };
+
+  exports.saveDepartment = function ( req, res ) {
+    var newDepartment = new Departments( req.body.department );
+
+    newDepartment.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+
 //Employee
   exports.getEmployees = function ( req, res ) {
     var query = Employee.find();
@@ -34,6 +60,34 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 
+  exports.getOneEmployee = function ( req, res ) {
+    var condition = {
+      username: req.body.username
+    };
+
+    var query = Employee.findOne( condition );
+
+    query.select('-_id').exec(
+      function ( err, employee ) {
+        if ( err ) { throw err; }
+        res.send( employee );
+      }
+    );
+  };
+
+  exports.updateEmployee = function ( req, res ) {
+    var condition = {
+          username: req.body.user.username
+        },
+        update = req.body.user;
+
+    Employee.update( condition, update, 
+      function ( err, number, raw ) {
+        res.send();
+      }
+    );
+  }
+
   exports.saveEmployee = function ( req, res ) {
     var newEmployee = new Employee( req.body.employee );
 
@@ -44,6 +98,111 @@ mongoose.connect( conectionString, function ( err ) {
       }
       res.send( { status: true } );
     });
+  };
+//Employment
+  exports.getEmployments = function ( req, res ) {
+    var query = Employment.find();
+
+    query.select('-_id -route').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    });
+  }
+
+  exports.getEmploymentsByDepartment = function ( req, res ) {
+    var condition = {
+      department: req.body.department
+    }
+
+    var query = Employment.find( condition );
+
+    query.select('-id').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    } );
+  }
+
+  exports.saveEmployment = function ( req, res ) {
+    var father = req.body.father;
+    if ( father === '' ) { 
+      var newEmployment = new Employment( {
+        name: req.body.employment.name,
+        department: req.body.employment.department,
+        route:      [ req.children ]
+      });
+      newEmployment.save( function ( err ) {
+        if ( err ) { throw err; }
+        res.send();
+      } );
+    } else {
+      Employment.findOne( { name: father }, function ( err, employment) {
+        if ( err ) { throw err };
+        var route = employment.route;
+        route.push( req.children );
+        var newEmployment = new Employment( {
+          name: req.body.employment.name,
+          department: req.body.employment.department,
+          route:      route
+        });
+        newEmployment.save( function ( err ) {
+          if ( err ) { throw err; }
+          res.send();
+        } );
+      });
+    }
+  }
+//EmploymentsTree
+  exports.updateEmploymentsTree = function ( req, res, next ) {
+    var father  = req.body.father,
+        child   = req.body.employment.name,
+        query   = EmploymentsTree.findOne();
+
+    query.exec( function ( err, tree ) {
+      if ( err ) { throw err };
+      tree.remove( function ( err, employmentsTree ) {
+        if ( err ) { throw err };
+      });
+      if ( father === '' ) {
+        req.children = tree.children.length
+      } else {
+        tree.getEmployment( father, function ( smallTree ) {
+          req.children = smallTree.children.length;
+        });
+      }
+
+      tree.insertChildren( father, { name: child } , 
+        function ( newTree ){
+          var newTree = new EmploymentsTree( newTree );
+          newTree.save( function ( err ) {
+              if ( err ) { throw err; };
+              next();
+              // res.send();
+            }
+          );
+        }
+      );
+    });
+  };
+
+  exports.getSmallEmploymentsTree = function ( req, res ) {
+    var employment = req.body.employment,
+        query = EmploymentsTree.findOne();
+
+    query.select('-_id').exec( function ( err, tree ) {
+      if ( err ) { throw err };
+      tree.getEmployment( employment, function ( smallTree ) {
+        res.send( smallTree );
+      });
+    });
+  };
+
+  exports.getEmploymentsTree = function ( req, res ) {
+    var query = EmploymentsTree.findOne();
+
+    query.select('-id').exec( function ( err, tree ) {
+      if ( err ) { throw err };
+      res.send( tree );
+    } );
   };
 //Log
   exports.log = function ( req, res, next ) {
@@ -192,7 +351,7 @@ mongoose.connect( conectionString, function ( err ) {
   };
 
   exports.logout = function( req, res ) {
-    //req.session.destroy( function ( err ){
+    //req.session.destroy( function*( err ){
     req.session.destroy();
     res.redirect('/');
     //}); linted function on err is unused. Looking for other solutions
@@ -311,7 +470,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-
 // Form buider mock
 
   exports.createForm = function ( req, res ) {

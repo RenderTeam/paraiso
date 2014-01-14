@@ -1,14 +1,10 @@
-extends ../../layout
-
+extends ../organizational_structure_layout
 block custom-stylesheets
   link(rel='stylesheet', href='/stylesheets/own/responsive-table.css')
   link(rel='stylesheet', href='/stylesheets/own/talent_management.css')
 
-block main-navbar
-  include ../../navbars/organizational_structure_navbar
-
 block content
-  .col-md-12( ng-app = 'talentApp', ng-controller = controller )
+  .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
     .form-search
       a( data-toggle = 'modal', href = '#newEmployee' )
         span.lead.strong.glyphicon.glyphicon-plus
@@ -40,7 +36,7 @@ block content
           td( ng-bind = 'employee.profile.employment' )
           td.launch-modal-preview
             a( data-toggle='modal', href='#employeePreview',
-              ng-click = 'talentPreview()' )
+              ng-click = 'talentPreview( this )' )
               span.glyphicon.glyphicon-user
 
     #newEmployee.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
@@ -61,14 +57,41 @@ block content
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4.modal-title 
+            h4.modal-title
+              span( ng-bind = 'modal.name' )
+              span &nbsp;
+              span( ng-bind = 'modal.last_father_name ')
+              span &nbsp;
+              span( ng-bind = 'modal.last_mother_name')
+              span &nbsp;
+              small
+                span( ng-bind = 'modal.username' )
           .modal-body
+            .col-md-3
+              img.img-rounded.profile-pic(src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120")
+            .col-md-5.text-center
+              h1 ¿?
+            .col-md-4
+              h6
+                span.glyphicon.glyphicon-briefcase
+                span &nbsp;
+                span( ng-bind = 'modal.profile.employment' )
+              h6
+                span.glyphicon.glyphicon-home
+                span &nbsp;
+                span( ng-bind = 'modal.profile.department' )
+              h6
+                span.glyphicon.glyphicon-envelope
+                span &nbsp;
+                span( ng-bind = 'modal.mail' )
+              h6
+                span.glyphicon.glyphicon-earphone 
+                span &nbsp;
+                span( ng-bind = 'modal.phone' )
+            .clearfix
           .modal-footer
-            a.btn.btn-info( href = '/organizational_structure/talent_management/dan' ) 
+            a.btn.btn-info( 
+              href = '/organizational_structure/talent_management/{{modal.username}}' )
               |Perfil avanzado
-            button.btn(type='button', data-dismiss='modal' , aria-hidden="true") Close
-
-block custom-scripts
-  script(src='/javascripts/own/services/employeeServices.js')
-  script(src='/javascripts/own/services/usersServices.js')
-  script(src='/javascripts/own/controllers/talentControllers.js')
+            button.btn.btn-danger(type='button', data-dismiss='modal' , 
+              aria-hidden="true") Cerrar

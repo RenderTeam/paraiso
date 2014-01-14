@@ -40,8 +40,8 @@ function permissionsController ( scope, permission ){
     };
 
     permission.updatePermission( params ).
-      success(function () {}).
-      error(function () {});
+      success(function (){}).
+      error(function (){});
 
     scope.permissions = changePermissionsOnUpdate( scope.permissions, 
       scope.permission );

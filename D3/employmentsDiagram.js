@@ -1,5 +1,5 @@
 var w = 800,
-h = 800,
+h = 500,
 i = 0,
 duration = 500,
 root;
@@ -16,11 +16,6 @@ var vis = d3.select("#chart").append("svg:svg")
   .append("svg:g")
   .attr("transform", "translate(40,0)");
 
-d3.json("math_map_compact.json", function(json) {
-  json.x0 = 800;
-  json.y0 = 0;
-  update(root = json);
-});
 
 function update(source) {
 
@@ -33,7 +28,8 @@ function update(source) {
 
   var nodeEnter = node.enter().append("svg:g")
     .attr("class", "node")
-    .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
+    .attr("transform", function(d) { return "translate(" + source.y0 + "," + 
+      source.x0 + ")"; });
       //.style("opacity", 1e-6);
  
   // Enter any new nodes at the parent's previous position.
@@ -50,7 +46,8 @@ function update(source) {
     .attr("x", function(d) { return d._children ? -8 : 8; })
     .attr("y", 3)
         //.attr("fill","#ccc")
-        //.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+        //.attr("transform", function(d) { return "translate(" + d.y + "," 
+        //  + d.x + ")"; })
     .text(function(d) { return d.name; });
 
   // Transition nodes to their new position.
@@ -70,7 +67,8 @@ function update(source) {
 
   node.exit().transition()
     .duration(duration)
-    .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+    .attr("transform", function(d) { return "translate(" + source.y + "," + 
+      source.x + ")"; })
     .style("opacity", 1e-6)
     .remove();
 /*

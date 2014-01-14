@@ -4,30 +4,14 @@ services.factory( 'Users', users );
 
 users.$inject = ['$http'];
 function users ( http ) {
-  var user = {};
+  var user = new Service();
 
-  user.saveUser = function ( params ) {
-    var promise = http.post('/saveUser', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  user.addPostPetition( 'saveUser', '/saveUser', http, returnData, onError );
 
-  user.getOneUser = function ( params ) {
-    var promise = http.post('/getOneUser', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  user.addPostPetition( 'getOneUser', '/getOneUser', http, returnData, onError );
 
-  user.getAllUsersNames = function () {
-    var promise = http.post('/getUsersNames').then(
-      function ( response ) {
-        return response.data;
-      }
-    );
-    return promise;
-  };
+  user.addPostPetition( 'getAllUsersNames', '/getUsersNames', http, returnData, 
+    onError );
 
   return user;
 }

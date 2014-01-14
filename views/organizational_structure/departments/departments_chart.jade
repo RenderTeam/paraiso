@@ -1,0 +1,8 @@
+extends ../organizational_structure_layout
+
+block custom-stylesheets
+  link(rel='stylesheet', href='/stylesheets/own/departments-chart.css')
+
+block content
+  .col-md-12( ng-app = 'organizationalStructureApp', ng-controller = controller )
+    #chart

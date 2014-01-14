@@ -31,19 +31,29 @@
     });
   };
 //Organizational Structure
-  exports.departments = function( req, res){
-    res.render('organizational_structure/departments', {
-      currentUser : req.user.username
-    });
-  };
+  //Departments
+    exports.departments = function( req, res){
+      res.render('organizational_structure/departments/departments', {
+        controller : 'DepartmentsController',
+        currentUser : req.user.username
+      });
+    };
+    exports.departments_chart = function( req, res){
+      res.render('organizational_structure/departments/departments_chart', {
+        controller : 'DepartmentsChartController',
+        currentUser : req.user.username
+      });
+    };
   //Employments
     exports.employments_management = function( req, res){
       res.render('organizational_structure/employments/employments_management', {
+        controller: 'EmploymentsController', 
         currentUser : req.user.username
       });
     };
     exports.employments_tree = function( req, res){
       res.render('organizational_structure/employments/employments_tree', {
+        controller: 'EmploymentsTreeController', 
         currentUser : req.user.username
       });
     };

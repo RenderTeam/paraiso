@@ -4,21 +4,19 @@ services.factory( 'Employee', employee );
 
 employee.$inject = ['$http'];
 function employee ( http ) {
-  var employees = {};
+  var employees = new Service();
 
-  employees.getAllTalent = function () {
-    var promise = http.post('/getEmployees').
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  employees.addPostPetition( 'getEmployees', '/getEmployees', http, returnData,
+    onError );
 
-  employees.saveTalent = function ( params ) {
-    var promise = http.post('/saveEmployee', params).
-      success( returnData ).
-      error( onError );
-    return promise;
-  };
+  employees.addPostPetition( 'getOneEmployee', '/getOneEmployee', http,
+    returnData, onError );
+
+  employees.addPostPetition( 'updateEmployee', '/updateEmployee', http,
+    returnData, onError );
+
+  employees.addPostPetition( 'saveTalent', '/saveTalent', http, returnData,
+    onError );
 
   return employees;
 }
