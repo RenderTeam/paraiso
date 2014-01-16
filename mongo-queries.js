@@ -3,7 +3,7 @@ var fs        = require('fs-extra'),
     html2jade = require('html2jade');
 
 /** Schemas from mongoose **/
-var Departments       = require('./mongoose_models/departments')
+var Departments       = require('./mongoose_models/departments'),
     Employee          = require('./mongoose_models/employee'),
     Employment        = require('./mongoose_models/employment'),
     EmploymentsTree   = require('./mongoose_models/employmentsTree'),
@@ -15,6 +15,20 @@ var Departments       = require('./mongoose_models/departments')
     Permission        = require('./mongoose_models/permission'),
     User              = require('./mongoose_models/user');
 
+var schemas = {
+  departments       :require('./mongoose_models/departments'),
+  employees         :require('./mongoose_models/employee'),
+  employments       :require('./mongoose_models/employment'),
+  employmentsTrees  :require('./mongoose_models/employmentsTree'),
+  forms             :require('./mongoose_models/form'),
+  formsDescriptions :require('./mongoose_models/formDescription'),
+  logs              :require('./mongoose_models/log'),
+  resources         :require('./mongoose_models/resource'),
+  tasks             :require('./mongoose_models/task'),
+  permissions       :require('./mongoose_models/permission'),
+  users             :require('./mongoose_models/user')
+}
+
 /** Conection to MongoDB and Mongo queries **/
 var conectionString = 'mongodb://localhost:27017/test';
 //Tests use mocha db 
@@ -25,102 +39,42 @@ mongoose.connect( conectionString, function ( err ) {
   console.log('Successfully connected to MongoDB');
 });
 
-//Departments
-  exports.getDepartments = function ( req, res ) {
-    var query = Departments.find();
-    query.select('-_id').exec(
-      function ( err, departments ) {
-        if ( err ) { throw err; }
-        res.send( departments );
-      }
-    );
-  };
+  exports.getAll = function ( req, res ) {
+    var query = schemas[req.params.schema].find();
 
-  exports.saveDepartment = function ( req, res ) {
-    var newDepartment = new Departments( req.body.department );
-
-    newDepartment.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
-//Employee
-  exports.getEmployees = function ( req, res ) {
-    var query = Employee.find();
-
-    query.select('-_id').exec(
-      function ( err, employees ) {
-        if ( err ) { throw err; }
-        res.send( employees );
-      }
-    );
-  };
-
-  exports.getOneEmployee = function ( req, res ) {
-    var condition = {
-      username: req.body.username
-    };
-
-    var query = Employee.findOne( condition );
-
-    query.select('-_id').exec(
-      function ( err, employee ) {
-        if ( err ) { throw err; }
-        res.send( employee );
-      }
-    );
-  };
-
-  exports.updateEmployee = function ( req, res ) {
-    var condition = {
-          username: req.body.user.username
-        },
-        update = req.body.user;
-
-    Employee.update( condition, update, 
-      function ( err, number, raw ) {
-        res.send();
-      }
-    );
-  }
-
-  exports.saveEmployee = function ( req, res ) {
-    var newEmployee = new Employee( req.body.employee );
-
-    newEmployee.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
-//Employment
-  exports.getEmployments = function ( req, res ) {
-    var query = Employment.find();
-
-    query.select('-_id -route').exec( function ( err, employments ) {
-      if ( err ) { throw err };
-      res.send( employments );
+    query.select('-_id').exec( function ( err, docs ) {
+      if ( err ) { throw err; };
+      res.send( docs );
     });
   }
 
-  exports.getEmploymentsByDepartment = function ( req, res ) {
-    var condition = {
-      department: req.body.department
-    }
+  exports.getOne = function ( req, res ) {
+    var condition = {},
+        filter = req.params.filter,
+        schema = req.params.schema;
 
-    var query = Employment.find( condition );
+    condition[filter] = req.body[filter];
 
-    query.select('-id').exec( function ( err, employments ) {
-      if ( err ) { throw err };
-      res.send( employments );
+    var query = schemas[schema].findOne( condition );
+
+    query.select('-_id').exec( function ( err, doc ) {
+      if ( err ) { throw err; };
+      res.send( doc );
     } );
   }
 
+  exports.save = function ( req, res ) {
+    var schema    = req.params.schema,
+        reference = req.params.reference;
+
+    var newDocument = new schemas[schema]( req.body[reference] );
+
+    newDocument.save( function ( err ) {
+      if ( err ) { throw err; };
+      res.send( { status: true } );
+    } );
+  }
+  /* This two are exceptions */
   exports.saveEmployment = function ( req, res ) {
     var father = req.body.father;
     if ( father === '' ) { 
@@ -150,6 +104,49 @@ mongoose.connect( conectionString, function ( err ) {
       });
     }
   }
+
+  exports.saveTask = function ( req, res ) {
+    req.body.task.creator = req.user.username;
+    var newTask = new Task( req.body.task );
+
+    newTask.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }
+      res.send( { status: true } );
+    });
+  };
+//Departments
+//Employee
+  exports.updateEmployee = function ( req, res ) {
+    var condition = {
+          username: req.body.user.username
+        },
+        update = req.body.user;
+
+    Employee.update( condition, update, 
+      function ( err, number, raw ) {
+        res.send();
+      }
+    );
+  }
+
+//Employment
+
+  exports.getEmploymentsByDepartment = function ( req, res ) {
+    var condition = {
+      department: req.body.department
+    }
+
+    var query = Employment.find( condition );
+
+    query.select('-id').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    } );
+  }
+
 //EmploymentsTree
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
@@ -219,29 +216,7 @@ mongoose.connect( conectionString, function ( err ) {
     next();
   };
 //Permission
-  exports.getAllPermissionsStatus = function ( req, res ) {
-    var query = Permission.find();
 
-    query.select('-_id').exec(
-      function ( err, permissions ) {
-        if ( err ) { throw err; }
-        res.send( permissions );
-      }
-    );
-  };
-
-  exports.getOnePermission = function ( req, res ) {
-    var condition = {
-      username: req.body.username
-    };
-
-    var query = Permission.findOne( condition );
-
-    query.select('-_id').exec( function ( err, permission ) {
-      if ( err ) { throw err; }
-      res.send( permission );
-    });
-  };
 
   exports.updatePermission = function ( req, res ) {
     var condition = {
@@ -310,17 +285,6 @@ mongoose.connect( conectionString, function ( err ) {
    * @param {res} Response from express
    * @return {task} Returns the task
    */
-  exports.getOneTask = function ( req, res ) {
-    var condition = {};
-    condition._id = req.body._id;
-
-    var query = Task.findOne( condition );
-
-    query.select('-reminder').exec( function ( err, task ) {
-      if ( err ) { throw err; }
-      res.send( task );
-    });
-  };
   
   exports.getTasks = function ( req, res ) {
     var query = Task.find();
@@ -347,18 +311,7 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 
-  exports.saveTask = function ( req, res ) {
-    req.body.task.creator = req.user.username;
-    var newTask = new Task( req.body.task );
 
-    newTask.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
 //User
   exports.getUsersNames = function ( req, res ) {
     var query = User.find();
@@ -375,32 +328,7 @@ mongoose.connect( conectionString, function ( err ) {
     );
   };
 
-  exports.getOneUser = function ( req, res ) {
-    var condition = {
-      username: req.body.username
-    };
 
-    var query = User.findOne( condition );
-
-    query.select('-_id username').exec(
-      function ( err, user ) {
-        if ( err ) { throw err; }
-        res.send( user );
-      }
-    );
-  };
-
-  exports.saveUser = function ( req, res ) {
-    var newUser = new User( req.body.user );
-
-    newUser.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
 // Form buider mock
 
   exports.createForm = function ( req, res ) {

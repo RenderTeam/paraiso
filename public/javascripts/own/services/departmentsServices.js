@@ -6,11 +6,11 @@ department.$inject = ['$http'];
 function department ( http ) {
   var departments = new Service();
 
-  departments.addPostPetition( 'getDepartments', '/getDepartments', http, 
+  departments.addPostPetition( 'getDepartments', '/all/departments/data', http, 
     returnData, onError );
 
-  departments.addPostPetition( 'saveDepartment', '/saveDepartment', http, 
-    returnData, onError );
+  departments.addPostPetition( 'saveDepartment', '/departments/department/new', 
+    http, returnData, onError );
 
   return departments;
 }

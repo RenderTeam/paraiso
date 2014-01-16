@@ -6,17 +6,17 @@ employee.$inject = ['$http'];
 function employee ( http ) {
   var employees = new Service();
 
-  employees.addPostPetition( 'getEmployees', '/getEmployees', http, returnData,
+  employees.addPostPetition( 'getEmployees', '/all/employees/data', http, returnData,
     onError );
 
-  employees.addPostPetition( 'getOneEmployee', '/getOneEmployee', http,
-    returnData, onError );
+  employees.addPostPetition( 'getOneEmployee', '/single/employees/username/data',
+    http, returnData, onError );
 
   employees.addPostPetition( 'updateEmployee', '/updateEmployee', http,
     returnData, onError );
 
-  employees.addPostPetition( 'saveTalent', '/saveTalent', http, returnData,
-    onError );
+  employees.addPostPetition( 'saveTalent', '/employees/employee/new', http, 
+    returnData, onError );
 
   return employees;
 }
