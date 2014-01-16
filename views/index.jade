@@ -11,19 +11,20 @@ block content
           img.profile-img( src='https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120', alt='')
           form.form-signin( ng-controller = controller, 
             name = 'formLogin', novalidate )
-            input.form-control( ng-model = 'user.user', name = 'userName',rd-validation, vText = 'Teclea un valor válido.',
-              placeholder = 'Usuario', type = 'text', autofocus = 'autofocus',  ValidationType = 'text',
-              required)
-            input.form-control( ng-model = 'user.password', type = 'password', ValidationType = 'text'
-              placeholder = 'Contraseña', required ,rd-validation, vText = 'Teclea un valor válido.')
-            button.btn.btn-lg.btn-primary.btn-block( ng-click = 'login()',
-              ng-disabled = 'formLogin.$invalid' )
-              | Iniciar sesión
-            span.clearfix
+            .form-group
+              input.form-control( ng-model = 'user.user', name = 'userName',
+                placeholder = 'Usuario', type = 'text', autofocus = 'autofocus', required)
+            .form-group
+              input.form-control( ng-model = 'user.password', type = 'password'
+,                placeholder = 'Contraseña', required )
+            .form-group
+              button.btn.btn-lg.btn-primary.btn-block( ng-click = 'login()',
+                ng-disabled = 'formLogin.$invalid' )
+                | Iniciar sesión
+              span.clearfix
 
 
 
 
 block custom-scripts
   script( src='/javascripts/own/controllers/loginControllers.js')
-  script( src='/javascripts/own/directives/validation.js')

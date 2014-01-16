@@ -1,6 +1,7 @@
 function myTasksController ( scope, tasks ) {
   tasks.getTasksFromUser().success( function ( data ) {
     scope.tasks =  data;
+    loadtoCalendar( scope );
   });
 
   //Call to one task when an user click the expand button
@@ -119,12 +120,16 @@ function myTasksController ( scope, tasks ) {
 }
 
 function loadtoCalendar ( scope ) {
+  console.log('Enrique');
   var event = {};
+  console.log(scope);
   scope.tasks.forEach(function (element, array, index) {
+    var date = new Date(element.deadline);
+    console.log(';3 ',element, array);
     event = {
       title: element.title,
       start: element.creation_date,
-      end: element.deadline,
+      end: date,
       className: ['openSesame']
     }
     scope.addEvent(event);

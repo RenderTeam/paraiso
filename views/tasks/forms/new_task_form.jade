@@ -15,7 +15,7 @@ form( name = 'newTaskForm')
       input.form-input.form-control( ng-model = 'task.deadline', type='date' ,
         name = 'deadline', required, ng-change = 'validateDate()', rd-Validation,
         vText = 'Coloca un valor válido',
-        validationtype = 'text')
+        validationtype = 'date')
     br
     .input-group.input-group-sm
       span#creationDayspan.help.input-group-addon en
@@ -25,9 +25,9 @@ form( name = 'newTaskForm')
     .input-group.input-group-sm
       span.input-group-addon Prioridad
       input.form-control( ng-model = 'task.priority', name = 'priority',
-        placeholder = '1', type = 'number', ng-minlength = '1', ng-maxlength = '5'
+        placeholder = '1', type = 'number', ng-minlength = '1', ng-maxlenuegth = '5'
         min = '1', max = '5', required, rd-Validation, vText = 'Coloca un valor válido',
-        validationtype = 'text')
+        validationtype = 'number')
     br
     #textarea
       textarea.form-control( ng-model = 'task.description',

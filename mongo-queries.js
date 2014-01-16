@@ -209,7 +209,7 @@ mongoose.connect( conectionString, function ( err ) {
     condition.assigned = req.user.username;
     var query = Task.find( condition );
     
-    query.select('assigned deadline description title').exec(
+    query.select('assigned deadline description title creation_date').exec(
       function ( err, task ) {
         if ( err ) { throw err; }
         res.send( task );

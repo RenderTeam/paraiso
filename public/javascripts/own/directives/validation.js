@@ -8,7 +8,7 @@ validation.directive(
           validationType   = $attributes.validationtype,
           flag             = false;
       function verified( value ){
-        if ( validationstypes( validationType, value ) ){
+        if ( validationstypes( validationType, value, $attributes, uniqueName ) ){
           controllers.$setValidity('required', true );
           $('#rdView'+ uniqueName +'').fadeOut();
         }else{
@@ -24,14 +24,14 @@ validation.directive(
           }
         }
         if( !flag ){
-          console.log($element.children().eq(0));
-          console.log($element.children().eq(1));
-          console.log($element.parent());
-          $element.parent().after('<div class=\'label label-danger \'><small>Please insert ng-Model and vText atributes.</small></div>');
+          $element.parent().after('<div class=\'label label-danger \'><small>'+
+            'Please insert ng-Model and vText atributes.</small></div>');
           controllers.$setValidity('valid', false);
         }else{
+          $element.removeClass('has-error');
           $element.parent().after('<div id=\'rdView'+ uniqueName 
-          +'\' class=\'label label-danger pull-right\' hidden><small>'+ valOfView 
+          +'\' class=\'label label-danger pull-right\' hidden><small>'+
+           valOfView 
           +'</small></div>');
           $('#rdView'+ uniqueName +'').hide();
           controllers.$setValidity('valid', true);
@@ -44,18 +44,46 @@ validation.directive(
       return value === '' || value === undefined || value === null ||
         value === false || value !== value;
     }
-    function validationstypes( forvalidate, val ){
-      if(isEmpty(val)){
+    function validationstypes( forvalidate, val , attributes, uniqueName){
+      if( isEmpty( val ) ){
         return false;
       }else{
-        switch(forvalidate){
+        switch( forvalidate ){
           case 'text':
-            var pattern = /^[a-zA-Z]*$/;
-            if(val.match(pattern)){
+            var pattern = /^[a-zA-Z áÁéÉúÚóÓíÍ]*$/;
+            if( val.match( pattern ) ){
+
               return true;
             }else{
               return false;
             }
+          break;
+          case 'number':
+            var pattern = '^[0-9]+$';
+            if( val.match( pattern ) ){
+              return true;
+            }else{
+              return false;
+            }
+          break;
+          case 'date':
+            var today       = new Date(),
+                flag        = true,
+                datetoInput = new Date( val );
+            if( datetoInput.getFullYear() < today.getFullYear() ){
+              $('#rdView'+ uniqueName +'').html('<small>El año seleccionado es menor.</small>');
+              flag = false;
+            }
+            console.log(datetoInput.getDate()+1);
+            if( datetoInput.getDate()+1 < today.getDate() ){
+              $('#rdView'+ uniqueName +'').html('<small>El día seleccionado es menor.</small>');
+              flag = false;
+            }
+            if( datetoInput.getMonth() < today.getMonth() ){
+              $('#rdView'+ uniqueName +'').html('<small>El mes seleccionado es menor</small>');
+              flag = false;
+            }
+            return flag;
           break;
         }
       }
@@ -63,7 +91,7 @@ validation.directive(
     return({
       link   : link,
       require : 'ngModel',
-      restrict: 'AE',
+      restrict: 'AE'
     });
   }
 );

@@ -18,14 +18,14 @@ block content
           input.form-control.input( ng-model = 'query')
           
       .col-md-4.pull-right.text-right.switch-view
-        span.glyphicon.glyphicon-calendar( ng-model = 'calendar')
+        span#viewCalendar.glyphicon.glyphicon-calendar( ng-model = 'calendar')
         | &nbsp;|&nbsp;
-        span.glyphicon.glyphicon-list( ng-model = 'list_view')
+        span#viewList.glyphicon.glyphicon-list( ng-model = 'list_view')
       span.clearfix
 
       include agenda
 
-      .span8.calendar( ng-model = 'eventSources', 
+      #calendar.span8.calendar( ng-model = 'eventSources', 
         ui-calendar = 'uiConfig.calendar' )
 
 block custom-scripts
@@ -37,11 +37,8 @@ block custom-scripts
   script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/services/tasksServices.js')
   script( src='/javascripts/own/services/calendar.js')
-
   script( src='/javascripts/own/controllers/tasksController.js')
-  
   script( src='/javascripts/own/controllers/myTasksController.js')
   script( src='/javascripts/own/controllers/newTaskController.js')
   script( src='/javascripts/own/controllers/calendarController.js')
-
   script( src='/javascripts/own/apps/tasksApp.js')
