@@ -1,4 +1,4 @@
-var loginAppModule  = angular.module( 'loginApp', ['Validations'] );
+var loginAppModule  = angular.module( 'loginApp', [] );
 
 loginAppModule.controller( 'LoginController', loginController );
 
