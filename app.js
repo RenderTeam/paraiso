@@ -88,19 +88,14 @@ if ( 'development' == app.get('env') ) {
 
 // POST
   //All
-  app.post( '/all/:schema/data', queries.privateContent, queries.getAll );
+  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
 
   //Single
   app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
   app.post( '/getEmploymentsTree', queries.privateContent, 
     queries.getEmploymentsTree );
-  app.post( '/getEmploymentsByDepartment', queries.privateContent,
-    queries.getEmploymentsByDepartment );
-  // EmploymentsTree
   app.post( '/getSmallEmploymentsTree', queries.privateContent, 
     queries.getSmallEmploymentsTree );
-  app.post( '/getTasksFromUser', queries.privateContent, 
-    queries.getTasksFromUser );
 
   //New
   app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
@@ -109,13 +104,9 @@ if ( 'development' == app.get('env') ) {
     queries.updateEmploymentsTree, queries.saveEmployment );
 
   //Update
-  //Employees
-  app.post( '/updateEmployee', queries.privateContent, queries.updateEmployee );
-  app.post( '/updatePermission', queries.privateContent, 
-    queries.updatePermission );
-  // Employments
-  //Permissions
-  //Tasks
+  app.post( '/:schema/:document/:filter/update', queries.privateContent, 
+    queries.update );
+
   //Extras
   app.post( '/sendMail', queries.privateContent, mail.sendMail );
 

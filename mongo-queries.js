@@ -40,7 +40,25 @@ mongoose.connect( conectionString, function ( err ) {
 });
 
   exports.getAll = function ( req, res ) {
-    var query = schemas[req.params.schema].find();
+    var condition = {},
+        filter    = req.params.filter,
+        schema    = req.params.schema;
+
+    switch ( filter ) {
+      case 'none':
+        break;
+      /*
+       * Tasks is an exception because of the property in filter do no match 
+       * with the username from the session property. #YOLO
+       */
+      case 'tasks':
+        condition.assigned = req.user.username;
+        break;
+      default:
+        condition[filter] = req.body[filter];
+        break;
+    }
+    var query = schemas[schema].find( condition );
 
     query.select('-_id').exec( function ( err, docs ) {
       if ( err ) { throw err; };
@@ -72,6 +90,22 @@ mongoose.connect( conectionString, function ( err ) {
     newDocument.save( function ( err ) {
       if ( err ) { throw err; };
       res.send( { status: true } );
+    } );
+  }
+
+  exports.update = function ( req, res ) {
+    var schema    = req.params.schema,
+        filter    = req.params.filter,
+        doc       = req.params.document,
+        condition = {},
+        update    = {};
+
+    condition[filter] = req.body[filter];
+    update            = req.body[doc];
+
+    schemas[schema].update( condition, update, function ( err, number, raw ) {
+      if ( err ) { throw err; };
+      res.send();
     } );
   }
   /* This two are exceptions */
@@ -118,30 +152,6 @@ mongoose.connect( conectionString, function ( err ) {
     });
   };
 //Employee
-  exports.updateEmployee = function ( req, res ) {
-    var condition = {
-          username: req.body.user.username
-        },
-        update = req.body.user;
-    Employee.update( condition, update, 
-      function ( err, number, raw ) {
-        res.send();
-      }
-    );
-  }
-  exports.updatePermission = function ( req, res ) {
-    var condition = {
-          username: req.body.username
-        },
-        update = {
-          permissions: req.body.permissions
-        };
-    Permission.update( condition, update, 
-      function ( err, number, raw ) {
-        res.send();
-      }
-    );
-  };
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
         child   = req.body.employment.name,
@@ -174,32 +184,6 @@ mongoose.connect( conectionString, function ( err ) {
     });
   };
 //Employment
-
-  exports.getEmploymentsByDepartment = function ( req, res ) {
-    var condition = {
-      department: req.body.department
-    }
-
-    var query = Employment.find( condition );
-
-    query.select('-id').exec( function ( err, employments ) {
-      if ( err ) { throw err };
-      res.send( employments );
-    } );
-  }
-
-  exports.getTasksFromUser = function ( req, res ) {
-    var condition = {};
-    condition.assigned = req.user.username;
-    var query = Task.find( condition );
-    
-    query.select('assigned deadline description title').exec(
-      function ( err, task ) {
-        if ( err ) { throw err; }
-        res.send( task );
-      }
-    );
-  };
 
   exports.getSmallEmploymentsTree = function ( req, res ) {
     var employment = req.body.employment,

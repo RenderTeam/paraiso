@@ -8,30 +8,30 @@
     form( name = '' )
       .col-md-6
         label.panel-form Usuario
-        input.form-control( disabled, type = 'text', ng-model = 'user.username' )
+        input.form-control( disabled, type = 'text', ng-model = 'employee.username' )
         label.panel-form Nombre
         input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'user.name' )
+          ng-model = 'employee.name' )
         label.panel-form Apellido paterno
         input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'user.last_father_name' )
+          ng-model = 'employee.last_father_name' )
         label.panel-form Apellido materno
         input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'user.last_mother_name' )
+          ng-model = 'employee.last_mother_name' )
 
       .col-md-6
         label.panel-form Correo
         input.form-control( ng-disabled = '!editability.bool', type = 'mail',
-          ng-model = 'user.mail' )
+          ng-model = 'employee.mail' )
         label.panel-form Fecha de nacimiento
         input.form-control( ng-disabled = '!editability.bool', type = 'date',
-          ng-model = 'user.date_of_birth' )
+          ng-model = 'employee.date_of_birth' )
         label.panel-form Dirección
         input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'user.address' )
+          ng-model = 'employee.address' )
         label.panel-form Teléfono
         input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'user.phone' )
+          ng-model = 'employee.phone' )
 
         br
         button.btn.btn-info.btn-block( ng-disabled = '!editability.bool',

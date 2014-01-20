@@ -6,7 +6,7 @@ department.$inject = ['$http'];
 function department ( http ) {
   var departments = new Service();
 
-  departments.addPostPetition( 'getDepartments', '/all/departments/data', http, 
+  departments.addPostPetition( 'getDepartments', '/all/departments/none/data', http, 
     returnData, onError );
 
   departments.addPostPetition( 'saveDepartment', '/departments/department/new', 

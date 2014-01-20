@@ -9,31 +9,31 @@ block content
     .col-md-3.text-center
       img.img-rounded.profile-pic(src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=180")
       h3
-        span( ng-bind = 'user.name' )
+        span( ng-bind = 'employee.name' )
         br
-        span( ng-bind = 'user.last_father_name ')
+        span( ng-bind = 'employee.last_father_name ')
         span &nbsp;
-        span( ng-bind = 'user.last_mother_name')
+        span( ng-bind = 'employee.last_mother_name')
         br
-        small( ng-bind = 'user.username' )
+        small( ng-bind = 'employee.username' )
       .col-md-10.profile-info
         .text-left
           h4
             span.glyphicon.glyphicon-briefcase
             span &nbsp;
-            span( ng-bind = 'user.profile.employment' )
+            span( ng-bind = 'employee.profile.employment' )
           h4
             span.glyphicon.glyphicon-home
             span &nbsp;
-            span( ng-bind = 'user.profile.department' )
+            span( ng-bind = 'employee.profile.department' )
           h4
             span.glyphicon.glyphicon-envelope
             span &nbsp;
-            span( ng-bind = 'user.mail' )
+            span( ng-bind = 'employee.mail' )
           h4
             span.glyphicon.glyphicon-earphone 
             span &nbsp;
-            span( ng-bind = 'user.phone' )
+            span( ng-bind = 'employee.phone' )
     .col-md-9
       ul.nav.nav-tabs
         li.active
