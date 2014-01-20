@@ -106,7 +106,12 @@ function newTaskController ( scope, tasks, users ) {
   };
 
   scope.newTask = function () {
+    console.log(scope.task.deadline);
     scope.task.creation_date = new Date();
+    scope.task.deadline = new Date( scope.task.deadline );
+    console.log(scope.task.deadline);
+    scope.task.deadline.setDate(scope.task.deadline.getDate() + 1);
+    console.log(scope.task.deadline);
     var params = {};
     params.task = scope.task;
     var flag = false;

@@ -1,5 +1,4 @@
 function tasksController ( scope, tasks ) {
-  var datos = [];
   tasks.getAllTasks().success( function ( data ) {
     scope.tasks =  data;
     loadtoCalendar( scope );
@@ -116,17 +115,4 @@ function tasksController ( scope, tasks ) {
   };
   /* event sources array*/
   scope.eventSources = [scope.events, scope.eventsF];
-}
-
-function loadtoCalendar ( scope ) {
-  var event = {};
-  scope.tasks.forEach(function (element, array, index) {
-    event = {
-      title: element.title,
-      start: element.creation_date,
-      end: element.deadline,
-      className: ['openSesame']
-    }
-    scope.addEvent(event);
-  });
 }
