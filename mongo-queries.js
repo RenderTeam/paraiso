@@ -117,37 +117,31 @@ mongoose.connect( conectionString, function ( err ) {
       res.send( { status: true } );
     });
   };
-//Departments
 //Employee
   exports.updateEmployee = function ( req, res ) {
     var condition = {
           username: req.body.user.username
         },
         update = req.body.user;
-
     Employee.update( condition, update, 
       function ( err, number, raw ) {
         res.send();
       }
     );
   }
-
-//Employment
-
-  exports.getEmploymentsByDepartment = function ( req, res ) {
+  exports.updatePermission = function ( req, res ) {
     var condition = {
-      department: req.body.department
-    }
-
-    var query = Employment.find( condition );
-
-    query.select('-id').exec( function ( err, employments ) {
-      if ( err ) { throw err };
-      res.send( employments );
-    } );
-  }
-
-//EmploymentsTree
+          username: req.body.username
+        },
+        update = {
+          permissions: req.body.permissions
+        };
+    Permission.update( condition, update, 
+      function ( err, number, raw ) {
+        res.send();
+      }
+    );
+  };
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
         child   = req.body.employment.name,
@@ -178,6 +172,33 @@ mongoose.connect( conectionString, function ( err ) {
         }
       );
     });
+  };
+//Employment
+
+  exports.getEmploymentsByDepartment = function ( req, res ) {
+    var condition = {
+      department: req.body.department
+    }
+
+    var query = Employment.find( condition );
+
+    query.select('-id').exec( function ( err, employments ) {
+      if ( err ) { throw err };
+      res.send( employments );
+    } );
+  }
+
+  exports.getTasksFromUser = function ( req, res ) {
+    var condition = {};
+    condition.assigned = req.user.username;
+    var query = Task.find( condition );
+    
+    query.select('assigned deadline description title').exec(
+      function ( err, task ) {
+        if ( err ) { throw err; }
+        res.send( task );
+      }
+    );
   };
 
   exports.getSmallEmploymentsTree = function ( req, res ) {
@@ -218,20 +239,7 @@ mongoose.connect( conectionString, function ( err ) {
 //Permission
 
 
-  exports.updatePermission = function ( req, res ) {
-    var condition = {
-          username: req.body.username
-        },
-        update = {
-          permissions: req.body.permissions
-        };
-    
-    Permission.update( condition, update, 
-      function ( err, number, raw ) {
-        res.send();
-      }
-    );
-  };
+  
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,
@@ -278,56 +286,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.redirect('/');
     }
   };
-//Tasks
-  /**
-   * Obtains one specified task
-   * @param {req} Request from express
-   * @param {res} Response from express
-   * @return {task} Returns the task
-   */
-  
-  exports.getTasks = function ( req, res ) {
-    var query = Task.find();
-
-    query.select('assigned deadline description title creation_date').exec(
-      function ( err, tasks ) {
-        if ( err ) { throw err; }
-        res.send( tasks );
-      }
-    );
-  };
-
-  exports.getTasksFromUser = function ( req, res ) {
-    console.log(req.headers);
-    var condition = {};
-    condition.assigned = req.user.username;
-    var query = Task.find( condition );
-    
-    query.select('assigned deadline description title').exec(
-      function ( err, task ) {
-        if ( err ) { throw err; }
-        res.send( task );
-      }
-    );
-  };
-
-
-//User
-  exports.getUsersNames = function ( req, res ) {
-    var query = User.find();
-
-    query.select('username -_id').exec(
-      function ( err, users ) {
-        if ( err ) {
-          console.log( err );
-          res.send( err );
-        }
-        console.log( users );
-        res.send( users );
-      }
-    );
-  };
-
 
 // Form buider mock
 

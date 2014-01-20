@@ -42,57 +42,18 @@ employeeSchema.post( 'save', function ( doc ) {
     username: doc.username,
     permissions: [
       {
-        module: 'tasks',
-        label:  'Tareas',
-        status: 'danger',
-        actions: [
-          {
-            what:   'access',
-            label:  'Acceder',
-            value:  false
-          },
-          {
-            what:   'remove',
-            label:  'Eliminar',
-            value:  false
-          }
-        ]
-      },
-      {
-        module: 'control_panel',
-        label:  'Panel de control',
-        status: 'warning',
-        actions: [
-          {
-            what:   'access',
-            label:  'Acceder',
-            value:  true
-          },
-          {
-            what:   'remove',
-            label:  'Eliminar',
-            value:  false
-          }
-        ]
-      },
-      {
-        module: 'organizational_structure',
-        label:  'Estructura organizacional',
+        module: 'departments',
+        label:  'Departamentos',
         status: 'success',
         actions: [
           {
-            what:   'access',
+            what:   'read',
             label:  'Acceder',
             value:  true
           },
           {
-            what:   'modificar',
-            label:  'Modificar',
-            value:  true
-          },
-          {
-            what:   'remove',
-            label:  'Eliminar',
+            what:   'write',
+            label:  'Escribir',
             value:  true
           }
         ]

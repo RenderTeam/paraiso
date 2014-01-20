@@ -11,8 +11,7 @@ function departmentsChartController ( scope, departments, employment, employment
         if ( index + 1 < array.length ) {
           createDepartment( element.name, chart );
         } else {
-          var lol = createDepartment( element.name, chart, function ( lol ) {
-            console.log(lol);
+          createDepartment( element.name, chart, function ( lol ) {
             chartConstructor( lol )
           });
         }
@@ -21,8 +20,7 @@ function departmentsChartController ( scope, departments, employment, employment
     } ).
     error();
 
-  function createDepartment ( department, chart, cb ) {
-    
+  function createDepartment ( department, chart, callback ) {
     employment.getEmploymentsByDepartment( { department: department }).
       success( function ( employments ) {
         if ( employments.length < 1 ){
@@ -34,8 +32,8 @@ function departmentsChartController ( scope, departments, employment, employment
               var children = [];
               children.push(smallTree);
               chart.children.push( { name: department, children: children, size: 1 } );
-              if (cb !== undefined) {
-                cb ( chart );
+              if ( callback !== undefined) {
+                callback ( chart );
               }
             } ).
             error();
@@ -58,7 +56,7 @@ function departmentsChartController ( scope, departments, employment, employment
   }
 }
 
-function chartConstructor ( hommie ) {
+function chartConstructor ( chart ) {
   var w = 1100,
       h = 800,
       r = 600,
@@ -77,8 +75,8 @@ function chartConstructor ( hommie ) {
     .append("svg:g")
       .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
-  node = root = hommie;
-  var nodes = pack.nodes(hommie);
+  node = root = chart;
+  var nodes = pack.nodes(chart);
 
   vis.selectAll("circle")
       .data(nodes)

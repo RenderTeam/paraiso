@@ -89,41 +89,41 @@ if ( 'development' == app.get('env') ) {
 // POST
   //All
   app.post( '/all/:schema/data', queries.privateContent, queries.getAll );
+
   //Single
   app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
   app.post( '/getEmploymentsTree', queries.privateContent, 
     queries.getEmploymentsTree );
-  //New
-  app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
-  app.post( '/saveTask', queries.privateContent, queries.saveTask );
-  app.post( '/saveEmployment', queries.privateContent, 
-    queries.updateEmploymentsTree, queries.saveEmployment );
-  //Departments
-  //Employees
-  app.post( '/updateEmployee', queries.privateContent, queries.updateEmployee );
-  // Employments
   app.post( '/getEmploymentsByDepartment', queries.privateContent,
     queries.getEmploymentsByDepartment );
   // EmploymentsTree
   app.post( '/getSmallEmploymentsTree', queries.privateContent, 
     queries.getSmallEmploymentsTree );
-  //Permissions
-  app.post( '/updatePermission', queries.privateContent, 
-    queries.updatePermission );
-  //Tasks
   app.post( '/getTasksFromUser', queries.privateContent, 
     queries.getTasksFromUser );
+
+  //New
+  app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
+  app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  app.post( '/saveEmployment', queries.privateContent, 
+    queries.updateEmploymentsTree, queries.saveEmployment );
+
+  //Update
+  //Employees
+  app.post( '/updateEmployee', queries.privateContent, queries.updateEmployee );
+  app.post( '/updatePermission', queries.privateContent, 
+    queries.updatePermission );
+  // Employments
+  //Permissions
+  //Tasks
   //Extras
   app.post( '/sendMail', queries.privateContent, mail.sendMail );
-  app.post( '/getTasks', queries.privateContent, queries.getTasks );
 
   //Session
   app.post( '/login', queries.login );
   app.post( '/logout', queries.logout);
   
   //Users
-  app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
-
   app.post( '/createForm', queries.createForm );
 
 http.createServer( app ).listen( config.port, function () {
