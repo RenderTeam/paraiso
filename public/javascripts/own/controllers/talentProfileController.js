@@ -12,8 +12,8 @@ function talentProfileController ( scope, employee, users ) {
 
     employee.getOneEmployee( params ).
       success( function ( data ) {
-        scope.user = data;
-        scope.user.date_of_birth = dateRawToInputFormat( data.date_of_birth );
+        scope.employee = data;
+        scope.employee.date_of_birth = dateRawToInputFormat( data.date_of_birth );
       }).
       error();
   }
@@ -32,7 +32,8 @@ function talentProfileController ( scope, employee, users ) {
 
   scope.updateEmployee = function () {
     var params = {
-      user: scope.user
+      username: scope.employee.username,
+      employee: scope.employee
     };
 
     employee.updateEmployee( params ).

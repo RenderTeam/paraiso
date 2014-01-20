@@ -6,9 +6,10 @@ users.$inject = ['$http'];
 function users ( http ) {
   var user = new Service();
 
-  user.addPostPetition( 'saveUser', '/saveUser', http, returnData, onError );
+  user.addPostPetition( 'saveUser', '/users/user/new', http, returnData, onError );
 
-  user.addPostPetition( 'getOneUser', '/getOneUser', http, returnData, onError );
+  user.addPostPetition( 'getOneUser', '/single/users/username/data', http, 
+    returnData, onError );
 
   user.addPostPetition( 'getAllUsersNames', '/getUsersNames', http, returnData, 
     onError );

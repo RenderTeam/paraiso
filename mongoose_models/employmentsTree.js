@@ -9,7 +9,8 @@ var EmploymentsTreeSchema = new Schema({
 //.add() is necesary if we want the recursive model
 EmploymentsTreeSchema.add({
   name: String,
-  children:   [ EmploymentsTreeSchema ]
+  children:   [ EmploymentsTreeSchema ],
+  size: { type: Number, default: 1 }
   //ancestors:  [String],
 });
 

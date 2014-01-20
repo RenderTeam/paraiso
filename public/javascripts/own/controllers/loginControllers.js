@@ -4,9 +4,12 @@ loginAppModule.controller( 'LoginController', loginController );
 
 loginController.$inject = [ '$scope', '$http' ];
 function loginController( scope, http ){
-
+console.log(scope);
+console.log(scope.user);
   scope.login = function () {
+
     http.post( '/login', scope.user )
+
     .success( function ( data, status, headers, config ) {
       if ( data.flag ) {
         window.location.href = ('/tasks/tasks');

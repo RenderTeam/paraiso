@@ -6,14 +6,14 @@ permissions.$inject = ['$http'];
 function permissions ( http ) {
   var permission = new Service();
 
-  permission.addPostPetition( 'getAllPermissionsStatus', 
-    '/getAllPermissionsStatus', http, returnData, onError );
+  permission.addPostPetition( 'getAllPermissionsStatus', '/all/permissions/none/data',
+    http, returnData, onError );
 
   permission.addPostPetition( 'getOnePermission', 
-    '/getOnePermission', http, returnData, onError );
+    '/single/permissions/username/data', http, returnData, onError );
 
   permission.addPostPetition( 'updatePermission', 
-    '/updatePermission', http, returnData, onError );
+    '/permissions/permissions/username/update', http, returnData, onError );
 
   return permission;
 }

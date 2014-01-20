@@ -6,12 +6,18 @@ tasks.$inject = ['$http'];
 function tasks ( http ) {
   var task = new Service();
 
-  task.addPostPetition( 'getAllTasks', '/getTasks', http, returnData, onError );
+  task.addPostPetition( 'getAllTasks', '/all/tasks/none/data', http, returnData, 
+    onError );
 
-  task.addPostPetition( 'getTasksFromUser', '/getTasksFromUser', http, 
+  /*
+   * The third parameter is an exception check mongo-queries.js/getAll to see
+   * the correct implementation
+   */
+  task.addPostPetition( 'getTasksFromUser', '/all/tasks/tasks/data', http, 
     returnData, onError );
 
-  task.addPostPetition( 'getOneTask', '/getOneTask', http, returnData, onError );
+  task.addPostPetition( 'getOneTask', '/single/tasks/creation_date/data', http, 
+    returnData, onError );
 
   task.addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );
 
@@ -19,9 +25,11 @@ function tasks ( http ) {
 }
 
 function returnData ( response ) {
+  console.log( "LLLLLLLLOOOOOOOOOOOOOOOLLLLLLLLLL");
   return response.data;
 }
 
 function onError ( data, status ) {
+
   console.log( status );
 }

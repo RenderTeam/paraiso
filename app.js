@@ -90,53 +90,35 @@ app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
 app.get( '/tasks/tasks', queries.privateContent, queries.log, routes.tasks );
 
 // POST
-//Departments
-app.post( '/getDepartments', queries.privateContent, queries.getDepartments );
-app.post( '/saveDepartment', queries.privateContent, queries.saveDepartment );
-//Employees
-app.post( '/getEmployees', queries.privateContent, queries.getEmployees );
-app.post( '/getOneEmployee', queries.privateContent, queries.getOneEmployee );
-app.post( '/updateEmployee', queries.privateContent, queries.updateEmployee );
-app.post( '/saveEmployee', queries.privateContent, queries.saveEmployee );
-// Employments
-app.post( '/getEmployments', queries.privateContent, queries.getEmployments );
-app.post( '/getEmploymentsByDepartment', queries.privateContent,
-queries.getEmploymentsByDepartment );
-app.post('/saveEmployment', queries.privateContent,
-queries.updateEmploymentsTree, queries.saveEmployment );
-// EmploymentsTree
-app.post( '/getEmploymentsTree', queries.privateContent,
-queries.getEmploymentsTree );
-app.post( '/getSmallEmploymentsTree', queries.privateContent,
-queries.getSmallEmploymentsTree );
-//Permissions
-app.post( '/getAllPermissionsStatus', queries.privateContent,
-queries.getAllPermissionsStatus );
-app.post( '/getOnePermission', queries.privateContent,
-queries.getOnePermission );
-app.post( '/updatePermission', queries.privateContent,
-queries.updatePermission );
-//Tasks
-app.post( '/getOneTask', queries.privateContent,
-queries.log,
-queries.getOneTask );
-//Extras
-app.post( '/sendMail', queries.privateContent, mail.sendMail );
-app.post( '/getTasks', queries.privateContent, queries.getTasks );
-app.post( '/getTasksFromUser', queries.privateContent,
-queries.getTasksFromUser );
-app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  //All
+  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
 
-//Session
-app.post( '/login', queries.login );
-app.post( '/logout', queries.logout );
+  //Single
+  app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
+  app.post( '/getEmploymentsTree', queries.privateContent, 
+    queries.getEmploymentsTree );
+  app.post( '/getSmallEmploymentsTree', queries.privateContent, 
+    queries.getSmallEmploymentsTree );
 
-//Users
-app.post( '/getOneUser', queries.privateContent, queries.getOneUser );
-app.post( '/getUsersNames', queries.privateContent, queries.getUsersNames );
-app.post( '/saveUser', queries.privateContent, queries.saveUser );
+  //New
+  app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
+  app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  app.post( '/saveEmployment', queries.privateContent, 
+    queries.updateEmploymentsTree, queries.saveEmployment );
 
-app.post( '/createForm', queries.createForm );
+  //Update
+  app.post( '/:schema/:document/:filter/update', queries.privateContent, 
+    queries.update );
+
+  //Extras
+  app.post( '/sendMail', queries.privateContent, mail.sendMail );
+
+  //Session
+  app.post( '/login', queries.login );
+  app.post( '/logout', queries.logout);
+  
+  //Users
+  app.post( '/createForm', queries.createForm );
 
 http.createServer( app ).listen( config.port, function () {
     console.log( 'Express server listening on port ' + config.port );

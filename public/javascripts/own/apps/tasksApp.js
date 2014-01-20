@@ -1,6 +1,6 @@
 var taskAppModule  = angular.module( 'taskApp',
   [ 'services.tasks', 'services.users' , 'ui.calendar' , 'ui.bootstrap' ,
-   'uiCalendarCtrl'] );
+   'uiCalendarCtrl', 'Validations'] );
 
 myTasksController.$inject = [ '$scope', 'Tasks' ];
 taskAppModule.controller( 'MyTasksController', myTasksController );
