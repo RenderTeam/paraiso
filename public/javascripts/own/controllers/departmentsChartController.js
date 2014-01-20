@@ -12,9 +12,9 @@ function departmentsChartController ( scope, departments, employment, employment
           createDepartment( element.name, chart, function ( finalChart ) {
             console.log( finalChart );
 
-            var w = 1100,
-                h = 700,
-                r = 500,
+            var w = 1280,
+                h = 800,
+                r = 720,
                 x = d3.scale.linear().range([0, r]),
                 y = d3.scale.linear().range([0, r]),
                 node,
@@ -85,7 +85,7 @@ function departmentsChartController ( scope, departments, employment, employment
       } );
 
     } ).
-    error();
+    error(function(){console.log(lol);});
 
   
 
