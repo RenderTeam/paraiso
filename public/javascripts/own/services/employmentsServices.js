@@ -6,11 +6,11 @@ employment.$inject = ['$http'];
 function employment ( http ) {
   var employments = new Service();
 
-  employments.addPostPetition( 'getEmployments', '/getEmployments', http, 
+  employments.addPostPetition( 'getEmployments', '/all/employments/none/data', http, 
     returnData, onError );
 
   employments.addPostPetition( 'getEmploymentsByDepartment', 
-    '/getEmploymentsByDepartment', http, returnData, onError );
+    '/all/employments/department/data', http, returnData, onError );
 
   employments.addPostPetition( 'saveEmployment', '/saveEmployment', http, 
     returnData, onError );
