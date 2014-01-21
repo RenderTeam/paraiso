@@ -110,18 +110,6 @@ function CalendarCtrl($scope) {
       eventResize: $scope.alertOnResize
     }
   };
-
-  $scope.changeLang = function() {
-    if($scope.changeTo === 'Hungarian'){
-      $scope.uiConfig.calendar.dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
-      $scope.changeTo= 'English';
-    } else {
-      $scope.uiConfig.calendar.dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
-      $scope.changeTo = 'Hungarian';
-    }
-  };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
   $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];

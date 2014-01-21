@@ -37,8 +37,6 @@ function tasksController ( scope, tasks ) {
   };
 
   scope.calEventsExt = {
-     color: '#f00',
-     textColor: 'yellow',
      events: [ 
         {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),
         end: new Date(y, m, d, 14, 0),allDay: false},
@@ -100,6 +98,13 @@ function tasksController ( scope, tasks ) {
   /* config object */
   scope.uiConfig = {
     calendar:{
+      monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio',
+                   'Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+      monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep',
+                        'Oct','Nov','Dec'],
+      dayNames : ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves','Viernes',
+                  'Sábado'],
+      dayNamesShort : ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
       height: 450,
       editable: true,
       theme: false,
@@ -108,9 +113,6 @@ function tasksController ( scope, tasks ) {
         center: '',
         right: 'today prev,next'
       },
-      dayClick: scope.alertEventOnClick,
-      eventDrop: scope.alertOnDrop,
-      eventResize: scope.alertOnResize
     }
   };
   /* event sources array*/

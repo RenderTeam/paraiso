@@ -27,7 +27,28 @@ block content
 
       #calendar.span8.calendar( ng-model = 'eventSources', 
         ui-calendar = 'uiConfig.calendar' )
-
+      #taskView.modal.fade(tabindex='-1', role='dialog', 
+        aria-labelledby='myModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header( class = '{{duty.label}}-ribbon')
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Descripcion de la tarea
+                  .pageheader
+                    h1
+                      span( ng-bind = 'duty.title')
+                  
+              .modal-body
+                .col-md-4.left-wrapper.text-center
+                  .task-status
+                    .priority( ng-bind = 'duty.priority')
+                    .status( ng-bind = 'duty.status')
+                    .assigned( ng-bind = 'duty.assigned')
+                  div.deadline( ng-bind = 'duty.deadline | date:"dd/MM/yyyy"')
+                  div.deadline Restan: {{duty.daysToDeadline}} días.
+                .col-md-8.right-wrapper
+                  div( ng-bind = 'duty.description')
+              p.clearfix
 block custom-scripts
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')
   script( src='/javascripts/vendor/jquery-ui/ui/jquery-ui.js')

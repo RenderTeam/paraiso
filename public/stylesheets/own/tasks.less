@@ -71,53 +71,29 @@ body{
   background-color: #dc5950 ;
   border: 1px solid #dc5950 ;
 }
-.NC, .task-label-1{ background-color: #d8d03f ;}
-.AC, .task-label-2{ background-color: #61b3df ;}
-.AP, .task-label-3{ background-color: #72e277 ;}
-.LOL, .task-label-4{ background-color: #bc83e6 ;}
+.NC, .task-label-1{
+  background-color: #d8d03f !important;
+  border-color: #d8d03f !important;
+  color:#333333 !important;
+}
+.AC, .task-label-2{
+  background-color: #61b3df !important;
+  border-color: #61b3df !important;
+  color:#333333 !important;
+}
+.AP, .task-label-3{
+  background-color: #72e277 !important;
+  border-color: #72e277 !important;
+  color:#333333 !important;
+}
+.LOL, .task-label-4{
+  background-color: #bc83e6 !important;
+  border-color: #bc83e6 !important;
+  color:#333333 !important;
+}
 
 
 /*********************************************************/
 /* MODAL FOR AGENDA  */
 /*********************************************************/
 
-.modal-header{
-  border-bottom: 5px solid #e5e5e5;
-}
-
-.blue-ribbon{
-  border-bottom-color: blue;
-}
-
-.left-wrapper{
-  .deadline{
-    padding: 10px 0;
-    border-bottom: 1px solid green;
-  }
-
-  .task-status{
-
-    width: 100%;
-    display: table;
-    border-bottom: 1px solid green;
-
-    .assigned,
-    .priority,
-    .status{
-      float: left;
-      width: 33.333333%;
-    }
-
-    .assigned{
-
-    }
-
-    .priority{
-    }
-
-    .status{
-      border-left: 1px solid green;
-      border-right: 1px solid green;
-    }
-  }
-}
