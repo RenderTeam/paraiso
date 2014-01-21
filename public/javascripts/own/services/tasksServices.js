@@ -19,13 +19,15 @@ function tasks ( http ) {
   task.addPostPetition( 'getOneTask', '/single/tasks/creation_date/data', http, 
     returnData, onError );
 
+  task.addPostPetition( 'updateOneTask', '/tasks/task/description/update', http, 
+    returnData, onError );
+
   task.addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );
 
   return task;
 }
 
 function returnData ( response ) {
-  console.log( "LLLLLLLLOOOOOOOOOOOOOOOLLLLLLLLLL");
   return response.data;
 }
 

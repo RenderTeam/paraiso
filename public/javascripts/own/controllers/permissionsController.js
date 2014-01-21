@@ -34,12 +34,15 @@ function permissionsController ( scope, permission ){
   };
 
   scope.updatePermissions = function () {
+
     var params = {
       username:     scope.permission.username,
       permissions:  {
         permissions: toUpdate
       }
     };
+    console.log('TOUPDATE',toUpdate);
+    console.log('PARAMETROS',params);
 
     permission.updatePermission( params ).
       success(function (){}).

@@ -43,7 +43,6 @@ mongoose.connect( conectionString, function ( err ) {
     var condition = {},
         filter    = req.params.filter,
         schema    = req.params.schema;
-
     switch ( filter ) {
       case 'none':
         break;
@@ -70,7 +69,6 @@ mongoose.connect( conectionString, function ( err ) {
     var condition = {},
         filter = req.params.filter,
         schema = req.params.schema;
-
     condition[filter] = req.body[filter];
 
     var query = schemas[schema].findOne( condition );
@@ -99,10 +97,14 @@ mongoose.connect( conectionString, function ( err ) {
         doc       = req.params.document,
         condition = {},
         update    = {};
-
+    console.log('Schema', schema );
+    console.log('Filter', filter );
+    console.log('Document', doc );
     condition[filter] = req.body[filter];
     update            = req.body[doc];
-
+    console.log('condition', condition );
+    console.log('condition', condition[filter] );
+    console.log('Update', update );
     schemas[schema].update( condition, update, function ( err, number, raw ) {
       if ( err ) { throw err; };
       res.send();
@@ -142,7 +144,6 @@ mongoose.connect( conectionString, function ( err ) {
   exports.saveTask = function ( req, res ) {
     req.body.task.creator = req.user.username;
     var newTask = new Task( req.body.task );
-
     newTask.save( function ( err ) {
       if ( err ) {
         console.log( err );

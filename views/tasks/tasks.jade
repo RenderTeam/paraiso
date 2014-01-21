@@ -34,20 +34,29 @@ block content
               .modal-header( class = '{{duty.label}}-ribbon')
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
                 h4.modal-title Descripcion de la tarea
+                  span#special {{duty.label}}
                   .pageheader
                     h1
                       span( ng-bind = 'duty.title')
-                  
+                    .label.label-default.pull-right Desde el {{duty.creation_date | date:'dd/MM/yyyy'}}
               .modal-body
-                .col-md-4.left-wrapper.text-center
-                  .task-status
-                    .priority( ng-bind = 'duty.priority')
-                    .status( ng-bind = 'duty.status')
-                    .assigned( ng-bind = 'duty.assigned')
-                  div.deadline( ng-bind = 'duty.deadline | date:"dd/MM/yyyy"')
-                  div.deadline Restan: {{duty.daysToDeadline}} días.
-                .col-md-8.right-wrapper
-                  div( ng-bind = 'duty.description')
+                  div.list-group
+                    a.list-group-item Prioridad
+                      span.label.pull-right.label-success {{duty.priority}}
+                    a.list-group-item Estado de la tarea
+                      span.label.pull-right.label-primary(ng-bind = 'duty.status')
+                    a.list-group-item Asignada por 
+                      span.label.pull-right.label-info(ng-bind = 'duty.assigned')
+                    a.list-group-item Fecha de fin
+                      span.label.pull-right.label-warning(
+                        ng-bind = 'duty.deadline | date:"dd/MM/yyyy"')
+                    a.list-group-item Días restantes
+                      span.label.pull-right.label-danger {{duty.daysToDeadline}}
+                    a.list-group-item
+                      h5.list-group-item-heading Descripción
+                      p( ng-bind = 'duty.description')
+                  button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
+                    ng-click='taskUpdateDone( duty )') Marcar como realizada
               p.clearfix
 block custom-scripts
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')

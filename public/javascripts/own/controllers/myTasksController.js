@@ -7,19 +7,49 @@ function myTasksController ( scope, tasks ) {
   //Call to one task when an user click the expand button
   scope.callOfDuty = function () {
     var params = {};
-
     params = this.task;
 
     tasks.getOneTask( params ).
       success( function ( data ) {
         var today = new Date(),
             deadline = new Date( data.deadline );
-
         data.daysToDeadline = deadline.getDate() - today.getDate();
-
         scope.duty = data;
       }).
       error();
+  };
+
+  //Call an undate one task and validate user.
+  scope.taskUpdateDone = function ( task ) {
+    console.log('message');
+
+    var hola = [];
+    var adios = {
+          title: 'Enrique'
+        };
+    hola.push(adios);
+    var params = {
+      description: task.description,
+      task: hola
+    };
+    console.log('TOUPDATE',hola);
+    console.log('PARAMETROS',params);
+    tasks.updateOneTask( params ).success(function(data){
+      console.log('DONE', data);
+    }).error(function(error){
+      console.log('EERRRROR');
+    });
+    /*var params = {};
+    params = this.task;
+
+    tasks.getOneTask( params ).
+      success( function ( data ) {
+        var today = new Date(),
+            deadline = new Date( data.deadline );
+        data.daysToDeadline = deadline.getDate() - today.getDate();
+        scope.duty = data;
+      }).
+      error();*/
   };
   scope.callOfClickCalendar = function (data) {
     var params = {};
@@ -49,10 +79,7 @@ function myTasksController ( scope, tasks ) {
     alert();
   }
   scope.alertEventOnClick = function( date, allDay, jsEvent, view ){
-    console.log( date );
       scope.$apply(function(){
-        console.log('date', date );
-        alert( date );
       });
   };
   /* add and removes an event source of choice */
@@ -101,15 +128,11 @@ function myTasksController ( scope, tasks ) {
       },
       
       eventClick: function( calEvent, jsEvent, view ) {
-        console.log(calEvent.title);
-        console.log(view.name);
-        console.log(scope.eventSources);
-        console.log(scope.tasks.$index);
+        
         scope.callOfClickCalendar(scope);
       }
     }
   };
-  console.log('scope');
   /* event sources array*/
   scope.eventSources = [scope.events];
 }
@@ -118,7 +141,6 @@ function loadtoCalendar ( scope ) {
   var event = {};
   scope.tasks.forEach(function (element, array, index) {
     var date = new Date(element.deadline);
-    console.log(element );
     event = {
       title: element.title,
       start: element.creation_date,
