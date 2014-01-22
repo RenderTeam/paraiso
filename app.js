@@ -66,20 +66,20 @@ app.get( '/', routes.index );
 app.get( '/forms_generator/custom_form',
 queries.privateContent, routes.create_form );
 // Organizational Structure
-//Departments
-app.get( '/organization/departments/management', queries.privateContent,
-routes.departments );
-app.get( '/organization/departments/chart',
-queries.privateContent, routes.departments_chart );
-//Employments
-app.get( '/organization/employments/management', getMiddlewares, 
-  routes.employments_management );
-app.get( '/organization/employments/tree', getMiddlewares, routes.employments_tree );
-//Talent
-app.get( '/organization/employees/management',
-queries.privateContent, queries.log, routes.talent_management );
-app.get( '/organization/employees/:employee',
-queries.privateContent, routes.talent_management_profile );
+  //Departments
+  app.get( '/organization/departments/management', getMiddlewares,
+    routes.departments );
+  app.get( '/organization/departments/chart',
+    getMiddlewares, routes.departments_chart );
+  //Employments
+  app.get( '/organization/employments/management', getMiddlewares, 
+    routes.employments_management );
+  app.get( '/organization/employments/tree', getMiddlewares, routes.employments_tree );
+  //Talent
+  app.get( '/organization/employees/management', getMiddlewares, 
+    routes.talent_management );
+  app.get( '/organization/employees/:employee', getMiddlewares, 
+    routes.talent_management_profile );
 // Resources
 app.get( '/resources', queries.privateContent, routes.resources );
 // Tasks

@@ -402,7 +402,7 @@ mongoose.connect( conectionString, function ( err ) {
       if ( accessFlag ) {
         next();
       } else {
-        res.render( 'no_access', { 
+        res.render( 'special/no_access', { 
           currentUser : req.user.username
         });
       }

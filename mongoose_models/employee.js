@@ -42,6 +42,50 @@ employeeSchema.post( 'save', function ( doc ) {
     username: doc.username,
     permissions: [
       {
+        module: 'employees',
+        label:  'Talento humano',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'departments',
+        label:  'Departmentos',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
         module: 'employments',
         label:  'Puestos',
         status: 'success',
