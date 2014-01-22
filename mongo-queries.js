@@ -220,10 +220,6 @@ mongoose.connect( conectionString, function ( err ) {
 
     next();
   };
-//Permission
-
-
-  
 //Session handlers
   exports.login = function( req, res ) {
     var user = req.body.user,
@@ -303,3 +299,9 @@ mongoose.connect( conectionString, function ( err ) {
   /*Change a collection target
     User.collection.name = 'test';
   */
+
+  exports.checkAccess = function ( req, res, next ) {
+    // if (  ) { 
+
+    // }
+  }
