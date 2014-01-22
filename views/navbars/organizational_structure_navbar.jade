@@ -2,24 +2,24 @@ extends navbar
 
 block custom-navigation
   li
-    a( href = '/organizational_structure/talent_management') Talento Humano
+    a( href = '/organization/employees/management') Talento Humano
   li.dropdown
     a.dropdown-toggle( data-toggle='dropdown',  href = '#' ) Departmentos&nbsp;
         span.caret
       ul.dropdown-menu
         li
-          a( href = '/organizational_structure/departments/departments') 
+          a( href = '/organization/departments/management') 
             |Gestionar Departmentos
         li
-          a( href = '/organizational_structure/departments/departments_chart') 
+          a( href = '/organization/departments/chart') 
             |Ver gráfica
   li.dropdown
     a.dropdown-toggle( data-toggle='dropdown',  href = '#' ) Puestos&nbsp;
         span.caret
       ul.dropdown-menu
         li
-          a( href = '/organizational_structure/employments/employments_management') 
+          a( href = '/organization/employments/management') 
             |Gestionar Puestos
         li
-          a( href = '/organizational_structure/employments/employments_tree') 
+          a( href = '/organization/employments/tree') 
             |Ver árbol

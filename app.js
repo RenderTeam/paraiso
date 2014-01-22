@@ -51,10 +51,12 @@ if ( 'development' == app.get('env') ) {
     app.use( express.errorHandler() );
 }
 
+var getMiddlewares = [ queries.privateContent, queries.checkGetAccess ];
+var postMiddlewares = [ queries.privateContent, queries.checkPostAccess ];
+
 // GET
 // Control Panel
-app.get( '/control_panel', queries.privateContent, routes.control_panel );
-app.get( '/control_panel/permissions', queries.privateContent,
+app.get( '/control-panel/permissions', queries.privateContent,
 routes.permissions );
 //Extras
 app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
@@ -65,19 +67,16 @@ app.get( '/forms_generator/custom_form',
 queries.privateContent, routes.create_form );
 // Organizational Structure
 //Departments
-app.get( '/organization/departments/:department', queries.privateContent,
+app.get( '/organization/departments/management', queries.privateContent,
 routes.departments );
 app.get( '/organization/departments/chart',
 queries.privateContent, routes.departments_chart );
 //Employments
-app.get( '/organization/employees',
-queries.privateContent, routes.employments_management );
-app.get( '/organization/employments/management',
-queries.privateContent, routes.employments_management );
-app.get( '/organization/employments/tree',
-queries.privateContent, routes.employments_tree );
+app.get( '/organization/employments/management', getMiddlewares, 
+  routes.employments_management );
+app.get( '/organization/employments/tree', getMiddlewares, routes.employments_tree );
 //Talent
-app.get( '/organization/employees',
+app.get( '/organization/employees/management',
 queries.privateContent, queries.log, routes.talent_management );
 app.get( '/organization/employees/:employee',
 queries.privateContent, routes.talent_management_profile );

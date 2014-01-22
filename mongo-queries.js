@@ -367,12 +367,51 @@ mongoose.connect( conectionString, function ( err ) {
     User.collection.name = 'test';
   */
 
-  exports.checkAccess = function ( req, res, next ) {
-    // if (  ) { 
+  exports.checkGetAccess = function ( req, res, next ) {
+    var pathArray = req.route.path.split('/'),
+        permissionIndex = 0,
+        matchFlag = false,
+        accessFlag = false;
 
-    // }
+    var condition = {
+      username: req.user.username
+    };
+
+    var query = schemas.permissions.findOne( condition );
+
+    query.select('-_id -__v -username').exec( function ( err, permission ) {
+      permission.permissions.some( function ( element, index ) {
+        pathArray.some( function ( pathElement, pathIndex ) {
+          if ( pathElement === element.module ) {
+            permissionIndex = index;
+            matchFlag = true;
+            return true;
+          }
+        });
+        return matchFlag;
+      });
+
+      permission.permissions[permissionIndex].actions.some( 
+        function ( element, index, array ) {
+          if ( element.what === 'read' ) {
+            accessFlag = element.value;
+            return true;
+          }
+        });
+
+      if ( accessFlag ) {
+        next();
+      } else {
+        res.render( 'no_access', { 
+          currentUser : req.user.username
+        });
+      }
+    });
   }
 
+  exports.checkPostAccess = function ( req, res, next ) {
+    
+  }
 /** Utility stuff */
 
 function getOperationDate () {
@@ -391,7 +430,7 @@ function getOperationDate () {
 
   operation = day + '/' + month + '/' + year;
 
-var hour = operationDate.getHours(),
+  var hour = operationDate.getHours(),
     minute = operationDate.getMinutes();
 
   return operation + ' @ ' + hour + ':' + minute;
