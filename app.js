@@ -53,16 +53,15 @@ if ( 'development' == app.get('env') ) {
 
 // GET
 // Control Panel
-app.get( '/control_panel', queries.privateContent, routes.control_panel );
-app.get( '/control_panel/permissions', queries.privateContent,
+app.get( '/control-panel', queries.privateContent, routes.control_panel );
+app.get( '/control-panel/permissions', queries.privateContent,
 routes.permissions );
 //Extras
-app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
+app.get( '/extras/mailing', queries.privateContent, routes.send_mail );
 // Index
 app.get( '/', routes.index );
 // Forms Generator
-app.get( '/forms_generator/custom_form',
-queries.privateContent, routes.create_form );
+
 // Organizational Structure
 //Departments
 app.get( '/organization/departments/:department', queries.privateContent,
@@ -74,8 +73,10 @@ app.get( '/organization/employees',
 queries.privateContent, routes.employments_management );
 app.get( '/organization/employments/management',
 queries.privateContent, routes.employments_management );
-app.get( '/organization/employments/tree',
+app.get( '/organization/employments/big/tree',
 queries.privateContent, routes.employments_tree );
+app.get( '/organization/employments/small/tree',
+queries.privateContent, routes.getSmallEmploymentsTree );
 //Talent
 app.get( '/organization/employees',
 queries.privateContent, queries.log, routes.talent_management );
@@ -94,10 +95,6 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
   //Single
   app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
-  app.post( '/getEmploymentsTree', queries.privateContent, 
-    queries.getEmploymentsTree );
-  app.post( '/getSmallEmploymentsTree', queries.privateContent, 
-    queries.getSmallEmploymentsTree );
 
   //New
   app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
@@ -110,14 +107,12 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
     queries.update );
 
   //Extras
-  app.post( '/sendMail', queries.privateContent, mail.sendMail );
+  app.post( '/mailing', queries.privateContent, mail.sendMail );
 
   //Session
   app.post( '/login', queries.login );
   app.post( '/logout', queries.logout);
   
-  //Users
-  app.post( '/createForm', queries.createForm );
 
 http.createServer( app ).listen( config.port, function () {
     console.log( 'Express server listening on port ' + config.port );
