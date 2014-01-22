@@ -1,4 +1,3 @@
-
 /*
  * Module dependencies.
  */
@@ -66,28 +65,28 @@ app.get( '/forms_generator/custom_form',
 queries.privateContent, routes.create_form );
 // Organizational Structure
 //Departments
-app.get( '/organizational_structure/departments/departments', queries.privateContent,
+app.get( '/organization/departments/:department', queries.privateContent,
 routes.departments );
-app.get( '/organizational_structure/departments/departments_chart',
+app.get( '/organization/departments/chart',
 queries.privateContent, routes.departments_chart );
 //Employments
-app.get( '/organizational_structure/employments',
+app.get( '/organization/employees',
 queries.privateContent, routes.employments_management );
-app.get( '/organizational_structure/employments/employments_management',
+app.get( '/organization/employments/management',
 queries.privateContent, routes.employments_management );
-app.get( '/organizational_structure/employments/employments_tree',
+app.get( '/organization/employments/tree',
 queries.privateContent, routes.employments_tree );
 //Talent
-app.get( '/organizational_structure/talent_management',
+app.get( '/organization/employees',
 queries.privateContent, queries.log, routes.talent_management );
-app.get( '/organizational_structure/talent_management/:employee',
+app.get( '/organization/employees/:employee',
 queries.privateContent, routes.talent_management_profile );
 // Resources
 app.get( '/resources', queries.privateContent, routes.resources );
 // Tasks
-app.get( '/tasks/new_task', queries.privateContent, routes.new_task );
-app.get( '/tasks/my_tasks', queries.privateContent, routes.my_tasks );
-app.get( '/tasks/tasks', queries.privateContent, queries.log, routes.tasks );
+app.get( '/tasks/new', queries.privateContent, routes.new_task );
+app.get( '/tasks/own', queries.privateContent, routes.my_tasks );
+app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
 // POST
   //All
