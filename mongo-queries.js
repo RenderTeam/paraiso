@@ -207,21 +207,88 @@ mongoose.connect( conectionString, function ( err ) {
   };
 //Log
   exports.log = function ( req, res, next ) {
-    var log = new Log({
-      user:   req.user.username,
-      where:  req.route.path
-    });
 
-    log.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-      }
-    });
+    console.log( 'the path is: '  + req.route.path );
 
+    switch( true ) {
+
+      case /get/.test( req.route.path ) :
+        console.log('get');
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: visited (find)' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta de datos',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
+      break;
+
+      case /save/.test( req.route.path ) :
+        console.log( 'save' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos creados');
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'Datos creados: ',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+      break;
+      case /update/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos cambiados ' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'update data',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
+      break;
+    }
     next();
   };
 //Session handlers
-  exports.login = function( req, res ) {
+  exports.login = function ( req, res ) {
     var user = req.body.user,
         candidatePassword = req.body.password;
     // fetch user and test password verification
@@ -305,3 +372,27 @@ mongoose.connect( conectionString, function ( err ) {
 
     // }
   }
+
+/** Utility stuff */
+
+function getOperationDate () {
+  var operationDate = new Date(),
+      day = operationDate.getDate(),
+      month = operationDate.getMonth() + 1,
+      year = operationDate.getFullYear();
+
+  if ( day < 10 ) { 
+    day = '0' + day
+  }
+
+  if ( month < 10 ) { 
+    month= '0'+ month
+  } 
+
+  operation = day + '/' + month + '/' + year;
+
+var hour = operationDate.getHours(),
+    minute = operationDate.getMinutes();
+
+  return operation + ' @ ' + hour + ':' + minute;
+}

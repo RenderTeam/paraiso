@@ -2,9 +2,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var logSchema = new Schema({
-  user:   { type: String, required: true },
+  who:   { type: String, required: true },
+  what:   { type: String, required: true},
   where:  { type: String, required: true },
-  date:   { type: Date, default: Date.now }
+  when:   { type: String, required: true }
 });
 
 module.exports = mongoose.model('Log', logSchema);
