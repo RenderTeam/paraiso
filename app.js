@@ -61,7 +61,7 @@ app.get( '/extras/mailing', queries.privateContent, routes.send_mail );
 // Index
 app.get( '/', routes.index );
 // Forms Generator
-
+  app.get( '/forms/new/custom', queries.privateContent, routes.newCustomForm );
 // Organizational Structure
 //Departments
 app.get( '/organization/departments/:department', queries.privateContent,
@@ -75,8 +75,8 @@ app.get( '/organization/employments/management',
 queries.privateContent, routes.employments_management );
 app.get( '/organization/employments/big/tree',
 queries.privateContent, routes.employments_tree );
-app.get( '/organization/employments/small/tree',
-queries.privateContent, routes.getSmallEmploymentsTree );
+/*app.get( '/organization/employments/small/tree',
+queries.privateContent, routes.getSmallEmploymentsTree );*/
 //Talent
 app.get( '/organization/employees',
 queries.privateContent, queries.log, routes.talent_management );

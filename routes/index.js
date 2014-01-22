@@ -24,6 +24,13 @@
       currentUser : req.user.username
     });
   };
+
+  exports.newCustomForm = function ( req, res ) {
+    res.render( 'forms-generator/custom/custom', {
+      currentUser : req.user.username
+    });
+  }
+
 //Index
   exports.index = function ( req, res ) {
     res.render('index', { 
