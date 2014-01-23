@@ -84,8 +84,8 @@ queries.privateContent, routes.create_form );
 app.get( '/resources', queries.privateContent, routes.resources );
 // Tasks
 app.get( '/tasks/new', queries.privateContent, routes.new_task );
-app.get( '/tasks/own', queries.privateContent, routes.my_tasks );
-app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
+app.get( '/tasks/own', getMiddlewares, routes.my_tasks );
+app.get( '/tasks/all', getMiddlewares, routes.tasks );
 
 // POST
   //All
@@ -103,7 +103,7 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
   //New
   app.post( '/:schema/:reference/new', postMiddlewares, queries.save );
-  app.post( '/saveTask', queries.privateContent, queries.saveTask );
+  // app.post( '/saveTask', postMiddlewares, queries.saveTask );
   app.post( '/saveEmployment', queries.privateContent, 
     queries.updateEmploymentsTree, queries.saveEmployment );
 

@@ -107,6 +107,12 @@ mongoose.connect( conectionString, function ( err ) {
     var schema    = req.params.schema,
         reference = req.params.reference;
 
+    switch ( schema ){
+      case 'tasks':
+        req.body[reference].creator = req.user.username;
+        break;
+    }
+
     var newDocument = new schemas[schema]( req.body[reference] );
 
     newDocument.save( function ( err ) {
@@ -160,19 +166,6 @@ mongoose.connect( conectionString, function ( err ) {
       });
     }
   }
-
-  exports.saveTask = function ( req, res ) {
-    req.body.task.creator = req.user.username;
-    var newTask = new Task( req.body.task );
-
-    newTask.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
 //Employee
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
@@ -430,10 +423,15 @@ mongoose.connect( conectionString, function ( err ) {
 
     var condition = {
       username: req.user.username
-    };
+    }; 
 
-    if ( req.params.schema === 'employmentsTrees' ) {
-      pathArray = ['employments'];
+    switch ( req.params.schema ) {
+      case 'employmentsTrees':
+        pathArray = ['employments'];
+        break;
+      case 'users':
+        pathArray = ['employees'];
+        break;
     }
 
     var query = schemas.permissions.findOne( condition );

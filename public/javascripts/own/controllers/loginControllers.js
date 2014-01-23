@@ -12,7 +12,7 @@ console.log(scope.user);
 
     .success( function ( data, status, headers, config ) {
       if ( data.flag ) {
-        window.location.href = ('/tasks/tasks');
+        window.location.href = ('/organization/employees/management');
       }else{
         scope.user = {
           user: '',

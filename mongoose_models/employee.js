@@ -106,6 +106,28 @@ employeeSchema.post( 'save', function ( doc ) {
             value:  true
           }
         ]
+      },
+      {
+        module: 'tasks',
+        label:  'Tareas',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
       }
     ]
   } );
