@@ -89,17 +89,20 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
 // POST
   //All
-  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
+  app.post( '/all/:schema/data', postMiddlewares, queries.getAll );
+  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAllFiltered );
 
   //Single
-  app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
-  app.post( '/getEmploymentsTree', queries.privateContent, 
-    queries.getEmploymentsTree );
+  app.post( '/single/:schema/data', postMiddlewares, queries.getOne );
+  app.post( '/single/:schema/:filter/data', queries.privateContent, 
+    queries.getOneFiltered );
   app.post( '/getSmallEmploymentsTree', queries.privateContent, 
     queries.getSmallEmploymentsTree );
+  app.post( '/getEmploymentsTree', queries.privateContent, 
+    queries.getEmploymentsTree );
 
   //New
-  app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
+  app.post( '/:schema/:reference/new', postMiddlewares, queries.save );
   app.post( '/saveTask', queries.privateContent, queries.saveTask );
   app.post( '/saveEmployment', queries.privateContent, 
     queries.updateEmploymentsTree, queries.saveEmployment );

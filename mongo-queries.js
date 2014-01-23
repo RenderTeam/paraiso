@@ -41,12 +41,22 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.getAll = function ( req, res ) {
     var condition = {},
+        schema    = req.params.schema;
+
+    var query = schemas[schema].find();
+
+    query.select('-_id').exec( function ( err, docs ) {
+      if ( err ) { throw err; };
+      res.send( docs );
+    });
+  }
+
+  exports.getAllFiltered = function ( req, res ) {
+    var condition = {},
         filter    = req.params.filter,
         schema    = req.params.schema;
 
     switch ( filter ) {
-      case 'none':
-        break;
       /*
        * Tasks is an exception because of the property in filter do no match 
        * with the username from the session property. #YOLO
@@ -67,6 +77,18 @@ mongoose.connect( conectionString, function ( err ) {
   }
 
   exports.getOne = function ( req, res ) {
+    var condition = {},
+        schema = req.params.schema;
+
+    var query = schemas[schema].findOne();
+
+    query.select('-_id').exec( function ( err, doc ) {
+      if ( err ) { throw err; };
+      res.send( doc );
+    } );
+  }
+
+  exports.getOneFiltered = function ( req, res ) {
     var condition = {},
         filter = req.params.filter,
         schema = req.params.schema;
@@ -369,8 +391,7 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.checkGetAccess = function ( req, res, next ) {
     var pathArray = req.route.path.split('/'),
-        permissionIndex = 0,
-        matchFlag = false,
+        index = 0,
         accessFlag = false;
 
     var condition = {
@@ -380,19 +401,10 @@ mongoose.connect( conectionString, function ( err ) {
     var query = schemas.permissions.findOne( condition );
 
     query.select('-_id -__v -username').exec( function ( err, permission ) {
-      permission.permissions.some( function ( element, index ) {
-        pathArray.some( function ( pathElement, pathIndex ) {
-          if ( pathElement === element.module ) {
-            permissionIndex = index;
-            matchFlag = true;
-            return true;
-          }
-        });
-        return matchFlag;
-      });
+      index = matchSchemaToPermission( permission.permissions, pathArray );
 
-      permission.permissions[permissionIndex].actions.some( 
-        function ( element, index, array ) {
+      permission.permissions[index].actions.some( 
+        function ( element ) {
           if ( element.what === 'read' ) {
             accessFlag = element.value;
             return true;
@@ -410,10 +422,52 @@ mongoose.connect( conectionString, function ( err ) {
   }
 
   exports.checkPostAccess = function ( req, res, next ) {
-    
-  }
-/** Utility stuff */
+    var pathArray   = [req.params.schema],
+        path        = req.route.path,
+        index       = 0,
+        transaction = '',
+        accessFlag  = false;
 
+    var condition = {
+      username: req.user.username
+    };
+
+    if ( req.params.schema === 'employmentsTrees' ) {
+      pathArray = ['employments'];
+    }
+
+    var query = schemas.permissions.findOne( condition );
+
+    switch ( true ) {
+      case /data/.test(path):
+        transaction = 'read';
+        break;
+      case /new/.test(path):
+        transaction = 'write';
+        break;
+      case /update/.test(path):
+        transaction = 'modify'
+        break;
+    }
+    query.select('-_id -__v -username').exec( function ( err, permission ) {
+      index = matchSchemaToPermission( permission.permissions, pathArray );
+
+      permission.permissions[index].actions.some( function ( action ) {
+          if ( action.what === transaction ) {
+            accessFlag = action.value;
+            return true;
+          }
+        });
+
+      if ( accessFlag ) {
+        next();
+      } else {
+        res.send({ access: 'denied' });
+      }
+    });
+  }
+
+/** Utility stuff */
 function getOperationDate () {
   var operationDate = new Date(),
       day = operationDate.getDate(),
@@ -434,4 +488,22 @@ function getOperationDate () {
     minute = operationDate.getMinutes();
 
   return operation + ' @ ' + hour + ':' + minute;
+}
+
+function matchSchemaToPermission ( permissions, pathArray ) {
+  var index = -1,
+      matchFlag = false;
+
+  permissions.some( function ( permission, permissionIndex ) {
+    pathArray.some( function ( pathElement, pathIndex ) {
+      if ( pathElement === permission.module ) {
+        index = permissionIndex;
+        matchFlag = true;
+        return true;
+      }
+    });
+    return matchFlag;
+  });
+
+  return index;
 }
