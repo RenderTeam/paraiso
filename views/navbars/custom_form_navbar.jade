@@ -1,0 +1,19 @@
+header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse',
+                           data-target='.bs-navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      ul.nav.navbar-nav
+        a.navbar-brand: button.btn.btn-default(type="button") &larr; Regresar
+    .pull-right
+      nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+        ul.nav.navbar-nav
+          a.navbar-brand: button.btn.btn-success(type="button") Crear formulario &rarr;
+    nav.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
+      ul.nav.navbar-nav
+        block custom-navigation
+        

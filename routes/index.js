@@ -18,15 +18,19 @@
       controller  : 'MailController'
     });
   };
-//Forms Generator
-  exports.create_form = function ( req, res ) {
-    res.render('forms_generator/custom_form', {
+
+//Dashboard
+  
+  exports.dashboard = function ( req, res ) {
+    res.render( 'dashboard/dashboard', {
       currentUser : req.user.username
     });
-  };
+  }
+
+//Forms Generator
 
   exports.newCustomForm = function ( req, res ) {
-    res.render( 'forms-generator/custom/custom', {
+    res.render( 'forms-generator/custom', {
       currentUser : req.user.username
     });
   }

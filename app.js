@@ -89,6 +89,9 @@ app.get( '/tasks/new', queries.privateContent, routes.new_task );
 app.get( '/tasks/own', queries.privateContent, routes.my_tasks );
 app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
+//Dashboard
+  app.get( '/dashboard', queries.privateContent, routes.dashboard );
+
 // POST
   //All
   app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
@@ -111,7 +114,7 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
   //Session
   app.post( '/login', queries.login );
-  app.post( '/logout', queries.logout);
+  app.post( '/logout', queries.logout );
   
 
 http.createServer( app ).listen( config.port, function () {

@@ -2,6 +2,7 @@ doctype 5
 html
   head
     title Paraiso
+    meta(charset='utf-8')
     block stylesheets
       link( rel='stylesheet', href='/stylesheets/vendor/bootstrap/bootstrap.css' )
       link( rel='stylesheet', href='/stylesheets/own/index.css' )
@@ -9,6 +10,9 @@ html
       link( rel='stylesheet', href='/stylesheets/own/shame.css' )
       link( rel='stylesheet', href='/javascripts/vendor/sidr/stylesheets/jquery.sidr.light.css' )
     block custom-stylesheets
+
+    //if lt IE 9
+      script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
   body
     block main-navbar
 

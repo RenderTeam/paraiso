@@ -1,0 +1,31 @@
+extends ../layout
+block custom-stylesheets
+  link(href='/stylesheets/form-builder/asset3/custom.css', rel='stylesheet')
+
+block main-navbar
+  include ../navbars/custom_form_navbar
+
+block content
+  .container
+    .row.clearfix
+      .col-md-12
+        h1.text-center creador del formulario
+    .row.clearfix
+      .col-md-6
+        h2 Drag & Drop components
+        hr
+        .tabbable
+          ul#formtabs.nav.nav-tabs
+          form#components.form-horizontal(role='form')
+            fieldset
+              .tab-content
+      .col-md-6
+        .clearfix
+          h2 Your Form
+          hr
+          #build
+            form#target.form-horizontal
+
+block custom-scripts
+  script(data-main='/javascripts/form-builder/asset3/main-pretty-built.js', 
+         src='/javascripts/form-builder/asset3/lib/require.js')
