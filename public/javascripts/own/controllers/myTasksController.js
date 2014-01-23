@@ -21,23 +21,19 @@ function myTasksController ( scope, tasks ) {
 
   //Call an undate one task and validate user.
   scope.taskUpdateDone = function ( task ) {
-    console.log('message');
-
-    var hola = [];
-    var adios = {
-          title: 'Enrique'
-        };
-    hola.push(adios);
+    var task = [{
+          status: 'done'
+        }];
     var params = {
-      description: task.description,
-      task: hola
+      creation_date: task.creation_date,
+      task: task
     };
-    console.log('TOUPDATE',hola);
-    console.log('PARAMETROS',params);
-    tasks.updateOneTask( params ).success(function(data){
-      console.log('DONE', data);
-    }).error(function(error){
-      console.log('EERRRROR');
+    tasks.updateOneTask( params ).
+    success( function( data ){
+      console.log( data );
+    }).
+    error( function( error ){
+      console.log( error );
     });
     /*var params = {};
     params = this.task;

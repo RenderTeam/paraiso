@@ -97,14 +97,8 @@ mongoose.connect( conectionString, function ( err ) {
         doc       = req.params.document,
         condition = {},
         update    = {};
-    console.log('Schema', schema );
-    console.log('Filter', filter );
-    console.log('Document', doc );
     condition[filter] = req.body[filter];
     update            = req.body[doc];
-    console.log('condition', condition );
-    console.log('condition', condition[filter] );
-    console.log('Update', update );
     schemas[schema].update( condition, update, function ( err, number, raw ) {
       if ( err ) { throw err; };
       res.send();
@@ -271,7 +265,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.redirect('/');
     }
   };
-
 // Form buider mock
 
   exports.createForm = function ( req, res ) {

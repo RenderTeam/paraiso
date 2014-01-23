@@ -41,8 +41,6 @@ function permissionsController ( scope, permission ){
         permissions: toUpdate
       }
     };
-    console.log('TOUPDATE',toUpdate);
-    console.log('PARAMETROS',params);
 
     permission.updatePermission( params ).
       success(function (){}).

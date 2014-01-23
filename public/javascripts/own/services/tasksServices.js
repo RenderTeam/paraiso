@@ -19,7 +19,7 @@ function tasks ( http ) {
   task.addPostPetition( 'getOneTask', '/single/tasks/creation_date/data', http, 
     returnData, onError );
 
-  task.addPostPetition( 'updateOneTask', '/tasks/task/description/update', http, 
+  task.addPostPetition( 'updateOneTask', '/tasks/task/creation_date/update', http, 
     returnData, onError );
 
   task.addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );

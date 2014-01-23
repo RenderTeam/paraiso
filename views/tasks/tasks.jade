@@ -56,7 +56,7 @@ block content
                       h5.list-group-item-heading Descripción
                       p( ng-bind = 'duty.description')
                   button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
-                    ng-click='taskUpdateDone( duty )') Marcar como realizada
+                    ng-click='taskUpdateDone( duty )', ng-show='duty.status == "not done"') Marcar como realizada
               p.clearfix
 block custom-scripts
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')
