@@ -55,7 +55,7 @@ if ( 'development' == app.get('env') ) {
   app.get( '/control_panel/permissions', queries.privateContent, 
     routes.permissions );
 // Documents
-  app.get( '/documentation', queries.privateContent);
+  app.get( '/documentation', queries.privateContent, routes.documentation);
   app.get( '/documentation/documents' , queries.privateContent);
 //Extras
   app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
