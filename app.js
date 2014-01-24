@@ -8,6 +8,10 @@ var express     = require('express'),
     mongoStore  = require('connect-mongo')( express ),
     http        = require('http'),
     path        = require('path');
+//THis is for the upload of Documents
+    querystring = require("querystring");
+    formidable = require("formidable");
+    fs = require ("fs");
 
 var app = express();
 
