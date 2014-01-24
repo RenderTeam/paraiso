@@ -111,6 +111,7 @@ app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
   //Extras
   app.post( '/mailing', queries.privateContent, mail.sendMail );
+  app.post( '/send/form', queries.privateContent, queries.customForm );
 
   //Session
   app.post( '/login', queries.login );

@@ -1,0 +1,34 @@
+form.form-horizontal
+  fieldset
+    // Form Name
+    legend Form Name
+    // Multiple Radios
+    .form-group
+      label.col-md-4.control-label(for='radios') Multiple Radios
+      .col-md-4
+        .radio
+          label(for='radios-0')
+            input#radios-0(type='radio', name='radios', value='1', checked='checked')
+            | Option one
+        .radio
+          label(for='radios-1')
+            input#radios-1(type='radio', name='radios', value='2')
+            | Option two
+    // Text input
+    .form-group
+      label.col-md-4.control-label(for='textinput') Text Input
+      .col-md-4
+        input#textinput.form-control.input-md(type='text', name='textinput', placeholder='placeholder')
+        span.help-block help
+    // Button
+    .form-group
+      label.col-md-4.control-label(for='singlebutton') Single Button
+      .col-md-4
+        button#singlebutton.btn.btn-primary(name='singlebutton') Button
+    // Select Basic
+    .form-group
+      label.col-md-4.control-label(for='selectbasic') Select Basic
+      .col-md-4
+        select#selectbasic.form-control(name='selectbasic')
+          option(value='1') Option one
+          option(value='2') Option two

@@ -1,0 +1,40 @@
+form.form-horizontal
+  fieldset
+    // Form Name
+    legend Form Name
+    // Text input
+    .form-group
+      label.col-md-4.control-label(for='textinput') nombre
+      .col-md-8
+        input#textinput.form-control.input-md(type='text', name='textinput', placeholder='escribe tu nombre')
+        span.help-block texto de AYUDA
+    // Button
+    .form-group
+      label.col-md-4.control-label(for='singlebutton') Single Button
+      .col-md-4
+        button#singlebutton.btn.btn-primary(name='singlebutton') Button
+    // Select Multiple
+    .form-group
+      label.col-md-4.control-label(for='selectmultiple') Select Multiple
+      .col-md-4
+        select#selectmultiple.form-control(name='selectmultiple', multiple='multiple')
+          option(value='1') Option one
+          option(value='2') Option two
+    // Multiple Radios
+    .form-group
+      label.col-md-4.control-label(for='radios') Multiple Radios
+      .col-md-4
+        .radio
+          label(for='radios-0')
+            input#radios-0(type='radio', name='radios', value='1', checked='checked')
+            | Option one
+        .radio
+          label(for='radios-1')
+            input#radios-1(type='radio', name='radios', value='2')
+            | Option two
+    // Search input
+    .form-group
+      label.col-md-4.control-label(for='searchinput') Search Input
+      .col-md-4
+        input#searchinput.form-control.input-md(type='search', name='searchinput', placeholder='placeholder')
+        p.help-block help

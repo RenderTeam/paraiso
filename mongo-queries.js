@@ -288,6 +288,27 @@ mongoose.connect( conectionString, function ( err ) {
     next();
   };
 
+//Forms
+  exports.customForm = function ( req, res ) {
+    var form = req.body.formSent;
+    html2jade.convertHtml(form, {}, function ( err, jade ) {
+      var formsPath = './views/forms-generator/rendered';
+          jade = jade.substring(16);
+          jade = jade.replace(/(\r\n|\n|\r)/gm,"%");
+          jade = jade.replace(/\x25\s\s\s\s/gm,"\n");
+          jade = jade.replace(/\x25/gm,"");
+        fs.writeFile( formsPath + '/form201.jade', jade , function (err) {
+        if (err) { throw err; }
+        console.log( 'Creado ' + formsPath + '/form.jade');
+      });
+    });
+
+
+
+    console.log(form);
+    res.send(form);
+  }
+
 //Permission
 
 
