@@ -53,65 +53,66 @@ if ( 'development' == app.get('env') ) {
 
 // GET
 // Control Panel
-app.get( '/control-panel', queries.privateContent, routes.control_panel );
-app.get( '/control-panel/permissions', queries.privateContent,
+app.get( '/control-panel', queries.privateContent, queries.log,
+ routes.control_panel );
+app.get( '/control-panel/permissions', queries.privateContent, queries.log,
 routes.permissions );
 //Extras
-app.get( '/extras/mailing', queries.privateContent, routes.send_mail );
+app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mail );
 // Index
 app.get( '/', routes.index );
 // Forms Generator
-  app.get( '/forms/new/custom', queries.privateContent, routes.newCustomForm );
+  app.get( '/forms/new/custom', queries.privateContent, queries.log, routes.newCustomForm );
 // Organizational Structure
 //Departments
-app.get( '/organization/departments/:department', queries.privateContent,
+app.get( '/organization/departments/:department', queries.privateContent, queries.log,
 routes.departments );
 app.get( '/organization/departments/chart',
-queries.privateContent, routes.departments_chart );
+queries.privateContent, queries.log, routes.departments_chart );
 //Employments
 app.get( '/organization/employees',
-queries.privateContent, routes.employments_management );
+queries.privateContent, queries.log, routes.employments_management );
 app.get( '/organization/employments/management',
-queries.privateContent, routes.employments_management );
+queries.privateContent, queries.log, routes.employments_management );
 app.get( '/organization/employments/big/tree',
-queries.privateContent, routes.employments_tree );
+queries.privateContent, queries.log, routes.employments_tree );
 /*app.get( '/organization/employments/small/tree',
 queries.privateContent, routes.getSmallEmploymentsTree );*/
 //Talent
 app.get( '/organization/employees',
 queries.privateContent, queries.log, routes.talent_management );
 app.get( '/organization/employees/:employee',
-queries.privateContent, routes.talent_management_profile );
+queries.privateContent, queries.log, routes.talent_management_profile );
 // Resources
-app.get( '/resources', queries.privateContent, routes.resources );
+app.get( '/resources', queries.privateContent, queries.log, routes.resources );
 // Tasks
-app.get( '/tasks/new', queries.privateContent, routes.new_task );
-app.get( '/tasks/own', queries.privateContent, routes.my_tasks );
+app.get( '/tasks/new', queries.privateContent, queries.log, routes.new_task );
+app.get( '/tasks/own', queries.privateContent, queries.log, routes.my_tasks );
 app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
 
 //Dashboard
-  app.get( '/dashboard', queries.privateContent, routes.dashboard );
+  app.get( '/dashboard', queries.privateContent, queries.log, routes.dashboard );
 
 // POST
   //All
-  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
+  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.log, queries.getAll );
 
   //Single
-  app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );
+  app.post( '/single/:schema/:filter/data', queries.privateContent, queries.log, queries.getOne );
 
   //New
-  app.post( '/:schema/:reference/new', queries.privateContent, queries.save );
-  app.post( '/saveTask', queries.privateContent, queries.saveTask );
-  app.post( '/saveEmployment', queries.privateContent, 
+  app.post( '/:schema/:reference/new', queries.privateContent, queries.log, queries.save );
+  app.post( '/saveTask', queries.privateContent, queries.log, queries.saveTask );
+  app.post( '/saveEmployment', queries.privateContent, queries.log,
     queries.updateEmploymentsTree, queries.saveEmployment );
 
   //Update
-  app.post( '/:schema/:document/:filter/update', queries.privateContent, 
+  app.post( '/:schema/:document/:filter/update', queries.log, queries.privateContent, 
     queries.update );
 
   //Extras
-  app.post( '/mailing', queries.privateContent, mail.sendMail );
-  app.post( '/send/form', queries.privateContent, queries.customForm );
+  app.post( '/mailing', queries.privateContent, queries.log, mail.sendMail );
+  app.post( '/send/form', queries.privateContent, queries.log, queries.customForm );
 
   //Session
   app.post( '/login', queries.login );

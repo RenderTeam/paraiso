@@ -406,7 +406,31 @@ mongoose.connect( conectionString, function ( err ) {
         });
       break;
 
+      default:
+        console.log( 'irrelephant' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: algo que aún no está contemplado, y así. ' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'algo que aún no está contemplado, y así',
+          where: req.route.path,
+          when: getOperationDate()
+        });
 
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
+      break;
+      
     }
     next();
   };
