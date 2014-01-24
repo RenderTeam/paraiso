@@ -4,20 +4,22 @@ form.form-horizontal
     legend Form Name
     // Text input
     .form-group
-      label.col-md-4.control-label(for='textinput') nombre
-      .col-md-8
-        input#textinput.form-control.input-md(type='text', name='textinput', placeholder='escribe tu nombre')
-        span.help-block texto de AYUDA
-    // Button
-    .form-group
-      label.col-md-4.control-label(for='singlebutton') Single Button
+      label.col-md-4.control-label(for='textinput') Hola
       .col-md-4
-        button#singlebutton.btn.btn-primary(name='singlebutton') Button
-    // Select Multiple
+        input#textinput.form-control.input-md(type='text', name='textinput', placeholder='adiós', required='')
+        span.help-block bye
+    // Select Basic
     .form-group
-      label.col-md-4.control-label(for='selectmultiple') Select Multiple
+      label.col-md-4.control-label(for='selectbasic') Select Basic
       .col-md-4
-        select#selectmultiple.form-control(name='selectmultiple', multiple='multiple')
+        select#selectbasic.form-control(name='selectbasic')
+          option(value='1') Option one
+          option(value='2') Option two
+    // Select Basic
+    .form-group
+      label.col-md-4.control-label(for='selectbasic') Select Basic
+      .col-md-4
+        select#selectbasic.form-control(name='selectbasic')
           option(value='1') Option one
           option(value='2') Option two
     // Multiple Radios
@@ -32,9 +34,19 @@ form.form-horizontal
           label(for='radios-1')
             input#radios-1(type='radio', name='radios', value='2')
             | Option two
-    // Search input
+    // Multiple Radios (inline)
     .form-group
-      label.col-md-4.control-label(for='searchinput') Search Input
+      label.col-md-4.control-label(for='radios') Inline Radios
       .col-md-4
-        input#searchinput.form-control.input-md(type='search', name='searchinput', placeholder='placeholder')
-        p.help-block help
+        label.radio-inline(for='radios-0')
+          input#radios-0(type='radio', name='radios', value='1', checked='checked')
+          | 1
+        label.radio-inline(for='radios-1')
+          input#radios-1(type='radio', name='radios', value='2')
+          | 2
+        label.radio-inline(for='radios-2')
+          input#radios-2(type='radio', name='radios', value='3')
+          | 3
+        label.radio-inline(for='radios-3')
+          input#radios-3(type='radio', name='radios', value='4')
+          | 4
