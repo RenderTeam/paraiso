@@ -1,1 +1,13 @@
-h1 Hello this is the index of DOCUMENTATION
+extends ../layout
+
+block custom-stylesheets
+
+block main-navbar
+  include ../navbars/control_panel_navbar
+
+block content
+
+  a( href='/documentation/documents' )
+    li.glyphicon-folder-open &nbsp;Subir un Documento
+
+block custom-scripts
