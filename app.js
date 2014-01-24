@@ -56,7 +56,7 @@ if ( 'development' == app.get('env') ) {
     routes.permissions );
 // Documents
   app.get( '/documentation', queries.privateContent, routes.documentation);
-  app.get( '/documentation/documents' , queries.privateContent);
+  app.get( '/documentation/documents' , queries.privateContent, routes.documents);
 //Extras
   app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
 // Index
