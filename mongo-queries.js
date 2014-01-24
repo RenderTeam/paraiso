@@ -212,7 +212,7 @@ mongoose.connect( conectionString, function ( err ) {
 
     switch( true ) {
 
-      case /get/.test( req.route.path ) :
+      case /organization/.test( req.route.path ) :
         console.log('get');
         console.log( 'who: ' + req.user.username );
         console.log( 'what: visited (find)' );
@@ -220,7 +220,7 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
           who: req.user.username,
-          what: 'consulta de datos',
+          what: 'consulta de datos de la organzación',
           where: req.route.path,
           when: getOperationDate()
         });
@@ -237,7 +237,7 @@ mongoose.connect( conectionString, function ( err ) {
 
       break;
 
-      case /save/.test( req.route.path ) :
+      case /management/.test( req.route.path ) :
         console.log( 'save' );
         console.log( 'who: ' + req.user.username );
         console.log( 'what: datos creados');
@@ -245,7 +245,7 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
           who: req.user.username,
-          what: 'Datos creados: ',
+          what: 'Tarea de administrador (?) ',
           where: req.route.path,
           when: getOperationDate()
         });
@@ -260,6 +260,104 @@ mongoose.connect( conectionString, function ( err ) {
           }
         });
       break;
+      case /new/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos cambiados ' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'creación de stuff',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+
+      break;
+
+      case /all/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'consulta general de datos' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'consulta general de datos',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+      break;
+
+      case /single/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: consulta específica de datos ' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'Consulta específica de datos',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+      break;
+
+
+      case /form/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: creación de formulario' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'creación de formulario',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+      break;
+
       case /update/.test( req.route.path ) :
         console.log( 'update' );
         console.log( 'who: ' + req.user.username );
@@ -268,7 +366,7 @@ mongoose.connect( conectionString, function ( err ) {
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
           who: req.user.username,
-          what: 'update data',
+          what: 'datos cambiados',
           where: req.route.path,
           when: getOperationDate()
         });
@@ -282,8 +380,33 @@ mongoose.connect( conectionString, function ( err ) {
             console.log('log enviado');
           }
         });
-
       break;
+
+      case /delete/.test( req.route.path ) :
+        console.log( 'update' );
+        console.log( 'who: ' + req.user.username );
+        console.log( 'what: datos eliminados ' );
+        console.log( 'where: ' + req.route.path );
+        console.log( 'when: ' + getOperationDate() );
+        var log = new Log({
+          who: req.user.username,
+          what: 'datos eliminados',
+          where: req.route.path,
+          when: getOperationDate()
+        });
+
+        log.save( function ( err ) {
+          if ( err ) {
+            console.log( err );
+            res.send( err );
+          } else {        
+            res.send( { status: true } );
+            console.log('log enviado');
+          }
+        });
+      break;
+
+
     }
     next();
   };
