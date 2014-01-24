@@ -99,6 +99,10 @@ mongoose.connect( conectionString, function ( err ) {
         update    = {};
     condition[filter] = req.body[filter];
     update            = req.body[doc];
+    console.log('Hola', schema);
+    console.log('Hola', doc);
+    console.log('Hola', update);
+    console.log('Hola', condition);
     schemas[schema].update( condition, update, function ( err, number, raw ) {
       if ( err ) { throw err; };
       res.send();

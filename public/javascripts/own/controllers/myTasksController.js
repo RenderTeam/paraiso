@@ -20,20 +20,22 @@ function myTasksController ( scope, tasks ) {
   };
 
   //Call an undate one task and validate user.
-  scope.taskUpdateDone = function ( task ) {
-    var task = [{
+  scope.taskUpdateDone = function ( that ) {
+    console.log('task', that);
+    var task = {
           status: 'done'
-        }];
+        };
     var params = {
-      creation_date: task.creation_date,
+      creation_date: that.creation_date,
       task: task
     };
+    console.log('PARAMS',params);
     tasks.updateOneTask( params ).
     success( function( data ){
-      console.log( data );
+      console.log('DATA', data );
     }).
     error( function( error ){
-      console.log( error );
+      console.log('ERROR', error );
     });
     /*var params = {};
     params = this.task;
