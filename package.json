@@ -15,7 +15,11 @@
     "less-middleware": "0.1.12",
     "mongoose": "3.6.20",
     "moment": "= 1.7.0",
-    "bufferjs": "=1.1.0"
+    "bufferjs": "=1.1.0",
+    "readable-stream":"*",
+    "stream-counter":"*",
+    "util": "0.10.2",
+    "formidable":"1.0.14"
   },
   "devDependencies": {
     "blanket": "~1.1.6",

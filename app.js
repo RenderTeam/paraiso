@@ -15,8 +15,10 @@ var app = express();
  * Mongo queries and management is on mongo-queries.js
  */
 
-var queries = require('./mongo-queries'),
-    mail    = require('./send-mail-utilities');
+var queries    = require('./mongo-queries'),
+    mail       = require('./send-mail-utilities'),
+    fileUpload = require('./fileUpload-utilities');
+
 
 
 // all environments
@@ -58,7 +60,9 @@ var postMiddlewares = [ queries.privateContent, queries.checkPostAccess ];
 // Control Panel
 app.get( '/control-panel/permissions', queries.privateContent,
 routes.permissions );
-//Extras
+//Documents
+  app.get( '/documentation/documents' , queries.privateContent, routes.documentation);
+  //Extras
 app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mail );
 // Index
 app.get( '/', routes.index );
@@ -93,6 +97,12 @@ app.get( '/tasks/all', getMiddlewares, routes.tasks );
   //All
   app.post( '/all/:schema/data', postMiddlewares, queries.getAll );
   app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAllFiltered );
+
+  //Documents
+  //app.post('/documents/new', queries.upload );
+  //app.post('/uploadFile', fileUpload.uploadFile);
+  app.post('/Example', fileUpload.Example);
+
 
   //Single
   app.post( '/single/:schema/data', postMiddlewares, queries.getOne );

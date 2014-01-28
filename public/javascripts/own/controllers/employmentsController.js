@@ -16,7 +16,7 @@ function employmentsController ( scope, employment, departments ) {
   departments.getDepartments().
     success( function ( data ) {
       scope.departments = data;
-    } ).
+    }).
     error();
 
   scope.saveEmployment = function () {
@@ -31,6 +31,7 @@ function employmentsController ( scope, employment, departments ) {
       success( function ( data ) {
         scope.employment.employment = '';
         scope.father.employment = '';
+        alert('El puesto se creó correctamente.');
       }).
       error();
   }

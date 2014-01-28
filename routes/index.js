@@ -11,6 +11,14 @@
       currentUser : req.user.username
     });
   };
+//Documentation
+  exports.documentation = function  ( req, res) {
+    res.render('documentation/documentation' , {
+      controller: 'DocumentationController' ,
+      currentUser : req.user.username
+    });
+  }
+
 //Extras
   exports.send_mail = function( req, res ){
     res.render('extras/send_mail', { 

@@ -1,5 +1,5 @@
 function departmentsChartController ( scope, departments, employment, employmentTree ) {
-  var chart = { 
+  var chart = {
     name: '',
     children: [],
     size: 1
@@ -81,7 +81,7 @@ function chartConstructor ( chart ) {
   vis.selectAll("circle")
       .data(nodes)
     .enter().append("svg:circle")
-      .attr("class", function(d) {  })
+      .attr("class", function(d) { })
       .attr("class", function ( d ) {
         if ( d.hasOwnProperty( "parent" ) ) {
           if ( !d.parent.hasOwnProperty("parent") ){
@@ -133,25 +133,25 @@ function chartConstructor ( chart ) {
     t.selectAll("circle")
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
-      .attr("r", function( d ) { 
+      .attr("r", function( d ) {
         if ( d.hasOwnProperty( "parent" ) ) {
           return d.parent.children.length === 1 ? k * d.parent.r - 10: k * d.r;
         } else {
-          return k* d.r; 
+          return k* d.r;
         }
       });
 
     t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
       .attr("y", function(d) { return y(d.y - d.r / 4); })
-      .attr("y", function(d) { 
+      .attr("y", function(d) {
         var number;
         if ( d.hasOwnProperty( "children" ) ){
             number = d.children.length === 1 ? d.y - d.r / 2:d.y - d.r / 4;
           } else {
             number = d.y - d.r / 4;
           }
-        return y(number); 
+        return y(number);
       })
       .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
 
@@ -160,17 +160,17 @@ function chartConstructor ( chart ) {
   }
 }
 
-function calculateRadius ( d ) { 
+function calculateRadius ( d ) {
   if ( d.hasOwnProperty( "parent" ) ) {
     return d.parent.children.length === 1 ? d.parent.r - 10: d.r;
   } else {
-    return d.r; 
+    return d.r;
   }
 }
 
-function textYAlign ( d ) { 
+function textYAlign ( d ) {
   if ( d.hasOwnProperty( "children" ) ){
-    return d.children.length === 1 ? d.y - d.r / 2:d.y - d.r / 4; 
+    return d.children.length === 1 ? d.y - d.r / 2:d.y - d.r / 4;
   } else {
     return d.y - d.r / 4;
   }

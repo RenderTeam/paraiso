@@ -552,7 +552,6 @@ mongoose.connect( conectionString, function ( err ) {
   /*Change a collection target
     User.collection.name = 'test';
   */
-
   exports.checkGetAccess = function ( req, res, next ) {
     var pathArray = req.route.path.split('/'),
         index = 0,
@@ -676,3 +675,4 @@ function matchSchemaToPermission ( permissions, pathArray ) {
 
   return index;
 }
+
