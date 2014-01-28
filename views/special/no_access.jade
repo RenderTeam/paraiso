@@ -1,0 +1,13 @@
+extends ../layout
+
+block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/no-access.css')
+
+block main-navbar
+  include ../navbars/tasks_navbar
+
+block content
+  .jumbotron.text-center
+    h1 Acceso denegado
+
+block custom-scripts

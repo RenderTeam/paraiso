@@ -20,7 +20,6 @@ function employmentsTreeController ( scope, employmentTree ) {
             .attr("height", height + margin.top + margin.bottom)
           .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
         root = data;
         root.x0 = height / 2;
         root.y0 = 0;

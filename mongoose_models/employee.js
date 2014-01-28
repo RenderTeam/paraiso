@@ -42,8 +42,8 @@ employeeSchema.post( 'save', function ( doc ) {
     username: doc.username,
     permissions: [
       {
-        module: 'departments',
-        label:  'Departamentos',
+        module: 'employees',
+        label:  'Talento humano',
         status: 'success',
         actions: [
           {
@@ -54,6 +54,77 @@ employeeSchema.post( 'save', function ( doc ) {
           {
             what:   'write',
             label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'departments',
+        label:  'Departmentos',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'employments',
+        label:  'Puestos',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'tasks',
+        label:  'Tareas',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
             value:  true
           }
         ]

@@ -41,12 +41,22 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.getAll = function ( req, res ) {
     var condition = {},
+        schema    = req.params.schema;
+
+    var query = schemas[schema].find();
+
+    query.select('-_id').exec( function ( err, docs ) {
+      if ( err ) { throw err; };
+      res.send( docs );
+    });
+  }
+
+  exports.getAllFiltered = function ( req, res ) {
+    var condition = {},
         filter    = req.params.filter,
         schema    = req.params.schema;
 
     switch ( filter ) {
-      case 'none':
-        break;
       /*
        * Tasks is an exception because of the property in filter do no match 
        * with the username from the session property. #YOLO
@@ -68,6 +78,18 @@ mongoose.connect( conectionString, function ( err ) {
 
   exports.getOne = function ( req, res ) {
     var condition = {},
+        schema = req.params.schema;
+
+    var query = schemas[schema].findOne();
+
+    query.select('-_id').exec( function ( err, doc ) {
+      if ( err ) { throw err; };
+      res.send( doc );
+    } );
+  }
+
+  exports.getOneFiltered = function ( req, res ) {
+    var condition = {},
         filter = req.params.filter,
         schema = req.params.schema;
 
@@ -84,6 +106,12 @@ mongoose.connect( conectionString, function ( err ) {
   exports.save = function ( req, res ) {
     var schema    = req.params.schema,
         reference = req.params.reference;
+
+    switch ( schema ){
+      case 'tasks':
+        req.body[reference].creator = req.user.username;
+        break;
+    }
 
     var newDocument = new schemas[schema]( req.body[reference] );
 
@@ -138,19 +166,6 @@ mongoose.connect( conectionString, function ( err ) {
       });
     }
   }
-
-  exports.saveTask = function ( req, res ) {
-    req.body.task.creator = req.user.username;
-    var newTask = new Task( req.body.task );
-
-    newTask.save( function ( err ) {
-      if ( err ) {
-        console.log( err );
-        res.send( err );
-      }
-      res.send( { status: true } );
-    });
-  };
 //Employee
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
@@ -458,8 +473,6 @@ mongoose.connect( conectionString, function ( err ) {
 
 //Permission
 
-
-  
 //Session handlers
   exports.login = function ( req, res ) {
     var user = req.body.user,
@@ -540,26 +553,126 @@ mongoose.connect( conectionString, function ( err ) {
     User.collection.name = 'test';
   */
 
-/** Utility stuff */
+  exports.checkGetAccess = function ( req, res, next ) {
+    var pathArray = req.route.path.split('/'),
+        index = 0,
+        accessFlag = false;
 
-  function getOperationDate () {
-    var operationDate = new Date(),
-        day = operationDate.getDate(),
-        month = operationDate.getMonth() + 1,
-        year = operationDate.getFullYear();
+    var condition = {
+      username: req.user.username
+    };
 
-    if ( day < 10 ) { 
-      day = '0' + day
+    var query = schemas.permissions.findOne( condition );
+
+    query.select('-_id -__v -username').exec( function ( err, permission ) {
+      index = matchSchemaToPermission( permission.permissions, pathArray );
+
+      permission.permissions[index].actions.some( 
+        function ( element ) {
+          if ( element.what === 'read' ) {
+            accessFlag = element.value;
+            return true;
+          }
+        });
+
+      if ( accessFlag ) {
+        next();
+      } else {
+        res.render( 'special/no_access', { 
+          currentUser : req.user.username
+        });
+      }
+    });
+  }
+
+  exports.checkPostAccess = function ( req, res, next ) {
+    var pathArray   = [req.params.schema],
+        path        = req.route.path,
+        index       = 0,
+        transaction = '',
+        accessFlag  = false;
+
+    var condition = {
+      username: req.user.username
+    }; 
+
+    switch ( req.params.schema ) {
+      case 'employmentsTrees':
+        pathArray = ['employments'];
+        break;
+      case 'users':
+        pathArray = ['employees'];
+        break;
     }
 
-    if ( month < 10 ) { 
-      month= '0'+ month
-    } 
+    var query = schemas.permissions.findOne( condition );
 
-    operation = day + '/' + month + '/' + year;
+    switch ( true ) {
+      case /data/.test(path):
+        transaction = 'read';
+        break;
+      case /new/.test(path):
+        transaction = 'write';
+        break;
+      case /update/.test(path):
+        transaction = 'modify'
+        break;
+    }
+    query.select('-_id -__v -username').exec( function ( err, permission ) {
+      index = matchSchemaToPermission( permission.permissions, pathArray );
+
+      permission.permissions[index].actions.some( function ( action ) {
+          if ( action.what === transaction ) {
+            accessFlag = action.value;
+            return true;
+          }
+        });
+
+      if ( accessFlag ) {
+        next();
+      } else {
+        res.send({ access: 'denied' });
+      }
+    });
+  }
+
+/** Utility stuff */
+function getOperationDate () {
+  var operationDate = new Date(),
+      day = operationDate.getDate(),
+      month = operationDate.getMonth() + 1,
+      year = operationDate.getFullYear();
+
+  if ( day < 10 ) { 
+    day = '0' + day
+  }
+
+  if ( month < 10 ) { 
+    month= '0'+ month
+  } 
+
+  operation = day + '/' + month + '/' + year;
 
   var hour = operationDate.getHours(),
-      minute = operationDate.getMinutes();
+    minute = operationDate.getMinutes();
 
-    return operation + ' @ ' + hour + ':' + minute;
-  }
+  return operation + ' @ ' + hour + ':' + minute;
+}
+
+function matchSchemaToPermission ( permissions, pathArray ) {
+  var index = -1,
+      matchFlag = false;
+
+  permissions.some( function ( permission, permissionIndex ) {
+    pathArray.some( function ( pathElement, pathIndex ) {
+      if ( pathElement === permission.module ) {
+        index = permissionIndex;
+        matchFlag = true;
+        return true;
+      }
+    });
+    return matchFlag;
+  });
+
+  return index;
+}

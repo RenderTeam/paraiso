@@ -51,11 +51,12 @@ if ( 'development' == app.get('env') ) {
     app.use( express.errorHandler() );
 }
 
+var getMiddlewares = [ queries.privateContent, queries.checkGetAccess ];
+var postMiddlewares = [ queries.privateContent, queries.checkPostAccess ];
+
 // GET
 // Control Panel
-app.get( '/control-panel', queries.privateContent, queries.log,
- routes.control_panel );
-app.get( '/control-panel/permissions', queries.privateContent, queries.log,
+app.get( '/control-panel/permissions', queries.privateContent,
 routes.permissions );
 //Extras
 app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mail );
@@ -64,46 +65,48 @@ app.get( '/', routes.index );
 // Forms Generator
   app.get( '/forms/new/custom', queries.privateContent, routes.newCustomForm );
 // Organizational Structure
-//Departments
-app.get( '/organization/departments/:department', queries.privateContent, queries.log,
-routes.departments );
-app.get( '/organization/departments/chart',
-queries.privateContent, queries.log, routes.departments_chart );
-//Employments
-app.get( '/organization/employees',
-queries.privateContent, queries.log, routes.employments_management );
-app.get( '/organization/employments/management',
-queries.privateContent, queries.log, routes.employments_management );
-app.get( '/organization/employments/big/tree',
-queries.privateContent, queries.log, routes.employments_tree );
-/*app.get( '/organization/employments/small/tree',
-queries.privateContent, routes.getSmallEmploymentsTree );*/
-//Talent
-app.get( '/organization/employees',
-queries.privateContent, queries.log, routes.talent_management );
-app.get( '/organization/employees/:employee',
-queries.privateContent, queries.log, routes.talent_management_profile );
+  //Departments
+  app.get( '/organization/departments/management', getMiddlewares,
+    routes.departments );
+  app.get( '/organization/departments/chart',
+    getMiddlewares, routes.departments_chart );
+  //Employments
+  app.get( '/organization/employments/management', getMiddlewares, 
+    routes.employments_management );
+  app.get( '/organization/employments/tree', getMiddlewares, routes.employments_tree );
+  //Talent
+  app.get( '/organization/employees/management', getMiddlewares, 
+    routes.talent_management );
+  app.get( '/organization/employees/:employee', getMiddlewares, 
+    routes.talent_management_profile );
 // Resources
 app.get( '/resources', queries.privateContent, queries.log, routes.resources );
 // Tasks
-app.get( '/tasks/new', queries.privateContent, queries.log, routes.new_task );
-app.get( '/tasks/own', queries.privateContent, queries.log, routes.my_tasks );
-app.get( '/tasks/all', queries.privateContent, queries.log, routes.tasks );
+app.get( '/tasks/new', queries.privateContent, routes.new_task );
+app.get( '/tasks/own', getMiddlewares, routes.my_tasks );
+app.get( '/tasks/all', getMiddlewares, routes.tasks );
 
 //Dashboard
   app.get( '/dashboard', queries.privateContent, queries.log, routes.dashboard );
 
 // POST
   //All
-  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.log, queries.getAll );
+  app.post( '/all/:schema/data', postMiddlewares, queries.getAll );
+  app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAllFiltered );
 
   //Single
-  app.post( '/single/:schema/:filter/data', queries.privateContent, queries.log, queries.getOne );
+  app.post( '/single/:schema/data', postMiddlewares, queries.getOne );
+  app.post( '/single/:schema/:filter/data', queries.privateContent, 
+    queries.getOneFiltered );
+  app.post( '/getSmallEmploymentsTree', queries.privateContent, 
+    queries.getSmallEmploymentsTree );
+  app.post( '/getEmploymentsTree', queries.privateContent, 
+    queries.getEmploymentsTree );
 
   //New
-  app.post( '/:schema/:reference/new', queries.privateContent, queries.log, queries.save );
-  app.post( '/saveTask', queries.privateContent, queries.log, queries.saveTask );
-  app.post( '/saveEmployment', queries.privateContent, queries.log,
+  app.post( '/:schema/:reference/new', postMiddlewares, queries.save );
+  // app.post( '/saveTask', postMiddlewares, queries.saveTask );
+  app.post( '/saveEmployment', queries.privateContent, 
     queries.updateEmploymentsTree, queries.saveEmployment );
 
   //Update
