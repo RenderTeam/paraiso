@@ -303,3 +303,10 @@ mongoose.connect( conectionString, function ( err ) {
   /*Change a collection target
     User.collection.name = 'test';
   */
+
+// Documents handlers
+  exports.upload = function ( req, res ) {
+    console.log('HOLA', req.body);
+    console.log('FD', req.fd);
+    res.send();
+  }

@@ -8,10 +8,6 @@ var express     = require('express'),
     mongoStore  = require('connect-mongo')( express ),
     http        = require('http'),
     path        = require('path');
-//THis is for the upload of Documents
-    querystring = require("querystring");
-    formidable = require("formidable");
-    fs = require ("fs");
 
 var app = express();
 
@@ -19,8 +15,10 @@ var app = express();
  * Mongo queries and management is on mongo-queries.js
  */
 
-var queries = require('./mongo-queries'),
-    mail    = require('./send-mail-utilities');
+var queries    = require('./mongo-queries'),
+    mail       = require('./send-mail-utilities'),
+    fileUpload = require('./fileUpload-utilities');
+
 
 
 // all environments
@@ -59,8 +57,8 @@ if ( 'development' == app.get('env') ) {
   app.get( '/control_panel/permissions', queries.privateContent, 
     routes.permissions );
 // Documents
-  app.get( '/documentation', queries.privateContent, routes.documentation);
-  app.get( '/documentation/documents' , queries.privateContent, routes.documents);
+  //app.get( '/documentation', queries.privateContent, routes.documentation);
+  app.get( '/documentation/documents' , queries.privateContent, routes.documentation);
 //Extras
   app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
 // Index
@@ -96,6 +94,12 @@ if ( 'development' == app.get('env') ) {
 // POST
   //All
   app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
+
+  //Documents
+  //app.post('/documents/new', queries.upload );
+  //app.post('/uploadFile', fileUpload.uploadFile);
+  app.post('/Example', fileUpload.Example);
+
 
   //Single
   app.post( '/single/:schema/:filter/data', queries.privateContent, queries.getOne );

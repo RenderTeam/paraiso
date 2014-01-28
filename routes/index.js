@@ -18,12 +18,7 @@
       currentUser : req.user.username
     });
   }
-  exports.documents = function ( req, res) {
-    res.render('documentation/documents' , {
-      controller: 'UploadDocumentsController' ,
-      currentUser : req.user.username
-    });
-  }
+
 //Extras
   exports.send_mail = function( req, res ){
     res.render('extras/send_mail', { 
