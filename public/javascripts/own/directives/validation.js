@@ -50,7 +50,7 @@ function rdValidation() {
     }else{
       switch( forvalidate ){
         case 'text':
-          var pattern = /^[a-zA-Z áÁéÉúÚóÓíÍ]*$/;
+          var pattern = /^[a-zA-Z áÁéÉúÚóÓíÍ.]*$/;
           if( val.match( pattern ) ){
 
             return true;
@@ -60,7 +60,7 @@ function rdValidation() {
         break;
         case 'number':
           var pattern = '^[0-9]+$';
-          if( val.match( pattern ) ){
+          if( val.toString().match( pattern ) ){
             return true;
           }else{
             return false;
@@ -74,8 +74,8 @@ function rdValidation() {
             $('#rdView'+ uniqueName +'').html('<small>El año seleccionado es menor.</small>');
             flag = false;
           }
-          console.log(datetoInput.getDate()+1);
-          if( datetoInput.getDate()+1 < today.getDate() ){
+          if( datetoInput.getDate()+1 < today.getDate() && 
+            datetoInput.getFullYear() < today.getFullYear() ){
             $('#rdView'+ uniqueName +'').html('<small>El día seleccionado es menor.</small>');
             flag = false;
           }

@@ -27,13 +27,44 @@ block content
 
       #calendar.span8.calendar( ng-model = 'eventSources', 
         ui-calendar = 'uiConfig.calendar' )
-
+      #taskView.modal.fade(tabindex='-1', role='dialog', 
+        aria-labelledby='myModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header( class = '{{duty.label}}-ribbon')
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Descripcion de la tarea
+                  span#special {{duty.label}}
+                  .pageheader
+                    h1
+                      span( ng-bind = 'duty.title')
+                    .label.label-default.pull-right Desde el {{duty.creation_date | date:'dd/MM/yyyy'}}
+              .modal-body
+                  div.list-group
+                    a.list-group-item Prioridad
+                      span.label.pull-right.label-success {{duty.priority}}
+                    a.list-group-item Estado de la tarea
+                      span.label.pull-right.label-primary(ng-bind = 'duty.status')
+                    a.list-group-item Asignada por 
+                      span.label.pull-right.label-info(ng-bind = 'duty.assigned')
+                    a.list-group-item Fecha de fin
+                      span.label.pull-right.label-warning(
+                        ng-bind = 'duty.deadline | date:"dd/MM/yyyy"')
+                    a.list-group-item Días restantes
+                      span.label.pull-right.label-danger {{duty.daysToDeadline}}
+                    a.list-group-item
+                      h5.list-group-item-heading Descripción
+                      p( ng-bind = 'duty.description')
+                  button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
+                    ng-click='taskUpdateDone( duty )', ng-show='duty.status == "not done"')
+                    |Enviar a revisión
+              p.clearfix
 block custom-scripts
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')
   script( src='/javascripts/vendor/jquery-ui/ui/jquery-ui.js')
+  script( src='/javascripts/vendor/bootstrap/ui-bootstrap-tpls-0.9.0.js')
   script( src='/javascripts/render/calendar.js')
   script( src='/javascripts/own/directives/validation.js')
-  script( src='http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js')
   script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/services/tasksServices.js')
   script( src='/javascripts/own/services/calendar.js')

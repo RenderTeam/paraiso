@@ -73,38 +73,6 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
-  scope.validateDate= function (date){
-    var deadline,
-        flag = true,
-        today = new Date(),
-        deadline = new Date( scope.task.deadline );
-    if( deadline.getYear() < today.getYear() ){
-      scope.dateValidation.message = 'El año seleccionado es menor';
-      scope.dateValidation.status = false;
-      flag = false;
-    }
-    if( deadline.getDate() < today.getDate() ){
-      scope.dateValidation.message = 'El dia seleccionado es menor';
-      scope.dateValidation.status = false;
-      flag = false;
-
-    }
-    if( deadline.getMonth() < today.getMonth() ){
-      scope.dateValidation.message = 'El mes seleccionado es menor';
-      scope.dateValidation.status = false;
-      flag = false;
-      console.log(deadline.getMonth());
-      console.log(today.getMonth());
-    }
-    if ( flag ){
-      console.log("Fecha correcta");
-      //scope.newFormTask = newTaskController();
-      scope.dateValidation.message = null;
-      scope.dateValidation.status = true;
-    }
-    return !scope.dateValidation.status;
-  };
-
   scope.newTask = function () {
     console.log(scope.task.deadline);
     scope.task.creation_date = new Date();

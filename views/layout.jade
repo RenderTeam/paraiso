@@ -31,6 +31,10 @@ html
       script( src='/javascripts/own/control-panel.js' )
       script( src='/javascripts/vendor/sidr/jquery.sidr.min.js' )
       //-
+        This script use to control general aplication status.
+      script( src='/javascripts/own/controllers/generalController.js')
+      
+      //-
         In this script are functions to contruct simple jquery stuff (tooltips,
         etc.)
       script( src='/javascripts/render/behavior.js' )
@@ -38,4 +42,9 @@ html
         The Service constructor that will help the services in angular
       script( src='/javascripts/render/Service.js' )
 
+      script( src='/javascripts/own/controllers/notificationsController.js' )
+      script( src='/javascripts/own/apps/notificationsApp.js' )
+
     block custom-scripts
+
+    script( src='/javascripts/own/notificationsCompiler.js' )

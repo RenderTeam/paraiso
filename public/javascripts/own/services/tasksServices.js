@@ -20,6 +20,8 @@ function tasks ( http ) {
     returnData, onError );
 
   task.addPostPetition( 'saveTask', '/tasks/task/new', http, returnData, onError );
+  task.addPostPetition( 'updateOneTask', '/tasks/task/creation_date/update', http, 
+    returnData, onError );
 
   return task;
 }

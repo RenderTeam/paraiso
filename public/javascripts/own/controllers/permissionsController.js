@@ -34,6 +34,7 @@ function permissionsController ( scope, permission ){
   };
 
   scope.updatePermissions = function () {
+
     var params = {
       username:     scope.permission.username,
       permissions:  {

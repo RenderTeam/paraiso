@@ -55,7 +55,6 @@ mongoose.connect( conectionString, function ( err ) {
     var condition = {},
         filter    = req.params.filter,
         schema    = req.params.schema;
-
     switch ( filter ) {
       /*
        * Tasks is an exception because of the property in filter do no match 
@@ -92,7 +91,6 @@ mongoose.connect( conectionString, function ( err ) {
     var condition = {},
         filter = req.params.filter,
         schema = req.params.schema;
-
     condition[filter] = req.body[filter];
 
     var query = schemas[schema].findOne( condition );
@@ -127,10 +125,12 @@ mongoose.connect( conectionString, function ( err ) {
         doc       = req.params.document,
         condition = {},
         update    = {};
-
     condition[filter] = req.body[filter];
     update            = req.body[doc];
-
+    console.log('Hola', schema);
+    console.log('Hola', doc);
+    console.log('Hola', update);
+    console.log('Hola', condition);
     schemas[schema].update( condition, update, function ( err, number, raw ) {
       if ( err ) { throw err; };
       res.send();
@@ -166,6 +166,7 @@ mongoose.connect( conectionString, function ( err ) {
       });
     }
   }
+
 //Employee
   exports.updateEmploymentsTree = function ( req, res, next ) {
     var father  = req.body.father,
@@ -519,7 +520,6 @@ mongoose.connect( conectionString, function ( err ) {
       res.redirect('/');
     }
   };
-
 // Form buider mock
 
   exports.createForm = function ( req, res ) {
