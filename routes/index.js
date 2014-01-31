@@ -43,6 +43,12 @@
     });
   }
 
+  exports.editForm = function ( req, res ) {
+    res.render( 'forms-generator/custom',{
+      currentUser : req.user.username
+    });
+  }
+
 //Index
   exports.index = function ( req, res ) {
     res.render('index', { 

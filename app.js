@@ -68,6 +68,8 @@ app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mai
 app.get( '/', routes.index );
 // Forms Generator
   app.get( '/forms/new/custom', queries.privateContent, routes.newCustomForm );
+  app.get( '/forms/edit', queries.privateContent, routes.editForm );
+
 // Organizational Structure
   //Departments
   app.get( '/organization/departments/management', getMiddlewares,
