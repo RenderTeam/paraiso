@@ -13,7 +13,7 @@ form( name = 'newTaskForm')
     .input-group.input-group-sm
       span.input-group-addon Fecha límite
       input.form-input.form-control( ng-model = 'task.deadline', type='date' ,
-        name = 'deadline', required, ng-change = 'validateDate()', rd-Validation,
+        name = 'deadline', required, rd-Validation,
         vText = 'Coloca un valor válido',
         validationtype = 'date')
     br

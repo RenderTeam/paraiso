@@ -16,11 +16,13 @@ header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
               span.glyphicon.glyphicon-user#username
               | &nbsp;&nbsp; #{ currentUser } &nbsp;&nbsp;
               b.caret
-            ul.dropdown-menu#App1( ng-controller = 'NotificationsController', ng-init='countTask()' )
+              script.
+                var user = '#{currentUser}';
+            ul.dropdown-menu#App1( ng-controller = 'NotificationsController' )
               li
                 a(href) Configuración de la cuenta
               li
-                a(href) Notificaciones
+                a(href, ng-click = 'taskNotifier()') Notificaciones
                   span.badge.pull-right( ng-bind = 'i' )
               li.divider
               li

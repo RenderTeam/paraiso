@@ -44,15 +44,44 @@ function rdValidation() {
     return value === '' || value === undefined || value === null ||
       value === false || value !== value;
   }
+  var tmp = '',tmp2 = '', valuetemp = '', valuetemp2 = '';
   function validationstypes( forvalidate, val , attributes, uniqueName){
     if( isEmpty( val ) ){
       return false;
     }else{
+
       switch( forvalidate ){
+        case 'mail':
+          var pattern = /^\w+@[a-zA-Z_]+?\.([a-zA-Z]{2,3}){1,2}$/;
+          if( val.match( pattern ) ){
+            return true;
+          }else{
+            return false;
+          }
+        break;
+        case 'pass1':
+          valuetemp = val;
+          return true;
+        break;
+        case 'pass2':
+          valuetemp2 = val;
+          if(valuetemp == valuetemp2){
+            return true;
+          }else{
+            return false;
+          }
+        break;
         case 'text':
           var pattern = /^[a-zA-Z áÁéÉúÚóÓíÍ.]*$/;
           if( val.match( pattern ) ){
-
+            return true;
+          }else{
+            return false;
+          }
+        break;
+        case 'alphanumeric':
+          var pattern = /^[a-zA-Z áÁéÉúÚóÓíÍ,.0-9]*$/;
+          if( val.match( pattern ) ){
             return true;
           }else{
             return false;
@@ -65,6 +94,18 @@ function rdValidation() {
           }else{
             return false;
           }
+        break;
+        case 'birthday':
+          var today       = new Date(),
+              flag        = true,
+              datetoInput = new Date( val );
+              console.log(today.getFullYear()-18);
+              console.log(datetoInput.getFullYear());
+          if( datetoInput.getFullYear() > today.getFullYear()-18){
+            $('#rdView'+ uniqueName +'').html('<small>El año seleccionado debe de ser menor.</small>');
+            flag = false;
+          }
+          return flag;
         break;
         case 'date':
           var today       = new Date(),
