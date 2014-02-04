@@ -1,4 +1,4 @@
-var services = angular.module( 'services.employee', [] );
+var services = angular.module( 'services.employee', ['Validations'] );
 
 services.factory( 'Employee', employee );
 

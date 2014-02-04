@@ -5,51 +5,65 @@
 
 form( name = 'newEmployee' )
   .col-md-12
-    .form-group
-      .form-label.text-right Usuario:
-      input.form-control( required, ng-model = 'user.username', rd-Validation )
-
-    .form-group
-      .form-label.text-right Correo:
-      input.form-control( required, type = 'email', ng-model = 'employee.mail',
-      rd-Validation )
-
-    .form-group
-      .form-label.text-right Contraseña:
-      input.form-control( required, type = 'password', ng-model = 'user.password',
-      rd-Validation )
-
-    .form-group
-      .form-label.text-right Repetir contraseña:
-      input.form-control( required, type = 'password', ng-model = 'confirmation',
-      rd-Validation )
-
-    .form-group
-      .form-label.text-right Nombre:
-      input.form-control( required, ng-model = 'employee.name', rd-Validation )
-
-    .form-group
-      .form-label.text-right Apellido Paterno:
-      input.form-control( required, ng-model = 'employee.last_father_name', rd-Validation )
-
-    .form-group
-      .form-label.text-right Apellido Materno:
-      input.form-control( required, ng-model = 'employee.last_mother_name',
-      rd-Validation )
-
-    .form-group
-      .form-label.text-right Fecha de nacimiento:
-      input.form-control( required, ng-model = 'employee.date_of_birth',
-        type='date', rd-Validation)
-
-    .form-group
-      .form-label.text-right Dirección:
-      input.form-control( required, ng-model = 'employee.address', rd-Validation )
-
-    .form-group
-      .form-label.text-right Teléfono:
-      input.form-control( required, ng-model = 'employee.phone', type = 'number', rd-Validation )
-
+    .input-group.input-group
+      span.input-group-addon Usuario:
+      input.form-control( required, ng-model = 'user.username',rd-Validation,
+      vText = 'Coloca un valor válido', validationtype = 'alphanumeric')
+    br
+    .input-group.input-group
+      span.input-group-addon Correo:
+      input.form-control( required,rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'mail',
+        ng-model = 'employee.mail' )
+    br
+    .input-group.input-group
+      span.input-group-addon Contraseña:
+      input.form-control( required, type = 'password', rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'pass1',
+        ng-model = 'user.password' )
+    br
+    .input-group.input-group
+      span.input-group-addon Repetir contraseña:
+      input.form-control( required, type = 'password', rd-Validation,
+        vText = 'Las contraseñas no coinciden.', validationtype = 'pass2',
+        ng-model = 'confirmation' )
+    br
+    .input-group.input-group
+      span.input-group-addon Nombre:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'text',
+        ng-model = 'employee.name' )
+    br
+    .input-group.input-group
+      span.input-group-addon Apellido Paterno:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'text',
+        ng-model = 'employee.last_father_name' )
+    br
+    .input-group.input-group
+      span.input-group-addon Apellido Materno:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'text',
+        ng-model = 'employee.last_mother_name' )
+    br
+    .input-group.input-group
+      span.input-group-addon Fecha de nacimiento:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'birthday',
+        ng-model = 'employee.date_of_birth',
+        type='date' )
+    br
+    .input-group.input-group
+      span.input-group-addon Dirección:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'alphanumeric',
+        ng-model = 'employee.address' )
+    br
+    .input-group.input-group
+      span.input-group-addon Teléfono:
+      input.form-control( required, rd-Validation,
+        vText = 'Coloca un valor válido', validationtype = 'number',
+        ng-model = 'employee.phone', type = 'number' )
   p.clearfix
   br
   .col-md-4.pull-right

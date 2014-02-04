@@ -3,12 +3,11 @@ function notificationsController ( scope , http, task) {
   scope.i = 0;
   task.getAllTasks().success( function ( data ) {
     data.forEach( function ( element, index){
-      if( element.status ===  'not done' ) {
+      if( element.status ===  'not done' && element.creator == user) {
         i++;
       }
     });
     scope.i = i;
-
   });
   scope.logout = function () {
   http.post( '/logout' )
@@ -17,7 +16,7 @@ function notificationsController ( scope , http, task) {
     }).error( function ( data, status, headers, config ) {
     });
   };
-  scope.countTask = function () {
-    console.log(i);
-  }
+  scope.taskNotifier = function () {
+    window.location.href = ('/tasks/own');
+  };
 }
