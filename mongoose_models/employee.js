@@ -128,7 +128,120 @@ employeeSchema.post( 'save', function ( doc ) {
             value:  true
           }
         ]
+      },
+      {
+        module: 'form',
+        label:  'Formularios',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'permission',
+        label:  'Permisos',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'resources',
+        label:  'Recursos',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'extras',
+        label:  'extras',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
+      },
+      {
+        module: 'documentation',
+        label:  'documentación',
+        status: 'success',
+        actions: [
+          {
+            what:   'read',
+            label:  'Acceder',
+            value:  true
+          },
+          {
+            what:   'write',
+            label:  'Escribir',
+            value:  true
+          },
+          {
+            what:   'modify',
+            label:  'Modificar',
+            value:  true
+          }
+        ]
       }
+
+
+
     ]
   } );
 

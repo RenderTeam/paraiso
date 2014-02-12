@@ -67,8 +67,8 @@ app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mai
 // Index
 app.get( '/', routes.index );
 // Forms Generator
-  app.get( '/forms/new/custom', queries.privateContent, routes.newCustomForm );
-  app.get( '/forms/edit', queries.privateContent, routes.editForm );
+  app.get( '/form/new/custom', getMiddlewares, routes.newCustomForm );
+  app.get( '/form/edit', queries.privateContent, routes.editForm );
 
 // Organizational Structure
   //Departments
@@ -122,7 +122,7 @@ app.get( '/tasks/all', getMiddlewares, routes.tasks );
     queries.updateEmploymentsTree, queries.saveEmployment );
 
   //Update
-  app.post( '/:schema/:document/:filter/update', queries.log, queries.privateContent, 
+  app.post( '/:schema/:document/:filter/update', queries.privateContent, 
     queries.update );
 
   //Extras
