@@ -224,56 +224,57 @@ mongoose.connect( conectionString, function ( err ) {
 //Log
   exports.log = function ( req, res, next ) {
     var method = req.method,
-        path = req.route.path;
+        path = req.route.path,
+        pathComponents = path.split('/'),
+        //PathComponents[0] is always empty.
+        user = req.user.username;
     /*This, at some point, will be a switch with http verbs*/
+    //we'll use: proceso/sección/apartado
     if ( method == 'GET' ) { 
-      switch( true ) {
-        case /documentation/.test( path ):
+      switch ( pathComponents.length ) {
+        case 2:
         break;
-        case /extras/.test( path ):
+        case 3:
+          toLog = {
+            'who'   : user,
+            'what'  : 'accedió a la sección: ' + pathComponents[3] + ' en el proceso de '
+                      + pathComponents[2],
+            'when' : getOperationDate()
+          };
         break;
-        case /form/.test( path ):
-        break;
-        case /organization/.test( path ):
-          switch( true ) {
-            case /departments/.test( path ):
-            break;
-            case /employees/.test( path ):
-            break;
-            case /employments/.test( path ):
-            break;
-          }
-        break;
-        case /permission/.test( path ):
-        break;
-        case /resources/.test( path ):
-        break;
-        case /tasks/.test( path ):
-        break;
-        default: 
+        case 4:
+          toLog = {
+            who   : user,
+            what  : 'accedió al apartado: ' + pathComponents[3] + ' de la sección '
+                      + pathComponents[2] + ' en el proceso de ' + pathComponents[1],
+            when  : getOperationDate()
+          };
         break;
       }
     } else {
-      switch( path ) {
-        case /all/.test( path ):
-        break;
-        case /form/.test( path ):
-        break;
-        case /login/.test( path ):
-        break;
-        case /logout/.test( path ):
-        break;
-        case /new/.test( path ):
-        break;
-        case /single/.test( path ):
-        break;
-        case /update/.test( path ):
-        break;
-        /* There is no /getSmallEmploymentsTree or specific posts like this,
-           because the result of all of'em, will be drawn in a /GET route. */
-      }
+    
     }
-  
+    
+    console.log( 'toLog: ' + toLog.who);
+    console.log('Log ' +Log.who);
+    logged = JSON.stringify( toLog );
+    console.log('logged' +logged);
+    var log = new Log( {
+      who: toLog.who,
+      what: toLog.what,
+      when: toLog.when
+    } );
+    console.log('DFSVJFDSOV' + log);
+    log.save( function ( err ) {
+      if ( err ) {
+        console.log( err );
+        res.send( err );
+      }else {
+        res.send( { status : true } );
+        console.log('log enviado');
+      }
+    } );
+
     next();
   }
 

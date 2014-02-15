@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 var logSchema = new Schema({
   who:   { type: String, required: true },
   what:   { type: String, required: true},
-  where:  { type: String, required: true },
   when:   { type: String, required: true }
 });
 
