@@ -53,14 +53,14 @@ if ( 'development' == app.get('env') ) {
     app.use( express.errorHandler() );
 }
 
-var getMiddlewares = [ queries.privateContent, queries.checkGetAccess ];
+var getMiddlewares = [ queries.privateContent, queries.checkGetAccess, queries.log ];
 var postMiddlewares = [ queries.privateContent, queries.checkPostAccess ];
 
 // GET
 // Control Panel
 app.get( '/control-panel/permissions', queries.privateContent,
 routes.permissions );
-//Documents
+//documents
   app.get( '/documentation/documents' , queries.privateContent, routes.documentation);
   //Extras
 app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mail );

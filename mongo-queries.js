@@ -223,233 +223,59 @@ mongoose.connect( conectionString, function ( err ) {
   };
 //Log
   exports.log = function ( req, res, next ) {
-
-    console.log( 'the path is: '  + req.route.path );
-
-    switch( true ) {
-
-      case /organization/.test( req.route.path ) :
-        console.log('get');
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: visited (find)' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'consulta de datos de la organzación',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
+    var method = req.method,
+        path = req.route.path;
+    /*This, at some point, will be a switch with http verbs*/
+    if ( method == 'GET' ) { 
+      switch( true ) {
+        case /documentation/.test( path ):
+        break;
+        case /extras/.test( path ):
+        break;
+        case /form/.test( path ):
+        break;
+        case /organization/.test( path ):
+          switch( true ) {
+            case /departments/.test( path ):
+            break;
+            case /employees/.test( path ):
+            break;
+            case /employments/.test( path ):
+            break;
           }
-        });
-
-      break;
-
-      case /management/.test( req.route.path ) :
-        console.log( 'save' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos creados');
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'Tarea de administrador (?) ',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-      case /new/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos cambiados ' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'creación de stuff',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-
-      break;
-
-      case /all/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'consulta general de datos' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'consulta general de datos',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-
-      case /single/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: consulta específica de datos ' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'Consulta específica de datos',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-
-
-      case /form/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: creación de formulario' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'creación de formulario',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-
-      case /update/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos cambiados ' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'datos cambiados',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-
-      case /delete/.test( req.route.path ) :
-        console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: datos eliminados ' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'datos eliminados',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-      break;
-
-      default:
-        console.log( 'irrelephant' );
-        console.log( 'who: ' + req.user.username );
-        console.log( 'what: algo que aún no está contemplado, y así. ' );
-        console.log( 'where: ' + req.route.path );
-        console.log( 'when: ' + getOperationDate() );
-        var log = new Log({
-          who: req.user.username,
-          what: 'algo que aún no está contemplado, y así',
-          where: req.route.path,
-          when: getOperationDate()
-        });
-
-        log.save( function ( err ) {
-          if ( err ) {
-            console.log( err );
-            res.send( err );
-          } else {        
-            res.send( { status: true } );
-            console.log('log enviado');
-          }
-        });
-
-      break;
-      
+        break;
+        case /permission/.test( path ):
+        break;
+        case /resources/.test( path ):
+        break;
+        case /tasks/.test( path ):
+        break;
+        default: 
+        break;
+      }
+    } else {
+      switch( path ) {
+        case /all/.test( path ):
+        break;
+        case /form/.test( path ):
+        break;
+        case /login/.test( path ):
+        break;
+        case /logout/.test( path ):
+        break;
+        case /new/.test( path ):
+        break;
+        case /single/.test( path ):
+        break;
+        case /update/.test( path ):
+        break;
+        /* There is no /getSmallEmploymentsTree or specific posts like this,
+           because the result of all of'em, will be drawn in a /GET route. */
+      }
     }
+  
     next();
-  };
+  }
 
 //Forms
   exports.customForm = function ( req, res ) {
