@@ -3,7 +3,6 @@ var http = require('http'),
     util= require('util'),
     fs = require('fs');
 
-
 /*var server = http.createServer(function(req, res) {
   switch (req.uri.path) {
     case '/':
@@ -28,7 +27,7 @@ exports.Example = function(req,res){
       res.write('received upload:\n\n');
       console.log('Temporal',files);
       fs.readFile(files.uploadedFile[0].path, function (err, data) {
-  // ...
+  // 
         console.log(data);
         var newPath = __dirname + "/views/UploadFiles/"+
         files.uploadedFile[0].originalFilename;

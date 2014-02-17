@@ -1,6 +1,7 @@
 var fs        = require('fs-extra'),
-    mongoose  = require('mongoose'),
-    html2jade = require('html2jade');
+    helpers   = require('./helpers'),
+    html2jade = require('html2jade'),
+    mongoose  = require('mongoose');
 
 /** Schemas from mongoose **/
 var Departments       = require('./mongoose_models/departments'),
@@ -233,20 +234,26 @@ mongoose.connect( conectionString, function ( err ) {
     if ( method == 'GET' ) { 
       switch ( pathComponents.length ) {
         case 2:
+          toLog = {
+            'who'   : user,
+            'what'  : 'accedió al proceso: ' + translate(pathComponents[1]),
+            'when' : getOperationDate()
+          };
         break;
         case 3:
           toLog = {
             'who'   : user,
-            'what'  : 'accedió a la sección: ' + pathComponents[3] + ' en el proceso de '
-                      + pathComponents[2],
+            'what'  : 'accedió a la sección: ' + translate(pathComponents[2]) + 
+                      ' en el proceso de ' + translate(pathComponents[1]),
             'when' : getOperationDate()
           };
         break;
         case 4:
           toLog = {
             who   : user,
-            what  : 'accedió al apartado: ' + pathComponents[3] + ' de la sección '
-                      + pathComponents[2] + ' en el proceso de ' + pathComponents[1],
+            what  : 'accedió al apartado: ' + translate(pathComponents[3]) + 
+                    ' de la sección ' + translate(pathComponents[2]) +
+                    ' en el proceso de ' + translate(pathComponents[1]),
             when  : getOperationDate()
           };
         break;
@@ -254,17 +261,15 @@ mongoose.connect( conectionString, function ( err ) {
     } else {
     
     }
-    
-    console.log( 'toLog: ' + toLog.who);
-    console.log('Log ' +Log.who);
-    logged = JSON.stringify( toLog );
-    console.log('logged' +logged);
+
     var log = new Log( {
       who: toLog.who,
       what: toLog.what,
       when: toLog.when
     } );
-    console.log('DFSVJFDSOV' + log);
+    console.log( log );
+
+
     log.save( function ( err ) {
       if ( err ) {
         console.log( err );
@@ -274,7 +279,7 @@ mongoose.connect( conectionString, function ( err ) {
         console.log('log enviado');
       }
     } );
-
+  
     next();
   }
 
@@ -462,6 +467,24 @@ mongoose.connect( conectionString, function ( err ) {
     });
   }
 
+function matchSchemaToPermission ( permissions, pathArray ) {
+  var index = -1,
+      matchFlag = false;
+
+  permissions.some( function ( permission, permissionIndex ) {
+    pathArray.some( function ( pathElement, pathIndex ) {
+      if ( pathElement === permission.module ) {
+        index = permissionIndex;
+        matchFlag = true;
+        return true;
+      }
+    });
+    return matchFlag;
+  });
+
+  return index;
+}
+
 /** Utility stuff */
 function getOperationDate () {
   var operationDate = new Date(),
@@ -483,23 +506,52 @@ function getOperationDate () {
     minute = operationDate.getMinutes();
 
   return operation + ' @ ' + hour + ':' + minute;
+};
+
+
+function translate ( word ) {
+  switch ( word ) {
+    case 'all':
+      return 'todos';
+    break;
+    case 'departments':
+      return 'departamentos';
+    break;
+    case 'documentation':
+      return 'documentación';
+    break;
+    case 'employees':
+      return 'empleados';
+    break;
+    case 'employments':
+      return 'puestos';
+    break;
+    case 'form':
+      return 'formularios';
+    break;
+    case 'management':
+      return 'administración';
+    break;
+    case 'new':
+      return 'crear';
+    break;
+    case 'organization':
+      return 'organización';
+    break;
+    case 'resources':
+      return 'recursos';
+    break;
+    case 'single':
+      return 'único';
+    break;
+    case 'tasks':
+      return 'tareas';
+    break;
+    case 'update':
+      return 'actualizar';
+    break;
+    default:
+      return word;
+    break;
+  }
 }
-
-function matchSchemaToPermission ( permissions, pathArray ) {
-  var index = -1,
-      matchFlag = false;
-
-  permissions.some( function ( permission, permissionIndex ) {
-    pathArray.some( function ( pathElement, pathIndex ) {
-      if ( pathElement === permission.module ) {
-        index = permissionIndex;
-        matchFlag = true;
-        return true;
-      }
-    });
-    return matchFlag;
-  });
-
-  return index;
-}
-
