@@ -1,6 +1,7 @@
 function tasksController ( scope, tasks ) {
   tasks.getAllTasks().success( function ( data ) {
     scope.tasks =  data;
+    console.log('DATOS',data);
     loadtoCalendar( scope );
   });
 

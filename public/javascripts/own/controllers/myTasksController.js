@@ -15,6 +15,7 @@ function myTasksController ( scope, tasks ) {
             deadline = new Date( data.deadline );
         data.daysToDeadline = deadline.getDate() - today.getDate();
         scope.duty = data;
+        console.log(data);
       }).
       error();
   };
@@ -59,7 +60,7 @@ function myTasksController ( scope, tasks ) {
         var today = new Date(),
             deadline = new Date( data.deadline );
         data.daysToDeadline = deadline.getDate() - today.getDate();
-
+        alert();
         scope.duty = data;
       }).
       error();

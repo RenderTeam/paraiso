@@ -1,36 +1,54 @@
-function newTaskController ( scope, tasks, users ) {
+function newTaskController ( scope, tasks ) {
+  tasks.getAllUsers().success( function ( data ) {
+    data.forEach(function(element , index, array){
+         console.log("a[" + index + "] = " + array[index].username);
+         scope.users.push( array[index].username );
+      });
+
+    console.log(scope.users);
+  });
   scope.task = {
     creation_date:  new Date(),
     creator:        '', /* Se tiene que recuperar de la sesión */
-    title:          '',
+    deadline:       new Date(),
     description:    '',
     assigned:       [],
-    deadline:       new Date(),
-    reminder:       [],
     label:          '',
     priority:       0,
-    status:         'not done'
+    reminder:       [],
+    dateReviewed:   new Date(),
+    title:          '',
+    percentageDone: 0,
+    subTasks:       {},
+    status:      'to Do',
+    comments:     [{
+      user:      '',
+      comment:   '',
+      date:      ''
+    }]
   };
-
+  scope.users = [];
   scope.temporal = {
     worker: ""
   };
-
+  scope.isindependient = false;
   scope.temporalForm = {
     reminder: [],
     assigned: []
   };
-
-  scope.dateValidation = {
-    message : '',
-    status  : false
-  }
+  scope.subTasks = [];
   scope.labels = [{ label: 'P'},
                   { label: 'NC'},
                   { label: 'AC'},
                   { label: 'AP'},
                   { label: 'LOL'}];
-
+  scope.AddSubTask = function (){
+    scope.subTasks.push({
+        title: '',
+        priority: '',
+        assigned:[]
+      });
+  }
   scope.addReminderToReminders = function () {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
       if( !scope.task.reminder.contains( scope.temporal.reminder ) ){
@@ -73,13 +91,76 @@ function newTaskController ( scope, tasks, users ) {
     scope.task.label = scope.labels[index].label;
   };
 
-  scope.newTask = function () {
-    console.log(scope.task.deadline);
+  scope.toSubmit = function (){
+    console.log(scope.isindependient);
+    console.log(scope.task.assigned);
+    if(scope.isindependient){
+      var deadline = new Date(scope.task.deadline);
+      scope.task.assigned.forEach(function(element , index, array){
+         console.log("a[" + index + "] = " + element);
+         scope.newSimpleTask(element, deadline);
+      });
+    }else{
+      scope.newTask();
+    }
+    
+  }
+
+  scope.newSimpleTask = function ( user, deadline ){
+    var params = {};
     scope.task.creation_date = new Date();
     scope.task.deadline = new Date( scope.task.deadline );
-    console.log(scope.task.deadline);
+    deadline.setDate( deadline + 1);
+    params.task = scope.task;
+    var flag = false;
+    scope.task.assigned = [user];
+    if( scope.task.assigned.length > 0 ) {
+      flag = true;
+      if( scope.task.reminder.length > 0 ) {
+        flag = true;
+      }
+    }
+    if( flag === true ) {
+      tasks.saveTask( params ).then( function ( data ) {
+        scope.task = {
+          creation_date:  new Date(),
+          creator:        '', /* Se tiene que recuperar de la sesión */
+          deadline:       new Date(),
+          description:    '',
+          assigned:       [],
+          label:          '',
+          priority:       0,
+          reminder:       [],
+          dateReviewed:   new Date(),
+          title:          '',
+          percentageDone: 0,
+          subTasks:       {},
+          status:      'to Do',
+          comments:     [{
+            user:      '',
+            comment:   '',
+            date:      ''
+          }]
+        };
+
+        scope.temporal = {
+          worker: ""
+        };
+
+        scope.temporalForm = {
+          reminder: [],
+          assigned: []
+        };
+        alert('Excelente :)');
+      });
+    } else {
+      alert('Verifique que tenga usuarios y recordatorios agregados');
+    }
+  }
+  scope.newTask = function () {
+    scope.task.creation_date = new Date();
+    scope.task.deadline = new Date( scope.task.deadline );
     scope.task.deadline.setDate(scope.task.deadline.getDate() + 1);
-    console.log(scope.task.deadline);
     var params = {};
     params.task = scope.task;
     var flag = false;
@@ -101,7 +182,17 @@ function newTaskController ( scope, tasks, users ) {
           reminder:       [],
           label:          '',
           priority:       0,
-          status:         'not done'
+          status:         [{ 
+            revision:       '',
+            general:        '',
+            dateToRevision: '',
+            comments:     [{
+              user:      '',
+              comment:   ''
+            }]
+          }],
+          percentageDone: '',
+          subTasks:       { tasks : [] }
         };
 
         scope.temporal = {

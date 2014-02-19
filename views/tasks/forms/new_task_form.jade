@@ -1,5 +1,5 @@
 form( name = 'newTaskForm')
-  .col-xs-6
+  .col-xs-12.col-sm-6
     .input-group.input-group-sm
       span.input-group-addon Título
       input.form-input.form-control( ng-model = 'task.title', type = 'text',
@@ -40,11 +40,11 @@ form( name = 'newTaskForm')
         class = 'task-label task-label-{{$index}}')
       .well.text-center( ng-class = 'task.label' )
         h1( ng-bind = 'task.label' )
-  .col-xs-6
+  .col-xs-12.col-sm-6
     .input-group.input-group-sm
       span.input-group-addon Asignar
       input.form-control( ng-model = 'temporal.worker',
-        placeholder = 'Nombre del usuario')
+        placeholder = 'Nombre del usuario', auto-complete, ui-items='users')
       span.input-group-btn
         button.btn.btn-success( ng-click = 'addWorkertoAssigned()', 
           type='button' ) +
@@ -62,6 +62,7 @@ form( name = 'newTaskForm')
                     button.btn.btn-xs( ng-bind = 'worker.username') 
                     button.btn-danger.btn.btn-xs( 
                           ng-click = 'removeWorkerFromAssigned( $index )' ) -
+    
     br
     .input-group.input-group-sm
       span#remainderSpan.help.input-group-addon Recordatorios
@@ -84,9 +85,60 @@ form( name = 'newTaskForm')
                 button.btn.btn-xs( ng-bind = 'remind.numberOfDays')
                 button.btn.btn-danger.btn-xs( 
                   ng-click = 'removeReminderFromReminders( $index )') -
+    br
+    div(class='{{temporalForm.assigned.length > 1 && "view" || "notview"}}')
+      div.checkbox
+        label
+          input( type = 'checkbox', ng-model = 'isindependient')
+          | ¿Esta tarea es independiente para cada usuario Asignado?
+    div.checkbox
+        label
+          input( type = 'checkbox', ng-model = 'subtasks')
+          | ¿Esta tarea tiene sub tareas?
+  
+  .col-xs-12.col-sm-6.pull-right
+    button#createTask.btn.btn-block.btn-primary( ng-click = 'toSubmit()',
+      ng-disabled = 'newTaskForm.$invalid')
+      | {{subtasks == true && "Continuar" || "Crear tarea" }}
 
-  p.clearfix
-  br
-  .col-md-4.pull-right
-    button#createTask.btn.btn-block.btn-primary( ng-click = 'newTask()',
-      ng-disabled = 'newTaskForm.$invalid || validateDate(task.deadline)' )  Crear tarea
+  a( data-toggle='modal', href='#subTasks') Hola
+  #subTasks.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h1.modal-title( ng-bind = 'task.title' )
+        .modal-body
+          h3 Nueva Sub Tarea
+            .pull-right.btn.btn-info(data-toggle='tooltip', data-placement='top',
+              title='Agregar sub tarea', ng-click = 'AddSubTask()')
+              span.glyphicon.glyphicon-plus
+          #usersAsigned(ng-repeat="user in temporalForm.assigned")
+            span.pull-left.text-primary(ng-bind = 'user.username +",  "') 
+          span actualmente se tienen asignados a la tarea
+          br
+          br
+          #userAsigned.height(ng-repeat="subtask in subTasks")
+              .input-group
+                span.input-group-addon
+                  div
+                    input.form-control(type='text', placeholder='Titulo de la tarea',
+                      name='title',rd-Validation, vText = 'Coloca un valor válido',
+                      validationtype = 'text', required, ng-model='subtask.title')
+                span.input-group-addon
+                  div
+                    input.form-control(type='text', placeholder='Usuario', name='user',
+                    auto-complete, ui-items='users',rd-Validation ,required
+                    vText = 'Coloca un valor válido', validationtype = 'text',
+                    ng-model='subtask.assigned')
+                span.input-group-addon
+                  div
+                    input.form-control(type='number', ng-model='subtask.priority',
+                    name='priority', placeholder='1',required)
+              br
+        .modal-footer
+          button.btn.btn-danger(type='button', data-dismiss='modal' ,
+            aria-hidden="true")
+            | Cancelar
+          button.btn.btn-info( data-dismiss='modal', 
+            ng-click = '') Crear SubTarea(s)

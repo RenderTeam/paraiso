@@ -44,11 +44,11 @@ mongoose.connect( conectionString, function ( err ) {
         schema    = req.params.schema;
 
     var query = schemas[schema].find();
-
     query.select('-_id').exec( function ( err, docs ) {
       if ( err ) { throw err; };
       res.send( docs );
     });
+    
   }
 
   exports.getAllFiltered = function ( req, res ) {
@@ -68,7 +68,6 @@ mongoose.connect( conectionString, function ( err ) {
         break;
     }
     var query = schemas[schema].find( condition );
-
     query.select('-_id').exec( function ( err, docs ) {
       if ( err ) { throw err; };
       res.send( docs );
@@ -127,10 +126,6 @@ mongoose.connect( conectionString, function ( err ) {
         update    = {};
     condition[filter] = req.body[filter];
     update            = req.body[doc];
-    console.log('Hola', schema);
-    console.log('Hola', doc);
-    console.log('Hola', update);
-    console.log('Hola', condition);
     schemas[schema].update( condition, update, function ( err, number, raw ) {
       if ( err ) { throw err; };
       res.send();

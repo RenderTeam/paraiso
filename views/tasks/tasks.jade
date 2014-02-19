@@ -44,7 +44,7 @@ block content
                     a.list-group-item Prioridad
                       span.label.pull-right.label-success {{duty.priority}}
                     a.list-group-item Estado de la tarea
-                      span.label.pull-right.label-primary(ng-bind = 'duty.status')
+                      span.label.pull-right.label-primary(ng-bind = 'duty.status.general')
                     a.list-group-item Asignada por 
                       span.label.pull-right.label-info(ng-bind = 'duty.assigned')
                     a.list-group-item Fecha de fin
@@ -56,15 +56,15 @@ block content
                       h5.list-group-item-heading Descripción
                       p( ng-bind = 'duty.description')
                   button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
-                    ng-click='taskUpdateDone( duty )', ng-show='duty.status == "not done"')
+                    ng-click='taskUpdateDone( duty )', ng-show='duty.status.general == "to Do" && duty.creator == "#{currentUser}"')
                     |Enviar a revisión
               p.clearfix
 block custom-scripts
   script( src='/javascripts/vendor/fullcalendar/fullcalendar.js')
-  script( src='/javascripts/vendor/jquery-ui/ui/jquery-ui.js')
   script( src='/javascripts/vendor/bootstrap/ui-bootstrap-tpls-0.9.0.js')
   script( src='/javascripts/render/calendar.js')
   script( src='/javascripts/own/directives/validation.js')
+  script( src='/javascripts/own/directives/autocomplete.js')
   script( src='/javascripts/own/services/usersServices.js')
   script( src='/javascripts/own/services/tasksServices.js')
   script( src='/javascripts/own/services/calendar.js')

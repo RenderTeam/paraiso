@@ -5,35 +5,50 @@
        class = 'glyphicon-{{editability.icon}} text-{{editability.status}}' )
     span.clearfix
   .panel-body
-    form( name = '' )
+    form( name = 'updateEmployee' )
       .col-md-6
         label.panel-form Usuario
-        input.form-control( disabled, type = 'text', ng-model = 'employee.username' )
+        div
+          input.form-control( disabled, type = 'text', ng-model = 'employee.username' )
         label.panel-form Nombre
-        input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'employee.name' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'text',
+            ng-model = 'employee.name', rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'text')
         label.panel-form Apellido paterno
-        input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'employee.last_father_name' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'text',
+            rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'text', ng-model = 'employee.last_father_name' )
         label.panel-form Apellido materno
-        input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'employee.last_mother_name' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'text',
+            rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'text', ng-model = 'employee.last_mother_name' )
 
       .col-md-6
         label.panel-form Correo
-        input.form-control( ng-disabled = '!editability.bool', type = 'mail',
-          ng-model = 'employee.mail' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'mail',
+          ng-model = 'employee.mail', rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'mail')
         label.panel-form Fecha de nacimiento
-        input.form-control( ng-disabled = '!editability.bool', type = 'date',
-          ng-model = 'employee.date_of_birth' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'date',
+          ng-model = 'employee.date_of_birth', rd-Validation,
+          vText = 'value', validationtype = 'birthday' )
         label.panel-form Dirección
-        input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'employee.address' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'employee.address', rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'alphanumeric' )
         label.panel-form Teléfono
-        input.form-control( ng-disabled = '!editability.bool', type = 'text',
-          ng-model = 'employee.phone' )
+        div
+          input.form-control( ng-disabled = '!editability.bool', type = 'text',
+          ng-model = 'employee.phone',rd-Validation, vText = 'Coloca un valor válido',
+            validationtype = 'number' )
 
         br
-        button.btn.btn-info.btn-block( ng-disabled = '!editability.bool',
+        button.btn.btn-info.btn-block( ng-disabled = '!editability.bool || updateEmployee.$invalid',
           ng-click = 'updateEmployee()' ) 
           |Actualizar
