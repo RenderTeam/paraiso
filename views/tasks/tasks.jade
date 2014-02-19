@@ -44,14 +44,24 @@ block content
                     a.list-group-item Prioridad
                       span.label.pull-right.label-success {{duty.priority}}
                     a.list-group-item Estado de la tarea
-                      span.label.pull-right.label-primary(ng-bind = 'duty.status.general')
+                      span.label.pull-right.label-primary(ng-bind = 'duty.status')
                     a.list-group-item Asignada por 
+                      span.label.pull-right.label-info(ng-bind = 'duty.creator')
+                    a.list-group-item Estado de la tarea
+                      span.label.pull-right.label-info(ng-bind = 'duty.percentageDone')
+                    a.list-group-item Responsables
                       span.label.pull-right.label-info(ng-bind = 'duty.assigned')
                     a.list-group-item Fecha de fin
                       span.label.pull-right.label-warning(
                         ng-bind = 'duty.deadline | date:"dd/MM/yyyy"')
                     a.list-group-item Días restantes
                       span.label.pull-right.label-danger {{duty.daysToDeadline}}
+                    a.list-group-item(ng-show = 'duty.subTasks.length > 0')
+                      h5.list-group-item-heading SubTareas
+                      #SubTasks(ng-repeat="subtask in duty.subTasks")
+                        span.label.pull-right.label-default(ng-bind = 'subtask.assigned')
+                        p( ng-bind = 'subtask.title')
+
                     a.list-group-item
                       h5.list-group-item-heading Descripción
                       p( ng-bind = 'duty.description')

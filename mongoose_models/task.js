@@ -14,7 +14,7 @@ TaskSchema.add({
   reminder:       [Number],
   dateReviewed:   Date,//día de la última revisión
   title:          String,
-  percentageDone: Number,
+  percentageDone: String,
   subTasks:       [{
     title     :String,
     priority  :Number,

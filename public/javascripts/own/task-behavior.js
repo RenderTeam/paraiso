@@ -1,11 +1,12 @@
 function start () {  
+
   tooltipConstructor( '#remainderSpan', 
     'Número de días antes de la fecha límite en los cuales el sistema ' +
     'recordará al usuario la tarea.','bottom' );
   
   tooltipConstructor( '#creationDayspan', 
     'Día de creación de la tarea.','bottom' );
-
+  
   tooltipConstructor( '#descriptionlabel', 
     'Tipo de tarea.', 'top' );
 

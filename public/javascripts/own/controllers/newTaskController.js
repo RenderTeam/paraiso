@@ -18,7 +18,7 @@ function newTaskController ( scope, tasks ) {
     reminder:       [],
     dateReviewed:   new Date(),
     title:          '',
-    percentageDone: 0,
+    percentageDone: '',
     subTasks:       {},
     status:      'to Do',
     comments:     [{
@@ -93,7 +93,7 @@ function newTaskController ( scope, tasks ) {
 
   scope.toSubmit = function (){
     console.log(scope.isindependient);
-    console.log(scope.task.assigned);
+    console.log(scope.withsubtask);
     if(scope.isindependient){
       var deadline = new Date(scope.task.deadline);
       scope.task.assigned.forEach(function(element , index, array){
@@ -101,11 +101,20 @@ function newTaskController ( scope, tasks ) {
          scope.newSimpleTask(element, deadline);
       });
     }else{
-      scope.newTask();
+      if(scope.withsubtask){
+        $('#subTasks').modal('show');
+      }else{
+
+      }
+      //scope.newTask();
     }
     
   }
-
+  scope.newTaskWithSubTask= function(){
+    scope.task.subTasks = scope.subTasks;
+    scope.task.percentageDone = '0/'+ scope.subTasks.length;
+    scope.newTask();
+  }
   scope.newSimpleTask = function ( user, deadline ){
     var params = {};
     scope.task.creation_date = new Date();
@@ -143,9 +152,16 @@ function newTaskController ( scope, tasks ) {
           }]
         };
 
+        scope.users = [];
         scope.temporal = {
           worker: ""
         };
+        scope.isindependient = false;
+        scope.temporalForm = {
+          reminder: [],
+          assigned: []
+        };
+        scope.subTasks = [];
 
         scope.temporalForm = {
           reminder: [],
@@ -175,30 +191,34 @@ function newTaskController ( scope, tasks ) {
         scope.task = {
           creation_date:  new Date(),
           creator:        '', /* Se tiene que recuperar de la sesión */
-          title:          '',
+          deadline:       new Date(),
           description:    '',
           assigned:       [],
-          deadline:       new Date(),
-          reminder:       [],
           label:          '',
           priority:       0,
-          status:         [{ 
-            revision:       '',
-            general:        '',
-            dateToRevision: '',
-            comments:     [{
-              user:      '',
-              comment:   ''
-            }]
-          }],
-          percentageDone: '',
-          subTasks:       { tasks : [] }
+          reminder:       [],
+          dateReviewed:   new Date(),
+          title:          '',
+          percentageDone: 0,
+          subTasks:       {},
+          status:      'to Do',
+          comments:     [{
+            user:      '',
+            comment:   '',
+            date:      ''
+          }]
         };
 
+        scope.users = [];
         scope.temporal = {
           worker: ""
         };
-
+        scope.isindependient = false;
+        scope.temporalForm = {
+          reminder: [],
+          assigned: []
+        };
+        scope.subTasks = [];
         scope.temporalForm = {
           reminder: [],
           assigned: []

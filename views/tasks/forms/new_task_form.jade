@@ -93,15 +93,13 @@ form( name = 'newTaskForm')
           | ¿Esta tarea es independiente para cada usuario Asignado?
     div.checkbox
         label
-          input( type = 'checkbox', ng-model = 'subtasks')
+          input( type = 'checkbox', ng-model = 'withsubtask')
           | ¿Esta tarea tiene sub tareas?
   
   .col-xs-12.col-sm-6.pull-right
     button#createTask.btn.btn-block.btn-primary( ng-click = 'toSubmit()',
       ng-disabled = 'newTaskForm.$invalid')
       | {{subtasks == true && "Continuar" || "Crear tarea" }}
-
-  a( data-toggle='modal', href='#subTasks') Hola
   #subTasks.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
     .modal-dialog
       .modal-content
@@ -115,7 +113,7 @@ form( name = 'newTaskForm')
               span.glyphicon.glyphicon-plus
           #usersAsigned(ng-repeat="user in temporalForm.assigned")
             span.pull-left.text-primary(ng-bind = 'user.username +",  "') 
-          span actualmente se tienen asignados a la tarea
+          span actualmente estan asignados a la tarea.
           br
           br
           #userAsigned.height(ng-repeat="subtask in subTasks")
@@ -141,4 +139,4 @@ form( name = 'newTaskForm')
             aria-hidden="true")
             | Cancelar
           button.btn.btn-info( data-dismiss='modal', 
-            ng-click = '') Crear SubTarea(s)
+            ng-click = 'newTaskWithSubTask()') Crear SubTarea(s)
