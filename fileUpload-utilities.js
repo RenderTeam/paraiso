@@ -18,9 +18,9 @@ var http = require('http'),
   }
 });*/
 
-exports.Example = function(req,res){
+exports.uploadFile = function(req,res){
   console.log('Hoola2', req.url);
-  if (req.url === '/Example' && req.method === 'POST') {
+  if (req.url === '/files/new' && req.method === 'POST') {
     // parse a file upload
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
@@ -49,7 +49,7 @@ exports.Example = function(req,res){
   }
 }
 
-exports.uploadFile = function (req, res) {
+exports.lol = function (req, res) {
   //req.setEncoding('binary');
   console.log('Hola',req);
   var stream = new multipart.Stream(req);
@@ -70,3 +70,36 @@ exports.uploadFile = function (req, res) {
     console.log("Done")
   });
 }
+
+exports.showFiles = function ( req, res ){
+  var response = {
+    files: [],
+    folders: []
+  };
+
+  var route = req.body.folder != undefined ? 
+    __dirname + '/views/UploadFiles/' + req.body.folder: __dirname + '/views/UploadFiles';
+
+  console.log(route);
+
+  fs.readdir( route, function (err, files) {
+    if (err) throw err;
+    files.forEach( function ( file, index, array ) {
+      fs.lstat( route + '/' + file, function( err, stats ) {
+        if ( err ) throw err;
+        if ( stats.isDirectory() ) {
+          response.folders.push( file );
+        } else {
+          response.files.push( file );
+        }
+        if ( index + 1 === array.length ) {
+          res.send( response );
+        }
+      });
+    });
+    if ( files.length < 1) {
+      res.send( response );
+    };
+  });
+}
+

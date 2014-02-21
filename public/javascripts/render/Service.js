@@ -23,5 +23,6 @@ function Service () {
         error( wrong );
       return promise;
     }
+    return this;
   }
 }

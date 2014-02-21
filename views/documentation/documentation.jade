@@ -7,31 +7,73 @@ block main-navbar
   include ../navbars/documentation_navbar
 
 block content
-  .col-md-12
-    div( ng-app = 'documentationApp', ng-controller = controller )
-      .row
-        label(for='fileToUpload') Select a File to Upload
-        br
-        input#fileToUpload(type='file', ng-model-instant='ng-model-instant', multiple='multiple', onchange='angular.element(this).scope().setFiles(this)')
+  .col-md-12( ng-app = 'documentationApp', ng-controller = controller )
+      a( data-toggle = 'modal', href = '#newFile' )
+        span.lead.strong.glyphicon.glyphicon-plus
 
-      #dropbox.dropbox(ng-class='dropClass')
-        span {{dropText}}
-      div(ng-show='files.length')
-        div(ng-repeat='file in files.slice(0)')
-          span {{file.webkitRelativePath || file.name}}
-          | (
-          span(ng-switch='ng-switch', file.size='file.size')
-            | 1024*1024"
-            span(ng-switch-when='true') {{file.size / 1024 / 1024 | number:2}} MB
-            span(ng-switch-default='ng-switch-default') {{file.size / 1024 | number:2}} kB
-          | )
-      input(type='button', ng-click='uploadFile()', value='Upload')
-      div(ng-show='progressVisible')
-        .percent {{progress}}%
-        .progress-bar
-          .uploaded(ng-style='{\'width\': progress+\'%\'}')
+      .col-md-12.table-bordered
+        .col-md-3.column.table-bordered
+          .file-place.folder( ng-repeat = 'folder in files.folders',
+            ng-click = 'getFilesFromFolder()')
+            span.glyphicon.glyphicon-folder-close
+            span &nbsp;
+            span( ng-bind = 'folder' )
+            button.pull-right.glyphicon.glyphicon-chevron-right.data-toggle(
+              data-placement='top', title='Abrir Directorio',
+              ng-click= 'foldersave(folder)')
+          .file-place.file( ng-repeat = 'file in files.files' )
+            span.glyphicon.glyphicon-file
+            span &nbsp;
+            span( ng-bind = 'file' )
+            button.pull-right.glyphicon.glyphicon-save
 
+        .col-md-3.column.table-bordered
+          .file-place.folder( ng-repeat = 'folders in files.folders',
+            ng-click='getFilesFromFolder(folder2)')
+            span.glyphicon.glyphicon-folder-close
+            span &nbsp;
+            span( ng-bind = 'folder' )
+          .file-place.file( ng-repeat= 'file in files.files' )
+            span.glyphicon.glyphicon-file
+            span &nbsp;
+            span( ng-bind = 'file' )
+        .col-md-3.column
+          h1 NO ME SALE
+        .col-md-3.column
+          h1 ANJS .I.
 
+      #newFile.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+              h4.modal-title Nuevo Archivo
+            .modal-body
+              .row
+                label(for='fileToUpload') Subir Archivos
+                br
+                input#fileToUpload(type='file', ng-model-instant='ng-model-instant', multiple='multiple', onchange='angular.element(this).scope().setFiles(this)')
+
+              #dropbox.dropbox(ng-class='dropClass')
+                span {{dropText}}
+              div(ng-show='files.length')
+                div(ng-repeat='file in files.slice(0)')
+                  span {{file.webkitRelativePath || file.name}}
+                  | (
+                  span(ng-switch='ng-switch', file.size='file.size')
+                    | 1024*1024"
+                    span(ng-switch-when='true') {{file.size / 1024 / 1024 | number:2}} MB
+                    span(ng-switch-default='ng-switch-default') {{file.size / 1024 | number:2}} kB
+                  | )
+              input(type='button', ng-click='uploadFile()', value='Subir Archivo')
+              div(ng-show='progressVisible')
+                .percent {{progress}}%
+                .progress-bar
+                  .uploaded(ng-style='{\'width\': progress+\'%\'}')
+            .modal-footer
+              button.btn.btn-danger(type='button', data-dismiss='modal' ,
+                aria-hidden="true")
+                | Cancelar
 
 block custom-scripts
   script( src='/javascripts/own/services/documentsServices.js')

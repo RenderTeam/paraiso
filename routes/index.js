@@ -18,6 +18,12 @@
       currentUser : req.user.username
     });
   }
+  exports.colums = function  ( req, res) {
+    res.render('documentation/colums' , {
+      controller: 'DocumentationController' ,
+      currentUser : req.user.username
+    });
+  }
 
 //Extras
   exports.send_mail = function( req, res ){

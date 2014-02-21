@@ -13,13 +13,12 @@ function tasks ( http ) {
    * The third parameter is an exception check mongo-queries.js/getAll to see
    * the correct implementation
    */
-  task.addPostPetition( 'getTasksFromUser', '/all/tasks/tasks/data', http, 
-    returnData, onError );
-
-  task.addPostPetition( 'getOneTask', '/single/tasks/creation_date/data', http, 
-    returnData, onError );
-
-  task.addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );
+  task
+    .addPostPetition( 'getTasksFromUser', '/all/tasks/tasks/data', http, 
+      returnData, onError )
+    .addPostPetition( 'getOneTask', '/single/tasks/creation_date/data', http, 
+      returnData, onError )
+    .addPostPetition( 'saveTask', '/saveTask', http, returnData, onError );
 
   return task;
 }

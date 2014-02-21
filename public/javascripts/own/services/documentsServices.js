@@ -4,23 +4,29 @@ services.factory( 'Documents', documents );
 
 documents.$inject = ['$http'];
 function documents ( http ) {
-  documents.Example = function ( params ) {
+  var doc = new Service();
 
-    var promise = http({method: 'POST', url: '/Example', 
+  doc.addPostPetition('showFiles', '/all/files/data', http, 
+    returnData, onError );
+
+  doc.sendFile = function ( params ) {
+    var promise = http( {
+      method: 'POST',
+      url: '/files/new',
       data: params,
-      headers: {'Content-Type': undefined},
-      transformRequest: angular.identity}).
-      success( 
-        function ( response ) {
-          return response.data;
-        }
-      ).
-      error(
-        function ( data, status ) {
-          console.log( status );
-        }
-      );;
+      headers: { 'Content-Type': undefined },
+      transformRequest: angular.identity
+    }).success( returnData )
+      .error( onError );
     return promise;
   };
-  return documents;
+  return doc;
+}
+
+function returnData ( response ) {
+  return response.data;
+}
+
+function onError ( data, status ) {
+  console.log( status );
 }

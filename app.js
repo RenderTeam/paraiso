@@ -19,8 +19,6 @@ var queries    = require('./mongo-queries'),
     mail       = require('./send-mail-utilities'),
     fileUpload = require('./fileUpload-utilities');
 
-
-
 // all environments
 app.set( 'port', process.env.PORT || 3000 );
 app.set( 'views', __dirname + '/views' );
@@ -59,6 +57,7 @@ if ( 'development' == app.get('env') ) {
 // Documents
   //app.get( '/documentation', queries.privateContent, routes.documentation);
   app.get( '/documentation/documents' , queries.privateContent, routes.documentation);
+  app.get( '/documentation/colums' , queries.privateContent, routes.colums)
 //Extras
   app.get( '/extras/send_mail', queries.privateContent, routes.send_mail );
 // Index
@@ -94,11 +93,12 @@ if ( 'development' == app.get('env') ) {
 // POST
   //All
   app.post( '/all/:schema/:filter/data', queries.privateContent, queries.getAll );
+  app.post( '/all/files/data', fileUpload.showFiles );
 
   //Documents
   //app.post('/documents/new', queries.upload );
   //app.post('/uploadFile', fileUpload.uploadFile);
-  app.post('/Example', fileUpload.Example);
+  app.post('/files/new', fileUpload.uploadFile);
 
 
   //Single
