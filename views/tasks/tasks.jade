@@ -66,18 +66,21 @@ block content
                       h5.list-group-item-heading Descripción
                       p( ng-bind = 'duty.description')
                   .panel-heading(ng-show = 'duty.subTasks.length > 0') Subtareas
-                  .panel-body(ng-show = 'duty.subTasks.length > 0')
+                  #subTasks.panel-body(ng-show = 'duty.subTasks.length > 0')
                     ul.list-group
                       li.list-group-item(ng-repeat='subtask in duty.subTasks',
-                        ng-click = 'sendToRevision($index)',id = 'li{{$index}}')
-                        span( ng-bind = 'subtask.title')
-                        span.label.pull-right.label-default(ng-bind = 'subtask.assigned')
-
-                        div(id = 'div{{$index}}') {{$index}}
+                        ng-click = 'sendToRevision($index)')
+                        div(ng-show='!toRevision')
+                          span( ng-bind = 'subtask.title')
+                          span.label.label-default(ng-bind = 'subtask.assigned')
+                          span.glyphicon.glyphicon-chevron-right.pull-right(ng-click = 'previewRevision($index)')
+                        div( ng-show = 'toRevision' ) Comentario:
                           .btn-group.btn-group-xs.pull-right(ng-show = 'verifyAssignedSubtask($index)')
-                            button.btn.btn-default Enviar a revisi&oacute;n
+                            button.btn.btn-success( ng-click = 'sendToRevision(subtask)' ) Enviar a revisi&oacute;n
+                          input.form-control(ng-model = 'subtask.comment')
+                          
                 button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
-                  ng-click='taskUpdateDone( duty )', ng-show='duty.status == "to Do" && isTaskForUser')
+                  ng-click='taskUpdateDone( duty )', ng-show = 'duty.status == "to Do" && isTaskForUser')
                   |Enviar a revisión
               p.clearfix
 block custom-scripts

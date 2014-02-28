@@ -5,8 +5,12 @@ function myTasksController ( scope, tasks ) {
   });
   scope.isTaskForUser = false;
   scope.isSubTaskForUser = false;
-  scope.sendToRevision = function(index){
-    
+  scope.toRevision = false;
+  scope.previewRevision = function (index){
+    scope.toRevision = true;
+  }
+  scope.sendToRevision = function(subtask){
+    console.log(subtask);
   };
   scope.verifyAssignedSubtask = function(index){
     scope.isSubTaskForUser = false;
@@ -18,14 +22,13 @@ function myTasksController ( scope, tasks ) {
       }
     });
     console.log(index);
-    console.log(scope.isSubTaskForUser);
+    console.log(scope.isSubTaskForUser);scope.toRevision = true;
     return scope.isSubTaskForUser;
   };
   //Call to one task when an user click the expand button
   scope.callOfDuty = function () {
     var params = {};
     params = this.task;
-
     tasks.getOneTask( params ).
       success( function ( data ) {
         var today = new Date(),
@@ -39,7 +42,6 @@ function myTasksController ( scope, tasks ) {
         });
         console.log(scope.duty);
         console.log(scope.duty.subTasks);
-
       }).
       error();
   };
