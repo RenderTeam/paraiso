@@ -64,6 +64,7 @@ form( name = 'newTaskForm')
                           ng-click = 'removeWorkerFromAssigned( $index )' ) -
     
     br
+    form.form-inline(role='form')
     .input-group.input-group-sm
       span#remainderSpan.help.input-group-addon Recordatorios
       input.form-control( ng-model = 'temporal.reminder',
@@ -99,7 +100,7 @@ form( name = 'newTaskForm')
   .col-xs-12.col-sm-6.pull-right
     button#createTask.btn.btn-block.btn-primary( ng-click = 'toSubmit()',
       ng-disabled = 'newTaskForm.$invalid')
-      | {{subtasks == true && "Continuar" || "Crear tarea" }}
+      | {{withsubtask == true && "Continuar" || "Crear tarea" }}
   #subTasks.modal.fade( tabindex='-1', role='dialog', aria-hidden='true' )
     .modal-dialog
       .modal-content
@@ -117,23 +118,45 @@ form( name = 'newTaskForm')
           br
           br
           #userAsigned.height(ng-repeat="subtask in subTasks")
-              .input-group
-                span.input-group-addon
-                  div
-                    input.form-control(type='text', placeholder='Titulo de la tarea',
-                      name='title',rd-Validation, vText = 'Coloca un valor válido',
-                      validationtype = 'text', required, ng-model='subtask.title')
-                span.input-group-addon
-                  div
-                    input.form-control(type='text', placeholder='Usuario', name='user',
-                    auto-complete, ui-items='users',rd-Validation ,required
-                    vText = 'Coloca un valor válido', validationtype = 'text',
-                    ng-model='subtask.assigned')
-                span.input-group-addon
-                  div
-                    input.form-control(type='number', ng-model='subtask.priority',
-                    name='priority', placeholder='1',required)
-              br
+            .panel-group
+              .panel.panel-default
+                .panel-heading
+                  h3.panel-title
+                    span Subtarea
+                    span(ng-show='subtask.title.length > 0')  - 
+                    span(ng-bind='subtask.title')
+                    a.text-right.pull-right.collapseToogle.glyphicon.glyphicon-chevron-up(
+                      data-toggle = 'collapse', data-parent = '{{subtask.id}}',
+                      href = '#{{subtask.id}}' )
+                  .panel-collapse.collapse.in(id= '{{subtask.id}}')
+                    .panel-body
+                        .col-md-6
+                            div
+                              input.form-control(type='text', placeholder='Titulo de la tarea',
+                                name='subtask.title',rd-Validation, vText = 'Coloca un valor válido',
+                                validationtype = 'text', required, ng-model='subtask.title')
+                            br
+                            div
+                              input.form-control(type='number', ng-model='subtask.priority',
+                              name='subtask.priority', placeholder='1',required)
+                            br
+                            div
+                              .input-group
+                                input.form-control(type='text', placeholder='Usuario',
+                                name='subtask.userassigned', auto-complete, ui-items='users',
+                                rd-Validation ,required, vText = 'Coloca un valor válido',
+                                validationtype = 'text', ng-model='subtask.userassigned')
+                                span.input-group-btn
+                                  button.btn.btn-default(type='button', ng-click='addAssigned(subtask)') Agregar
+                        .col-md-6
+                          | Usuarios Asignados:
+                          ul.list-group(ng-repeat = 'data in subTasks | filter:{id : subtask.id}')
+                            li.list-group-item(ng-repeat = 'name in data.assigned')
+                              span(ng-bind = 'name' )
+                              span(ng-click='removeAssigned($index)')
+                                .glyphicon.glyphicon-remove.pull-right
+
+                      br
         .modal-footer
           button.btn.btn-danger(type='button', data-dismiss='modal' ,
             aria-hidden="true")

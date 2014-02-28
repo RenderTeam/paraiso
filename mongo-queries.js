@@ -225,12 +225,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /organization/.test( req.route.path ) :
         console.log('get');
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: visited (find)' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'consulta de datos de la organzación',
           where: req.route.path,
           when: getOperationDate()
@@ -250,12 +250,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /management/.test( req.route.path ) :
         console.log( 'save' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: datos creados');
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'Tarea de administrador (?) ',
           where: req.route.path,
           when: getOperationDate()
@@ -272,13 +272,14 @@ mongoose.connect( conectionString, function ( err ) {
         });
       break;
       case /new/.test( req.route.path ) :
+        console.log(req.session);
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: datos cambiados ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'creación de stuff',
           where: req.route.path,
           when: getOperationDate()
@@ -298,12 +299,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /all/.test( req.route.path ) :
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'consulta general de datos' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'consulta general de datos',
           where: req.route.path,
           when: getOperationDate()
@@ -322,12 +323,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /single/.test( req.route.path ) :
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: consulta específica de datos ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'Consulta específica de datos',
           where: req.route.path,
           when: getOperationDate()
@@ -347,12 +348,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /form/.test( req.route.path ) :
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: creación de formulario' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'creación de formulario',
           where: req.route.path,
           when: getOperationDate()
@@ -371,12 +372,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /update/.test( req.route.path ) :
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: datos cambiados ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'datos cambiados',
           where: req.route.path,
           when: getOperationDate()
@@ -386,7 +387,7 @@ mongoose.connect( conectionString, function ( err ) {
           if ( err ) {
             console.log( err );
             res.send( err );
-          } else {        
+          } else {
             res.send( { status: true } );
             console.log('log enviado');
           }
@@ -395,12 +396,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       case /delete/.test( req.route.path ) :
         console.log( 'update' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: datos eliminados ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'datos eliminados',
           where: req.route.path,
           when: getOperationDate()
@@ -419,12 +420,12 @@ mongoose.connect( conectionString, function ( err ) {
 
       default:
         console.log( 'irrelephant' );
-        console.log( 'who: ' + req.user.username );
+        console.log( 'who: ' + req.session.user.username );
         console.log( 'what: algo que aún no está contemplado, y así. ' );
         console.log( 'where: ' + req.route.path );
         console.log( 'when: ' + getOperationDate() );
         var log = new Log({
-          who: req.user.username,
+          who: req.session.user.username,
           what: 'algo que aún no está contemplado, y así',
           where: req.route.path,
           when: getOperationDate()

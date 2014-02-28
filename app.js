@@ -63,7 +63,7 @@ routes.permissions );
 //Documents
   app.get( '/documentation/documents' , queries.privateContent, routes.documentation);
   //Extras
-app.get( '/extras/mailing', queries.privateContent, queries.log, routes.send_mail );
+app.get( '/extras/mailing', queries.privateContent, /*queries.log,*/ routes.send_mail );
 // Index
 app.get( '/', routes.index );
 // Forms Generator
@@ -84,14 +84,14 @@ app.get( '/', routes.index );
   app.get( '/organization/employees/:employee', getMiddlewares, 
     routes.talent_management_profile );
 // Resources
-app.get( '/resources', queries.privateContent, queries.log, routes.resources );
+app.get( '/resources', queries.privateContent, /*queries.log,*/ routes.resources );
 // Tasks
 app.get( '/tasks/new', queries.privateContent, routes.new_task );
 app.get( '/tasks/own', getMiddlewares, routes.my_tasks );
 app.get( '/tasks/all', getMiddlewares, routes.tasks );
 
 //Dashboard
-  app.get( '/dashboard', queries.privateContent, queries.log, routes.dashboard );
+  app.get( '/dashboard', queries.privateContent, /*queries.log,*/ routes.dashboard );
 
 // POST
   //All
@@ -120,12 +120,12 @@ app.get( '/tasks/all', getMiddlewares, routes.tasks );
     queries.updateEmploymentsTree, queries.saveEmployment );
 
   //Update
-  app.post( '/:schema/:document/:filter/update', queries.log, queries.privateContent, 
+  app.post( '/:schema/:document/:filter/update', /*queries.log,*/ queries.privateContent, 
     queries.update );
 
   //Extras
-  app.post( '/mailing', queries.privateContent, queries.log, mail.sendMail );
-  app.post( '/send/form', queries.privateContent, queries.log, queries.customForm );
+  app.post( '/mailing', queries.privateContent, /*queries.log,*/ mail.sendMail );
+  app.post( '/send/form', queries.privateContent, /*queries.log,*/ queries.customForm );
 
   //Session
   app.post( '/login', queries.login );

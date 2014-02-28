@@ -3,7 +3,24 @@ function myTasksController ( scope, tasks ) {
     scope.tasks =  data;
     loadtoCalendar( scope );
   });
-
+  scope.isTaskForUser = false;
+  scope.isSubTaskForUser = false;
+  scope.sendToRevision = function(index){
+    
+  };
+  scope.verifyAssignedSubtask = function(index){
+    scope.isSubTaskForUser = false;
+    scope.duty.subTasks[index].assigned.forEach(function(a,e,i){
+      if(a == user){
+        console.log(a);
+        console.log(index);
+        scope.isSubTaskForUser = true;
+      }
+    });
+    console.log(index);
+    console.log(scope.isSubTaskForUser);
+    return scope.isSubTaskForUser;
+  };
   //Call to one task when an user click the expand button
   scope.callOfDuty = function () {
     var params = {};
@@ -15,7 +32,14 @@ function myTasksController ( scope, tasks ) {
             deadline = new Date( data.deadline );
         data.daysToDeadline = deadline.getDate() - today.getDate();
         scope.duty = data;
-        console.log(data);
+        scope.duty.assigned.forEach(function(a,e,i){
+          if(user == a){
+            scope.isTaskForUser = true;
+          }
+        });
+        console.log(scope.duty);
+        console.log(scope.duty.subTasks);
+
       }).
       error();
   };
@@ -51,6 +75,7 @@ function myTasksController ( scope, tasks ) {
       error();*/
   };
   scope.callOfClickCalendar = function (data) {
+    alert();
     var params = {};
 
     params = data.task;
@@ -127,8 +152,7 @@ function myTasksController ( scope, tasks ) {
       },
       
       eventClick: function( calEvent, jsEvent, view ) {
-        
-        scope.callOfClickCalendar(scope);
+        alert();
       }
     }
   };

@@ -7,6 +7,7 @@ function newTaskController ( scope, tasks ) {
 
     console.log(scope.users);
   });
+  
   scope.task = {
     creation_date:  new Date(),
     creator:        '', /* Se tiene que recuperar de la sesión */
@@ -18,7 +19,7 @@ function newTaskController ( scope, tasks ) {
     reminder:       [],
     dateReviewed:   new Date(),
     title:          '',
-    percentageDone: '',
+    percentageDone: '0',
     subTasks:       {},
     status:      'to Do',
     comments:     [{
@@ -36,33 +37,66 @@ function newTaskController ( scope, tasks ) {
     reminder: [],
     assigned: []
   };
+  scope.temporalSubtask = [];
+  scope.temporalUsersInSubtask = [];
+
   scope.subTasks = [];
   scope.labels = [{ label: 'P'},
                   { label: 'NC'},
                   { label: 'AC'},
                   { label: 'AP'},
                   { label: 'LOL'}];
-  scope.AddSubTask = function (){
-    scope.subTasks.push({
-        title: '',
-        priority: '',
-        assigned:[]
-      });
-  }
   scope.addReminderToReminders = function () {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
       if( !scope.task.reminder.contains( scope.temporal.reminder ) ){
         var temporal = {
           numberOfDays: scope.temporal.reminder
         };
-        
         scope.task.reminder.push( scope.temporal.reminder );
         scope.temporalForm.reminder.push( temporal );
       }
     }
     scope.temporal.reminder = "";
   };
+  scope.AddSubTask = function (){
+    var id='Render';
+    do {                
+          var ascicode=Math.floor((Math.random()*42)+48);
+          if (ascicode<58 || ascicode>64){
+              id+=String.fromCharCode(ascicode);    
+          }                
+      } while (id.length<17);
+    scope.subTasks.push({
+      title: '',
+      priority: '',
+      assigned:[],
+      id: id
+    });
+  }
 
+  scope.addAssigned = function (subtask){
+    scope.subTasks.forEach(function(a,e,b){
+      if(a.id == subtask.id){
+        if(a.assigned.length > 0){
+          if(!a.assigned.contains(subtask.userassigned)){
+            a.assigned.push(subtask.userassigned);
+          }
+          else{
+            newNotification('','The user exists','danger');
+          }
+        }
+        else{
+          a.assigned.push(subtask.userassigned);
+        }
+      }
+    });
+  }
+  scope.removeAssigned=function(index){
+    scope.subTasks.forEach(function(a,e,b){
+      a.assigned.splice( index, 1 );
+    });
+    console.log(index);
+  };
   scope.addWorkertoAssigned = function () {
     if( scope.temporal.worker !== '' ){
       if ( !scope.task.assigned.contains( scope.temporal.worker ) ) {
@@ -94,21 +128,33 @@ function newTaskController ( scope, tasks ) {
   scope.toSubmit = function (){
     console.log(scope.isindependient);
     console.log(scope.withsubtask);
-    if(scope.isindependient){
-      var deadline = new Date(scope.task.deadline);
-      scope.task.assigned.forEach(function(element , index, array){
-         console.log("a[" + index + "] = " + element);
-         scope.newSimpleTask(element, deadline);
-      });
-    }else{
-      if(scope.withsubtask){
-        $('#subTasks').modal('show');
+    var flag = false;
+    if( scope.task.assigned.length > 0 ) {
+      flag = true;
+      if( scope.task.reminder.length > 0 ) {
+        flag = true;
       }else{
-
+        flag = false;
       }
-      //scope.newTask();
     }
-    
+    if( flag === true ) {
+      if(scope.isindependient){
+        var deadline = new Date(scope.task.deadline);
+        scope.task.assigned.forEach(function(element , index, array){
+           console.log("a[" + index + "] = " + element);
+           scope.newSimpleTask(element, deadline);
+        });
+      }else{
+        if(scope.withsubtask){
+          $('#subTasks').modal('show');
+        }else{
+          scope.newTask();
+        }
+      }
+    }else{
+      newNotification('','Verifique que tenga usuarios y recordatorios agregados.',
+        'danger');
+    }
   }
   scope.newTaskWithSubTask= function(){
     scope.task.subTasks = scope.subTasks;
@@ -121,37 +167,11 @@ function newTaskController ( scope, tasks ) {
     scope.task.deadline = new Date( scope.task.deadline );
     deadline.setDate( deadline + 1);
     params.task = scope.task;
-    var flag = false;
+    
     scope.task.assigned = [user];
-    if( scope.task.assigned.length > 0 ) {
-      flag = true;
-      if( scope.task.reminder.length > 0 ) {
-        flag = true;
-      }
-    }
-    if( flag === true ) {
+    
       tasks.saveTask( params ).then( function ( data ) {
-        scope.task = {
-          creation_date:  new Date(),
-          creator:        '', /* Se tiene que recuperar de la sesión */
-          deadline:       new Date(),
-          description:    '',
-          assigned:       [],
-          label:          '',
-          priority:       0,
-          reminder:       [],
-          dateReviewed:   new Date(),
-          title:          '',
-          percentageDone: 0,
-          subTasks:       {},
-          status:      'to Do',
-          comments:     [{
-            user:      '',
-            comment:   '',
-            date:      ''
-          }]
-        };
-
+        scope.task = reset();
         scope.users = [];
         scope.temporal = {
           worker: ""
@@ -167,11 +187,8 @@ function newTaskController ( scope, tasks ) {
           reminder: [],
           assigned: []
         };
-        alert('Excelente :)');
+        newNotification('','Tarea Asignada con éxito.','success');
       });
-    } else {
-      alert('Verifique que tenga usuarios y recordatorios agregados');
-    }
   }
   scope.newTask = function () {
     scope.task.creation_date = new Date();
@@ -179,55 +196,25 @@ function newTaskController ( scope, tasks ) {
     scope.task.deadline.setDate(scope.task.deadline.getDate() + 1);
     var params = {};
     params.task = scope.task;
-    var flag = false;
-    if( scope.task.assigned.length > 0 ) {
-      flag = true;
-      if( scope.task.reminder.length > 0 ) {
-        flag = true;
-      }
-    }
-    if( flag === true ) {
-      tasks.saveTask( params ).then( function ( data ) {
-        scope.task = {
-          creation_date:  new Date(),
-          creator:        '', /* Se tiene que recuperar de la sesión */
-          deadline:       new Date(),
-          description:    '',
-          assigned:       [],
-          label:          '',
-          priority:       0,
-          reminder:       [],
-          dateReviewed:   new Date(),
-          title:          '',
-          percentageDone: 0,
-          subTasks:       {},
-          status:      'to Do',
-          comments:     [{
-            user:      '',
-            comment:   '',
-            date:      ''
-          }]
-        };
+    tasks.saveTask( params ).then( function ( data ) {
+      scope.task = reset();
 
-        scope.users = [];
-        scope.temporal = {
-          worker: ""
-        };
-        scope.isindependient = false;
-        scope.temporalForm = {
-          reminder: [],
-          assigned: []
-        };
-        scope.subTasks = [];
-        scope.temporalForm = {
-          reminder: [],
-          assigned: []
-        };
-        alert('Excelente :)');
-      });
-    } else {
-      alert('Verifique que tenga usuarios y recordatorios agregados');
-    }
+      scope.users = [];
+      scope.temporal = {
+        worker: ""
+      };
+      scope.isindependient = false;
+      scope.temporalForm = {
+        reminder: [],
+        assigned: []
+      };
+      scope.subTasks = [];
+      scope.temporalForm = {
+        reminder: [],
+        assigned: []
+      };
+      newNotification('','Tarea Asignada con éxito.','success');
+    });
   }
   /*users.getAllUsersNames().then( function (data) {
     console.log( data );
@@ -243,3 +230,26 @@ Array.prototype.contains = function( obj ) {
   }
   return false;
 };
+
+function reset(){
+  return {
+          creation_date:  new Date(),
+          creator:        '', /* Se tiene que recuperar de la sesión */
+          deadline:       new Date(),
+          description:    '',
+          assigned:       [],
+          label:          '',
+          priority:       0,
+          reminder:       [],
+          dateReviewed:   new Date(),
+          title:          '',
+          percentageDone: 0,
+          subTasks:       {},
+          status:      'to Do',
+          comments:     [{
+            user:      '',
+            comment:   '',
+            date:      ''
+          }]
+        };
+}

@@ -9,7 +9,6 @@ function start () {
   
   tooltipConstructor( '#descriptionlabel', 
     'Tipo de tarea.', 'top' );
-
   $('.collapseToogle').on( 'click', function() {
     if( $(this).hasClass('glyphicon-chevron-up') ){
       $(this).removeClass('glyphicon-chevron-up');

@@ -4,16 +4,17 @@ function rdValidation() {
   link.$inject = [ '$scope', '$element', '$attributes', 'controllers' ];
   function link( scope, element, attributes, controllers ) {
 
-    var uniqueName       = attributes.ngModel.replace('.',''),
+    var uniqueName       = attributes.ngModel.replace('[','').replace(']','').replace(/\./gi,''),
         valOfView        = attributes.vtext,
         validationType   = attributes.validationtype,
         flag             = false,
         ran = 0,
         idstr='ValId';
+
     do {                
           var ascicode=Math.floor((Math.random()*42)+48);
           if (ascicode<58 || ascicode>64){
-              idstr+=String.fromCharCode(ascicode);    
+              idstr+=String.fromCharCode(ascicode);
           }                
       } while (idstr.length<17);
     ran = idstr;
@@ -34,6 +35,7 @@ function rdValidation() {
       +'</small></div>');
       $('#rdView'+ uniqueName + ran +'').hide();
       controllers.$setValidity('valid', true);
+
     }
     function verified( value ){
       if ( validationstypes( validationType, value, attributes, uniqueName, ran ) ){
@@ -56,7 +58,6 @@ function rdValidation() {
   }
   var tmp = '',tmp2 = '', valuetemp = '', valuetemp2 = '';
   function validationstypes( forvalidate, val , attributes, uniqueName, ran){
-    console.log('VALUE',val);
     if( isEmpty( val ) ){
       return false;
     }else{

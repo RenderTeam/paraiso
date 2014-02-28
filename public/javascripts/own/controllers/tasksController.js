@@ -49,9 +49,7 @@ function tasksController ( scope, tasks ) {
   };
   /* alert on eventClick */
   scope.alertEventOnClick = function( date, allDay, jsEvent, view ){
-      scope.$apply(function(){
-        scope.alertMessage = ('Day Clicked ' + date);
-      });
+      alert();
   };
   /* alert on Drop */
    scope.alertOnDrop = function ( event, dayDelta, minuteDelta, allDay, 
