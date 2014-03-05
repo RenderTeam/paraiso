@@ -6,7 +6,7 @@ mail.$inject = ['$http'];
 function mail ( http ) {
   var mail = {};
   mail.sendMail = function ( params ) {
-    var promise = http.post( '/sendMail', params ).
+    var promise = http.post( '/mailing', params ).
       success( 
         function ( response ) {
           return response.data;

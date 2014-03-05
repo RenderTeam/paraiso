@@ -70,12 +70,12 @@ block content
                     ul.list-group
                       li.list-group-item(ng-repeat='subtask in duty.subTasks',
                         ng-click = 'sendToRevision($index)')
-                        div(ng-show='!toRevision')
+                        div(ng-show='toRevision')
                           span( ng-bind = 'subtask.title')
                           span.label.label-default(ng-bind = 'subtask.assigned')
                           span.glyphicon.glyphicon-chevron-right.pull-right(ng-click = 'previewRevision($index)')
                         div( ng-show = 'toRevision' ) Comentario:
-                          .btn-group.btn-group-xs.pull-right(ng-show = 'verifyAssignedSubtask($index)')
+                          .btn-group.btn-group-xs(ng-show = 'verifyAssignedSubtask($index)')
                             button.btn.btn-success( ng-click = 'sendToRevision(subtask)' ) Enviar a revisi&oacute;n
                           input.form-control(ng-model = 'subtask.comment')
                           
@@ -96,4 +96,5 @@ block custom-scripts
   script( src='/javascripts/own/controllers/myTasksController.js')
   script( src='/javascripts/own/controllers/newTaskController.js')
   script( src='/javascripts/own/controllers/calendarController.js')
+  script( src='/javascripts/own/services/mailServices.js')
   script( src='/javascripts/own/apps/tasksApp.js')

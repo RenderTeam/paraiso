@@ -9,6 +9,8 @@ function tasks ( http ) {
     onError );
   task.addPostPetition( 'getAllUsers', '/all/users/none/data', http, returnData, 
     onError );
+  task.addPostPetition( 'getEmployees', '/all/employees/none/data', http, 
+    returnData, onError );
   /*
    * The third parameter is an exception check mongo-queries.js/getAll to see
    * the correct implementation

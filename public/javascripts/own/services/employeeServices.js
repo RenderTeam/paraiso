@@ -9,7 +9,7 @@ function employee ( http ) {
   employees.addPostPetition( 'getEmployees', '/all/employees/none/data', http, 
     returnData, onError );
 
-  employees.addPostPetition( 'getOneEmployee', '/single/employees/username/data',
+  employees.addPostPetition( 'getOneEmployee', '/all/employees/username/data',
     http, returnData, onError );
 
   employees.addPostPetition( 'updateEmployee', '/employees/employee/username/update', 

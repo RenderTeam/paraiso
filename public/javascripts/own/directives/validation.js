@@ -64,7 +64,7 @@ function rdValidation() {
 
       switch( forvalidate ){
         case 'mail':
-          var pattern = /^\w+@[a-zA-Z_]+?\.([a-zA-Z]{2,3}){1,2}$/;
+          var pattern = /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+.)+[A-Z]{2,4}$/i;
           if( val.match( pattern ) ){
             return true;
           }else{

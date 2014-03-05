@@ -1,16 +1,21 @@
-function newTaskController ( scope, tasks ) {
+function newTaskController ( scope, tasks, users, mail ) {
+  console.log('TAREAS',tasks);
+  console.log('MAIL',mail);
+  console.log('USERS',users);
+  console.log('SCOPE',scope);
   tasks.getAllUsers().success( function ( data ) {
     data.forEach(function(element , index, array){
          console.log("a[" + index + "] = " + array[index].username);
          scope.users.push( array[index].username );
       });
-
-    console.log(scope.users);
   });
-  
+  tasks.getEmployees().success( function ( data ) {
+    scope.employees = data;
+  });
+  scope.employees = [];
   scope.task = {
     creation_date:  new Date(),
-    creator:        '', /* Se tiene que recuperar de la sesión */
+    creator:        user, /* Se tiene que recuperar de la sesión */
     deadline:       new Date(),
     description:    '',
     assigned:       [],
@@ -29,6 +34,7 @@ function newTaskController ( scope, tasks ) {
     }]
   };
   scope.users = [];
+  scope.mails = [];
   scope.temporal = {
     worker: ""
   };
@@ -46,6 +52,61 @@ function newTaskController ( scope, tasks ) {
                   { label: 'AC'},
                   { label: 'AP'},
                   { label: 'LOL'}];
+
+
+  scope.Mail = function( assigned ){
+    console.log( assigned );
+    var params        = {},
+        temporalMails = '',
+        StringforMail = '',
+        dataToSubmit  = '',
+        date = new Date();
+    assigned.forEach(function(e,i,a){
+      temporalMails += e.username +' <'+e.mail +'>,';
+    });
+    StringforMail = temporalMails.substring(0, temporalMails.length-1);
+    console.log(StringforMail);
+    dataToSubmit = '<h1>Tarea - '+scope.task.title
+    +'</h1><blockquote><h3>Descripción:</h3><p><blockquote>'+
+        scope.task.description
+    +'</blockquote></p><h3>Asignada por:</h3><p><blockquote>'+
+        scope.task.creator
+    +'</blockquote></p><h3>Fecha de entrega:</h3><p><blockquote>'+
+        scope.task.deadline
+    +'</blockquote></p><h3>Asignada a:</h3><p><blockquote>'+
+        scope.task.assigned
+    +'</blockquote></p><p style="float:left;color:gray">'+
+    date+'<p></blockquote>';
+    var message = {
+      from:    "Pruebas <hola@renderteam.com.mx>", 
+      to:      StringforMail,
+      subject: 'Tarea - '+scope.task.title,
+      attachment: 
+      [
+        {data: dataToSubmit, alternative:true}
+      ]
+    };
+    params.message = message;
+    mail.sendMail( params ).
+      success(
+        function ( data ) {
+          if( data.status ){
+            newNotification('',
+                            'Correos enviados exitosamente.',
+                            'success');
+          }else{
+            newNotification('',
+                            'Los correos no se enviaron.',
+                            'danger');
+          }
+        }
+      ).
+      error(
+        function( data ) {
+          console.log( data );
+        }
+      );
+  }
   scope.addReminderToReminders = function () {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
       if( !scope.task.reminder.contains( scope.temporal.reminder ) ){
@@ -82,7 +143,7 @@ function newTaskController ( scope, tasks ) {
             a.assigned.push(subtask.userassigned);
           }
           else{
-            newNotification('','The user exists','danger');
+            newNotification('','El usuario ya existe.','danger');
           }
         }
         else{
@@ -138,6 +199,16 @@ function newTaskController ( scope, tasks ) {
       }
     }
     if( flag === true ) {
+      var assigned = [];
+      scope.task.assigned.forEach(function(element , index, array){
+        console.log("a[" + index + "] = " + element);
+        scope.employees.forEach(function(e,i,a){
+          if(e.username == element){
+            assigned.push(e);
+          }
+        });
+      });
+      scope.Mail( assigned );
       if(scope.isindependient){
         var deadline = new Date(scope.task.deadline);
         scope.task.assigned.forEach(function(element , index, array){
