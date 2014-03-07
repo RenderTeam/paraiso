@@ -88,6 +88,7 @@ app.get( '/resources', queries.privateContent, /*queries.log,*/ routes.resources
 // Tasks
 app.get( '/tasks/new', queries.privateContent, routes.new_task );
 app.get( '/tasks/own', getMiddlewares, routes.my_tasks );
+app.get( '/tasks/toRevision', getMiddlewares, routes.toRevision );
 app.get( '/tasks/all', getMiddlewares, routes.tasks );
 
 //Dashboard

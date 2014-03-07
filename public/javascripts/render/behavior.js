@@ -12,6 +12,38 @@ function tooltipConstructor ( element, text, position) {
     'placement': position
   });
 }
+function viewRevisionPreview(){
+  $('#Panel').toggle('slide');
+  $('#History').toggle('slide');
+}
+
+function viewRevisionForTask(){
+  $('#TaskComments').toggle('slide');
+  $('#TaskStatus').toggle('slide');
+  if( $('.viewEye').hasClass('glyphicon-eye-open') ){
+    $('.viewEye').removeClass('glyphicon-eye-open');
+    $('.viewEye').addClass('glyphicon-eye-close');
+  } else {
+    $('.viewEye').removeClass('glyphicon-eye-close');
+    $('.viewEye').addClass('glyphicon-eye-open');
+  }
+}
+
+
+function revisionPreview(index){
+  if( $('.arrow'+index).hasClass('glyphicon-chevron-right') ){
+      $('#'+index+'coment').slideUp('fast');
+      $('#'+index+'view').slideDown('fast');
+      $('.arrow'+index).removeClass('glyphicon-chevron-right');
+      $('.arrow'+index).addClass('glyphicon-chevron-left');
+  } else {
+    $('#'+index+'coment').slideDown('fast');
+    $('#'+index+'view').slideUp('fast');
+    $('.arrow'+index).removeClass('glyphicon-chevron-left');
+    $('.arrow'+index).addClass('glyphicon-chevron-right');
+  }
+}
+
 function newNotification( position, text, type){
   var notification = {
         title:text,

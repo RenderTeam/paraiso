@@ -1,11 +1,6 @@
 function newTaskController ( scope, tasks, users, mail ) {
-  console.log('TAREAS',tasks);
-  console.log('MAIL',mail);
-  console.log('USERS',users);
-  console.log('SCOPE',scope);
   tasks.getAllUsers().success( function ( data ) {
     data.forEach(function(element , index, array){
-         console.log("a[" + index + "] = " + array[index].username);
          scope.users.push( array[index].username );
       });
   });
@@ -26,12 +21,8 @@ function newTaskController ( scope, tasks, users, mail ) {
     title:          '',
     percentageDone: '0',
     subTasks:       {},
-    status:      'to Do',
-    comments:     [{
-      user:      '',
-      comment:   '',
-      date:      ''
-    }]
+    status:      'Por hacer',
+    comments:     []
   };
   scope.users = [];
   scope.mails = [];
@@ -54,58 +45,133 @@ function newTaskController ( scope, tasks, users, mail ) {
                   { label: 'LOL'}];
 
 
-  scope.Mail = function( assigned ){
-    console.log( assigned );
+  scope.Mail = function(){
+    console.log("HOLA");
+    var assigned = [];
+    scope.task.assigned.forEach(function(element , index, array){
+      scope.employees.forEach(function(e,i,a){
+        if(e.username == element){
+          assigned.push(e);
+          //Users asignados a la tarea
+        }
+      });
+    });
     var params        = {},
         temporalMails = '',
         StringforMail = '',
         dataToSubmit  = '',
         date = new Date();
-    assigned.forEach(function(e,i,a){
-      temporalMails += e.username +' <'+e.mail +'>,';
-    });
-    StringforMail = temporalMails.substring(0, temporalMails.length-1);
-    console.log(StringforMail);
+    var mensaje = [];
     dataToSubmit = '<h1>Tarea - '+scope.task.title
     +'</h1><blockquote><h3>Descripción:</h3><p><blockquote>'+
         scope.task.description
     +'</blockquote></p><h3>Asignada por:</h3><p><blockquote>'+
         scope.task.creator
     +'</blockquote></p><h3>Fecha de entrega:</h3><p><blockquote>'+
-        scope.task.deadline
-    +'</blockquote></p><h3>Asignada a:</h3><p><blockquote>'+
-        scope.task.assigned
-    +'</blockquote></p><p style="float:left;color:gray">'+
-    date+'<p></blockquote>';
-    var message = {
-      from:    "Pruebas <hola@renderteam.com.mx>", 
-      to:      StringforMail,
-      subject: 'Tarea - '+scope.task.title,
-      attachment: 
-      [
-        {data: dataToSubmit, alternative:true}
-      ]
-    };
-    params.message = message;
-    mail.sendMail( params ).
-      success(
-        function ( data ) {
-          if( data.status ){
-            newNotification('',
-                            'Correos enviados exitosamente.',
-                            'success');
-          }else{
-            newNotification('',
-                            'Los correos no se enviaron.',
-                            'danger');
+        scope.task.deadline;
+    console.log(scope.isindependient);
+    console.log(scope.task.subTasks.lenght);
+    console.log(scope.task.lenght);
+
+    if(scope.isindependient && !scope.task.subTasks.lenght > 0){//Las tareas son independientes para cada usuario
+      //Se enviara correo por separado
+      console.log("Independiente por cada correo");
+      assigned.forEach(function(e,i,a){ // Inserción de los remitentes.
+        dataToSubmit += '</blockquote></p><h3>Asignada a:</h3><p><blockquote>'+
+          e.username;
+        dataToSubmit += '</blockquote></p><p style="float:left;color:gray">'+
+            date+'<p></blockquote>';
+        mensaje.push({
+          from:    "Pruebas <hola@renderteam.com.mx>", 
+          to:      e.username +' <'+e.mail +'>',
+          subject: 'Tarea - '+scope.task.title,
+          attachment: 
+          [
+            {data: dataToSubmit, alternative:true}
+          ]
+        });
+      });
+    }
+    if(scope.task.subTasks.lenght == 0 && !scope.isindependient){
+      console.log("Todos los correos");
+      dataToSubmit += '</blockquote></p><h3>Asignada a:</h3><p><blockquote>'+
+          scope.task.Assigned;
+      dataToSubmit += '</blockquote></p><p style="float:left;color:gray">'+
+            date+'<p></blockquote>';
+      assigned.forEach(function(e,i,a){ // Inserción de los remitentes.
+        temporalMails += e.username +' <'+e.mail +'>,';
+      });
+      StringforMail = temporalMails.substring(0, temporalMails.length-1);
+      console.log(StringforMail);
+      /*
+        Enrique <enrique@das.cao>
+      */
+      var message = {
+        from:    "Pruebas <hola@renderteam.com.mx>", 
+        to:      StringforMail,
+        subject: 'Tarea - '+scope.task.title,
+        attachment: 
+        [
+          {data: dataToSubmit, alternative:true}
+        ]
+      };
+      mensaje.push(message);
+      //La tarea tiene una subtarea y tendrá un correo diferente al casual.
+    }
+    if(scope.task.subTasks.lenght > 0 ){
+      //La tarea es una simple tarea
+      console.log("Con sub tareas");
+      dataToSubmit += '</blockquote></p><h3>Asignada a:</h3><p><blockquote>'+
+          scope.task.Assigned;
+      dataToSubmit += '</blockquote></p><h3> Con las siguientes sub-tareas:</h3><p><blockquote>';
+      scope.task.subtasks.forEach(function(e,i,a){
+        dataToSubmit += '<blockquote></p>SubTask - <h4>'+e.title+'</h4><p></blockquote>'+
+        '<blockquote></p>Asignados - <h4>'+e.assigned+'</h4><p></blockquote>';
+      });
+      dataToSubmit += '</blockquote></p><p style="float:left;color:gray">'+
+            date+'<p></blockquote>';
+      assigned.forEach(function(e,i,a){ // Inserción de los remitentes.
+        temporalMails += e.username +' <'+e.mail +'>,';
+      });
+      StringforMail = temporalMails.substring(0, temporalMails.length-1);
+      console.log(StringforMail);
+      /*
+        Enrique <enrique@das.cao>
+      */
+      var message = {
+        from:    "Pruebas <hola@renderteam.com.mx>", 
+        to:      StringforMail,
+        subject: 'Tarea - '+scope.task.title,
+        attachment: 
+        [
+          {data: dataToSubmit, alternative:true}
+        ]
+      };
+      mensaje.push(message);
+    }
+    mensaje.forEach(function(e,i,a){
+      console.log('MENSAJE',e);
+      /*params.message = e;
+      mail.sendMail( params ).
+        success(
+          function ( data ) {
+            if( data.status ){
+              newNotification('',
+                              'Se envío un correo exitosamente.',
+                              'success');
+            }else{
+              newNotification('',
+                              'No se pudo enviar el correo.',
+                              'danger');
+            }
           }
-        }
-      ).
-      error(
-        function( data ) {
-          console.log( data );
-        }
-      );
+        ).
+        error(
+          function( data ) {
+            console.log( data );
+          }
+        );*/
+    });
   }
   scope.addReminderToReminders = function () {
     if ( scope.temporal.reminder > 0 && scope.temporal.reminder < 60 ) {
@@ -131,7 +197,8 @@ function newTaskController ( scope, tasks, users, mail ) {
       title: '',
       priority: '',
       assigned:[],
-      id: id
+      id: id,
+      status:''
     });
   }
 
@@ -187,8 +254,6 @@ function newTaskController ( scope, tasks, users, mail ) {
   };
 
   scope.toSubmit = function (){
-    console.log(scope.isindependient);
-    console.log(scope.withsubtask);
     var flag = false;
     if( scope.task.assigned.length > 0 ) {
       flag = true;
@@ -199,27 +264,19 @@ function newTaskController ( scope, tasks, users, mail ) {
       }
     }
     if( flag === true ) {
-      var assigned = [];
-      scope.task.assigned.forEach(function(element , index, array){
-        console.log("a[" + index + "] = " + element);
-        scope.employees.forEach(function(e,i,a){
-          if(e.username == element){
-            assigned.push(e);
-          }
-        });
-      });
-      scope.Mail( assigned );
       if(scope.isindependient){
         var deadline = new Date(scope.task.deadline);
         scope.task.assigned.forEach(function(element , index, array){
            console.log("a[" + index + "] = " + element);
            scope.newSimpleTask(element, deadline);
+           scope.Mail();
         });
       }else{
         if(scope.withsubtask){
           $('#subTasks').modal('show');
         }else{
           scope.newTask();
+          scope.Mail();
         }
       }
     }else{
@@ -231,6 +288,8 @@ function newTaskController ( scope, tasks, users, mail ) {
     scope.task.subTasks = scope.subTasks;
     scope.task.percentageDone = '0/'+ scope.subTasks.length;
     scope.newTask();
+    scope.Mail();
+    scope.task = reset();
   }
   scope.newSimpleTask = function ( user, deadline ){
     var params = {};
@@ -238,28 +297,10 @@ function newTaskController ( scope, tasks, users, mail ) {
     scope.task.deadline = new Date( scope.task.deadline );
     deadline.setDate( deadline + 1);
     params.task = scope.task;
-    
     scope.task.assigned = [user];
-    
-      tasks.saveTask( params ).then( function ( data ) {
-        scope.task = reset();
-        scope.users = [];
-        scope.temporal = {
-          worker: ""
-        };
-        scope.isindependient = false;
-        scope.temporalForm = {
-          reminder: [],
-          assigned: []
-        };
-        scope.subTasks = [];
-
-        scope.temporalForm = {
-          reminder: [],
-          assigned: []
-        };
-        newNotification('','Tarea Asignada con éxito.','success');
-      });
+    tasks.saveTask( params ).then( function ( data ) {
+      newNotification('','Tarea Asignada con éxito.','success');
+    });
   }
   scope.newTask = function () {
     scope.task.creation_date = new Date();
@@ -268,41 +309,26 @@ function newTaskController ( scope, tasks, users, mail ) {
     var params = {};
     params.task = scope.task;
     tasks.saveTask( params ).then( function ( data ) {
-      scope.task = reset();
-
-      scope.users = [];
-      scope.temporal = {
-        worker: ""
-      };
-      scope.isindependient = false;
-      scope.temporalForm = {
-        reminder: [],
-        assigned: []
-      };
-      scope.subTasks = [];
-      scope.temporalForm = {
-        reminder: [],
-        assigned: []
-      };
       newNotification('','Tarea Asignada con éxito.','success');
     });
   }
-  /*users.getAllUsersNames().then( function (data) {
-    console.log( data );
-  });*/
-};
-
-Array.prototype.contains = function( obj ) {
-  var i = this.length;
-  while ( i-- ) {
-    if (this[i] === obj) {
-      return true;
-    }
-  }
-  return false;
 };
 
 function reset(){
+  users = [];
+  temporal = {
+    worker: ""
+  };
+  isindependient = false;
+  temporalForm = {
+    reminder: [],
+    assigned: []
+  };
+  subTasks = [];
+  temporalForm = {
+    reminder: [],
+    assigned: []
+  };
   return {
           creation_date:  new Date(),
           creator:        '', /* Se tiene que recuperar de la sesión */
@@ -316,8 +342,9 @@ function reset(){
           title:          '',
           percentageDone: 0,
           subTasks:       {},
-          status:      'to Do',
+          status:      'Por hacer',
           comments:     [{
+            subtask:   '',
             user:      '',
             comment:   '',
             date:      ''

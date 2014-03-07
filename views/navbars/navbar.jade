@@ -22,8 +22,11 @@ header.navbar-default.navbar-fixed-top.bs-docs-nav.clearfix(role='banner')
               li
                 a(href) Configuración de la cuenta
               li
-                a(href, ng-click = 'taskNotifier()') Notificaciones
+                a(href, ng-click = 'tasksAssigned()') Tareas Asignadas
                   span.badge.pull-right( ng-bind = 'i' )
+              li
+                a(href, ng-click = 'taskToRevision()') Tareas a revisar
+                  span.badge.pull-right( ng-bind = 'j' )
               li.divider
               li
                 a(href, ng-click ='logout()') Cerrar Sesión

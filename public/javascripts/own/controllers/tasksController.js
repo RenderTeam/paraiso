@@ -1,10 +1,35 @@
 function tasksController ( scope, tasks ) {
   tasks.getAllTasks().success( function ( data ) {
     scope.tasks =  data;
-    console.log('DATOS',data);
     loadtoCalendar( scope );
   });
+  scope.previewRevision = function (index){
+    revisionPreview( index );
+  }
+  scope.viewRevisions = function (){
+    viewRevisionPreview();
+  }
+  scope.viewRevisionsForTask = function(){
+    viewRevisionForTask();
+  }
+  scope.verifyAssignedSubtask = function( index ){
+    scope.isSubTaskForUser = false;
+    if( scope.duty ){
+      console.log(scope.duty);
+      if( scope.duty.subTasks[index] ){
 
+        scope.duty.subTasks[index].assigned.forEach(function(a,e,i){
+          if(a == user){
+            scope.isSubTaskForUser = true;
+            console.log(a);
+            console.log(user);
+          }
+        });
+      }
+    }
+    scope.toRevision = true;
+    return scope.isSubTaskForUser;
+  };
   //Call to one task when an user clicks the expand button
   scope.callOfDuty = function(){
     var params = {};

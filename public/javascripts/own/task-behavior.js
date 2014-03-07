@@ -1,5 +1,4 @@
-function start () {  
-
+function start () {
   tooltipConstructor( '#remainderSpan', 
     'Número de días antes de la fecha límite en los cuales el sistema ' +
     'recordará al usuario la tarea.','bottom' );

@@ -18,11 +18,13 @@ TaskSchema.add({
   subTasks:       [{
     title     :String,
     priority  :Number,
-    assigned  :[]
+    assigned  :[],
+    status: String
   } ],
   status:        String,//estado general de la tarea toDo , not done, in revision, done
   comments:     [{
     _id: false,
+    subtask:   String,
     user:      String,
     comment:   String,
     date:   Date//día del comentario

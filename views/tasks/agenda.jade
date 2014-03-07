@@ -8,7 +8,7 @@
           th Responsables
           th Fecha límite
       tbody
-        tr( ng-repeat = 'task in tasks | filter:query')
+        tr( ng-repeat = 'task in tasks | filter:query' class = '{{task.subTasks.length > 0 && "warning" || "success"}}')
           td( ng-bind = 'task.title')
           td( ng-bind = 'task.description')
           td( ng-bind = 'task.assigned')

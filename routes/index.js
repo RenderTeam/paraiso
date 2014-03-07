@@ -109,6 +109,12 @@
       currentUser : req.user.username
     });
   };
+  exports.toRevision = function ( req, res ) {
+    res.render('tasks/toRevision', { 
+      controller: 'toRevisionController',
+      currentUser : req.user.username
+    });
+  };
   exports.tasks = function ( req, res ) {
     res.render('tasks/tasks', { 
       controller: 'TasksController',

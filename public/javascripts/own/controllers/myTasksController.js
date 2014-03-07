@@ -5,24 +5,87 @@ function myTasksController ( scope, tasks ) {
   });
   scope.isTaskForUser = false;
   scope.isSubTaskForUser = false;
-  scope.toRevision = false;
+  scope.toRevision = true;
   scope.previewRevision = function (index){
-    scope.toRevision = true;
+    revisionPreview( index );
   }
-  scope.sendToRevision = function(subtask){
-    console.log(subtask);
-  };
-  scope.verifyAssignedSubtask = function(index){
-    scope.isSubTaskForUser = false;
-    scope.duty.subTasks[index].assigned.forEach(function(a,e,i){
-      if(a == user){
-        console.log(a);
-        console.log(index);
-        scope.isSubTaskForUser = true;
-      }
+  scope.viewRevisions = function (){
+    viewRevisionPreview();
+  }
+  scope.viewRevisionsForTask = function(){
+    viewRevisionForTask();
+  }
+  scope.sendToRevision = function( subtask ){
+    console.log('+++++++++');
+    
+    var subtareas = [],creationday = '',commentarios = [];
+    console.log('TAREAS ANTES---',scope.tasks);
+    scope.tasks.forEach(function(e,i){
+      e.subTasks.forEach(function(ee,ii){
+        if(ee.title == subtask.title && ee.priority == subtask.priority){
+          ee.status = 'En revisión';
+          subtareas.push(ee);
+          creationday = e.creation_date;
+          if(e.comments.length > 0){
+            commentarios.push(e.comments);
+          }
+        } else {
+          subtareas.push(ee);
+        }
+      });
     });
-    console.log(index);
-    console.log(scope.isSubTaskForUser);scope.toRevision = true;
+    console.log('TAREAS DESPUES---',scope.tasks);
+    console.log('ANTES',subtask);
+    console.log('DESPUES',subtareas);
+    var comment = {
+      date: new Date(),
+      user: user,
+      comment:subtask.comment,
+      subtask:subtask.title
+    }
+    commentarios.push(comment);
+    console.log('COMENTARIOS',commentarios);
+    var task = {
+          status  : 'En revisión',
+          comments : commentarios,
+          subTasks : subtareas
+        };
+    var params = {
+      creation_date: creationday,
+      task: task
+    };
+    console.log('ANTES---------',scope.tasks);
+    console.log('DESPUES---------',task);
+    console.log('PARAMS',params);
+    tasks.updateOneTask( params ).
+    success( function( data ){
+      console.log('DATA', data );
+      newNotification('','La subtarea '+subtask.title+' se envío a revisión.','success');
+      $('#taskView').modal('hide');
+    }).
+    error( function( error ){
+      console.log('ERROR', error );
+    });
+    /*scope.tasks.subTasks.push({
+      title: '',
+      priority: '',
+      assigned:[],
+      id: id,
+      status:''
+    });*/
+  };
+  scope.verifyAssignedSubtask = function( index ){
+    scope.isSubTaskForUser = false;
+    if( scope.duty ){
+      if( scope.duty.subTasks[index] ){
+        scope.duty.subTasks[index].assigned.forEach(function(a,e,i){
+          if(a == user){
+            scope.isSubTaskForUser = true;
+          }
+        });
+      }
+    }
+    scope.toRevision = true;
     return scope.isSubTaskForUser;
   };
   //Call to one task when an user click the expand button
@@ -35,22 +98,27 @@ function myTasksController ( scope, tasks ) {
             deadline = new Date( data.deadline );
         data.daysToDeadline = deadline.getDate() - today.getDate();
         scope.duty = data;
+        console.log('DATASSS',scope.duty);
         scope.duty.assigned.forEach(function(a,e,i){
           if(user == a){
             scope.isTaskForUser = true;
           }
         });
-        console.log(scope.duty);
-        console.log(scope.duty.subTasks);
       }).
       error();
   };
 
   //Call an undate one task and validate user.
   scope.taskUpdateDone = function ( that ) {
-    console.log('task', that);
+    var comment = {
+      date: new Date(),
+      user: user,
+      comment:scope.comment
+    }
+    that.comments.push(comment);
     var task = {
-          status: 'done'
+          status: 'En revisión',
+          comments : that.comments
         };
     var params = {
       creation_date: that.creation_date,
@@ -60,10 +128,16 @@ function myTasksController ( scope, tasks ) {
     tasks.updateOneTask( params ).
     success( function( data ){
       console.log('DATA', data );
+      newNotification('','La tarea '+that.title+' se envío a revisión.','success');
+      $('#taskView').modal('hide');
     }).
     error( function( error ){
       console.log('ERROR', error );
     });
+
+
+
+
     /*var params = {};
     params = this.task;
 

@@ -11,3 +11,6 @@ taskAppModule.controller( 'NewTaskController', newTaskController );
 
 tasksController.$inject = [ '$scope', 'Tasks' ];
 taskAppModule.controller( 'TasksController', tasksController );
+
+toRevisionController.$inject = [ '$scope', 'Tasks' ];
+taskAppModule.controller( 'toRevisionController', toRevisionController );
