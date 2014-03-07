@@ -54,7 +54,7 @@ block content
                             small.text-info.pull-right(ng-bind = 'comment.date | date:"dd/MM/yyyy"')
                             small.pull-right - 
                             small.pull-right( ng-bind = 'comment.user')
-                          div.bottomed
+                          div.bottomed(ng-show = 'comment.subtask.length > 0')
                             small.pull-right( ng-bind = 'comment.subtask')
                             small.pull-right Subtarea -
                           span( ng-bind = 'comment.comment')
@@ -86,7 +86,7 @@ block content
                       h5.list-group-item-heading Descripción
                       p( ng-bind = 'duty.description')
                     li.list-group-item(ng-show = '!duty.subTasks.length > 0 && duty.status != "Terminada"')
-                      |Comentario para enviar a revision
+                      |Comentario para enviar a revisión
                       div
                         form( name = 'RevisionTask')
                           input.form-control(ng-model = 'comment',
@@ -107,13 +107,20 @@ block content
                                 span.label.label-default(ng-bind = 'subtask.assigned')
                             div(id='{{$index}}coment', hidden)
                               div Comentario:
-                                input.form-control(ng-model = 'subtask.comment',
-                                  placeholder = 'Comentario para {{subtask.title}}')
-                              .btn-group.btn-group-xs.pull-right(ng-show = 'verifyAssignedSubtask($index)')
-                                button.btn.btn-success( ng-click = 'sendToRevision(subtask)' ) Enviar a revisi&oacute;n
+                                form( name = 'RevisionSubTask')
+                                  div
+                                    input.form-control(ng-model = 'subtask.comment',
+                                      placeholder = 'Comentario para {{subtask.title}}',
+                                      required, rd-Validation, vText = 'Coloca un valor válido',
+                                      validationtype = 'alphanumeric'))
+                                  .btn-group.btn-group-xs.pull-right(
+                                    ng-show = 'verifyAssignedSubtask($index)')
+                                    button.btn.btn-success( ng-click = 'sendToRevision(subtask)',
+                                      ng-disabled='RevisionSubTask.$invalid')
+                                      |Enviar a revisi&oacute;n
                               br
                           
-                button.text-center.btn.btn-primary(ng-model = 'duty.realizada',
+                button.text-center.btn.btn-primary( ng-model = 'duty.realizada',
                   ng-click='taskUpdateDone( duty )',ng-show='subtasks.length > 0'
                   ng-show = 'duty.status != "Terminada" && isTaskForUser && !duty.subTasks.length > 0',
                   ng-disabled = 'RevisionTask.$invalid')

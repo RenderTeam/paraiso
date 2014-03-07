@@ -1,9 +1,31 @@
 function toRevisionController ( scope , tasks ){
   scope.tasks = [];
+  scope.subtaskprogress = [];
   tasks.getAllTasks().success( function ( data ) {
     data.forEach(function(e,i){
       if(e.status == 'En revisión' && e.creator == user){
         scope.tasks.push(e);
+        console.log('TAREAS',e.subTasks.length);
+        e.subTasks.forEach(function(ee,ii){
+          console.log('SUBTAREAS',ee.title);
+          console.log('SUBTAREAS',ee.status);
+          var estado = '';
+          switch(ee.status){
+            case 'En revisión':
+              estado = 'warning';
+            break;
+            default:
+              estado = 'danger';
+            break;
+          }
+          var hola = {
+            tarea:ee.title,
+            status: estado,
+            percent:100/e.subTasks.length
+          }
+          scope.subtaskprogress.push(hola);
+          console.log('HAHAHAH',scope.subtaskprogress);
+        });
       }
     });
   });

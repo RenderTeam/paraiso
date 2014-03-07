@@ -57,10 +57,13 @@ block content
                         ng-click = 'viewRevisions()')
                       ul.list-group
                         li.list-group-item(ng-repeat='comment in duty.comments')
-                          div(class='toped')
+                          div.toped
                             small.text-info.pull-right(ng-bind = 'comment.date | date:"dd/MM/yyyy"')
                             small.pull-right - 
                             small.pull-right( ng-bind = 'comment.user')
+                          div.bottomed(ng-show = 'comment.subtask.length > 0')
+                            small.pull-right( ng-bind = 'comment.subtask')
+                            small.pull-right Subtarea -
                           span( ng-bind = 'comment.comment')
                 #TaskStatus.panel.panel-default
                   ul.list-group
@@ -74,10 +77,9 @@ block content
                       | Porcentaje de la tarea realizada
                       span.label.pull-right.label-info(ng-bind = 'duty.percentageDone')
                       .progress
-                        .progress-bar.progress-bar-success(role='progressbar',
-                          aria-valuenow='{{duty.percentageDone}}', aria-valuemin='0',
-                          aria-valuemax='100', style='width: {{duty.percentageDone}}%;')
-                          | {{duty.percentageDone}}&percnt;
+                        .progress-bar(ng-repeat='progress in subtaskprogress' style='width: {{progress.percent}}%;',
+                          class ='progress-bar-{{progress.status}}')
+                          span {{progress.tarea}}
                     li.list-group-item Responsables
                       span.label.pull-right.label-info(ng-bind = 'duty.assigned')
                     li.list-group-item Fecha de fin
@@ -103,34 +105,32 @@ block content
                           ng-click = 'sendToRevision($index)')
                           span.glyphicon.glyphicon-chevron-left.pull-right(
                             ng-click = 'previewRevision($index)', class='arrow{{$index}}',
-                            ng-show = 'verifyAssignedSubtask($index)')
-                          span.glyphicon.glyphicon-eye-open.pull-right(
-                            ng-click = 'viewRevisions()', class='arrow{{$index}}',
-                            ng-show = '!verifyAssignedSubtask($index)')
+                            ng-show = 'subtask.status == "En revisión"')
                           div(class='size')
                             div(id='{{$index}}view')
-                              div(ng-show='toRevision')
+                              div
                                 span( ng-bind = 'subtask.title')
                                 span.label.label-default(ng-bind = 'subtask.assigned')
+                                span.label.label-warning(ng-bind = 'subtask.status')
                             div(id='{{$index}}coment', hidden)
-                              div( ng-show = 'toRevision' ) Comentario:
-                                input.form-control(ng-model = 'subtask.comment',
-                                  placeholder = 'Comentario para {{subtask.title}}')
-                              .btn-group.btn-group-xs.pull-right(ng-show = 'verifyAssignedSubtask($index)')
-                                button.btn.btn-success( ng-click = 'sendToRevision(subtask)' ) Enviar a revisi&oacute;n
-                              br
-                          
-                button.text-center.btn.btn-primary( ng-click='taskUpdateDone( duty )',
-                  ng-show='subtasks.length > 0'
-                  ng-show = 'duty.status == "En revisión" && !duty.subTasks.length > 0',
-                  ng-disabled = 'RevisionTask.$invalid')
-                  |Aceptar Tarea
-                button.text-center.btn.btn-danger(
-                  ng-click='invalidTask( duty )',ng-show='subtasks.length > 0'
-                  ng-show = 'duty.status == "En revisión" && !duty.subTasks.length > 0',
-                  ng-disabled = 'RevisionTask.$invalid')
-                  |Denegar Tarea
-              p.clearfix
+                              div Comentario:
+                                form( name = 'RevisionSubTask')
+                                  div
+                                    input.form-control(ng-model = 'subtask.comment',
+                                      placeholder = 'Comentario para {{subtask.title}}',
+                                      required, rd-Validation, vText = 'Coloca un valor válido',
+                                      validationtype = 'alphanumeric')
+                                  .btn-group.btn-group-xs.pull-right
+                                    button.text-center.btn.btn-primary( ng-click='taskUpdatesubTaskDone( duty )',
+                                      ng-show = 'subtask.status == "En revisión"',
+                                      ng-disabled='RevisionSubTask.$invalid')
+                                      |Aceptar Tarea
+                                    button.text-center.btn.btn-danger(
+                                      ng-click='invalidsubTask( duty )',
+                                      ng-show = 'subtask.status == "En revisión"',
+                                      ng-disabled='RevisionSubTask.$invalid')
+                                      |Denegar Tarea
+                                  br
 
 block custom-scripts
   script( src='/javascripts/vendor/bootstrap/ui-bootstrap-tpls-0.9.0.js')
